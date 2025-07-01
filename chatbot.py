@@ -1,44 +1,33 @@
-import openai, json, sys
-from client.client import MCPClient
-from client.agent import MCPAgent
+# chatbot.py
 import asyncio
 from dotenv import load_dotenv
+from client.agent import MCPAgent
+
 
 class ChatBot:
-    def __init__(self):
-        self.MCPAgent = MCPAgent()
+    def __init__(self, agent: MCPAgent):
+        self.agent = agent
 
     async def chat_loop(self):
-        """Run an interactive chat loop"""
-        print("\nMCP Client Started!")
-        print("Type your queries or 'quit' to exit.")
-
+        print("\nMCP Client Started!  (type 'quit' to exit)")
         while True:
             try:
                 query = input("\nQuery: ").strip()
-
-                if query.lower() == 'quit':
+                if query.lower() == "quit":
                     break
-
-                response = await self.MCPAgent.process_query(query)
-                print("\n" + response)
-
+                reply = await self.agent.process_query(query)
+                print("\n" + reply)
             except Exception as e:
-                print(f"\nError: {str(e)}")
+                print(f"\n[Error] {e}")
 
-    async def cleanup(self):
-        """Clean up resources"""
-        await self.MCPAgent.cleanup()
-    
+        print(self.agent.history)
 
 async def main():
     load_dotenv()
-    chatbot = ChatBot()
-    try:
-        await chatbot.MCPAgent.setup()
-        await chatbot.chat_loop()
-    finally:
-        pass
+    async with MCPAgent() as agent:      # <— 关键：统一 context 管理
+        bot = ChatBot(agent)
+        await bot.chat_loop()
+
 
 if __name__ == "__main__":
     asyncio.run(main())
