@@ -1,0 +1,2284 @@
+{
+  "Advertising/AdBidServer.py": [
+    {
+      "signature": "def recommend_bid(keyword: str, region: str = 'national') -> dict",
+      "description": "Recommend a cost-per-click bid for a given keyword.\n\nParameters\n----------\nkeyword : str\n    Search term to be purchased.\nregion : str, optional\n    Geographic market (default “national”).\n\nReturns\n-------\ndict\n    {\n        \"keyword\": <str>,             # echoed keyword\n        \"region\": <str>,              # echoed region\n        \"suggested_bid\": <float>,     # recommended bid in CNY\n        \"timestamp\": <str ISO-8601>   # generation time\n    }"
+    },
+    {
+      "signature": "def keyword_competition(keyword: str) -> dict",
+      "description": "Estimate how competitive a keyword is.\n\nParameters\n----------\nkeyword : str\n    Search term to evaluate.\n\nReturns\n-------\ndict\n    {\n        \"keyword\": <str>,\n        \"competition_score\": <int>,   # 0–100 scale, higher = tougher\n        \"band\": <str>                 # Low / Medium / High\n    }"
+    }
+  ],
+  "Advertising/AudienceInsightsServer.py": [
+    {
+      "signature": "def age_distribution(category: str) -> dict",
+      "description": "Provide an age-band breakdown for a target product category.\n\nParameters\n----------\ncategory : str\n    Vertical or catalog segment.\n\nReturns\n-------\ndict\n    {\n        \"category\": <str>,\n        \"age_dist_%\": {<age_band>: <int>, …},\n        \"timestamp\": <str ISO-8601>\n    }"
+    },
+    {
+      "signature": "def interest_overlap(cat_a: str, cat_b: str) -> dict",
+      "description": "Compute overlap ratio of audience interests between two categories.\n\nParameters\n----------\ncat_a : str\n    First category label.\ncat_b : str\n    Second category label.\n\nReturns\n-------\ndict\n    {\n        \"category_a\": <str>,\n        \"category_b\": <str>,\n        \"overlap_ratio\": <float>   # 0–1 range\n    }"
+    }
+  ],
+  "Advertising/BrandSafetyServer.py": [
+    {
+      "signature": "def check_page(url: str) -> dict",
+      "description": "Evaluate a landing page for brand-safety compliance.\n\nParameters\n----------\nurl : str\n    Fully-qualified landing page URL.\n\nReturns\n-------\ndict\n    {\"url\": <str>, \"safety_level\": <str>}   # safe / moderate / risky"
+    },
+    {
+      "signature": "def batch_check(urls: list[str]) -> dict",
+      "description": "Inspect up to five URLs for brand-safety status.\n\nParameters\n----------\nurls : list[str]\n    Collection of landing page URLs (max 5).\n\nReturns\n-------\ndict\n    {<url>: <safety_level>, …}"
+    }
+  ],
+  "Advertising/BudgetOptimizerServer.py": [
+    {
+      "signature": "def allocate_daily(total_budget: float) -> dict",
+      "description": "Distribute a daily budget across standard channels.\n\nParameters\n----------\ntotal_budget : float\n    Total spend allowed for the day (CNY).\n\nReturns\n-------\ndict\n    {\"total_budget\": <float>, \"allocation\": {<channel>: <float>, …}}"
+    },
+    {
+      "signature": "def reallocate_by_cpc(cpc_map: dict[str, float], total_budget: float) -> dict",
+      "description": "Re-balance budget toward lower-CPC channels.\n\nParameters\n----------\ncpc_map : dict[str, float]\n    Observed cost-per-click for each channel.\ntotal_budget : float\n    Daily spend ceiling (CNY).\n\nReturns\n-------\ndict\n    {\"total_budget\": <float>, \"allocation\": {<channel>: <float>, …}}"
+    }
+  ],
+  "Advertising/CampaignPerformanceServer.py": [
+    {
+      "signature": "def snapshot(campaign_id: str) -> dict",
+      "description": "Return key performance indicators for a campaign.\n\nParameters\n----------\ncampaign_id : str\n    Unique identifier of the ad campaign.\n\nReturns\n-------\ndict\n    {\n        \"campaign_id\": <str>,\n        \"impressions\": <int>,\n        \"clicks\": <int>,\n        \"ctr_%\": <float>,\n        \"spend_CNY\": <float>,\n        \"conversions\": <int>,\n        \"cpc_CNY\": <float>,\n        \"timestamp\": <str ISO-8601>\n    }"
+    },
+    {
+      "signature": "def daily_trend(campaign_id: str, days: int = 7) -> dict",
+      "description": "Provide a day-by-day impression trend for the past period.\n\nParameters\n----------\ncampaign_id : str\n    Campaign identifier.\ndays : int, optional\n    Number of recent days to include (default 7).\n\nReturns\n-------\ndict\n    {\"campaign_id\": <str>, \"daily\": [ { \"date\": <str>, \"impressions\": <int> }, … ]}"
+    }
+  ],
+  "Advertising/CreativeLabServer.py": [
+    {
+      "signature": "def generate_headlines(product_name: str, qty: int = 5) -> dict",
+      "description": "Generate headline variations for an ad.\n\nParameters\n----------\nproduct_name : str\n    Brand or product reference inserted in each headline.\nqty : int, optional\n    Desired number of variations (default 5, max 10).\n\nReturns\n-------\ndict\n    {\"product\": <str>, \"headlines\": [<str>, …]}"
+    },
+    {
+      "signature": "def single_creative(product_name: str, style: str = 'standard') -> dict",
+      "description": "Build a single ad creative (headline + description).\n\nParameters\n----------\nproduct_name : str\n    Product or service being promoted.\nstyle : str, optional\n    Style tag such as “standard”, “funny”, or “luxury”.\n\nReturns\n-------\ndict\n    {\n        \"headline\": <str>,\n        \"description\": <str>,\n        \"style\": <str>\n    }"
+    }
+  ],
+  "Advertising/GeoTargetingServer.py": [
+    {
+      "signature": "def top_cities(category: str, k: int = 3) -> dict",
+      "description": "List the best-performing cities for a category.\n\nParameters\n----------\ncategory : str\n    Product or vertical.\nk : int, optional\n    Maximum number of cities to return (default 3).\n\nReturns\n-------\ndict\n    {\"category\": <str>, \"cities\": [<str>, …]}"
+    }
+  ],
+  "Business/ExpenseServer.py": [
+    {
+      "signature": "def submit_expense(employee_id: str, amount_usd: float, category: str) -> dict",
+      "description": "Record a new employee expense and return its reference number.\n\nParameters\n----------\nemployee_id : str\n    Unique staff identifier.\namount_usd : float\n    Expense amount in USD.\ncategory : str\n    Expense type such as “travel”, “meal”, or “equipment”.\n\nReturns\n-------\ndict\n    {\n        \"expense_ref\": <str>,\n        \"employee_id\": <str>,\n        \"amount_usd\": <float>,\n        \"category\": <str>,\n        \"status\": \"submitted\"\n    }"
+    },
+    {
+      "signature": "def pending_reimbursement(employee_id: str) -> dict",
+      "description": "Retrieve total pending reimbursement for an employee.\n\nParameters\n----------\nemployee_id : str\n    Unique staff identifier.\n\nReturns\n-------\ndict\n    {\n        \"employee_id\": <str>,\n        \"pending_usd\": <float>\n    }"
+    }
+  ],
+  "Business/FinanceServer.py": [
+    {
+      "signature": "def quarterly_report(company: str, year: int, quarter: int) -> dict",
+      "description": "Generate a summarized profit-and-loss statement for a fiscal quarter.\n\nParameters\n----------\ncompany : str\n    Legal or trade name of the entity.\nyear : int\n    Four-digit fiscal year (e.g., 2025).\nquarter : int\n    Quarter index (1–4).\n\nReturns\n-------\ndict\n    {\n        \"company\": <str>,\n        \"year\": <int>,\n        \"quarter\": <int>,\n        \"revenue_kUSD\": <int>,      # total revenue in thousands\n        \"cost_kUSD\": <int>,         # total cost in thousands\n        \"profit_kUSD\": <int>,       # revenue – cost\n        \"timestamp\": <ISO-8601 str>\n    }"
+    },
+    {
+      "signature": "def cash_flow_projection(company: str, months_ahead: int = 6) -> dict",
+      "description": "Provide a forward-looking monthly cash-flow table.\n\nParameters\n----------\ncompany : str\n    Entity for which the projection is produced.\nmonths_ahead : int, optional\n    Number of future months to include (default 6, max 12).\n\nReturns\n-------\ndict\n    {\n        \"company\": <str>,\n        \"months_ahead\": <int>,\n        \"monthly_cash_flow_kUSD\": [<int>, …]   # length = months_ahead\n    }"
+    }
+  ],
+  "Business/HRServer.py": [
+    {
+      "signature": "def headcount_summary(department: str) -> dict",
+      "description": "Report current headcount and open positions for a department.\n\nParameters\n----------\ndepartment : str\n    Functional area (e.g., “Engineering”).\n\nReturns\n-------\ndict\n    {\n        \"department\": <str>,\n        \"current_headcount\": <int>,\n        \"open_positions\": <int>,\n        \"timestamp\": <ISO-8601 str>\n    }"
+    },
+    {
+      "signature": "def attrition_rate(department: str, months: int = 12) -> dict",
+      "description": "Provide the average monthly attrition percentage.\n\nParameters\n----------\ndepartment : str\n    Functional area for analysis.\nmonths : int, optional\n    Look-back window in months (default 12).\n\nReturns\n-------\ndict\n    {\n        \"department\": <str>,\n        \"months\": <int>,\n        \"attrition_%\": <float>      # averaged over the period\n    }"
+    }
+  ],
+  "Business/InventoryServer.py": [
+    {
+      "signature": "def stock_level(item_id: str) -> dict",
+      "description": "Retrieve on-hand quantity and reorder threshold for an item.\n\nParameters\n----------\nitem_id : str\n    SKU or internal stock identifier.\n\nReturns\n-------\ndict\n    {\n        \"item_id\": <str>,\n        \"qty_on_hand\": <int>,\n        \"reorder_below\": <int>      # threshold triggering replenishment\n    }"
+    },
+    {
+      "signature": "def reorder_suggestion(item_id: str) -> dict",
+      "description": "Provide a recommended reorder quantity when stock is low.\n\nParameters\n----------\nitem_id : str\n    SKU or internal stock identifier.\n\nReturns\n-------\ndict\n    {\n        \"item_id\": <str>,\n        \"current_qty\": <int>,\n        \"suggest_reorder\": <int>     # suggested purchase units\n    }"
+    }
+  ],
+  "Business/ProjectServer.py": [
+    {
+      "signature": "def project_status(project_id: str) -> dict",
+      "description": "Summarize overall status of a project.\n\nParameters\n----------\nproject_id : str\n    Unique project reference.\n\nReturns\n-------\ndict\n    {\n        \"project_id\": <str>,\n        \"progress_%\": <int>,        # completion percentage\n        \"health\": <str>             # on track / at risk / delayed\n    }"
+    },
+    {
+      "signature": "def sprint_burndown(project_id: str, days_left: int = 7) -> dict",
+      "description": "Provide remaining story points for each day of an active sprint.\n\nParameters\n----------\nproject_id : str\n    Owning project reference.\ndays_left : int, optional\n    Number of days remaining in the sprint (default 7).\n\nReturns\n-------\ndict\n    {\n        \"project_id\": <str>,\n        \"days_left\": <int>,\n        \"points_remaining\": [<int>, …]   # length = days_left\n    }"
+    }
+  ],
+  "Business/SalesServer.py": [
+    {
+      "signature": "def monthly_sales_forecast(product: str, months: int = 3) -> dict",
+      "description": "Forecast unit sales for upcoming months.\n\nParameters\n----------\nproduct : str\n    Product or product-line identifier.\nmonths : int, optional\n    Number of forward months to forecast (default 3, max 12).\n\nReturns\n-------\ndict\n    {\n        \"product\": <str>,\n        \"forecast_units\": [<int>, …]   # length = months\n    }"
+    },
+    {
+      "signature": "def quota_probability(team: str, target_units: int) -> dict",
+      "description": "Estimate probability that a sales team meets its quota.\n\nParameters\n----------\nteam : str\n    Sales team name or identifier.\ntarget_units : int\n    Target unit volume for the period.\n\nReturns\n-------\ndict\n    {\n        \"team\": <str>,\n        \"target_units\": <int>,\n        \"probability\": <float>      # 0.0 – 1.0\n    }"
+    }
+  ],
+  "Commerce/CartServer.py": [
+    {
+      "signature": "def add_to_cart(user_id: str, sku: str, qty: int = 1) -> dict",
+      "description": "Insert an item into the user’s shopping cart.\n\nParameters\n----------\nuser_id : str\n    Unique identifier of the shopper.\nsku : str\n    SKU being added.\nqty : int, optional\n    Quantity to add (default 1).\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"cart\": {<sku>: <qty>, …}}"
+    },
+    {
+      "signature": "def view_cart(user_id: str) -> dict",
+      "description": "Display all current items in the user’s cart.\n\nParameters\n----------\nuser_id : str\n    Shopper identifier.\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"cart\": {<sku>: <qty>, …}}"
+    },
+    {
+      "signature": "def remove_item(user_id: str, sku: str) -> dict",
+      "description": "Remove a specific SKU from the cart.\n\nParameters\n----------\nuser_id : str\n    Shopper identifier.\nsku : str\n    SKU to be removed.\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"cart\": {<sku>: <qty>, …}}"
+    }
+  ],
+  "Commerce/LoyaltyServer.py": [
+    {
+      "signature": "def balance(user_id: str) -> dict",
+      "description": "Retrieve the user’s current loyalty-points balance.\n\nParameters\n----------\nuser_id : str\n    Account identifier.\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"points\": <int>}"
+    },
+    {
+      "signature": "def redeem(user_id: str, points: int) -> dict",
+      "description": "Redeem loyalty points for rewards.\n\nParameters\n----------\nuser_id : str\n    Account identifier.\npoints : int\n    Number of points the user wishes to redeem.\n\nReturns\n-------\ndict\n    {\n        \"user_id\": <str>,\n        \"redeemed\": <int>,\n        \"remaining\": <int>\n    }"
+    }
+  ],
+  "Commerce/PaymentGatewayServer.py": [
+    {
+      "signature": "def process_payment(user_id: str, amount_usd: float, method: str) -> dict",
+      "description": "Charge a customer and return a transaction reference.\n\nParameters\n----------\nuser_id : str\n    Paying customer’s account ID.\namount_usd : float\n    Amount to collect in USD.\nmethod : str\n    Payment method label, e.g. \"credit_card\" or \"paypal\".\n\nReturns\n-------\ndict\n    {\n        \"transaction_id\": <str>,\n        \"status\": <str>,           # approved / declined\n        \"amount_usd\": <float>,\n        \"timestamp\": <ISO-8601 str>\n    }"
+    },
+    {
+      "signature": "def refund(transaction_id: str, amount_usd: float) -> dict",
+      "description": "Issue a refund linked to an existing transaction.\n\nParameters\n----------\ntransaction_id : str\n    Reference originally returned by `process_payment`.\namount_usd : float\n    Refund amount in USD.\n\nReturns\n-------\ndict\n    {\n        \"refund_id\": <str>,\n        \"original_tx\": <str>,\n        \"amount_usd\": <float>,\n        \"status\": \"processed\"\n    }"
+    }
+  ],
+  "Commerce/ProductCatalogServer.py": [
+    {
+      "signature": "def get_product(sku: str) -> dict",
+      "description": "Retrieve core attributes of a product.\n\nParameters\n----------\nsku : str\n    Stock-keeping unit used as the primary identifier.\n\nReturns\n-------\ndict\n    {\n        \"sku\": <str>,\n        \"name\": <str>,\n        \"price_usd\": <float>,\n        \"in_stock\": <bool>,\n        \"timestamp\": <ISO-8601 str>\n    }"
+    },
+    {
+      "signature": "def search_products(keyword: str, max_results: int = 5) -> dict",
+      "description": "Search the catalog by keyword and return matching SKUs.\n\nParameters\n----------\nkeyword : str\n    Search term applied to product titles and descriptions.\nmax_results : int, optional\n    Maximum number of SKUs to return (default 5).\n\nReturns\n-------\ndict\n    {\"keyword\": <str>, \"results\": [<str>, …]}   # list of SKU codes"
+    }
+  ],
+  "Commerce/PromotionServer.py": [
+    {
+      "signature": "def apply_coupon(code: str, subtotal_usd: float) -> dict",
+      "description": "Validate a coupon and calculate a new order total.\n\nParameters\n----------\ncode : str\n    Promotional code entered by the customer.\nsubtotal_usd : float\n    Order subtotal before discounts.\n\nReturns\n-------\ndict\n    {\n        \"code\": <str>,\n        \"valid\": <bool>,\n        \"discount_usd\": <float>,\n        \"new_total_usd\": <float>\n    }"
+    },
+    {
+      "signature": "def list_coupons() -> dict",
+      "description": "List all currently active promotional codes.\n\nReturns\n-------\ndict\n    {\"active_coupons\": [<str>, …]}"
+    }
+  ],
+  "Commerce/ShippingServer.py": [
+    {
+      "signature": "def shipping_quote(destination_zip: str, weight_kg: float) -> dict",
+      "description": "Calculate shipping cost and estimated arrival date.\n\nParameters\n----------\ndestination_zip : str\n    Postal code of the delivery address.\nweight_kg : float\n    Parcel weight in kilograms.\n\nReturns\n-------\ndict\n    {\n        \"zip\": <str>,\n        \"weight_kg\": <float>,\n        \"cost_usd\": <float>,\n        \"eta\": <str ISO-8601 date>\n    }"
+    },
+    {
+      "signature": "def track(tracking_no: str) -> dict",
+      "description": "Retrieve the latest shipment status by tracking number.\n\nParameters\n----------\ntracking_no : str\n    Carrier-assigned tracking code.\n\nReturns\n-------\ndict\n    {\"tracking_no\": <str>, \"status\": <str>}   # e.g., in_transit / delivered"
+    }
+  ],
+  "Communication/CalendarInviteServer.py": [
+    {
+      "signature": "def create_invite(organizer: str, attendees: list[str], when_iso: str) -> dict",
+      "description": "Create a calendar invite.\n\nParameters\n----------\norganizer : str\n    E-mail or user ID of the meeting organizer.\nattendees : list[str]\n    List of attendee IDs or e-mails.\nwhen_iso : str\n    Start time in ISO-8601 format (e.g., \"2025-07-15T09:00:00Z\").\n\nReturns\n-------\ndict\n    {\"organizer\": <str>, \"event_id\": <str>, \"attendees\": <list>, \"when\": <str>}"
+    },
+    {
+      "signature": "def rsvp_status(event_id: str, attendee: str) -> dict",
+      "description": "Check an attendee’s RSVP status for an event.\n\nParameters\n----------\nevent_id : str\n    Identifier returned by `create_invite`.\nattendee : str\n    Attendee’s e-mail or user ID.\n\nReturns\n-------\ndict\n    {\"event_id\": <str>, \"attendee\": <str>, \"rsvp\": <str>}"
+    }
+  ],
+  "Communication/ChatServer.py": [
+    {
+      "signature": "def send_message(room_id: str, user: str, text: str) -> dict",
+      "description": "Post a chat message to a room.\n\nParameters\n----------\nroom_id : str\n    Identifier of the chat room or channel.\nuser : str\n    Display name or user ID of the sender.\ntext : str\n    The message content (plain text).\n\nReturns\n-------\ndict\n    {\"room_id\": <str>, \"user\": <str>, \"message_id\": <str>, \"text\": <str>}"
+    },
+    {
+      "signature": "def fetch_history(room_id: str, limit: int = 10) -> dict",
+      "description": "Fetch the most recent messages from a chat room.\n\nParameters\n----------\nroom_id : str\n    Target chat room.\nlimit : int, optional\n    Number of messages to return (default 10).\n\nReturns\n-------\ndict\n    {\"room_id\": <str>, \"history\": [<str>, …]}   # newest first"
+    }
+  ],
+  "Communication/ContactDirectoryServer.py": [
+    {
+      "signature": "def search_contact(name: str) -> dict",
+      "description": "Look up contacts whose names contain the given string.\n\nParameters\n----------\nname : str\n    Case-insensitive substring to search for.\n\nReturns\n-------\ndict\n    {\"query\": <str>, \"matches\": [<contact_id>, …]}"
+    },
+    {
+      "signature": "def add_contact(name: str, email: str, phone: str | None = None) -> dict",
+      "description": "Add a new contact to the directory.\n\nParameters\n----------\nname : str\n    Full display name of the contact.\nemail : str\n    Primary e-mail address.\nphone : str, optional\n    Phone number (mobile or office).\n\nReturns\n-------\ndict\n    {\"contact_id\": <str>, \"status\": \"added\"}"
+    }
+  ],
+  "Communication/EmailServer.py": [
+    {
+      "signature": "def send_email(to: str, subject: str, body: str) -> dict",
+      "description": "Send an e-mail message.\n\nParameters\n----------\nto : str\n    The recipient's e-mail address.\nsubject : str\n    The subject line that will appear in the message header.\nbody : str\n    The plain-text body of the e-mail.\n\nReturns\n-------\ndict\n    {\n        \"to\": <str>,                 # echo of recipient\n        \"subject\": <str>,            # echo of subject\n        \"message_id\": <str>,         # system-assigned identifier\n        \"status\": \"sent\"             # delivery status\n    }"
+    },
+    {
+      "signature": "def list_inbox(user: str, max_results: int = 5) -> dict",
+      "description": "Retrieve recent subjects in a user’s inbox.\n\nParameters\n----------\nuser : str\n    The mailbox owner (e-mail address or user ID).\nmax_results : int, optional\n    Maximum number of messages to return (default 5).\n\nReturns\n-------\ndict\n    {\n        \"user\": <str>,\n        \"messages\": [<str>, …]       # newest first\n    }"
+    },
+    {
+      "signature": "def mark_read(message_id: str) -> dict",
+      "description": "Mark the specified e-mail as read.\n\nParameters\n----------\nmessage_id : str\n    The identifier originally returned by `send_email` or `list_inbox`.\n\nReturns\n-------\ndict\n    {\"message_id\": <str>, \"status\": \"read\"}"
+    }
+  ],
+  "Communication/NotificationServer.py": [
+    {
+      "signature": "def push_notification(user: str, title: str, body: str) -> dict",
+      "description": "Deliver a push notification to a user.\n\nParameters\n----------\nuser : str\n    Recipient user ID or alias.\ntitle : str\n    Short title shown in the notification banner.\nbody : str\n    Detailed message shown on tap/expand.\n\nReturns\n-------\ndict\n    {\"user\": <str>, \"notification_id\": <str>, \"status\": \"delivered\"}"
+    },
+    {
+      "signature": "def list_notifications(user: str, unread_only: bool = True) -> dict",
+      "description": "List notifications for a user.\n\nParameters\n----------\nuser : str\n    Recipient identifier.\nunread_only : bool, optional\n    If True (default) only unread items are returned.\n\nReturns\n-------\ndict\n    {\"user\": <str>, \"unread_only\": <bool>, \"notifications\": [<str>, …]}"
+    }
+  ],
+  "Communication/VoiceCallServer.py": [
+    {
+      "signature": "def initiate_call(caller: str, callee: str) -> dict",
+      "description": "Start a voice call and receive a call ID.\n\nParameters\n----------\ncaller : str\n    Caller’s phone number or user ID.\ncallee : str\n    Callee’s phone number or user ID.\n\nReturns\n-------\ndict\n    {\"caller\": <str>, \"callee\": <str>, \"call_id\": <str>, \"status\": \"ringing\"}"
+    },
+    {
+      "signature": "def end_call(call_id: str) -> dict",
+      "description": "Terminate an active voice call.\n\nParameters\n----------\ncall_id : str\n    Identifier returned by `initiate_call`.\n\nReturns\n-------\ndict\n    {\"call_id\": <str>, \"duration_sec\": <int>, \"status\": \"ended\"}"
+    },
+    {
+      "signature": "def call_status(call_id: str) -> dict",
+      "description": "Query the current status of a call.\n\nParameters\n----------\ncall_id : str\n    Identifier of the call session.\n\nReturns\n-------\ndict\n    {\"call_id\": <str>, \"status\": <str>}   # ringing / in_progress / ended / missed"
+    }
+  ],
+  "Cryptography/AESCipherServer.py": [
+    {
+      "signature": "def generate_key(key_size: int = 256) -> dict",
+      "description": "Generate a random AES key.\n\nParameters\n----------\nkey_size : int, optional\n    Key length in bits (128 / 192 / 256). Default 256.\n\nReturns\n-------\ndict\n    {\n        \"key_hex\": <str>\n    }"
+    },
+    {
+      "signature": "def aes_encrypt(key_hex: str, plaintext: str) -> dict",
+      "description": "Encrypt data with an AES key.\n\nParameters\n----------\nkey_hex : str\n    Symmetric key in hexadecimal.\nplaintext : str\n    Data to encrypt.\n\nReturns\n-------\ndict\n    {\n        \"iv_hex\": <str>,         # Initialization Vector\n        \"ciphertext_b64\": <str>\n    }"
+    },
+    {
+      "signature": "def aes_decrypt(key_hex: str, iv_hex: str, ciphertext_b64: str) -> dict",
+      "description": "Decrypt data previously encrypted with `aes_encrypt`.\n\nParameters\n----------\nkey_hex : str\n    AES key in hexadecimal.\niv_hex : str\n    Initialization Vector in hexadecimal.\nciphertext_b64 : str\n    Base64-encoded cipher text.\n\nReturns\n-------\ndict\n    {\n        \"plaintext\": <str>\n    }"
+    }
+  ],
+  "Cryptography/CertificateServer.py": [
+    {
+      "signature": "def issue_certificate(common_name: str, public_key: str) -> dict",
+      "description": "Issue a simple X.509-like certificate.\n\nParameters\n----------\ncommon_name : str\n    Subject's common name (CN) field.\npublic_key : str\n    Subject's public key.\n\nReturns\n-------\ndict\n    {\n        \"serial_number\": <str>,\n        \"issued_at\": <str>,\n        \"expires_at\": <str>\n    }"
+    },
+    {
+      "signature": "def revoke_certificate(serial_number: str) -> dict",
+      "description": "Revoke a previously issued certificate.\n\nParameters\n----------\nserial_number : str\n    Certificate serial number.\n\nReturns\n-------\ndict\n    {\n        \"revoked\": <bool>\n    }"
+    },
+    {
+      "signature": "def get_certificate(serial_number: str) -> dict",
+      "description": "Retrieve certificate metadata.\n\nParameters\n----------\nserial_number : str\n    Certificate serial number.\n\nReturns\n-------\ndict\n    {\n        \"found\": <bool>,\n        \"metadata\": <dict | None>\n    }"
+    }
+  ],
+  "Cryptography/HashServer.py": [
+    {
+      "signature": "def compute_hash(algorithm: str, data: str) -> dict",
+      "description": "Compute the message digest of given data.\n\nParameters\n----------\nalgorithm : str\n    Hash algorithm name, e.g. 'sha256', 'sha512', 'md5'.\ndata : str\n    Plain-text input to be hashed.\n\nReturns\n-------\ndict\n    {\n        \"algorithm\": <str>,\n        \"digest_hex\": <str>\n    }"
+    },
+    {
+      "signature": "def verify_hash(algorithm: str, data: str, expected_hex: str) -> dict",
+      "description": "Verify that data matches an expected hash value.\n\nParameters\n----------\nalgorithm : str\n    Hash algorithm used.\ndata : str\n    Plain-text to verify.\nexpected_hex : str\n    Reference digest in hexadecimal.\n\nReturns\n-------\ndict\n    {\n        \"match\": <bool>\n    }"
+    }
+  ],
+  "Cryptography/KDFServer.py": [
+    {
+      "signature": "def derive_key(password: str, salt_b64: str, iterations: int, length: int = 32) -> dict",
+      "description": "Derive a symmetric key using PBKDF2-HMAC-SHA256.\n\nParameters\n----------\npassword : str\n    User-supplied secret.\nsalt_b64 : str\n    Base64-encoded salt.\niterations : int\n    Number of PBKDF2 iterations.\nlength : int, optional\n    Desired key length in bytes (default 32).\n\nReturns\n-------\ndict\n    {\n        \"key_hex\": <str>\n    }"
+    }
+  ],
+  "Cryptography/RSAServer.py": [
+    {
+      "signature": "def generate_keypair(key_size: int = 2048) -> dict",
+      "description": "Generate an RSA key pair.\n\nParameters\n----------\nkey_size : int, optional\n    RSA modulus length in bits (default 2048).\n\nReturns\n-------\ndict\n    {\n        \"public_key\": <str>,   # PEM-like string\n        \"private_key\": <str>   # PEM-like string\n    }"
+    },
+    {
+      "signature": "def rsa_encrypt(public_key: str, plaintext: str) -> dict",
+      "description": "Encrypt data with a public key.\n\nParameters\n----------\npublic_key : str\n    RSA public key in PEM-like format.\nplaintext : str\n    Data to encrypt.\n\nReturns\n-------\ndict\n    {\n        \"ciphertext\": <str>   # Base64-encoded\n    }"
+    },
+    {
+      "signature": "def rsa_decrypt(private_key: str, ciphertext: str) -> dict",
+      "description": "Decrypt data with a private key.\n\nParameters\n----------\nprivate_key : str\n    RSA private key in PEM-like format.\nciphertext : str\n    Base64-encoded cipher text produced by `rsa_encrypt`.\n\nReturns\n-------\ndict\n    {\n        \"plaintext\": <str>\n    }"
+    }
+  ],
+  "Cryptography/RandomnessServer.py": [
+    {
+      "signature": "def generate_secure_random_bytes(length: int = 32) -> dict",
+      "description": "Produce cryptographically strong random bytes.\n\nParameters\n----------\nlength : int, optional\n    Number of random bytes requested (default 32).\n\nReturns\n-------\ndict\n    {\n        \"random_b64\": <str>\n    }"
+    }
+  ],
+  "Cryptography/SignatureServer.py": [
+    {
+      "signature": "def sign_message(private_key: str, message: str) -> dict",
+      "description": "Create a digital signature for a message.\n\nParameters\n----------\nprivate_key : str\n    Signer's private key material.\nmessage : str\n    Message to be signed.\n\nReturns\n-------\ndict\n    {\n        \"signature_hex\": <str>\n    }"
+    },
+    {
+      "signature": "def verify_signature(public_key: str, message: str, signature_hex: str) -> dict",
+      "description": "Verify a digital signature.\n\nParameters\n----------\npublic_key : str\n    Signer's public key material.\nmessage : str\n    Original message.\nsignature_hex : str\n    Signature produced by `sign_message`.\n\nReturns\n-------\ndict\n    {\n        \"valid\": <bool>\n    }"
+    }
+  ],
+  "Cybersecurity/FirewallManagerServer.py": [
+    {
+      "signature": "def add_rule(src_ip: str, dst_ip: str, port: int, action: str = 'deny') -> dict",
+      "description": "Append a rule to the firewall rule set.\n\nParameters\n----------\nsrc_ip : str\n    Source address in CIDR or single IP form.\ndst_ip : str\n    Destination address.\nport   : int\n    Destination TCP/UDP port.\naction : str, optional\n    'allow' or 'deny' (default 'deny').\n\nReturns\n-------\ndict\n    {\n        \"rule_id\": <str>,\n        \"added_at\": <str>\n    }"
+    },
+    {
+      "signature": "def list_rules(limit: int = 50) -> dict",
+      "description": "List currently active firewall rules.\n\nParameters\n----------\nlimit : int, optional\n    Maximum number of rules to return (default 50).\n\nReturns\n-------\ndict\n    {\n        \"rules\": [ { \"rule_id\": <str>, \"src_ip\": <str>, \"dst_ip\": <str>, \"port\": <int>, \"action\": <str> }, … ]\n    }"
+    }
+  ],
+  "Cybersecurity/IDSServer.py": [
+    {
+      "signature": "def register_sensor(sensor_name: str, ip: str) -> dict",
+      "description": "Register a network sensor with the IDS backend.\n\nParameters\n----------\nsensor_name : str\n    Friendly name of the sensor.\nip : str\n    IPv4 / IPv6 address where the sensor is deployed.\n\nReturns\n-------\ndict\n    {\n        \"sensor_id\": <str>,\n        \"registered_at\": <str>\n    }"
+    },
+    {
+      "signature": "def poll_alerts(sensor_id: str, limit: int = 20) -> dict",
+      "description": "Retrieve recent IDS alerts generated by a sensor.\n\nParameters\n----------\nsensor_id : str\n    Identifier returned by `register_sensor`.\nlimit : int, optional\n    Maximum number of alerts (default 20).\n\nReturns\n-------\ndict\n    {\n        \"sensor_id\": <str>,\n        \"alerts\": [ { \"alert_id\": <str>, \"severity\": <str>, \"src\": <str>, \"dst\": <str> }, … ]\n    }"
+    }
+  ],
+  "Cybersecurity/LogAuditServer.py": [
+    {
+      "signature": "def ingest_log(source: str, content: str) -> dict",
+      "description": "Register a new log entry for later analysis.\n\nParameters\n----------\nsource : str\n    Arbitrary source identifier (server name, application, etc.).\ncontent : str\n    Raw log line.\n\nReturns\n-------\ndict\n    {\n        \"log_id\": <str>,\n        \"timestamp\": <str>   # ISO-8601\n    }"
+    },
+    {
+      "signature": "def detect_anomaly(log_id: str) -> dict",
+      "description": "Apply lightweight heuristic checks to decide whether a log is suspicious.\n\nParameters\n----------\nlog_id : str\n    Identifier returned by `ingest_log`.\n\nReturns\n-------\ndict\n    {\n        \"log_id\": <str>,\n        \"is_anomalous\": <bool>,\n        \"score\": <float>          # 0 – 1\n    }"
+    }
+  ],
+  "Cybersecurity/MalwareAnalysisServer.py": [
+    {
+      "signature": "def submit_sample(filename: str, file_b64: str) -> dict",
+      "description": "Store a binary sample for detonation and static analysis.\n\nParameters\n----------\nfilename : str\n    Name of the uploaded file.\nfile_b64 : str\n    Base64-encoded content of the file.\n\nReturns\n-------\ndict\n    {\n        \"sample_id\": <str>,\n        \"sha256\": <str>\n    }"
+    },
+    {
+      "signature": "def get_static_report(sample_id: str) -> dict",
+      "description": "Produce a simplified static analysis report.\n\nParameters\n----------\nsample_id : str\n    Identifier from `submit_sample`.\n\nReturns\n-------\ndict\n    {\n        \"sample_id\": <str>,\n        \"suspicious_sections\": [<str>, …],\n        \"entropy\": <float>\n    }"
+    }
+  ],
+  "Cybersecurity/PasswordAuditServer.py": [
+    {
+      "signature": "def evaluate_strength(password: str) -> dict",
+      "description": "Score the strength of a password.\n\nParameters\n----------\npassword : str\n    Plain-text password.\n\nReturns\n-------\ndict\n    {\n        \"score\": <int>,              # 0–100\n        \"diversity\": <int>,          # 0–4 (char-class count)\n        \"crack_time_estimate\": <str>,\n        \"timestamp\": <str ISO-8601>\n    }"
+    }
+  ],
+  "Cybersecurity/PatchComplianceServer.py": [
+    {
+      "signature": "def register_host(hostname: str, os_version: str) -> dict",
+      "description": "Add a host to the compliance inventory.\n\nParameters\n----------\nhostname : str\n    Device name.\nos_version : str\n    Operating-system version string.\n\nReturns\n-------\ndict\n    {\n        \"host_id\": <str>,\n        \"registered_at\": <str>\n    }"
+    },
+    {
+      "signature": "def compliance_status(host_id: str) -> dict",
+      "description": "Check whether the host has missing critical patches.\n\nParameters\n----------\nhost_id : str\n    Identifier from `register_host`.\n\nReturns\n-------\ndict\n    {\n        \"host_id\": <str>,\n        \"compliant\": <bool>,\n        \"missing_patches\": [<str>, …]\n    }"
+    }
+  ],
+  "Cybersecurity/PortScanServer.py": [
+    {
+      "signature": "def quick_scan(target: str, ports: str = '1-1024') -> dict",
+      "description": "Perform a TCP SYN scan on the specified target host.\n\nParameters\n----------\ntarget : str\n    IPv4 / IPv6 address or hostname to scan.\nports : str, optional\n    Port range in 'start-end' form (default '1-1024').\n\nReturns\n-------\ndict\n    {\n        \"target\": <str>,\n        \"open_ports\": [<int>, …],     # ascending\n        \"scan_id\": <str>\n    }"
+    }
+  ],
+  "Cybersecurity/ThreatIntelServer.py": [
+    {
+      "signature": "def fetch_iocs(threat_family: str, limit: int = 25) -> dict",
+      "description": "Retrieve Indicators of Compromise for a given threat family.\n\nParameters\n----------\nthreat_family : str\n    Malware or actor name (e.g., 'Emotet', 'APT29').\nlimit : int, optional\n    Desired number of IOCs (default 25).\n\nReturns\n-------\ndict\n    {\n        \"family\": <str>,\n        \"iocs\": [ {\"type\": <str>, \"value\": <str>}, … ]\n    }"
+    }
+  ],
+  "Database/BackupRestoreServer.py": [
+    {
+      "signature": "def create_backup(database: str) -> dict",
+      "description": "Trigger a full backup of the specified database.\n..."
+    },
+    {
+      "signature": "def restore_backup(backup_id: str, target_database: str) -> dict",
+      "description": "Restore a backup to a target database.\n..."
+    }
+  ],
+  "Database/CacheServer.py": [
+    {
+      "signature": "def set_key(key: str, value: str, ttl_seconds: int = 300) -> dict",
+      "description": "Store a string value in the cache with a TTL.\n..."
+    },
+    {
+      "signature": "def get_key(key: str) -> dict",
+      "description": "Retrieve a value from the cache.\n..."
+    }
+  ],
+  "Database/DBMonitoringServer.py": [
+    {
+      "signature": "def get_metrics(database: str, window_minutes: int = 5) -> dict",
+      "description": "Fetch recent performance metrics.\n..."
+    },
+    {
+      "signature": "def list_alerts(active_only: bool = True) -> dict",
+      "description": "List monitoring alerts.\n..."
+    }
+  ],
+  "Database/IndexOptimizerServer.py": [
+    {
+      "signature": "def recommend_indexes(sql_text: str, top_k: int = 3) -> dict",
+      "description": "Suggest indexes to improve a query workload.\n..."
+    }
+  ],
+  "Database/NoSQLDocumentServer.py": [
+    {
+      "signature": "def insert(collection: str, document_json: str) -> dict",
+      "description": "Insert a JSON document into a collection.\n..."
+    },
+    {
+      "signature": "def find(collection: str, filter_json: str, limit: int = 5) -> dict",
+      "description": "Retrieve documents that match a JSON filter.\n..."
+    }
+  ],
+  "Database/SQLQueryServer.py": [
+    {
+      "signature": "def run_query(query: str) -> dict",
+      "description": "Execute an SQL SELECT statement and return up to 10 rows.\n..."
+    },
+    {
+      "signature": "def explain(query: str) -> dict",
+      "description": "Provide a lightweight execution plan for an SQL statement.\n..."
+    }
+  ],
+  "Database/SchemaManagerServer.py": [
+    {
+      "signature": "def apply_migration(database: str, ddl_sql: str) -> dict",
+      "description": "Apply a DDL migration script.\n..."
+    },
+    {
+      "signature": "def diff_schema(source_version: str, target_version: str) -> dict",
+      "description": "Show differences between two schema versions.\n..."
+    }
+  ],
+  "Devices/CameraFeedServer.py": [
+    {
+      "signature": "def capture_snapshot(cam_id: str) -> dict",
+      "description": "Capture a still image from the camera.\n\nParameters\n----------\ncam_id : str\n    Camera identifier.\n\nReturns\n-------\ndict\n    {\n        \"snapshot_id\": <str>,\n        \"cam_id\"     : <str>,\n        \"captured_at\": <str>,\n        \"image_url\"  : <str>\n    }"
+    },
+    {
+      "signature": "def get_stream_url(cam_id: str) -> dict",
+      "description": "Provide the RTSP or HLS stream endpoint.\n\nParameters\n----------\ncam_id : str\n    Camera identifier.\n\nReturns\n-------\ndict\n    {\n        \"cam_id\"    : <str>,\n        \"stream_url\": <str>\n    }"
+    }
+  ],
+  "Devices/DeviceInventoryServer.py": [
+    {
+      "signature": "def add_device(device_type: str, model: str, owner: str) -> dict",
+      "description": "Add a device to the inventory.\n\nParameters\n----------\ndevice_type : str\n    Category label (e.g., 'laptop', 'sensor').\nmodel : str\n    Model name/number.\nowner : str\n    Responsible person or team.\n\nReturns\n-------\ndict\n    {\n        \"device_id\": <str>,\n        \"registered_at\": <str>\n    }"
+    },
+    {
+      "signature": "def list_devices(limit: int = 20) -> dict",
+      "description": "List devices in inventory.\n\nParameters\n----------\nlimit : int, optional\n    Maximum number of entries (default 20).\n\nReturns\n-------\ndict\n    {\n        \"devices\": [ { \"device_id\": <str>, \"type\": <str>, \"model\": <str> }, … ]\n    }"
+    }
+  ],
+  "Devices/FirmwareUpdateServer.py": [
+    {
+      "signature": "def push_firmware(device_id: str, version: str) -> dict",
+      "description": "Initiate a firmware update.\n\nParameters\n----------\ndevice_id : str\n    Target device identifier.\nversion : str\n    Firmware version string.\n\nReturns\n-------\ndict\n    {\n        \"update_id\": <str>,\n        \"device_id\": <str>,\n        \"version\"  : <str>,\n        \"started_at\": <str>\n    }"
+    },
+    {
+      "signature": "def update_status(update_id: str) -> dict",
+      "description": "Query progress of a firmware update.\n\nParameters\n----------\nupdate_id : str\n    Identifier returned by `push_firmware`.\n\nReturns\n-------\ndict\n    {\n        \"update_id\": <str>,\n        \"progress\" : <int>,   # 0-100 (%)\n        \"state\"    : <str>    # in_progress / completed / failed\n    }"
+    }
+  ],
+  "Devices/PrinterServer.py": [
+    {
+      "signature": "def submit_job(printer_id: str, pages: int) -> dict",
+      "description": "Queue a print job.\n\nParameters\n----------\nprinter_id : str\n    Target printer.\npages : int\n    Number of pages in the document.\n\nReturns\n-------\ndict\n    {\n        \"job_id\"  : <str>,\n        \"printer\" : <str>,\n        \"pages\"   : <int>\n    }"
+    },
+    {
+      "signature": "def job_status(job_id: str) -> dict",
+      "description": "Check status of a print job.\n\nParameters\n----------\njob_id : str\n    Identifier returned by `submit_job`.\n\nReturns\n-------\ndict\n    {\n        \"job_id\": <str>,\n        \"state\" : <str>   # queued / printing / done / error\n    }"
+    }
+  ],
+  "Devices/RouterConfigServer.py": [
+    {
+      "signature": "def set_wifi_ssid(router_id: str, ssid: str, password: str) -> dict",
+      "description": "Update Wi-Fi SSID and passphrase.\n\nParameters\n----------\nrouter_id : str\n    Router identifier.\nssid : str\n    New network name.\npassword : str\n    WPA2/WPA3 passphrase.\n\nReturns\n-------\ndict\n    {\n        \"router_id\": <str>,\n        \"ssid\"     : <str>,\n        \"updated\"  : <str>\n    }"
+    },
+    {
+      "signature": "def get_uptime(router_id: str) -> dict",
+      "description": "Retrieve router uptime in seconds.\n\nParameters\n----------\nrouter_id : str\n    Router identifier.\n\nReturns\n-------\ndict\n    {\n        \"router_id\": <str>,\n        \"uptime_s\" : <int>\n    }"
+    }
+  ],
+  "Devices/SensorHubServer.py": [
+    {
+      "signature": "def register_sensor(sensor_type: str, location: str) -> dict",
+      "description": "Register a new environmental sensor.\n\nParameters\n----------\nsensor_type : str\n    e.g., 'temperature', 'humidity', 'co2'.\nlocation : str\n    Physical location label.\n\nReturns\n-------\ndict\n    {\n        \"sensor_id\": <str>,\n        \"type\"     : <str>,\n        \"location\" : <str>\n    }"
+    },
+    {
+      "signature": "def fetch_reading(sensor_id: str) -> dict",
+      "description": "Read the latest measurement value.\n\nParameters\n----------\nsensor_id : str\n    Identifier from `register_sensor`.\n\nReturns\n-------\ndict\n    {\n        \"sensor_id\": <str>,\n        \"value\"    : <float>,\n        \"unit\"     : <str>,\n        \"time\"     : <str>\n    }"
+    }
+  ],
+  "Devices/SmartLightServer.py": [
+    {
+      "signature": "def toggle_light(bulb_id: str, on: bool) -> dict",
+      "description": "Turn a smart bulb on or off.\n\nParameters\n----------\nbulb_id : str\n    Bulb identifier.\non : bool\n    True to switch on, False to switch off.\n\nReturns\n-------\ndict\n    {\n        \"bulb_id\"   : <str>,\n        \"power\"     : <str>,   # on / off\n        \"updated_at\": <str>\n    }"
+    },
+    {
+      "signature": "def set_brightness(bulb_id: str, level: int) -> dict",
+      "description": "Set bulb brightness (0–100).\n\nParameters\n----------\nbulb_id : str\n    Bulb identifier.\nlevel : int\n    Brightness percentage.\n\nReturns\n-------\ndict\n    {\n        \"bulb_id\"  : <str>,\n        \"brightness\": <int>\n    }"
+    }
+  ],
+  "Devices/ThermostatServer.py": [
+    {
+      "signature": "def set_temperature(device_id: str, target_celsius: float) -> dict",
+      "description": "Adjust the target temperature of a smart thermostat.\n\nParameters\n----------\ndevice_id : str\n    Unique identifier of the thermostat.\ntarget_celsius : float\n    Desired temperature in °C.\n\nReturns\n-------\ndict\n    {\n        \"device_id\" : <str>,\n        \"target_set\": <float>,\n        \"timestamp\" : <str>\n    }"
+    },
+    {
+      "signature": "def get_status(device_id: str) -> dict",
+      "description": "Retrieve current temperature and HVAC state.\n\nParameters\n----------\ndevice_id : str\n    Thermostat identifier.\n\nReturns\n-------\ndict\n    {\n        \"device_id\"   : <str>,\n        \"current_degC\": <float>,\n        \"hvac_state\"  : <str>     # heating / cooling / idle\n    }"
+    }
+  ],
+  "Education/AssignmentServer.py": [
+    {
+      "signature": "def submit_assignment(student_id: str, course_id: str, assignment_id: str) -> dict",
+      "description": "Record a homework submission.\n\nParameters\n----------\nstudent_id : str\n    Learner ID.\ncourse_id : str\n    Associated course.\nassignment_id : str\n    Assignment identifier.\n\nReturns\n-------\ndict\n    {\n        \"submission_id\": <str>,\n        \"timestamp\"    : <str>\n    }"
+    },
+    {
+      "signature": "def assignment_status(submission_id: str) -> dict",
+      "description": "Check grading progress for a submission.\n\nParameters\n----------\nsubmission_id : str\n    Identifier from `submit_assignment`.\n\nReturns\n-------\ndict\n    {\n        \"submission_id\": <str>,\n        \"state\"        : <str>   # pending / graded\n    }"
+    }
+  ],
+  "Education/AttendanceServer.py": [
+    {
+      "signature": "def mark_attendance(student_id: str, course_id: str, date_iso: str) -> dict",
+      "description": "Mark a student present for a specific class meeting.\n\nParameters\n----------\nstudent_id : str\n    Learner ID.\ncourse_id : str\n    Course identifier.\ndate_iso : str\n    Class date in ISO format (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\n        \"record_id\": <str>,\n        \"marked\"   : <bool>\n    }"
+    },
+    {
+      "signature": "def attendance_report(course_id: str, date_iso: str) -> dict",
+      "description": "Summarize attendance for a given session.\n\nParameters\n----------\ncourse_id : str\n    Course code.\ndate_iso : str\n    Session date.\n\nReturns\n-------\ndict\n    {\n        \"course_id\": <str>,\n        \"date\"     : <str>,\n        \"present\"  : <int>,\n        \"absent\"   : <int>\n    }"
+    }
+  ],
+  "Education/CourseCatalogServer.py": [
+    {
+      "signature": "def list_courses(department: str = 'ALL', limit: int = 10) -> dict",
+      "description": "Return a slice of the course catalog.\n\nParameters\n----------\ndepartment : str, optional\n    Department code (e.g., 'CS'). 'ALL' lists every department.\nlimit : int, optional\n    Maximum courses to return (default 10).\n\nReturns\n-------\ndict\n    {\n        \"courses\": [\n            {\"course_id\": <str>, \"title\": <str>, \"credits\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def course_detail(course_id: str) -> dict",
+      "description": "Fetch extended metadata for a single course.\n\nParameters\n----------\ncourse_id : str\n    Unique course identifier.\n\nReturns\n-------\ndict\n    {\n        \"course_id\" : <str>,\n        \"title\"     : <str>,\n        \"instructor\": <str>,\n        \"description\": <str>\n    }"
+    }
+  ],
+  "Education/DiscussionServer.py": [
+    {
+      "signature": "def post_message(thread_id: str, author: str, text: str) -> dict",
+      "description": "Add a message to a discussion thread.\n\nParameters\n----------\nthread_id : str\n    Discussion thread identifier.\nauthor : str\n    Username or ID of poster.\ntext : str\n    Message body.\n\nReturns\n-------\ndict\n    {\n        \"msg_id\"   : <str>,\n        \"posted_at\": <str>\n    }"
+    },
+    {
+      "signature": "def thread_history(thread_id: str, limit: int = 10) -> dict",
+      "description": "Return the latest messages in a thread.\n\nParameters\n----------\nthread_id : str\n    Thread identifier.\nlimit : int, optional\n    Max messages (default 10).\n\nReturns\n-------\ndict\n    {\n        \"thread_id\": <str>,\n        \"messages\" : [ { \"author\": <str>, \"text\": <str> }, … ]\n    }"
+    }
+  ],
+  "Education/EnrollmentServer.py": [
+    {
+      "signature": "def enroll_student(student_id: str, course_id: str) -> dict",
+      "description": "Register a student for a course.\n\nParameters\n----------\nstudent_id : str\n    Learner’s unique ID.\ncourse_id : str\n    Target course identifier.\n\nReturns\n-------\ndict\n    {\n        \"enrollment_id\": <str>,\n        \"status\"       : <str>\n    }"
+    },
+    {
+      "signature": "def drop_course(enrollment_id: str) -> dict",
+      "description": "Unenroll a student from a course.\n\nParameters\n----------\nenrollment_id : str\n    Identifier from `enroll_student`.\n\nReturns\n-------\ndict\n    {\n        \"enrollment_id\": <str>,\n        \"dropped\"      : <bool>\n    }"
+    },
+    {
+      "signature": "def list_enrollments(student_id: str) -> dict",
+      "description": "List all active course registrations for a student.\n\nParameters\n----------\nstudent_id : str\n    Learner ID.\n\nReturns\n-------\ndict\n    {\n        \"student_id\" : <str>,\n        \"courses\"    : [<str>, …]\n    }"
+    }
+  ],
+  "Education/GradebookServer.py": [
+    {
+      "signature": "def record_grade(student_id: str, course_id: str, item: str, percent: float) -> dict",
+      "description": "Store or update a grade entry.\n\nParameters\n----------\nstudent_id : str\n    Learner ID.\ncourse_id : str\n    Course context.\nitem : str\n    Grade item (e.g., 'Midterm').\npercent : float\n    Score percentage (0-100).\n\nReturns\n-------\ndict\n    {\n        \"entry_id\": <str>,\n        \"saved\"   : <bool>\n    }"
+    },
+    {
+      "signature": "def student_grades(student_id: str, course_id: str) -> dict",
+      "description": "Retrieve all grade entries for a learner in a course.\n\nParameters\n----------\nstudent_id : str\n    Learner identifier.\ncourse_id : str\n    Course code.\n\nReturns\n-------\ndict\n    {\n        \"student_id\": <str>,\n        \"course_id\" : <str>,\n        \"grades\": [ {\"item\": <str>, \"percent\": <float>}, … ]\n    }"
+    }
+  ],
+  "Education/QuizServer.py": [
+    {
+      "signature": "def start_quiz(student_id: str, quiz_id: str) -> dict",
+      "description": "Begin a timed quiz session.\n\nParameters\n----------\nstudent_id : str\n    Learner ID.\nquiz_id : str\n    Quiz identifier.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"expires_at\": <str>   # ISO-8601\n    }"
+    },
+    {
+      "signature": "def submit_answer(session_id: str, question_id: str, answer: str) -> dict",
+      "description": "Store an answer for a quiz question.\n\nParameters\n----------\nsession_id : str\n    Quiz session ID.\nquestion_id : str\n    Question identifier.\nanswer : str\n    Learner’s response.\n\nReturns\n-------\ndict\n    {\n        \"accepted\": <bool>\n    }"
+    },
+    {
+      "signature": "def quiz_score(session_id: str) -> dict",
+      "description": "Fetch the final score after submission.\n\nParameters\n----------\nsession_id : str\n    Quiz session identifier.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"score_pct\" : <float>\n    }"
+    }
+  ],
+  "Education/TutoringServer.py": [
+    {
+      "signature": "def schedule_session(student_id: str, subject: str, datetime_iso: str) -> dict",
+      "description": "Book a one-on-one tutoring slot.\n\nParameters\n----------\nstudent_id : str\n    Learner requesting help.\nsubject : str\n    Topic area (e.g., 'Calculus').\ndatetime_iso : str\n    Desired start time (ISO-8601).\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"confirmed\" : <bool>\n    }"
+    },
+    {
+      "signature": "def session_status(session_id: str) -> dict",
+      "description": "Check whether the tutoring session is upcoming, in progress, or complete.\n\nParameters\n----------\nsession_id : str\n    Identifier from `schedule_session`.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"state\"     : <str>   # scheduled / in_progress / completed / cancelled\n    }"
+    }
+  ],
+  "Energy/BatteryStorageServer.py": [
+    {
+      "signature": "def charge_level(site_id: str) -> dict",
+      "description": "Return current state-of-charge for a BESS asset.\n\nParameters\n----------\nsite_id : str\n    Battery site identifier.\n\nReturns\n-------\ndict\n    {\n        \"site_id\": <str>,\n        \"soc_pct\": <float>\n    }"
+    },
+    {
+      "signature": "def set_charge_target(site_id: str, target_pct: float) -> dict",
+      "description": "Configure a new SoC target.\n\nParameters\n----------\nsite_id : str\n    Battery location.\ntarget_pct : float\n    Desired state-of-charge percentage (0-100).\n\nReturns\n-------\ndict\n    {\n        \"site_id\": <str>,\n        \"accepted\": <bool>\n    }"
+    }
+  ],
+  "Energy/CarbonTrackerServer.py": [
+    {
+      "signature": "def log_emission(source_id: str, amount_tonnes: float, timestamp_iso: str) -> dict",
+      "description": "Record a CO₂-equivalent emission event.\n\nParameters\n----------\nsource_id : str\n    Emission source (e.g., plant ID).\namount_tonnes : float\n    Mass in metric tonnes.\ntimestamp_iso : str\n    Event time in ISO-8601.\n\nReturns\n-------\ndict\n    {\n        \"event_id\": <str>,\n        \"logged\"  : <bool>\n    }"
+    },
+    {
+      "signature": "def monthly_summary(source_id: str, year: int, month: int) -> dict",
+      "description": "Summarize total emissions for a given month.\n\nParameters\n----------\nsource_id : str\n    Emission source.\nyear : int\n    Calendar year.\nmonth : int\n    Month number 1-12.\n\nReturns\n-------\ndict\n    {\n        \"source_id\": <str>,\n        \"year\"     : <int>,\n        \"month\"    : <int>,\n        \"tonnes\"   : <float>\n    }"
+    }
+  ],
+  "Energy/EVChargingServer.py": [
+    {
+      "signature": "def start_session(station_id: str, vehicle_vin: str) -> dict",
+      "description": "Initiate an EV charging session.\n\nParameters\n----------\nstation_id : str\n    Charger location ID.\nvehicle_vin : str\n    Vehicle identification number.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"started_at\": <str>\n    }"
+    },
+    {
+      "signature": "def session_status(session_id: str) -> dict",
+      "description": "Check delivered energy to date.\n\nParameters\n----------\nsession_id : str\n    Identifier from `start_session`.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"energy_kwh\": <float>,\n        \"state\"     : <str>    # active / complete\n    }"
+    }
+  ],
+  "Energy/EnergyMarketServer.py": [
+    {
+      "signature": "def spot_price(zone: str, delivery_hour_iso: str) -> dict",
+      "description": "Retrieve the published spot price for a given delivery hour.\n\nParameters\n----------\nzone : str\n    Market zone.\ndelivery_hour_iso : str\n    Target interval start in ISO-8601.\n\nReturns\n-------\ndict\n    {\n        \"zone\" : <str>,\n        \"price\": <float>,    # USD / MWh\n        \"currency\": \"USD\"\n    }"
+    },
+    {
+      "signature": "def submit_bid(resource_id: str, quantity_mw: float, price_usd_mwh: float) -> dict",
+      "description": "Submit a supply bid to the day-ahead market.\n\nParameters\n----------\nresource_id : str\n    Generator or demand response ID.\nquantity_mw : float\n    Quantity offered.\nprice_usd_mwh : float\n    Offer price.\n\nReturns\n-------\ndict\n    {\n        \"bid_id\": <str>,\n        \"accepted\": <bool>\n    }"
+    }
+  ],
+  "Energy/GridLoadServer.py": [
+    {
+      "signature": "def real_time_load(zone: str) -> dict",
+      "description": "Return present system demand for a balancing zone.\n\nParameters\n----------\nzone : str\n    Grid zone code.\n\nReturns\n-------\ndict\n    {\n        \"zone\"    : <str>,\n        \"load_mw\": <float>\n    }"
+    },
+    {
+      "signature": "def forecast_load(zone: str, horizon_hours: int = 24) -> dict",
+      "description": "Provide an hourly load forecast.\n\nParameters\n----------\nzone : str\n    Balancing zone.\nhorizon_hours : int, optional\n    Number of hours forward (default 24).\n\nReturns\n-------\ndict\n    {\n        \"zone\"    : <str>,\n        \"forecast\": [<float>, …]   # MW for each hour ahead\n    }"
+    }
+  ],
+  "Energy/SmartMeterServer.py": [
+    {
+      "signature": "def meter_reading(meter_id: str) -> dict",
+      "description": "Obtain the latest cumulative kWh reading.\n\nParameters\n----------\nmeter_id : str\n    Meter identifier.\n\nReturns\n-------\ndict\n    {\n        \"meter_id\": <str>,\n        \"reading_kwh\": <float>,\n        \"taken_at\"   : <str>\n    }"
+    },
+    {
+      "signature": "def daily_usage(meter_id: str, date_iso: str) -> dict",
+      "description": "Return consumption for a specific day.\n\nParameters\n----------\nmeter_id : str\n    Smart meter ID.\ndate_iso : str\n    Day in YYYY-MM-DD format.\n\nReturns\n-------\ndict\n    {\n        \"meter_id\": <str>,\n        \"date\"    : <str>,\n        \"kwh\"     : <float>\n    }"
+    }
+  ],
+  "Energy/SolarArrayServer.py": [
+    {
+      "signature": "def get_power_output(array_id: str) -> dict",
+      "description": "Return the current AC power exported by a PV array.\n\nParameters\n----------\narray_id : str\n    Unique identifier for the solar array.\n\nReturns\n-------\ndict\n    {\n        \"array_id\"  : <str>,\n        \"power_kw\"  : <float>,  # kilowatts\n        \"timestamp\" : <str>\n    }"
+    },
+    {
+      "signature": "def set_tilt(array_id: str, degrees: float) -> dict",
+      "description": "Adjust the tilt angle of a single-axis tracker.\n\nParameters\n----------\narray_id : str\n    PV array identifier.\ndegrees : float\n    Desired tilt angle relative to horizontal (0-90).\n\nReturns\n-------\ndict\n    {\n        \"array_id\": <str>,\n        \"set_deg\" : <float>\n    }"
+    },
+    {
+      "signature": "def array_status(array_id: str) -> dict",
+      "description": "Summarize array health KPIs.\n\nParameters\n----------\narray_id : str\n    Solar array identifier.\n\nReturns\n-------\ndict\n    {\n        \"array_id\": <str>,\n        \"online_inverters\": <int>,\n        \"faults\"          : [<str>, …]\n    }"
+    }
+  ],
+  "Energy/WindTurbineServer.py": [
+    {
+      "signature": "def current_output(turbine_id: str) -> dict",
+      "description": "Report real-time active power from a wind turbine.\n\nParameters\n----------\nturbine_id : str\n    Turbine identifier.\n\nReturns\n-------\ndict\n    {\n        \"turbine_id\": <str>,\n        \"power_kw\"  : <float>\n    }"
+    },
+    {
+      "signature": "def rotor_speed(turbine_id: str) -> dict",
+      "description": "Retrieve rotor RPM.\n\nParameters\n----------\nturbine_id : str\n\nReturns\n-------\ndict\n    {\n        \"turbine_id\": <str>,\n        \"rpm\"       : <float>\n    }"
+    },
+    {
+      "signature": "def turbine_health(turbine_id: str) -> dict",
+      "description": "Provide a simple health score based on vibration and temperature sensors.\n\nParameters\n----------\nturbine_id : str\n\nReturns\n-------\ndict\n    {\n        \"turbine_id\": <str>,\n        \"score_pct\" : <int>    # 0-100\n    }"
+    }
+  ],
+  "Entertainment/EventTicketServer.py": [
+    {
+      "signature": "def search_events(keyword: str, city: str, limit: int = 5) -> dict",
+      "description": "Look up upcoming concerts or shows.\n\nParameters\n----------\nkeyword : str\n    Artist or event name fragment.\ncity : str\n    City filter.\nlimit : int, optional\n    Max results (default 5).\n\nReturns\n-------\ndict\n    {\n        \"events\": [\n            {\"event_id\": <str>, \"title\": <str>, \"date\": <str>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def book_ticket(event_id: str, user_id: str, qty: int = 1) -> dict",
+      "description": "Reserve seats for an event.\n\nParameters\n----------\nevent_id : str\n    Identifier from `search_events`.\nuser_id : str\n    Customer account ID.\nqty : int, optional\n    Number of tickets (default 1).\n\nReturns\n-------\ndict\n    {\n        \"booking_id\": <str>,\n        \"confirmed\" : <bool>\n    }"
+    }
+  ],
+  "Entertainment/GameLeaderboardServer.py": [
+    {
+      "signature": "def submit_score(game_id: str, player: str, points: int) -> dict",
+      "description": "Post a new score to the leaderboard.\n\nParameters\n----------\ngame_id : str\n    Title or slug of the game.\nplayer : str\n    Gamer tag or user ID.\npoints : int\n    Score achieved.\n\nReturns\n-------\ndict\n    {\n        \"entry_id\": <str>,\n        \"rank\"    : <int>\n    }"
+    },
+    {
+      "signature": "def top_scores(game_id: str, limit: int = 10) -> dict",
+      "description": "Retrieve the highest scores.\n\nParameters\n----------\ngame_id : str\n    Game identifier.\nlimit : int, optional\n    Number of leaderboard rows (default 10).\n\nReturns\n-------\ndict\n    {\n        \"game_id\": <str>,\n        \"leaders\": [ {\"player\": <str>, \"points\": <int>}, … ]\n    }"
+    }
+  ],
+  "Entertainment/MovieCatalogServer.py": [
+    {
+      "signature": "def search_movies(query: str, limit: int = 5) -> dict",
+      "description": "Search the movie catalog by title substring.\n\nParameters\n----------\nquery : str\n    Free-text search string.\nlimit : int, optional\n    Maximum number of hits (default 5).\n\nReturns\n-------\ndict\n    {\n        \"results\": [\n            {\"imdb_id\": <str>, \"title\": <str>, \"year\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def movie_detail(imdb_id: str) -> dict",
+      "description": "Fetch extended metadata for one film.\n\nParameters\n----------\nimdb_id : str\n    IMDb identifier (e.g., 'tt1234567').\n\nReturns\n-------\ndict\n    {\n        \"imdb_id\" : <str>,\n        \"title\"   : <str>,\n        \"director\": <str>,\n        \"runtime\" : <int>,   # minutes\n        \"genres\"  : [<str>, …]\n    }"
+    }
+  ],
+  "Entertainment/MusicPlaylistServer.py": [
+    {
+      "signature": "def create_playlist(user_id: str, name: str) -> dict",
+      "description": "Create an empty playlist for a listener.\n\nParameters\n----------\nuser_id : str\n    Account identifier.\nname : str\n    Playlist title.\n\nReturns\n-------\ndict\n    {\n        \"playlist_id\": <str>,\n        \"name\"       : <str>\n    }"
+    },
+    {
+      "signature": "def add_track(playlist_id: str, track_id: str) -> dict",
+      "description": "Append a track to a playlist.\n\nParameters\n----------\nplaylist_id : str\n    Identifier from `create_playlist`.\ntrack_id : str\n    Song identifier.\n\nReturns\n-------\ndict\n    {\n        \"playlist_id\": <str>,\n        \"track_id\"   : <str>,\n        \"added\"      : <bool>\n    }"
+    },
+    {
+      "signature": "def get_playlist(playlist_id: str) -> dict",
+      "description": "Retrieve current playlist contents.\n\nParameters\n----------\nplaylist_id : str\n\nReturns\n-------\ndict\n    {\n        \"playlist_id\": <str>,\n        \"tracks\": [<str>, …]   # list of track IDs\n    }"
+    }
+  ],
+  "Entertainment/PodcastDirectoryServer.py": [
+    {
+      "signature": "def list_podcasts(topic: str, limit: int = 5) -> dict",
+      "description": "Discover podcasts by topic.\n\nParameters\n----------\ntopic : str\n    Search keyword (e.g., 'history').\nlimit : int, optional\n    Max items (default 5).\n\nReturns\n-------\ndict\n    {\n        \"topic\": <str>,\n        \"shows\": [ {\"show_id\": <str>, \"title\": <str>}, … ]\n    }"
+    },
+    {
+      "signature": "def podcast_episodes(show_id: str, limit: int = 10) -> dict",
+      "description": "List recent episodes for a show.\n\nParameters\n----------\nshow_id : str\n    Podcast identifier.\nlimit : int, optional\n    Maximum episodes (default 10).\n\nReturns\n-------\ndict\n    {\n        \"show_id\" : <str>,\n        \"episodes\": [ {\"ep_id\": <str>, \"title\": <str>, \"duration_min\": <int>}, … ]\n    }"
+    }
+  ],
+  "Entertainment/SocialBuzzServer.py": [
+    {
+      "signature": "def post_update(user: str, text: str) -> dict",
+      "description": "Publish a short social update.\n\nParameters\n----------\nuser : str\n    Username or ID.\ntext : str\n    Message body (max ~280 chars).\n\nReturns\n-------\ndict\n    {\n        \"post_id\" : <str>,\n        \"posted_at\": <str>\n    }"
+    },
+    {
+      "signature": "def timeline(user: str, limit: int = 10) -> dict",
+      "description": "Fetch recent posts for a user.\n\nParameters\n----------\nuser : str\n    Target username.\nlimit : int, optional\n    Max posts (default 10).\n\nReturns\n-------\ndict\n    {\n        \"user\" : <str>,\n        \"posts\": [ { \"post_id\": <str>, \"text\": <str> }, … ]\n    }"
+    }
+  ],
+  "Entertainment/StreamingRecoServer.py": [
+    {
+      "signature": "def recommend_content(user_id: str, limit: int = 5) -> dict",
+      "description": "Suggest movies or series based on viewing history.\n\nParameters\n----------\nuser_id : str\n    Subscriber identifier.\nlimit : int, optional\n    Number of recommendations (default 5).\n\nReturns\n-------\ndict\n    {\n        \"user_id\": <str>,\n        \"recommendations\": [\n            {\"asset_id\": <str>, \"title\": <str>, \"type\": <str>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def rate_content(user_id: str, asset_id: str, rating: int) -> dict",
+      "description": "Register a star rating.\n\nParameters\n----------\nuser_id : str\n    Subscriber.\nasset_id : str\n    Movie or series identifier.\nrating : int\n    Score 1-5.\n\nReturns\n-------\ndict\n    {\n        \"user_id\" : <str>,\n        \"asset_id\": <str>,\n        \"stored\"  : <bool>\n    }"
+    }
+  ],
+  "Entertainment/TriviaGameServer.py": [
+    {
+      "signature": "def start_game(player: str) -> dict",
+      "description": "Begin a new trivia round.\n\nParameters\n----------\nplayer : str\n    Player handle.\n\nReturns\n-------\ndict\n    {\n        \"game_id\"   : <str>,\n        \"started_at\": <str>\n    }"
+    },
+    {
+      "signature": "def submit_answer(game_id: str, question_num: int, answer: str) -> dict",
+      "description": "Record an answer to a trivia question.\n\nParameters\n----------\ngame_id : str\n    Identifier from `start_game`.\nquestion_num : int\n    Question index (starting at 1).\nanswer : str\n    Player’s response.\n\nReturns\n-------\ndict\n    {\n        \"correct\": <bool>\n    }"
+    },
+    {
+      "signature": "def get_score(game_id: str) -> dict",
+      "description": "Fetch cumulative score.\n\nParameters\n----------\ngame_id : str\n\nReturns\n-------\ndict\n    {\n        \"game_id\": <str>,\n        \"points\" : <int>\n    }"
+    }
+  ],
+  "Events/AgendaSchedulerServer.py": [
+    {
+      "signature": "def add_session(event_id: str, title: str, speaker: str, start_iso: str, duration_min: int) -> dict",
+      "description": "Insert a session into an event agenda.\n\nParameters\n----------\nevent_id : str\n    Parent event ID.\ntitle : str\n    Session title.\nspeaker : str\n    Presenter name.\nstart_iso : str\n    Start time (ISO-8601).\nduration_min : int\n    Length in minutes.\n\nReturns\n-------\ndict\n    {\n        \"session_id\": <str>,\n        \"added\"     : <bool>\n    }"
+    },
+    {
+      "signature": "def agenda(event_id: str) -> dict",
+      "description": "Retrieve the full agenda.\n\nParameters\n----------\nevent_id : str\n\nReturns\n-------\ndict\n    {\n        \"event_id\": <str>,\n        \"sessions\": [\n            {\"title\": <str>, \"speaker\": <str>, \"start\": <str>, \"duration\": <int>}, …\n        ]\n    }"
+    }
+  ],
+  "Events/EventAnalyticsServer.py": [
+    {
+      "signature": "def attendee_traffic(event_id: str, interval_min: int = 15) -> dict",
+      "description": "Estimate check-in traffic by time slice.\n\nParameters\n----------\nevent_id : str\n    Event identifier.\ninterval_min : int, optional\n    Bucket width in minutes (default 15).\n\nReturns\n-------\ndict\n    {\n        \"event_id\": <str>,\n        \"buckets\" : [\n            {\"start\": <str>, \"count\": <int>}, …\n        ]\n    }"
+    }
+  ],
+  "Events/EventDiscoveryServer.py": [
+    {
+      "signature": "def find_events(keyword: str, city: str, start_date: str, end_date: str, limit: int = 5) -> dict",
+      "description": "Search the citywide events calendar.\n\nParameters\n----------\nkeyword : str\n    Search term (e.g., “jazz”, “conference”).\ncity : str\n    City name.\nstart_date : str\n    Inclusive YYYY-MM-DD lower bound.\nend_date : str\n    Inclusive YYYY-MM-DD upper bound.\nlimit : int, optional\n    Maximum events to return (default 5).\n\nReturns\n-------\ndict\n    {\n        \"events\": [\n            {\"event_id\": <str>, \"title\": <str>, \"date\": <str>, \"venue\": <str>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def event_details(event_id: str) -> dict",
+      "description": "Retrieve metadata for a single event.\n\nParameters\n----------\nevent_id : str\n    Identifier from `find_events`.\n\nReturns\n-------\ndict\n    {\n        \"event_id\"   : <str>,\n        \"title\"      : <str>,\n        \"description\": <str>,\n        \"organizer\"  : <str>,\n        \"capacity\"   : <int>\n    }"
+    }
+  ],
+  "Events/EventNotificationServer.py": [
+    {
+      "signature": "def schedule_notification(event_id: str, message: str, send_at_iso: str) -> dict",
+      "description": "Queue an email/SMS reminder.\n\nParameters\n----------\nevent_id : str\n    Target event.\nmessage : str\n    Notification body.\nsend_at_iso : str\n    Future send time (ISO-8601).\n\nReturns\n-------\ndict\n    {\n        \"notification_id\": <str>,\n        \"scheduled\"      : <bool>\n    }"
+    },
+    {
+      "signature": "def notification_status(notification_id: str) -> dict",
+      "description": "Check whether the notification was sent.\n\nParameters\n----------\nnotification_id : str\n\nReturns\n-------\ndict\n    {\n        \"notification_id\": <str>,\n        \"state\"          : <str>  # pending / sent\n    }"
+    }
+  ],
+  "Events/LivePollServer.py": [
+    {
+      "signature": "def create_poll(event_id: str, question: str, options: list[str]) -> dict",
+      "description": "Launch an in-event poll.\n\nParameters\n----------\nevent_id : str\n    Parent event.\nquestion : str\n    Poll question text.\noptions : list[str]\n    List of answer choices.\n\nReturns\n-------\ndict\n    {\n        \"poll_id\": <str>,\n        \"options\": [<str>, …]\n    }"
+    },
+    {
+      "signature": "def vote(poll_id: str, option_index: int) -> dict",
+      "description": "Record a vote for an option.\n\nParameters\n----------\npoll_id : str\n    Identifier from `create_poll`.\noption_index : int\n    Zero-based index of chosen option.\n\nReturns\n-------\ndict\n    {\n        \"poll_id\": <str>,\n        \"accepted\": <bool>\n    }"
+    },
+    {
+      "signature": "def poll_results(poll_id: str) -> dict",
+      "description": "Retrieve current vote counts.\n\nParameters\n----------\npoll_id : str\n\nReturns\n-------\ndict\n    {\n        \"poll_id\": <str>,\n        \"results\": [<int>, …]   # votes per option\n    }"
+    }
+  ],
+  "Events/RSVPServer.py": [
+    {
+      "signature": "def register_guest(event_id: str, guest_name: str, email: str) -> dict",
+      "description": "Add a guest to the RSVP list.\n\nParameters\n----------\nevent_id : str\n    Event identifier.\nguest_name : str\n    Full name.\nemail : str\n    Contact email.\n\nReturns\n-------\ndict\n    {\n        \"rsvp_id\": <str>,\n        \"status\": <str>   # confirmed / waitlist\n    }"
+    },
+    {
+      "signature": "def rsvp_count(event_id: str) -> dict",
+      "description": "Return confirmed and waitlist totals.\n\nParameters\n----------\nevent_id : str\n\nReturns\n-------\ndict\n    {\n        \"event_id\": <str>,\n        \"confirmed\": <int>,\n        \"waitlist\": <int>\n    }"
+    }
+  ],
+  "Events/TicketingServer.py": [
+    {
+      "signature": "def issue_ticket(event_id: str, guest_name: str, tier: str = 'general') -> dict",
+      "description": "Generate a digital ticket.\n\nParameters\n----------\nevent_id : str\n    Target event.\nguest_name : str\n    Attendee’s name.\ntier : str, optional\n    Seating tier (default 'general').\n\nReturns\n-------\ndict\n    {\n        \"ticket_id\": <str>,\n        \"qr_code\"  : <str>\n    }"
+    },
+    {
+      "signature": "def validate_ticket(ticket_id: str) -> dict",
+      "description": "Check ticket authenticity at entry gate.\n\nParameters\n----------\nticket_id : str\n\nReturns\n-------\ndict\n    {\n        \"ticket_id\": <str>,\n        \"valid\"    : <bool>\n    }"
+    }
+  ],
+  "Events/VenueAvailabilityServer.py": [
+    {
+      "signature": "def check_availability(venue_id: str, date_iso: str) -> dict",
+      "description": "Determine whether a venue is open on a given date.\n\nParameters\n----------\nvenue_id : str\n    Unique venue identifier.\ndate_iso : str\n    Desired date (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\n        \"venue_id\": <str>,\n        \"date\"    : <str>,\n        \"available\": <bool>\n    }"
+    },
+    {
+      "signature": "def reserve_slot(venue_id: str, date_iso: str, hours: int) -> dict",
+      "description": "Place a tentative hold on a venue.\n\nParameters\n----------\nvenue_id : str\n    Venue identifier.\ndate_iso : str\n    Reservation date.\nhours : int\n    Number of hours to reserve.\n\nReturns\n-------\ndict\n    {\n        \"reservation_id\": <str>,\n        \"confirmed\"     : <bool>\n    }"
+    }
+  ],
+  "Fitness/ActivityTrackerServer.py": [
+    {
+      "signature": "def log_activity(user_id: str, activity: str, duration_min: int, calories: int) -> dict",
+      "description": "Store a single workout or sport session.\n\nParameters\n----------\nuser_id : str\n    Athlete identifier.\nactivity : str\n    Activity type (e.g., 'running').\nduration_min : int\n    Session length.\ncalories : int\n    Estimated kcal burn.\n\nReturns\n-------\ndict\n    {\n        \"entry_id\": <str>,\n        \"logged_at\": <str>\n    }"
+    },
+    {
+      "signature": "def daily_summary(user_id: str, date_iso: str) -> dict",
+      "description": "Summarize total active minutes and calories for a day.\n\nParameters\n----------\nuser_id : str\ndate_iso : str\n    Date in YYYY-MM-DD.\n\nReturns\n-------\ndict\n    {\n        \"user_id\": <str>,\n        \"date\"   : <str>,\n        \"minutes\": <int>,\n        \"calories\": <int>\n    }"
+    }
+  ],
+  "Fitness/BodyMetricsServer.py": [
+    {
+      "signature": "def record_measurement(user_id: str, weight_kg: float, body_fat_pct: float) -> dict",
+      "description": "Save weight and body-fat percentage.\n\nParameters\n----------\nuser_id : str\nweight_kg : float\nbody_fat_pct : float\n\nReturns\n-------\ndict\n    {\n        \"record_id\": <str>,\n        \"logged_at\": <str>\n    }"
+    },
+    {
+      "signature": "def bmi(user_id: str, height_cm: float, weight_kg: float) -> dict",
+      "description": "Calculate Body Mass Index on demand.\n\nParameters\n----------\nuser_id : str\nheight_cm : float\nweight_kg : float\n\nReturns\n-------\ndict\n    {\n        \"user_id\": <str>,\n        \"bmi\": <float>\n    }"
+    }
+  ],
+  "Fitness/GoalCoachServer.py": [
+    {
+      "signature": "def set_goal(user_id: str, description: str, target_date: str) -> dict",
+      "description": "Define a new fitness goal.\n\nParameters\n----------\nuser_id : str\ndescription : str\ntarget_date : str\n\nReturns\n-------\ndict\n    {\n        \"goal_id\": <str>,\n        \"created\": <str>\n    }"
+    },
+    {
+      "signature": "def goal_progress(goal_id: str) -> dict",
+      "description": "Estimate percentage completion of a goal.\n\nParameters\n----------\ngoal_id : str\n\nReturns\n-------\ndict\n    {\n        \"goal_id\": <str>,\n        \"progress_pct\": <int>\n    }"
+    }
+  ],
+  "Fitness/GymClassServer.py": [
+    {
+      "signature": "def list_classes(gym_id: str, date_iso: str) -> dict",
+      "description": "List group fitness classes for a date.\n\nParameters\n----------\ngym_id : str\ndate_iso : str\n\nReturns\n-------\ndict\n    {\n        \"gym_id\": <str>,\n        \"classes\": [\n            {\"class_id\": <str>, \"name\": <str>, \"start\": <str>, \"spots\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def book_class(class_id: str, user_id: str) -> dict",
+      "description": "Reserve a spot in a class.\n\nParameters\n----------\nclass_id : str\nuser_id : str\n\nReturns\n-------\ndict\n    {\n        \"booking_id\": <str>,\n        \"confirmed\": <bool>\n    }"
+    }
+  ],
+  "Fitness/NutritionLogServer.py": [
+    {
+      "signature": "def add_meal(user_id: str, name: str, calories: int, protein_g: int, carbs_g: int, fat_g: int) -> dict",
+      "description": "Record a meal with macro nutrients.\n\nParameters\n----------\nuser_id : str\nname : str\ncalories : int\nprotein_g : int\ncarbs_g : int\nfat_g : int\n\nReturns\n-------\ndict\n    {\n        \"meal_id\": <str>,\n        \"timestamp\": <str>\n    }"
+    },
+    {
+      "signature": "def daily_macros(user_id: str, date_iso: str) -> dict",
+      "description": "Aggregate macros for the specified day.\n\nParameters\n----------\nuser_id : str\ndate_iso : str\n\nReturns\n-------\ndict\n    {\n        \"date\": <str>,\n        \"calories\": <int>,\n        \"protein_g\": <int>,\n        \"carbs_g\": <int>,\n        \"fat_g\": <int>\n    }"
+    }
+  ],
+  "Fitness/SleepMonitorServer.py": [
+    {
+      "signature": "def log_sleep(user_id: str, start_iso: str, end_iso: str) -> dict",
+      "description": "Record a sleep session.\n\nParameters\n----------\nuser_id : str\nstart_iso : str\n    Sleep start (ISO-8601).\nend_iso : str\n    Wake time (ISO-8601).\n\nReturns\n-------\ndict\n    {\n        \"sleep_id\": <str>,\n        \"stored\": <bool>\n    }"
+    },
+    {
+      "signature": "def sleep_stats(user_id: str, date_iso: str) -> dict",
+      "description": "Provide total and REM sleep durations for a day.\n\nParameters\n----------\nuser_id : str\ndate_iso : str\n\nReturns\n-------\ndict\n    {\n        \"user_id\": <str>,\n        \"date\": <str>,\n        \"total_min\": <int>,\n        \"rem_min\": <int>\n    }"
+    }
+  ],
+  "Fitness/WearableSyncServer.py": [
+    {
+      "signature": "def push_data(device_id: str, steps: int, avg_hr: int) -> dict",
+      "description": "Push daily metrics from a wearable device.\n\nParameters\n----------\ndevice_id : str\nsteps : int\navg_hr : int\n    Average heart rate (BPM).\n\nReturns\n-------\ndict\n    {\n        \"upload_id\": <str>,\n        \"accepted\": <bool>\n    }"
+    },
+    {
+      "signature": "def latest_stats(device_id: str) -> dict",
+      "description": "Retrieve the most recent synced values.\n\nParameters\n----------\ndevice_id : str\n\nReturns\n-------\ndict\n    {\n        \"device_id\": <str>,\n        \"steps\": <int>,\n        \"avg_hr\": <int>\n    }"
+    }
+  ],
+  "Fitness/WorkoutPlanServer.py": [
+    {
+      "signature": "def generate_plan(user_id: str, goal: str, weeks: int = 4) -> dict",
+      "description": "Produce a multi-week workout schedule for a user.\n\nParameters\n----------\nuser_id : str\n    Account identifier.\ngoal : str\n    Primary objective (e.g., 'fat_loss', 'strength').\nweeks : int, optional\n    Plan duration (default 4).\n\nReturns\n-------\ndict\n    {\n        \"plan_id\": <str>,\n        \"weeks\"  : <int>,\n        \"goal\"   : <str>\n    }"
+    },
+    {
+      "signature": "def plan_overview(plan_id: str) -> dict",
+      "description": "Retrieve high-level details of a workout plan.\n\nParameters\n----------\nplan_id : str\n    Identifier from `generate_plan`.\n\nReturns\n-------\ndict\n    {\n        \"plan_id\": <str>,\n        \"sessions\": [\n            {\"day\": <str>, \"focus\": <str>, \"duration_min\": <int>}, …\n        ]\n    }"
+    }
+  ],
+  "Food/FoodDeliveryServer.py": [
+    {
+      "signature": "def order_meal(user_id: str, restaurant_id: str, items: list[str]) -> dict",
+      "description": "Place a delivery order.\n\nParameters\n----------\nuser_id : str\nrestaurant_id : str\nitems : list[str]\n    Menu item IDs.\n\nReturns\n-------\ndict\n    {\n        \"order_id\": <str>,\n        \"eta_min\": <int>\n    }"
+    },
+    {
+      "signature": "def track_order(order_id: str) -> dict",
+      "description": "Track progress of an active order.\n\nParameters\n----------\norder_id : str\n\nReturns\n-------\ndict\n    {\n        \"order_id\": <str>,\n        \"status\": <str>   # preparing / on_the_way / delivered\n    }"
+    }
+  ],
+  "Food/GroceryListServer.py": [
+    {
+      "signature": "def create_list(user_id: str, title: str) -> dict",
+      "description": "Start an empty grocery list.\n\nParameters\n----------\nuser_id : str\ntitle : str\n\nReturns\n-------\ndict\n    {\n        \"list_id\": <str>,\n        \"title\": <str>\n    }"
+    },
+    {
+      "signature": "def add_item(list_id: str, item: str, qty: str = '1') -> dict",
+      "description": "Append an item to a grocery list.\n\nParameters\n----------\nlist_id : str\nitem : str\nqty : str, optional\n    Quantity descriptor (default '1').\n\nReturns\n-------\ndict\n    {\n        \"list_id\": <str>,\n        \"item\": <str>,\n        \"qty\": <str>\n    }"
+    }
+  ],
+  "Food/IngredientSubServer.py": [
+    {
+      "signature": "def substitute(ingredient: str) -> dict",
+      "description": "Suggest common alternatives for an ingredient.\n\nParameters\n----------\ningredient : str\n    Ingredient name.\n\nReturns\n-------\ndict\n    {\n        \"ingredient\": <str>,\n        \"alternatives\": [<str>, …]\n    }"
+    }
+  ],
+  "Food/KitchenTimerServer.py": [
+    {
+      "signature": "def start_timer(label: str, minutes: int) -> dict",
+      "description": "Start a countdown timer for kitchen use.\n\nParameters\n----------\nlabel : str\n    Description (e.g., 'bake cookies').\nminutes : int\n    Countdown length.\n\nReturns\n-------\ndict\n    {\n        \"timer_id\": <str>,\n        \"ends_at\": <str>\n    }"
+    },
+    {
+      "signature": "def timer_status(timer_id: str) -> dict",
+      "description": "Query remaining minutes on a timer.\n\nParameters\n----------\ntimer_id : str\n\nReturns\n-------\ndict\n    {\n        \"timer_id\": <str>,\n        \"remaining_min\": <int>\n    }"
+    }
+  ],
+  "Food/MealPrepServer.py": [
+    {
+      "signature": "def schedule_prep(user_id: str, date_iso: str, meals: int = 5) -> dict",
+      "description": "Plan a batch-cooking session.\n\nParameters\n----------\nuser_id : str\ndate_iso : str\n    Scheduled date.\nmeals : int, optional\n    Number of meal portions (default 5).\n\nReturns\n-------\ndict\n    {\n        \"prep_id\": <str>,\n        \"date\": <str>,\n        \"meals\": <int>\n    }"
+    },
+    {
+      "signature": "def prep_status(prep_id: str) -> dict",
+      "description": "Show estimated completion and current stage.\n\nParameters\n----------\nprep_id : str\n\nReturns\n-------\ndict\n    {\n        \"prep_id\": <str>,\n        \"stage\": <str>,   # planning / cooking / cooling / done\n        \"eta_min\": <int>\n    }"
+    }
+  ],
+  "Food/NutritionLabelServer.py": [
+    {
+      "signature": "def nutrition_facts(item_name: str, serving_g: int = 100) -> dict",
+      "description": "Provide key nutrition facts per serving.\n\nParameters\n----------\nitem_name : str\nserving_g : int, optional\n    Serving size in grams (default 100).\n\nReturns\n-------\ndict\n    {\n        \"item\": <str>,\n        \"serving_g\": <int>,\n        \"calories\": <int>,\n        \"protein_g\": <int>,\n        \"carbs_g\": <int>,\n        \"fat_g\": <int>\n    }"
+    }
+  ],
+  "Food/RecipeServer.py": [
+    {
+      "signature": "def search_recipes(keyword: str, limit: int = 5) -> dict",
+      "description": "Return a short list of recipe titles that match a keyword.\n\nParameters\n----------\nkeyword : str\n    Ingredient or dish to search for.\nlimit : int, optional\n    Maximum items to return (default 5).\n\nReturns\n-------\ndict\n    {\n        \"results\": [\n            {\"recipe_id\": <str>, \"title\": <str>, \"ready_min\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def recipe_detail(recipe_id: str) -> dict",
+      "description": "Retrieve full ingredient list and instructions.\n\nParameters\n----------\nrecipe_id : str\n    Identifier from `search_recipes`.\n\nReturns\n-------\ndict\n    {\n        \"recipe_id\"  : <str>,\n        \"ingredients\": [<str>, …],\n        \"steps\"      : [<str>, …]\n    }"
+    }
+  ],
+  "Food/RestaurantFinderServer.py": [
+    {
+      "signature": "def nearby_restaurants(city: str, cuisine: str, limit: int = 5) -> dict",
+      "description": "List restaurants in a city that serve a specific cuisine.\n\nParameters\n----------\ncity : str\n    City name.\ncuisine : str\n    Cuisine type (e.g., 'Italian').\nlimit : int, optional\n    Max results (default 5).\n\nReturns\n-------\ndict\n    {\n        \"restaurants\": [\n            {\"place_id\": <str>, \"name\": <str>, \"rating\": <float>}, …\n        ]\n    }"
+    }
+  ],
+  "Gaming/AchievementServer.py": [
+    {
+      "signature": "def unlock(player_id: str, achievement_code: str) -> dict",
+      "description": "Mark an achievement as unlocked.\n\nParameters\n----------\nplayer_id : str\nachievement_code : str\n\nReturns\n-------\ndict\n    {\n        \"player_id\": <str>,\n        \"achievement\": <str>,\n        \"unlocked_at\": <str>\n    }"
+    },
+    {
+      "signature": "def list_achievements(player_id: str) -> dict",
+      "description": "List all unlocked achievements for a player.\n\nParameters\n----------\nplayer_id : str\n\nReturns\n-------\ndict\n    {\n        \"player_id\": <str>,\n        \"achievements\": [<str>, …]\n    }"
+    }
+  ],
+  "Gaming/EsportsScheduleServer.py": [
+    {
+      "signature": "def upcoming_matches(game_title: str, limit: int = 3) -> dict",
+      "description": "List scheduled esports matches.\n\nParameters\n----------\ngame_title : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"matches\": [\n            {\"match_id\": <str>, \"teams\": <str>, \"start\": <str>}, …\n        ]\n    }"
+    }
+  ],
+  "Gaming/FriendsListServer.py": [
+    {
+      "signature": "def send_request(sender_id: str, receiver_id: str) -> dict",
+      "description": "Send a friend request.\n\nParameters\n----------\nsender_id : str\nreceiver_id : str\n\nReturns\n-------\ndict\n    {\n        \"request_id\": <str>,\n        \"pending\": <bool>\n    }"
+    },
+    {
+      "signature": "def list_friends(player_id: str) -> dict",
+      "description": "List current friends.\n\nParameters\n----------\nplayer_id : str\n\nReturns\n-------\ndict\n    {\n        \"player_id\": <str>,\n        \"friends\": [<str>, …]\n    }"
+    }
+  ],
+  "Gaming/GameStatsServer.py": [
+    {
+      "signature": "def player_stats(player_id: str) -> dict",
+      "description": "Fetch lifetime performance numbers.\n\nParameters\n----------\nplayer_id : str\n\nReturns\n-------\ndict\n    {\n        \"player_id\": <str>,\n        \"matches\": <int>,\n        \"wins\": <int>,\n        \"kills\": <int>\n    }"
+    }
+  ],
+  "Gaming/InGameStoreServer.py": [
+    {
+      "signature": "def list_items(category: str = 'all', limit: int = 5) -> dict",
+      "description": "Show purchasable cosmetic items.\n\nParameters\n----------\ncategory : str, optional\n    Item category filter (default 'all').\nlimit : int, optional\n    Max items (default 5).\n\nReturns\n-------\ndict\n    {\n        \"items\": [\n            {\"item_id\": <str>, \"name\": <str>, \"price\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def purchase(player_id: str, item_id: str) -> dict",
+      "description": "Process a store purchase.\n\nParameters\n----------\nplayer_id : str\nitem_id : str\n\nReturns\n-------\ndict\n    {\n        \"player_id\": <str>,\n        \"item_id\": <str>,\n        \"success\": <bool>\n    }"
+    }
+  ],
+  "Gaming/MatchmakingServer.py": [
+    {
+      "signature": "def queue_player(player_id: str, region: str, rating: int) -> dict",
+      "description": "Place a player in the matchmaking queue.\n\nParameters\n----------\nplayer_id : str\n    Unique gamer tag.\nregion : str\n    Preferred server region.\nrating : int\n    ELO or MMR value.\n\nReturns\n-------\ndict\n    {\n        \"ticket_id\": <str>,\n        \"queued_at\": <str>\n    }"
+    },
+    {
+      "signature": "def poll_match(ticket_id: str) -> dict",
+      "description": "Check if a match has been formed.\n\nParameters\n----------\nticket_id : str\n    Identifier from `queue_player`.\n\nReturns\n-------\ndict\n    {\n        \"ticket_id\": <str>,\n        \"found\": <bool>,\n        \"match_id\": <str | None>\n    }"
+    }
+  ],
+  "Gaming/ModRepositoryServer.py": [
+    {
+      "signature": "def list_mods(game_id: str, limit: int = 5) -> dict",
+      "description": "Retrieve community mods for a game.\n\nParameters\n----------\ngame_id : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"mods\": [\n            {\"mod_id\": <str>, \"title\": <str>, \"downloads\": <int>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def download_mod(mod_id: str) -> dict",
+      "description": "Provide a secure download link.\n\nParameters\n----------\nmod_id : str\n\nReturns\n-------\ndict\n    {\n        \"mod_id\": <str>,\n        \"url\": <str>\n    }"
+    }
+  ],
+  "Gaming/MultiplayerLobbyServer.py": [
+    {
+      "signature": "def create_lobby(host_player: str, game_mode: str, max_players: int = 8) -> dict",
+      "description": "Start a new multiplayer lobby.\n\nParameters\n----------\nhost_player : str\n    Username of the player creating the lobby.\ngame_mode : str\n    Mode name (e.g., 'deathmatch').\nmax_players : int, optional\n    Upper player limit (default 8).\n\nReturns\n-------\ndict\n    {\n        \"lobby_id\": <str>,\n        \"game_mode\": <str>,\n        \"max_players\": <int>,\n        \"created_at\": <str>\n    }"
+    },
+    {
+      "signature": "def join_lobby(lobby_id: str, player: str) -> dict",
+      "description": "Add a player to an existing lobby.\n\nParameters\n----------\nlobby_id : str\n    Identifier from `create_lobby`.\nplayer : str\n    Username joining the lobby.\n\nReturns\n-------\ndict\n    {\n        \"lobby_id\": <str>,\n        \"player\": <str>,\n        \"joined\": <bool>\n    }"
+    }
+  ],
+  "Health/AppointmentBookingServer.py": [
+    {
+      "signature": "def available_slots(doctor_id: str, date_iso: str) -> dict",
+      "description": "List open time slots for a provider on a date.\n\nParameters\n----------\ndoctor_id : str\ndate_iso  : str   # YYYY-MM-DD\n\nReturns\n-------\ndict\n    {\"doctor_id\": <str>, \"slots\": [<str>, …]}   # ISO-8601 times"
+    },
+    {
+      "signature": "def book_slot(patient_id: str, doctor_id: str, start_iso: str) -> dict",
+      "description": "Confirm an appointment booking.\n\nParameters\n----------\npatient_id : str\ndoctor_id  : str\nstart_iso  : str\n\nReturns\n-------\ndict\n    {\"appointment_id\": <str>, \"confirmed\": <bool>}"
+    }
+  ],
+  "Health/InsuranceEligibilityServer.py": [
+    {
+      "signature": "def check_coverage(patient_id: str, procedure_code: str) -> dict",
+      "description": "Verify if a procedure is covered under the patient’s plan.\n\nParameters\n----------\npatient_id : str\nprocedure_code : str\n\nReturns\n-------\ndict\n    {\"covered\": <bool>, \"copay_usd\": <float>}"
+    }
+  ],
+  "Health/LabResultsServer.py": [
+    {
+      "signature": "def submit_order(patient_id: str, test_code: str) -> dict",
+      "description": "Place a laboratory test order.\n\nParameters\n----------\npatient_id : str\ntest_code  : str   # e.g., 'CBC'\n\nReturns\n-------\ndict\n    {\"order_id\": <str>, \"expected_ready\": <str>}"
+    },
+    {
+      "signature": "def result_values(order_id: str) -> dict",
+      "description": "Fetch finalized numeric results.\n\nParameters\n----------\norder_id : str\n\nReturns\n-------\ndict\n    {\"order_id\": <str>, \"values\": {\"WBC\": <float>, \"HGB\": <float>, …}}"
+    }
+  ],
+  "Health/MedicationReminderServer.py": [
+    {
+      "signature": "def schedule_dose(patient_id: str, drug_name: str, time_iso: str) -> dict",
+      "description": "Schedule a push reminder for medication.\n\nParameters\n----------\npatient_id : str\ndrug_name  : str\ntime_iso   : str   # ISO-8601 future time\n\nReturns\n-------\ndict\n    {\"reminder_id\": <str>, \"scheduled\": <bool>}"
+    },
+    {
+      "signature": "def reminder_status(reminder_id: str) -> dict",
+      "description": "Check whether a reminder has been sent.\n\nParameters\n----------\nreminder_id : str\n\nReturns\n-------\ndict\n    {\"reminder_id\": <str>, \"state\": <str>}   # pending / sent"
+    }
+  ],
+  "Health/PatientRecordServer.py": [
+    {
+      "signature": "def create_profile(name: str, dob: str, sex: str) -> dict",
+      "description": "Create a new electronic health record (EHR) profile.\n\nParameters\n----------\nname : str\ndob : str   # YYYY-MM-DD\nsex : str   # 'M' / 'F' / 'X'\n\nReturns\n-------\ndict\n    {\"patient_id\": <str>, \"created_at\": <str>}"
+    },
+    {
+      "signature": "def get_demographics(patient_id: str) -> dict",
+      "description": "Retrieve basic demographic data.\n\nParameters\n----------\npatient_id : str\n\nReturns\n-------\ndict\n    {\"patient_id\": <str>, \"name\": <str>, \"dob\": <str>, \"sex\": <str>}"
+    }
+  ],
+  "Health/SymptomCheckerServer.py": [
+    {
+      "signature": "def triage(primary_symptom: str, age: int, sex: str) -> dict",
+      "description": "Provide basic triage guidance.\n\nParameters\n----------\nprimary_symptom : str\nage : int\nsex : str   # 'M' / 'F' / 'X'\n\nReturns\n-------\ndict\n    {\"severity\": <str>, \"suggested_action\": <str>}"
+    }
+  ],
+  "Health/TelehealthSessionServer.py": [
+    {
+      "signature": "def start_session(patient_id: str, clinician_id: str) -> dict",
+      "description": "Open a secure video consultation room.\n\nParameters\n----------\npatient_id : str\nclinician_id : str\n\nReturns\n-------\ndict\n    {\"session_id\": <str>, \"join_url\": <str>}"
+    },
+    {
+      "signature": "def end_session(session_id: str) -> dict",
+      "description": "Mark a telehealth session as completed.\n\nParameters\n----------\nsession_id : str\n\nReturns\n-------\ndict\n    {\"session_id\": <str>, \"ended\": <bool>}"
+    }
+  ],
+  "Health/VitalSignsServer.py": [
+    {
+      "signature": "def record_vitals(patient_id: str, sys_bp: int, dia_bp: int, hr_bpm: int) -> dict",
+      "description": "Log a vital-sign measurement.\n\nParameters\n----------\npatient_id : str\nsys_bp : int   # systolic mmHg\ndia_bp : int\nhr_bpm : int\n\nReturns\n-------\ndict\n    {\"reading_id\": <str>, \"logged_at\": <str>}"
+    },
+    {
+      "signature": "def latest_vitals(patient_id: str) -> dict",
+      "description": "Fetch the most recent recorded vitals.\n\nParameters\n----------\npatient_id : str\n\nReturns\n-------\ndict\n    {\"patient_id\": <str>, \"sys_bp\": <int>, \"dia_bp\": <int>, \"hr_bpm\": <int>}"
+    }
+  ],
+  "Jobs/ApplicationTrackerServer.py": [
+    {
+      "signature": "def submit_application(job_id: str, candidate_id: str, resume_txt: str) -> dict",
+      "description": "Log a new job application.\n\nParameters\n----------\njob_id : str\ncandidate_id : str\nresume_txt : str\n\nReturns\n-------\ndict\n    {\"application_id\": <str>, \"submitted_at\": <str>}"
+    },
+    {
+      "signature": "def application_status(application_id: str) -> dict",
+      "description": "Check current stage of an application.\n\nParameters\n----------\napplication_id : str\n\nReturns\n-------\ndict\n    {\n        \"application_id\": <str>,\n        \"stage\": <str>   # applied / interviewing / offer / rejected\n    }"
+    }
+  ],
+  "Jobs/InterviewSchedulerServer.py": [
+    {
+      "signature": "def list_slots(interviewer_id: str, date_iso: str) -> dict",
+      "description": "Show available interview slots for a date.\n\nParameters\n----------\ninterviewer_id : str\ndate_iso : str   # YYYY-MM-DD\n\nReturns\n-------\ndict\n    {\n        \"slots\": [<str>, …]   # ISO-8601 start times\n    }"
+    },
+    {
+      "signature": "def book_slot(application_id: str, start_iso: str) -> dict",
+      "description": "Reserve a slot for an interview.\n\nParameters\n----------\napplication_id : str\nstart_iso : str\n\nReturns\n-------\ndict\n    {\"meeting_id\": <str>, \"confirmed\": <bool>}"
+    }
+  ],
+  "Jobs/JobListingServer.py": [
+    {
+      "signature": "def search_jobs(keyword: str, location: str, limit: int = 10) -> dict",
+      "description": "Retrieve open positions that match a keyword and location.\n\nParameters\n----------\nkeyword : str\n    Role or skill term (e.g., 'data scientist').\nlocation : str\n    City or region filter.\nlimit : int, optional\n    Maximum jobs to return (default 10).\n\nReturns\n-------\ndict\n    {\n        \"jobs\": [\n            {\"job_id\": <str>, \"title\": <str>, \"company\": <str>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def job_detail(job_id: str) -> dict",
+      "description": "Fetch the full job description.\n\nParameters\n----------\njob_id : str\n    Identifier from `search_jobs`.\n\nReturns\n-------\ndict\n    {\n        \"job_id\": <str>,\n        \"title\": <str>,\n        \"description\": <str>,\n        \"requirements\": [<str>, …]\n    }"
+    }
+  ],
+  "Jobs/OfferComparisonServer.py": [
+    {
+      "signature": "def compare_offers(base_usd: list[int], bonus_pct: list[int], equity_usd: list[int]) -> dict",
+      "description": "Compare up to three job offers.\n\nParameters\n----------\nbase_usd : list[int]\n    Annual base salaries.\nbonus_pct : list[int]\n    Target bonus percentages.\nequity_usd : list[int]\n    Year-one equity values.\n\nReturns\n-------\ndict\n    {\n        \"offers\": [\n            {\"total_comp\": <int>, \"rank\": <int>}, …\n        ]\n    }"
+    }
+  ],
+  "Jobs/ReferralNetworkServer.py": [
+    {
+      "signature": "def potential_referrers(candidate_id: str, company: str, limit: int = 5) -> dict",
+      "description": "Suggest employees who could provide a referral.\n\nParameters\n----------\ncandidate_id : str\ncompany : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"employees\": [ {\"emp_id\": <str>, \"name\": <str>, \"mutuals\": <int>}, … ]\n    }"
+    },
+    {
+      "signature": "def request_referral(emp_id: str, candidate_id: str, job_id: str) -> dict",
+      "description": "Log a referral request.\n\nParameters\n----------\nemp_id : str\ncandidate_id : str\njob_id : str\n\nReturns\n-------\ndict\n    {\"request_id\": <str>, \"sent\": <bool>}"
+    }
+  ],
+  "Jobs/ResumeParserServer.py": [
+    {
+      "signature": "def extract_skills(plain_text: str) -> dict",
+      "description": "Identify technical skills mentioned in a resume.\n\nParameters\n----------\nplain_text : str\n    Raw resume text.\n\nReturns\n-------\ndict\n    {\n        \"skills\": [<str>, …]\n    }"
+    },
+    {
+      "signature": "def contact_info(plain_text: str) -> dict",
+      "description": "Extract email and phone number.\n\nParameters\n----------\nplain_text : str\n\nReturns\n-------\ndict\n    {\n        \"email\": <str | None>,\n        \"phone\": <str | None>\n    }"
+    }
+  ],
+  "Jobs/SalaryEstimatorServer.py": [
+    {
+      "signature": "def estimate_salary(role: str, location: str, experience_years: int) -> dict",
+      "description": "Provide a market salary range.\n\nParameters\n----------\nrole : str\nlocation : str\nexperience_years : int\n\nReturns\n-------\ndict\n    {\n        \"role\": <str>,\n        \"location\": <str>,\n        \"low_usd\": <int>,\n        \"high_usd\": <int>\n    }"
+    }
+  ],
+  "Jobs/SkillGapAnalysisServer.py": [
+    {
+      "signature": "def compare(job_requirements: list[str], candidate_skills: list[str]) -> dict",
+      "description": "Highlight missing skills.\n\nParameters\n----------\njob_requirements : list[str]\ncandidate_skills : list[str]\n\nReturns\n-------\ndict\n    {\"missing\": [<str>, …]}"
+    }
+  ],
+  "Location/DistanceMatrixServer.py": [
+    {
+      "signature": "def distance(start_lat: float, start_lng: float, end_lat: float, end_lng: float, unit: str = 'km') -> dict",
+      "description": "Compute great-circle distance between two points.\n\nParameters\n----------\nstart_lat, start_lng : float\n    Origin coordinates.\nend_lat, end_lng : float\n    Destination coordinates.\nunit : str, optional\n    'km' or 'mi' (default 'km').\n\nReturns\n-------\ndict\n    {\n        \"distance\": <float>,\n        \"unit\": <str>\n    }"
+    }
+  ],
+  "Location/GeoFenceServer.py": [
+    {
+      "signature": "def create_fence(center_lat: float, center_lng: float, radius_m: int, label: str) -> dict",
+      "description": "Define a circular geofence.\n\nParameters\n----------\ncenter_lat, center_lng : float\nradius_m : int\nlabel : str\n\nReturns\n-------\ndict\n    {\n        \"fence_id\": <str>,\n        \"label\": <str>\n    }"
+    },
+    {
+      "signature": "def inside_fence(fence_id: str, lat: float, lng: float) -> dict",
+      "description": "Check if a coordinate is within a specific geofence.\n\nParameters\n----------\nfence_id : str\nlat, lng : float\n\nReturns\n-------\ndict\n    {\n        \"fence_id\": <str>,\n        \"inside\": <bool>\n    }"
+    }
+  ],
+  "Location/GeocodingServer.py": [
+    {
+      "signature": "def forward_geocode(address: str) -> dict",
+      "description": "Convert a street address to latitude/longitude.\n\nParameters\n----------\naddress : str\n    Free-form postal address.\n\nReturns\n-------\ndict\n    {\n        \"address\": <str>,\n        \"lat\": <float>,\n        \"lng\": <float>\n    }"
+    },
+    {
+      "signature": "def batch_geocode(addresses: list[str]) -> dict",
+      "description": "Resolve multiple addresses at once.\n\nParameters\n----------\naddresses : list[str]\n\nReturns\n-------\ndict\n    {\n        \"results\": [ {\"address\": <str>, \"lat\": <float>, \"lng\": <float>}, … ]\n    }"
+    }
+  ],
+  "Location/IPGeoServer.py": [
+    {
+      "signature": "def ip_lookup(ip_addr: str) -> dict",
+      "description": "Map an IPv4/IPv6 address to approximate location.\n\nParameters\n----------\nip_addr : str\n\nReturns\n-------\ndict\n    {\n        \"ip\": <str>,\n        \"country\": <str>,\n        \"city\": <str>,\n        \"lat\": <float>,\n        \"lng\": <float>\n    }"
+    }
+  ],
+  "Location/PlaceSearchServer.py": [
+    {
+      "signature": "def nearby(lat: float, lng: float, keyword: str, radius_m: int = 1000, limit: int = 5) -> dict",
+      "description": "Find nearby points of interest.\n\nParameters\n----------\nlat, lng : float\n    Search center.\nkeyword : str\n    Type of place (e.g., 'cafe').\nradius_m : int, optional\n    Search radius in meters (default 1000).\nlimit : int, optional\n    Max results (default 5).\n\nReturns\n-------\ndict\n    {\n        \"places\": [\n            {\"place_id\": <str>, \"name\": <str>, \"distance_m\": <int>}, …\n        ]\n    }"
+    }
+  ],
+  "Location/ReverseGeocodeServer.py": [
+    {
+      "signature": "def reverse(lat: float, lng: float) -> dict",
+      "description": "Return a human-readable address for coordinates.\n\nParameters\n----------\nlat : float\nlng : float\n\nReturns\n-------\ndict\n    {\n        \"lat\": <float>,\n        \"lng\": <float>,\n        \"address\": <str>\n    }"
+    }
+  ],
+  "Location/RoutePlannerServer.py": [
+    {
+      "signature": "def get_route(origin: str, destination: str, mode: str = 'driving') -> dict",
+      "description": "Provide a simplified route summary between two places.\n\nParameters\n----------\norigin : str\n    Starting address or place name.\ndestination : str\n    Ending address or place name.\nmode : str, optional\n    Travel mode: driving / walking / cycling (default driving).\n\nReturns\n-------\ndict\n    {\n        \"route_id\": <str>,\n        \"distance_km\": <float>,\n        \"duration_min\": <int>,\n        \"mode\": <str>\n    }"
+    }
+  ],
+  "Location/TimeZoneServer.py": [
+    {
+      "signature": "def time_zone(lat: float, lng: float) -> dict",
+      "description": "Return the IANA time zone ID and current local time.\n\nParameters\n----------\nlat, lng : float\n\nReturns\n-------\ndict\n    {\n        \"tz_id\": <str>,\n        \"local_time\": <str>\n    }"
+    }
+  ],
+  "Logistics/CustomsDocServer.py": [
+    {
+      "signature": "def generate_invoice(shipment_id: str, value_usd: float, country_dest: str) -> dict",
+      "description": "Produce a commercial invoice for export.\n\nParameters\n----------\nshipment_id : str\nvalue_usd : float\ncountry_dest : str\n\nReturns\n-------\ndict\n    {\"doc_id\": <str>, \"hs_code\": <str>}"
+    }
+  ],
+  "Logistics/DeliveryProofServer.py": [
+    {
+      "signature": "def capture_pod(tracking_num: str, recipient_name: str, lat: float, lng: float) -> dict",
+      "description": "Save proof-of-delivery details.\n\nParameters\n----------\ntracking_num : str\nrecipient_name : str\nlat, lng : float\n\nReturns\n-------\ndict\n    {\"pod_id\": <str>, \"timestamp\": <str>}"
+    }
+  ],
+  "Logistics/FleetDispatchServer.py": [
+    {
+      "signature": "def assign_driver(vehicle_id: str, driver_id: str, route_id: str) -> dict",
+      "description": "Tie a driver and vehicle to a route.\n\nParameters\n----------\nvehicle_id : str\ndriver_id : str\nroute_id : str\n\nReturns\n-------\ndict\n    {\"dispatch_id\": <str>, \"assigned_at\": <str>}"
+    },
+    {
+      "signature": "def location_ping(dispatch_id: str) -> dict",
+      "description": "Provide the vehicle’s last GPS ping.\n\nParameters\n----------\ndispatch_id : str\n\nReturns\n-------\ndict\n    {\"dispatch_id\": <str>, \"lat\": <float>, \"lng\": <float>, \"timestamp\": <str>}"
+    }
+  ],
+  "Logistics/LoadBoardServer.py": [
+    {
+      "signature": "def post_load(origin: str, destination: str, weight_kg: float) -> dict",
+      "description": "Add a freight load to the board.\n\nParameters\n----------\norigin : str\ndestination : str\nweight_kg : float\n\nReturns\n-------\ndict\n    {\"load_id\": <str>, \"posted\": <bool>}"
+    },
+    {
+      "signature": "def search_loads(origin: str, radius_km: int = 100, limit: int = 5) -> dict",
+      "description": "Find loads near a city.\n\nParameters\n----------\norigin : str\nradius_km : int, optional\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"loads\": [ {\"load_id\": <str>, \"dest\": <str>, \"weight_kg\": <float>}, … ]}"
+    }
+  ],
+  "Logistics/PackageLabelServer.py": [
+    {
+      "signature": "def generate_label(tracking_num: str, service: str = 'ground') -> dict",
+      "description": "Create a printable shipping label.\n\nParameters\n----------\ntracking_num : str\nservice : str, optional\n    Service level (default 'ground').\n\nReturns\n-------\ndict\n    {\"label_id\": <str>, \"pdf_url\": <str>, \"created_at\": <str>}"
+    }
+  ],
+  "Logistics/RouteOptimizationServer.py": [
+    {
+      "signature": "def optimize(stops: list[str], mode: str = 'truck') -> dict",
+      "description": "Return an optimized stop sequence.\n\nParameters\n----------\nstops : list[str]\n    Waypoint identifiers.\nmode : str, optional\n    Vehicle type (default 'truck').\n\nReturns\n-------\ndict\n    {\"plan_id\": <str>, \"ordered_stops\": <list[str]>, \"total_km\": <float>}"
+    }
+  ],
+  "Logistics/ShipmentTrackerServer.py": [
+    {
+      "signature": "def create_shipment(origin: str, destination: str, weight_kg: float) -> dict",
+      "description": "Register a new shipment for tracking.\n\nParameters\n----------\norigin : str\n    Origin city or facility.\ndestination : str\n    Destination city or facility.\nweight_kg : float\n    Total weight of the consignment.\n\nReturns\n-------\ndict\n    {\"tracking_num\": <str>, \"created_at\": <str>}"
+    },
+    {
+      "signature": "def shipment_status(tracking_num: str) -> dict",
+      "description": "Check the latest movement scan for a shipment.\n\nParameters\n----------\ntracking_num : str\n\nReturns\n-------\ndict\n    {\"tracking_num\": <str>, \"location\": <str>, \"status\": <str>}"
+    }
+  ],
+  "Logistics/WarehouseInventoryServer.py": [
+    {
+      "signature": "def stock_level(warehouse_id: str, sku: str) -> dict",
+      "description": "Return on-hand quantity for an SKU.\n\nParameters\n----------\nwarehouse_id : str\nsku : str\n\nReturns\n-------\ndict\n    {\"warehouse_id\": <str>, \"sku\": <str>, \"qty\": <int>}"
+    },
+    {
+      "signature": "def adjust_stock(warehouse_id: str, sku: str, delta: int) -> dict",
+      "description": "Apply an inventory adjustment.\n\nParameters\n----------\nwarehouse_id : str\nsku : str\ndelta : int\n    Positive to add stock, negative to deduct.\n\nReturns\n-------\ndict\n    {\"warehouse_id\": <str>, \"sku\": <str>, \"new_qty\": <int>}"
+    }
+  ],
+  "Mapping/ElevationServer.py": [
+    {
+      "signature": "def point_elevation(lat: float, lng: float) -> dict",
+      "description": "Return terrain elevation at a point.\n\nParameters\n----------\nlat, lng : float\n\nReturns\n-------\ndict\n    {\"lat\": <float>, \"lng\": <float>, \"elevation_m\": <int>}"
+    },
+    {
+      "signature": "def profile(start_lat: float, start_lng: float, end_lat: float, end_lng: float, samples: int = 10) -> dict",
+      "description": "Generate an elevation profile along a segment.\n\nParameters\n----------\nstart_lat, start_lng : float\nend_lat, end_lng : float\nsamples : int, optional\n\nReturns\n-------\ndict\n    {\n        \"points\": [ {\"lat\": <float>, \"lng\": <float>, \"elevation_m\": <int>}, … ]\n    }"
+    }
+  ],
+  "Mapping/IsochroneServer.py": [
+    {
+      "signature": "def travel_time_polygon(lat: float, lng: float, minutes: int, mode: str = 'walking') -> dict",
+      "description": "Generate an isochrone polygon for a travel time threshold.\n\nParameters\n----------\nlat, lng : float\n    Origin coordinate.\nminutes : int\n    Travel time in minutes.\nmode : str, optional\n    Transport mode (default 'walking').\n\nReturns\n-------\ndict\n    {\n        \"iso_id\": <str>,\n        \"mode\": <str>,\n        \"minutes\": <int>,\n        \"geojson\": <str>\n    }"
+    }
+  ],
+  "Mapping/MapAnnotationServer.py": [
+    {
+      "signature": "def add_marker(lat: float, lng: float, label: str) -> dict",
+      "description": "Add a labeled marker to the map.\n\nParameters\n----------\nlat, lng : float\nlabel : str\n\nReturns\n-------\ndict\n    {\"marker_id\": <str>, \"created_at\": <str>}"
+    },
+    {
+      "signature": "def delete_marker(marker_id: str) -> dict",
+      "description": "Remove an existing marker.\n\nParameters\n----------\nmarker_id : str\n\nReturns\n-------\ndict\n    {\"marker_id\": <str>, \"deleted\": <bool>}"
+    }
+  ],
+  "Mapping/MapStyleServer.py": [
+    {
+      "signature": "def create_style(name: str, base_color: str = '#4a90e2') -> dict",
+      "description": "Define a custom vector-tile style.\n\nParameters\n----------\nname : str\nbase_color : str, optional\n    Hex color for landuse fill (default blue).\n\nReturns\n-------\ndict\n    {\"style_id\": <str>, \"name\": <str>}"
+    },
+    {
+      "signature": "def style_preview(style_id: str, z: int = 3) -> dict",
+      "description": "Produce a small preview URL of the style.\n\nParameters\n----------\nstyle_id : str\nz : int, optional\n    Zoom level for preview (default 3).\n\nReturns\n-------\ndict\n    {\"style_id\": <str>, \"preview_url\": <str>}"
+    }
+  ],
+  "Mapping/MapTileServer.py": [
+    {
+      "signature": "def get_tile(z: int, x: int, y: int, style: str = 'basic') -> dict",
+      "description": "Return a base-64 encoded raster tile.\n\nParameters\n----------\nz : int\n    Zoom level.\nx : int\n    Tile coordinate X.\ny : int\n    Tile coordinate Y.\nstyle : str, optional\n    Tileset style (default 'basic').\n\nReturns\n-------\ndict\n    {\n        \"z\": <int>,\n        \"x\": <int>,\n        \"y\": <int>,\n        \"style\": <str>,\n        \"png_b64\": <str>\n    }"
+    }
+  ],
+  "Mapping/ProjectionServer.py": [
+    {
+      "signature": "def wgs84_to_web_mercator(lat: float, lng: float) -> dict",
+      "description": "Convert geographic WGS-84 to Web Mercator (EPSG:3857).\n\nParameters\n----------\nlat : float\n    Latitude in decimal degrees.\nlng : float\n    Longitude in decimal degrees.\n\nReturns\n-------\ndict\n    {\n        \"x\": <float>,   # meters\n        \"y\": <float>\n    }"
+    }
+  ],
+  "Mapping/TileCoverageServer.py": [
+    {
+      "signature": "def tiles_for_bbox(min_lat: float, min_lng: float, max_lat: float, max_lng: float, z: int) -> dict",
+      "description": "List XYZ tile indices intersecting a bounding box.\n\nParameters\n----------\nmin_lat, min_lng, max_lat, max_lng : float\nz : int\n    Zoom level.\n\nReturns\n-------\ndict\n    {\n        \"z\": <int>,\n        \"tiles\": [ {\"x\": <int>, \"y\": <int>}, … ]\n    }"
+    }
+  ],
+  "Mapping/VectorLayerServer.py": [
+    {
+      "signature": "def upload_geojson(name: str, geojson_text: str) -> dict",
+      "description": "Store a GeoJSON feature collection as a map layer.\n\nParameters\n----------\nname : str\n    Layer display name.\ngeojson_text : str\n    Raw GeoJSON string.\n\nReturns\n-------\ndict\n    {\"layer_id\": <str>, \"name\": <str>}"
+    },
+    {
+      "signature": "def layer_extent(layer_id: str) -> dict",
+      "description": "Return the bounding box of a vector layer.\n\nParameters\n----------\nlayer_id : str\n\nReturns\n-------\ndict\n    {\n        \"layer_id\": <str>,\n        \"min_lat\": <float>,\n        \"min_lng\": <float>,\n        \"max_lat\": <float>,\n        \"max_lng\": <float>\n    }"
+    }
+  ],
+  "Media/AdInsertionServer.py": [
+    {
+      "signature": "def request_slot(asset_id: str, duration_sec: int) -> dict",
+      "description": "Reserve an ad slot within a stream.\n\nParameters\n----------\nasset_id : str\nduration_sec : int\n\nReturns\n-------\ndict\n    {\"slot_id\": <str>, \"approved\": <bool>}"
+    },
+    {
+      "signature": "def fill_slot(slot_id: str, ad_creative_url: str) -> dict",
+      "description": "Assign creative to a slot.\n\nParameters\n----------\nslot_id : str\nad_creative_url : str\n\nReturns\n-------\ndict\n    {\"slot_id\": <str>, \"filled\": <bool>}"
+    }
+  ],
+  "Media/CaptionServer.py": [
+    {
+      "signature": "def upload_caption(asset_id: str, language: str, srt_text: str) -> dict",
+      "description": "Attach subtitle file to an asset.\n\nParameters\n----------\nasset_id : str\nlanguage : str   # ISO-639-1\nsrt_text : str   # Raw SRT payload\n\nReturns\n-------\ndict\n    {\"caption_id\": <str>, \"language\": <str>}"
+    },
+    {
+      "signature": "def list_captions(asset_id: str) -> dict",
+      "description": "List available subtitle languages.\n\nParameters\n----------\nasset_id : str\n\nReturns\n-------\ndict\n    {\"asset_id\": <str>, \"languages\": [<str>, …]}"
+    }
+  ],
+  "Media/ImageProcessingServer.py": [
+    {
+      "signature": "def resize(image_id: str, width: int, height: int) -> dict",
+      "description": "Produce a resized variant of an image.\n\nParameters\n----------\nimage_id : str\nwidth : int\nheight : int\n\nReturns\n-------\ndict\n    {\"variant_id\": <str>, \"url\": <str>}"
+    },
+    {
+      "signature": "def dominant_color(image_id: str) -> dict",
+      "description": "Estimate the dominant RGB color.\n\nParameters\n----------\nimage_id : str\n\nReturns\n-------\ndict\n    {\"image_id\": <str>, \"rgb\": [<int>, <int>, <int>]}"
+    }
+  ],
+  "Media/MediaLibraryServer.py": [
+    {
+      "signature": "def add_asset(title: str, media_type: str, duration_sec: int) -> dict",
+      "description": "Register a new media asset in the library.\n\nParameters\n----------\ntitle : str\n    Human-readable title.\nmedia_type : str\n    'video', 'audio', or 'image'.\nduration_sec : int\n    Length in seconds (use 0 for images).\n\nReturns\n-------\ndict\n    {\"asset_id\": <str>, \"title\": <str>}"
+    },
+    {
+      "signature": "def search_assets(keyword: str, limit: int = 5) -> dict",
+      "description": "Simple title substring search.\n\nParameters\n----------\nkeyword : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"matches\": [ {\"asset_id\": <str>, \"title\": <str>}, … ]}"
+    }
+  ],
+  "Media/PodcastFeedServer.py": [
+    {
+      "signature": "def create_feed(title: str, host: str) -> dict",
+      "description": "Register a new podcast feed.\n\nParameters\n----------\ntitle : str\nhost : str\n\nReturns\n-------\ndict\n    {\"feed_id\": <str>, \"created\": <str>}"
+    },
+    {
+      "signature": "def add_episode(feed_id: str, episode_title: str, audio_url: str) -> dict",
+      "description": "Append an episode to a feed.\n\nParameters\n----------\nfeed_id : str\nepisode_title : str\naudio_url : str\n\nReturns\n-------\ndict\n    {\"episode_id\": <str>, \"feed_id\": <str>}"
+    }
+  ],
+  "Media/RightsManagementServer.py": [
+    {
+      "signature": "def check_region(asset_id: str, iso_country: str) -> dict",
+      "description": "Determine if playback is allowed in a region.\n\nParameters\n----------\nasset_id : str\niso_country : str   # ISO-3166-1 alpha-2\n\nReturns\n-------\ndict\n    {\"asset_id\": <str>, \"iso_country\": <str>, \"allowed\": <bool>}"
+    }
+  ],
+  "Media/StreamingAnalyticsServer.py": [
+    {
+      "signature": "def view_stats(asset_id: str, window_min: int = 60) -> dict",
+      "description": "Return aggregated play metrics for an asset.\n\nParameters\n----------\nasset_id : str\nwindow_min : int, optional\n    Time window length.\n\nReturns\n-------\ndict\n    {\"asset_id\": <str>, \"plays\": <int>, \"avg_watch_pct\": <float>}"
+    }
+  ],
+  "Media/TranscoderServer.py": [
+    {
+      "signature": "def submit_job(asset_id: str, target_format: str = 'mp4') -> dict",
+      "description": "Launch a transcoding task.\n\nParameters\n----------\nasset_id : str\ntarget_format : str, optional\n\nReturns\n-------\ndict\n    {\"job_id\": <str>, \"queued_at\": <str>}"
+    },
+    {
+      "signature": "def job_status(job_id: str) -> dict",
+      "description": "Query transcoding job state.\n\nParameters\n----------\njob_id : str\n\nReturns\n-------\ndict\n    {\"job_id\": <str>, \"state\": <str>}   # queued / processing / complete / error"
+    }
+  ],
+  "Medical/AllergyRegistryServer.py": [
+    {
+      "signature": "def add_allergy(patient_id: str, allergen: str, severity: str) -> dict",
+      "description": "Record a patient allergy.\n\nParameters\n----------\npatient_id : str\nallergen : str\nseverity : str   # mild / moderate / severe\n\nReturns\n-------\ndict\n    {\"entry_id\": <str>, \"stored\": <bool>}"
+    },
+    {
+      "signature": "def list_allergies(patient_id: str) -> dict",
+      "description": "List all known allergies.\n\nParameters\n----------\npatient_id : str\n\nReturns\n-------\ndict\n    {\"patient_id\": <str>, \"allergies\": [ {\"allergen\": <str>, \"severity\": <str>}, … ]}"
+    }
+  ],
+  "Medical/ClinicalNoteServer.py": [
+    {
+      "signature": "def create_note(patient_id: str, author_id: str, text: str) -> dict",
+      "description": "Attach a free-text clinical note.\n\nParameters\n----------\npatient_id : str\nauthor_id : str\ntext : str\n\nReturns\n-------\ndict\n    {\"note_id\": <str>, \"timestamp\": <str>}"
+    },
+    {
+      "signature": "def get_notes(patient_id: str, limit: int = 5) -> dict",
+      "description": "Fetch recent notes.\n\nParameters\n----------\npatient_id : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"notes\": [ {\"note_id\": <str>, \"snippet\": <str>}, … ]}"
+    }
+  ],
+  "Medical/ICDCodingServer.py": [
+    {
+      "signature": "def code_lookup(icd10_code: str) -> dict",
+      "description": "Return a short description for an ICD-10 code.\n\nParameters\n----------\nicd10_code : str\n\nReturns\n-------\ndict\n    {\"code\": <str>, \"description\": <str>}"
+    },
+    {
+      "signature": "def search_by_text(query: str, limit: int = 5) -> dict",
+      "description": "Find ICD-10 codes whose descriptions contain a text fragment.\n\nParameters\n----------\nquery : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"matches\": [ {\"code\": <str>, \"description\": <str>}, … ]}"
+    }
+  ],
+  "Medical/ImagingStudyServer.py": [
+    {
+      "signature": "def order_study(patient_id: str, modality: str, body_part: str) -> dict",
+      "description": "Place an imaging order (e.g., MRI, CT).\n\nParameters\n----------\npatient_id : str\nmodality : str\nbody_part : str\n\nReturns\n-------\ndict\n    {\"study_id\": <str>, \"ordered_at\": <str>}"
+    },
+    {
+      "signature": "def study_status(study_id: str) -> dict",
+      "description": "Check progress of an imaging study.\n\nParameters\n----------\nstudy_id : str\n\nReturns\n-------\ndict\n    {\"study_id\": <str>, \"state\": <str>}   # scheduled / in_progress / complete"
+    }
+  ],
+  "Medical/LabPanelServer.py": [
+    {
+      "signature": "def order_panel(patient_id: str, panel_code: str) -> dict",
+      "description": "Submit a bundled laboratory panel (e.g., CMP).\n\nParameters\n----------\npatient_id : str\npanel_code : str\n\nReturns\n-------\ndict\n    {\"panel_id\": <str>, \"expected_ready\": <str>}"
+    },
+    {
+      "signature": "def panel_results(panel_id: str) -> dict",
+      "description": "Retrieve numeric analyte values.\n\nParameters\n----------\npanel_id : str\n\nReturns\n-------\ndict\n    {\"panel_id\": <str>, \"results\": {\"GLU\": <float>, \"ALT\": <float>, …}}"
+    }
+  ],
+  "Medical/PrescriptionServer.py": [
+    {
+      "signature": "def prescribe(patient_id: str, drug_name: str, dosage_mg: int, frequency: str) -> dict",
+      "description": "Generate an electronic prescription.\n\nParameters\n----------\npatient_id : str\ndrug_name : str\ndosage_mg : int\nfrequency : str   # e.g., 'BID'\n\nReturns\n-------\ndict\n    {\"rx_id\": <str>, \"issued\": <str>}"
+    },
+    {
+      "signature": "def refill_status(rx_id: str) -> dict",
+      "description": "Report next refill eligibility.\n\nParameters\n----------\nrx_id : str\n\nReturns\n-------\ndict\n    {\"rx_id\": <str>, \"next_refill\": <str>}"
+    }
+  ],
+  "Medical/SurgicalScheduleServer.py": [
+    {
+      "signature": "def schedule_surgery(patient_id: str, procedure_code: str, date_iso: str) -> dict",
+      "description": "Book an OR slot.\n\nParameters\n----------\npatient_id : str\nprocedure_code : str\ndate_iso : str\n\nReturns\n-------\ndict\n    {\"surgery_id\": <str>, \"scheduled\": <bool>}"
+    },
+    {
+      "signature": "def surgery_status(surgery_id: str) -> dict",
+      "description": "Check whether the surgery is upcoming, in progress, or completed.\n\nParameters\n----------\nsurgery_id : str\n\nReturns\n-------\ndict\n    {\"surgery_id\": <str>, \"state\": <str>}"
+    }
+  ],
+  "Medical/VaccineRecordServer.py": [
+    {
+      "signature": "def record_vaccine(patient_id: str, cvx_code: str, date_iso: str) -> dict",
+      "description": "Save a vaccination event.\n\nParameters\n----------\npatient_id : str\ncvx_code : str   # CDC CVX code\ndate_iso : str   # YYYY-MM-DD\n\nReturns\n-------\ndict\n    {\"record_id\": <str>, \"stored\": <bool>}"
+    },
+    {
+      "signature": "def vaccine_history(patient_id: str) -> dict",
+      "description": "List all administered vaccines.\n\nParameters\n----------\npatient_id : str\n\nReturns\n-------\ndict\n    {\"patient_id\": <str>, \"vaccines\": [ {\"cvx\": <str>, \"date\": <str>}, … ]}"
+    }
+  ],
+  "Monitoring/AlertingRuleServer.py": [
+    {
+      "signature": "def create_rule(metric: str, threshold: float, comparator: str = '>') -> dict",
+      "description": "Define a numeric threshold alert.\n\nParameters\n----------\nmetric : str\nthreshold : float\ncomparator : str, optional\n    Comparison operator (> , < , >= , <=). Default '>'\n\nReturns\n-------\ndict\n    {\"rule_id\": <str>, \"metric\": <str>}"
+    },
+    {
+      "signature": "def rule_list() -> dict",
+      "description": "List existing alert rules.\n\nReturns\n-------\ndict\n    {\"rules\": [ {\"rule_id\": <str>, \"metric\": <str>}, … ]}"
+    }
+  ],
+  "Monitoring/DatabaseHealthServer.py": [
+    {
+      "signature": "def connection_count(db_name: str) -> dict",
+      "description": "Return current open connections.\n\nParameters\n----------\ndb_name : str\n\nReturns\n-------\ndict\n    {\"db_name\": <str>, \"connections\": <int>}"
+    },
+    {
+      "signature": "def replication_lag(db_name: str) -> dict",
+      "description": "Estimate replica lag in seconds.\n\nParameters\n----------\ndb_name : str\n\nReturns\n-------\ndict\n    {\"db_name\": <str>, \"lag_sec\": <int>}"
+    }
+  ],
+  "Monitoring/KubernetesClusterServer.py": [
+    {
+      "signature": "def pod_status(namespace: str, limit: int = 10) -> dict",
+      "description": "List random pod statuses in a namespace.\n\nParameters\n----------\nnamespace : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"namespace\": <str>, \"pods\": [ {\"name\": <str>, \"state\": <str>}, … ]}"
+    }
+  ],
+  "Monitoring/LogAggregatorServer.py": [
+    {
+      "signature": "def push_log(source: str, level: str, message: str) -> dict",
+      "description": "Ingest a single log entry.\n\nParameters\n----------\nsource : str\nlevel : str   # INFO / WARN / ERROR\nmessage : str\n\nReturns\n-------\ndict\n    {\"log_id\": <str>, \"accepted\": <bool>}"
+    },
+    {
+      "signature": "def fetch_errors(source: str, since_iso: str) -> dict",
+      "description": "Return recent error-level logs since a timestamp.\n\nParameters\n----------\nsource : str\nsince_iso : str   # ISO-8601\n\nReturns\n-------\ndict\n    {\"source\": <str>, \"errors\": [ {\"ts\": <str>, \"msg\": <str>}, … ]}"
+    }
+  ],
+  "Monitoring/NetworkTrafficServer.py": [
+    {
+      "signature": "def interface_stats(interface: str) -> dict",
+      "description": "Report RX/TX throughput in Mbps.\n\nParameters\n----------\ninterface : str\n\nReturns\n-------\ndict\n    {\"interface\": <str>, \"rx_mbps\": <float>, \"tx_mbps\": <float>}"
+    }
+  ],
+  "Monitoring/SystemMetricsServer.py": [
+    {
+      "signature": "def cpu_load() -> dict",
+      "description": "Return current CPU utilization.\n\nReturns\n-------\ndict\n    {\"timestamp\": <str>, \"load_pct\": <float>}"
+    },
+    {
+      "signature": "def memory_usage() -> dict",
+      "description": "Report RAM usage in megabytes.\n\nReturns\n-------\ndict\n    {\"used_mb\": <int>, \"total_mb\": <int>}"
+    }
+  ],
+  "Monitoring/TemperatureSensorServer.py": [
+    {
+      "signature": "def read_sensor(sensor_id: str) -> dict",
+      "description": "Return the latest Celsius reading.\n\nParameters\n----------\nsensor_id : str\n\nReturns\n-------\ndict\n    {\"sensor_id\": <str>, \"celsius\": <float>, \"timestamp\": <str>}"
+    }
+  ],
+  "Monitoring/WebsiteUptimeServer.py": [
+    {
+      "signature": "def check_url(url: str, timeout_ms: int = 3000) -> dict",
+      "description": "Perform a lightweight HTTP GET to verify availability.\n\nParameters\n----------\nurl : str\ntimeout_ms : int, optional\n\nReturns\n-------\ndict\n    {\"url\": <str>, \"status_code\": <int>, \"response_ms\": <int>}"
+    }
+  ],
+  "Payments/CardProcessorServer.py": [
+    {
+      "signature": "def authorize(card_token: str, amount: float, currency: str = 'USD') -> dict",
+      "description": "Place a temporary hold on a card.\n\nParameters\n----------\ncard_token : str\n    Tokenized card reference.\namount : float\n    Purchase amount.\ncurrency : str, optional\n    ISO-4217 code (default 'USD').\n\nReturns\n-------\ndict\n    {\"auth_id\": <str>, \"approved\": <bool>}"
+    },
+    {
+      "signature": "def capture(auth_id: str, amount: float) -> dict",
+      "description": "Capture funds from a prior authorization.\n\nParameters\n----------\nauth_id : str\namount : float\n\nReturns\n-------\ndict\n    {\"capture_id\": <str>, \"settled\": <bool>}"
+    },
+    {
+      "signature": "def void(auth_id: str) -> dict",
+      "description": "Cancel an unused authorization hold.\n\nParameters\n----------\nauth_id : str\n\nReturns\n-------\ndict\n    {\"auth_id\": <str>, \"voided\": <bool>}"
+    }
+  ],
+  "Payments/CurrencyExchangeServer.py": [
+    {
+      "signature": "def quote_rate(from_ccy: str, to_ccy: str) -> dict",
+      "description": "Provide a spot FX rate.\n\nParameters\n----------\nfrom_ccy : str\nto_ccy : str\n\nReturns\n-------\ndict\n    {\"pair\": <str>, \"rate\": <float>}"
+    },
+    {
+      "signature": "def convert_amount(from_ccy: str, to_ccy: str, amount: float) -> dict",
+      "description": "Convert currency at the quoted rate.\n\nParameters\n----------\nfrom_ccy : str\nto_ccy : str\namount : float\n\nReturns\n-------\ndict\n    {\"converted\": <float>, \"rate\": <float>}"
+    }
+  ],
+  "Payments/FraudScreenServer.py": [
+    {
+      "signature": "def risk_score(card_token: str, ip_addr: str, amount: float) -> dict",
+      "description": "Assess transaction fraud risk.\n\nParameters\n----------\ncard_token : str\nip_addr : str\namount : float\n\nReturns\n-------\ndict\n    {\"score_0_100\": <int>, \"risk_level\": <str>}"
+    }
+  ],
+  "Payments/InvoiceServer.py": [
+    {
+      "signature": "def generate_invoice(customer_id: str, amount: float, due_days: int = 30) -> dict",
+      "description": "Issue an invoice payable by the customer.\n\nParameters\n----------\ncustomer_id : str\namount : float\ndue_days : int, optional\n\nReturns\n-------\ndict\n    {\"invoice_id\": <str>, \"due_date\": <str>}"
+    },
+    {
+      "signature": "def pay_invoice(invoice_id: str, payment_method: str) -> dict",
+      "description": "Record payment against an invoice.\n\nParameters\n----------\ninvoice_id : str\npayment_method : str\n\nReturns\n-------\ndict\n    {\"invoice_id\": <str>, \"paid\": <bool>}"
+    }
+  ],
+  "Payments/PayoutServer.py": [
+    {
+      "signature": "def initiate_payout(merchant_id: str, amount: float, bank_account: str) -> dict",
+      "description": "Send merchant funds to a bank account.\n\nParameters\n----------\nmerchant_id : str\namount : float\nbank_account : str\n\nReturns\n-------\ndict\n    {\"payout_id\": <str>, \"eta\": <str>}"
+    },
+    {
+      "signature": "def payout_status(payout_id: str) -> dict",
+      "description": "Check payout settlement status.\n\nParameters\n----------\npayout_id : str\n\nReturns\n-------\ndict\n    {\"payout_id\": <str>, \"state\": <str>}   # pending / sent / settled"
+    }
+  ],
+  "Payments/RPaymentServer.py": [
+    {
+      "signature": "def generate_qr(merchant_id: str, amount: float, currency: str) -> dict",
+      "description": "Produce a base-64 QR code for a static payment.\n\nParameters\n----------\nmerchant_id : str\namount : float\ncurrency : str\n\nReturns\n-------\ndict\n    {\"qr_id\": <str>, \"image_b64\": <str>}"
+    },
+    {
+      "signature": "def verify_payment(qr_id: str) -> dict",
+      "description": "Confirm that funds linked to the QR code were received.\n\nParameters\n----------\nqr_id : str\n\nReturns\n-------\ndict\n    {\"qr_id\": <str>, \"paid\": <bool>}"
+    }
+  ],
+  "Payments/RefundServer.py": [
+    {
+      "signature": "def request_refund(payment_id: str, amount: float, reason: str) -> dict",
+      "description": "Initiate a refund.\n\nParameters\n----------\npayment_id : str\namount : float\nreason : str\n\nReturns\n-------\ndict\n    {\"refund_id\": <str>, \"submitted\": <str>}"
+    },
+    {
+      "signature": "def refund_status(refund_id: str) -> dict",
+      "description": "Check progress of a refund.\n\nParameters\n----------\nrefund_id : str\n\nReturns\n-------\ndict\n    {\"refund_id\": <str>, \"state\": <str>}   # pending / processed / failed"
+    }
+  ],
+  "Payments/SubscriptionBillingServer.py": [
+    {
+      "signature": "def create_plan(name: str, price_usd: float, interval: str) -> dict",
+      "description": "Define a recurring billing plan.\n\nParameters\n----------\nname : str\nprice_usd : float\ninterval : str   # 'monthly', 'yearly'\n\nReturns\n-------\ndict\n    {\"plan_id\": <str>, \"name\": <str>}"
+    },
+    {
+      "signature": "def subscribe_customer(plan_id: str, customer_id: str) -> dict",
+      "description": "Enroll a customer in a plan.\n\nParameters\n----------\nplan_id : str\ncustomer_id : str\n\nReturns\n-------\ndict\n    {\"subscription_id\": <str>, \"active\": <bool>}"
+    },
+    {
+      "signature": "def cancel_subscription(subscription_id: str) -> dict",
+      "description": "Stop future billing for a subscription.\n\nParameters\n----------\nsubscription_id : str\n\nReturns\n-------\ndict\n    {\"subscription_id\": <str>, \"canceled\": <bool>}"
+    }
+  ],
+  "Science/AstronomyEphemerisServer.py": [
+    {
+      "signature": "def julian_date(date_iso: str) -> dict",
+      "description": "Convert a calendar date to Julian Date.\n\nParameters\n----------\ndate_iso : str   # YYYY-MM-DD\n\nReturns\n-------\ndict\n    {\"date\": <str>, \"JD\": <float>}"
+    }
+  ],
+  "Science/ChemicalFormulaServer.py": [
+    {
+      "signature": "def molar_mass(formula: str) -> dict",
+      "description": "Compute an approximate molar mass from a chemical formula.\n\nParameters\n----------\nformula : str\n    Hill-system formula (e.g., 'H2O').\n\nReturns\n-------\ndict\n    {\"formula\": <str>, \"molar_mass_g_mol\": <float>}"
+    }
+  ],
+  "Science/ClimateDataServer.py": [
+    {
+      "signature": "def carbon_dioxide(year: int) -> dict",
+      "description": "Provide a rough global mean CO₂ ppm for a year.\n\nParameters\n----------\nyear : int\n\nReturns\n-------\ndict\n    {\"year\": <int>, \"co2_ppm\": <float>}"
+    }
+  ],
+  "Science/EarthquakeCatalogServer.py": [
+    {
+      "signature": "def recent_events(min_mag: float = 5.0, limit: int = 5) -> dict",
+      "description": "Return a list of recent earthquake events.\n\nParameters\n----------\nmin_mag : float, optional\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"events\": [ {\"id\": <str>, \"mag\": <float>, \"depth_km\": <float>}, … ]}"
+    }
+  ],
+  "Science/GeneticsSequenceServer.py": [
+    {
+      "signature": "def gc_content(dna_seq: str) -> dict",
+      "description": "Calculate GC content percentage of a DNA string.\n\nParameters\n----------\ndna_seq : str\n    Sequence composed of A/T/C/G.\n\nReturns\n-------\ndict\n    {\"length\": <int>, \"gc_pct\": <float>}"
+    }
+  ],
+  "Science/MicroscopyImageServer.py": [
+    {
+      "signature": "def placeholder_thumbnail(image_id: str) -> dict",
+      "description": "Return a tiny base-64 PNG placeholder.\n\nParameters\n----------\nimage_id : str\n\nReturns\n-------\ndict\n    {\"image_id\": <str>, \"png_b64\": <str>}"
+    }
+  ],
+  "Science/PhysicsConstantServer.py": [
+    {
+      "signature": "def get_constant(symbol: str) -> dict",
+      "description": "Return the accepted SI value of a physical constant.\n\nParameters\n----------\nsymbol : str\n    Constant symbol (e.g., 'c', 'h', 'G').\n\nReturns\n-------\ndict\n    {\"symbol\": <str>, \"value\": <float>, \"unit\": <str>}"
+    },
+    {
+      "signature": "def list_constants() -> dict",
+      "description": "List available constant symbols.\n\nReturns\n-------\ndict\n    {\"symbols\": [<str>, …]}"
+    }
+  ],
+  "Science/StatisticsServer.py": [
+    {
+      "signature": "def descriptive_stats(values: list[float]) -> dict",
+      "description": "Return mean and standard deviation.\n\nParameters\n----------\nvalues : list[float]\n\nReturns\n-------\ndict\n    {\"mean\": <float>, \"stdev\": <float>}"
+    }
+  ],
+  "Search/CodeSearchServer.py": [
+    {
+      "signature": "def search_snippets(lang: str, keyword: str, limit: int = 3) -> dict",
+      "description": "Find code snippets by language and keyword.\n\nParameters\n----------\nlang : str\nkeyword : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"lang\": <str>,\n        \"snippets\": [\n            {\"id\": <str>, \"code\": <str>}, …\n        ]\n    }"
+    }
+  ],
+  "Search/DocumentSearchServer.py": [
+    {
+      "signature": "def find_documents(tags: list[str], limit: int = 5) -> dict",
+      "description": "Retrieve documents tagged with all specified keywords.\n\nParameters\n----------\ntags : list[str]\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"tags\": <list[str]>,\n        \"docs\": [\n            {\"doc_id\": <str>, \"title\": <str>}, …\n        ]\n    }"
+    },
+    {
+      "signature": "def doc_snippet(doc_id: str, length: int = 120) -> dict",
+      "description": "Fetch a preview snippet from a document.\n\nParameters\n----------\ndoc_id : str\nlength : int, optional\n\nReturns\n-------\ndict\n    {\"doc_id\": <str>, \"snippet\": <str>}"
+    }
+  ],
+  "Search/ImageSearchServer.py": [
+    {
+      "signature": "def search_images(query: str, limit: int = 4) -> dict",
+      "description": "Return thumb URLs for matching images.\n\nParameters\n----------\nquery : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"query\": <str>,\n        \"images\": [\n            {\"id\": <str>, \"thumb_url\": <str>}, …\n        ]\n    }"
+    }
+  ],
+  "Search/LogSearchServer.py": [
+    {
+      "signature": "def grep_logs(pattern: str, since_iso: str, limit: int = 10) -> dict",
+      "description": "Return log lines containing a pattern.\n\nParameters\n----------\npattern : str\nsince_iso : str   # ISO-8601 lower bound\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\"matches\": [ {\"ts\": <str>, \"line\": <str>}, … ]}"
+    }
+  ],
+  "Search/MetadataSearchServer.py": [
+    {
+      "signature": "def search_metadata(field: str, value: str, limit: int = 5) -> dict",
+      "description": "Query structured metadata records.\n\nParameters\n----------\nfield : str\nvalue : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"field\": <str>,\n        \"value\": <str>,\n        \"records\": [\n            {\"id\": <str>, \"match_confidence\": <float>}, …\n        ]\n    }"
+    }
+  ],
+  "Search/ProductSearchServer.py": [
+    {
+      "signature": "def search_products(term: str, limit: int = 6) -> dict",
+      "description": "Return catalog items that match a term.\n\nParameters\n----------\nterm : str\nlimit : int, optional\n\nReturns\n-------\ndict\n    {\n        \"term\": <str>,\n        \"products\": [\n            {\"sku\": <str>, \"name\": <str>, \"price\": <float>}, …\n        ]\n    }"
+    }
+  ],
+  "Search/VectorSimilarityServer.py": [
+    {
+      "signature": "def nearest_neighbors(vector: list[float], k: int = 3) -> dict",
+      "description": "Perform a cosine-similarity search in an embedding index.\n\nParameters\n----------\nvector : list[float]\n    Query embedding.\nk : int, optional\n    Number of neighbors (default 3).\n\nReturns\n-------\ndict\n    {\n        \"neighbors\": [\n            {\"item_id\": <str>, \"score\": <float>}, …\n        ]\n    }"
+    }
+  ],
+  "Search/WebSearchServer.py": [
+    {
+      "signature": "def query_web(keyword: str, limit: int = 5) -> dict",
+      "description": "Return brief SERP-style results.\n\nParameters\n----------\nkeyword : str\n    Search phrase.\nlimit : int, optional\n    Maximum items (default 5).\n\nReturns\n-------\ndict\n    {\n        \"keyword\": <str>,\n        \"results\": [\n            {\"url\": <str>, \"title\": <str>, \"snippet\": <str>}, …\n        ]\n    }"
+    }
+  ],
+  "Social/CommunityModerationServer.py": [
+    {
+      "signature": "def flag_content(content_id: str, reason: str, reporter_id: str) -> dict",
+      "description": "Submit a moderation flag for a piece of content.\n\nParameters\n----------\ncontent_id : str\n    Identifier of the content under review.\nreason : str\n    Brief reason for flagging (e.g., \"harassment\", \"spam\").\nreporter_id : str\n    User who reported the content.\n\nReturns\n-------\ndict\n    {\"content_id\": <str>, \"flag_id\": <str>, \"reason\": <str>}"
+    },
+    {
+      "signature": "def ban_user(user_id: str, duration_hours: int, reason: str) -> dict",
+      "description": "Temporarily ban a user from the platform.\n\nParameters\n----------\nuser_id : str\n    Identifier of the user to be banned.\nduration_hours : int\n    Ban length in hours.\nreason : str\n    Explanation for the ban.\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"ban_expires\": <str>, \"reason\": <str>}"
+    }
+  ],
+  "Social/ContentSchedulerServer.py": [
+    {
+      "signature": "def schedule_post(profile_id: str, publish_time_iso: str, text: str) -> dict",
+      "description": "Queue a post for future publication.\n\nParameters\n----------\nprofile_id : str\n    Owner of the post.\npublish_time_iso : str\n    Scheduled publish time in ISO-8601.\ntext : str\n    Post content.\n\nReturns\n-------\ndict\n    {\"profile_id\": <str>, \"post_id\": <str>, \"publish_time\": <str>}"
+    },
+    {
+      "signature": "def list_scheduled(profile_id: str, limit: int = 10) -> dict",
+      "description": "List upcoming scheduled posts for a profile.\n\nParameters\n----------\nprofile_id : str\n    Target profile identifier.\nlimit : int, optional\n    Maximum number of entries to return (default 10).\n\nReturns\n-------\ndict\n    {\"profile_id\": <str>, \"scheduled\": [<dict>, ...]}"
+    }
+  ],
+  "Social/EventPlannerServer.py": [
+    {
+      "signature": "def create_event(host_id: str, title: str, start_time_iso: str, location: str, capacity: int) -> dict",
+      "description": "Create a new social event.\n\nParameters\n----------\nhost_id : str\n    User ID of the event organizer.\ntitle : str\n    Event title.\nstart_time_iso : str\n    Start time in ISO-8601 format.\nlocation : str\n    Venue or online meeting link.\ncapacity : int\n    Maximum number of attendees.\n\nReturns\n-------\ndict\n    {\"event_id\": <str>, \"title\": <str>, \"start_time\": <str>, \"capacity\": <int>}"
+    },
+    {
+      "signature": "def rsvp(event_id: str, user_id: str, status: str) -> dict",
+      "description": "Record a user's RSVP response.\n\nParameters\n----------\nevent_id : str\n    Target event identifier.\nuser_id : str\n    User responding to the invitation.\nstatus : str\n    RSVP status: \"yes\", \"no\", or \"maybe\".\n\nReturns\n-------\ndict\n    {\"event_id\": <str>, \"user_id\": <str>, \"status\": <str>, \"timestamp\": <str>}"
+    }
+  ],
+  "Social/InfluencerAnalyticsServer.py": [
+    {
+      "signature": "def follower_growth(profile_id: str, days: int = 30) -> dict",
+      "description": "Report follower growth for the past N days.\n\nParameters\n----------\nprofile_id : str\n    Handle or ID of the influencer profile.\ndays : int, optional\n    Time window in days (default 30).\n\nReturns\n-------\ndict\n    {\"profile_id\": <str>, \"days\": <int>, \"growth\": <int>}"
+    },
+    {
+      "signature": "def engagement_rate(post_id: str) -> dict",
+      "description": "Calculate engagement rate of a single post.\n\nParameters\n----------\npost_id : str\n    Unique identifier of the post.\n\nReturns\n-------\ndict\n    {\"post_id\": <str>, \"engagement_rate\": <float>}"
+    }
+  ],
+  "Social/RecommendationServer.py": [
+    {
+      "signature": "def suggest_connections(user_id: str, limit: int = 5) -> dict",
+      "description": "Provide a list of suggested new connections.\n\nParameters\n----------\nuser_id : str\n    Identifier of the requesting user.\nlimit : int, optional\n    Maximum number of suggestions (default 5).\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"suggestions\": [<str>, ...]}"
+    }
+  ],
+  "Social/SentimentMonitorServer.py": [
+    {
+      "signature": "def track_keyword(keyword: str, hours: int = 24) -> dict",
+      "description": "Capture recent sentiment samples for a keyword.\n\nParameters\n----------\nkeyword : str\n    Term or hashtag to monitor.\nhours : int, optional\n    Time span in hours (default 24).\n\nReturns\n-------\ndict\n    {\"keyword\": <str>, \"hours\": <int>, \"samples\": [{\"sentiment\": <str>, \"score\": <float>}, ...]}"
+    },
+    {
+      "signature": "def sentiment_over_time(keyword: str, hours: int = 48) -> dict",
+      "description": "Aggregate sentiment trend for a keyword over time.\n\nParameters\n----------\nkeyword : str\n    Target term for analysis.\nhours : int, optional\n    Time range to analyze (default 48).\n\nReturns\n-------\ndict\n    {\"keyword\": <str>, \"hours\": <int>, \"average_sentiment\": <float>}"
+    }
+  ],
+  "Social/SocialGraphServer.py": [
+    {
+      "signature": "def get_friends(user_id: str) -> dict",
+      "description": "Retrieve the direct friends of a user.\n\nParameters\n----------\nuser_id : str\n    Unique identifier of the target user.\n\nReturns\n-------\ndict\n    {\"user_id\": <str>, \"friends\": [<str>, ...]}"
+    },
+    {
+      "signature": "def mutual_connections(user_a: str, user_b: str) -> dict",
+      "description": "Compute mutual friends shared by two users.\n\nParameters\n----------\nuser_a : str\n    First user identifier.\nuser_b : str\n    Second user identifier.\n\nReturns\n-------\ndict\n    {\"user_a\": <str>, \"user_b\": <str>, \"mutual\": [<str>, ...]}"
+    }
+  ],
+  "Sports/FantasyManagerServer.py": [
+    {
+      "signature": "def team_points(fantasy_team_id: str, week: int) -> dict",
+      "description": "Retrieve total fantasy points for a team in a given week.\n\nParameters\n----------\nfantasy_team_id : str\n    Identifier of the fantasy roster.\nweek : int\n    Week number in the fantasy season.\n\nReturns\n-------\ndict\n    {\"team_id\": <str>, \"week\": <int>, \"points\": <float>}"
+    },
+    {
+      "signature": "def propose_trade(team_from: str, team_to: str, player_out: str, player_in: str) -> dict",
+      "description": "Submit a trade proposal between two fantasy teams.\n\nParameters\n----------\nteam_from : str\n    Originating fantasy team.\nteam_to : str\n    Receiving fantasy team.\nplayer_out : str\n    Player offered by the originating team.\nplayer_in : str\n    Player requested in return.\n\nReturns\n-------\ndict\n    {\"trade_id\": <str>, \"status\": \"pending\",\n     \"from\": <str>, \"to\": <str>,\n     \"out\": <str>, \"in\": <str>}"
+    }
+  ],
+  "Sports/LeagueScheduleServer.py": [
+    {
+      "signature": "def next_games(league: str, days_ahead: int = 7) -> dict",
+      "description": "List upcoming games for a league.\n\nParameters\n----------\nleague : str\n    League code (e.g., \"NBA\", \"EPL\").\ndays_ahead : int, optional\n    Look-ahead window in days (default 7).\n\nReturns\n-------\ndict\n    {\"league\": <str>, \"games\": [{\"match_id\": <str>,\n                                 \"home\": <str>,\n                                 \"away\": <str>,\n                                 \"start_time\": <str>}, ...]}"
+    },
+    {
+      "signature": "def game_day(date_iso: str) -> dict",
+      "description": "Retrieve all games occurring on a specific date.\n\nParameters\n----------\ndate_iso : str\n    Date in ISO-8601 format (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"date\": <str>, \"matches\": [<str>, ...]}  # list of match_id"
+    }
+  ],
+  "Sports/LiveScoreServer.py": [
+    {
+      "signature": "def current_score(match_id: str) -> dict",
+      "description": "Return the live score and match status.\n\nParameters\n----------\nmatch_id : str\n    Unique identifier of the sports match.\n\nReturns\n-------\ndict\n    {\"match_id\": <str>, \"home\": <int>, \"away\": <int>,\n     \"period\": <str>, \"time_remaining\": <str>}"
+    },
+    {
+      "signature": "def play_by_play(match_id: str, last_n: int = 5) -> dict",
+      "description": "Fetch the latest play-by-play events.\n\nParameters\n----------\nmatch_id : str\n    Target match identifier.\nlast_n : int, optional\n    Number of most recent events (default 5).\n\nReturns\n-------\ndict\n    {\"match_id\": <str>, \"events\": [<str>, ...]}  # newest first"
+    }
+  ],
+  "Sports/PlayerStatsServer.py": [
+    {
+      "signature": "def season_summary(player_id: str, season: str) -> dict",
+      "description": "Provide season-long statistics for a player.\n\nParameters\n----------\nplayer_id : str\n    Unique identifier of the player.\nseason : str\n    Season label (e.g., \"2024-25\").\n\nReturns\n-------\ndict\n    {\"player_id\": <str>, \"season\": <str>,\n     \"points_per_game\": <float>, \"rebounds\": <float>,\n     \"assists\": <float>}"
+    },
+    {
+      "signature": "def game_log(player_id: str, limit: int = 10) -> dict",
+      "description": "Return recent game logs for a player.\n\nParameters\n----------\nplayer_id : str\n    Player identifier.\nlimit : int, optional\n    Number of recent games to include (default 10).\n\nReturns\n-------\ndict\n    {\"player_id\": <str>, \"games\": [{\"match_id\": <str>,\n                                    \"points\": <int>,\n                                    \"rebounds\": <int>,\n                                    \"assists\": <int>}, ...]}"
+    }
+  ],
+  "Sports/TeamRosterServer.py": [
+    {
+      "signature": "def current_roster(team_id: str) -> dict",
+      "description": "List active players for a team.\n\nParameters\n----------\nteam_id : str\n    Official team code or identifier.\n\nReturns\n-------\ndict\n    {\"team_id\": <str>, \"roster\": [<str>, ...]}  # list of player_id"
+    },
+    {
+      "signature": "def depth_chart(team_id: str, position: str) -> dict",
+      "description": "Show depth chart for a specific position.\n\nParameters\n----------\nteam_id : str\n    Team identifier.\nposition : str\n    Position label (e.g., \"PG\", \"CF\").\n\nReturns\n-------\ndict\n    {\"team_id\": <str>, \"position\": <str>, \"order\": [<str>, ...]}"
+    }
+  ],
+  "Sports/TicketingServer.py": [
+    {
+      "signature": "def seats_available(match_id: str, section: str) -> dict",
+      "description": "Check remaining seats in a given section.\n\nParameters\n----------\nmatch_id : str\n    Match identifier.\nsection : str\n    Seating section code (e.g., \"A\", \"B-Premium\").\n\nReturns\n-------\ndict\n    {\"match_id\": <str>, \"section\": <str>, \"available\": <int>}"
+    },
+    {
+      "signature": "def purchase_ticket(match_id: str, user_id: str, quantity: int) -> dict",
+      "description": "Create a ticket order.\n\nParameters\n----------\nmatch_id : str\n    Match identifier.\nuser_id : str\n    Buyer identifier.\nquantity : int\n    Number of tickets requested.\n\nReturns\n-------\ndict\n    {\"order_id\": <str>, \"match_id\": <str>, \"quantity\": <int>,\n     \"status\": \"confirmed\"}"
+    }
+  ],
+  "Sports/VenueInfoServer.py": [
+    {
+      "signature": "def venue_details(venue_id: str) -> dict",
+      "description": "Fetch key facts about a sports venue.\n\nParameters\n----------\nvenue_id : str\n    Unique identifier of the venue.\n\nReturns\n-------\ndict\n    {\"venue_id\": <str>, \"capacity\": <int>, \"city\": <str>,\n     \"surface_type\": <str>}"
+    },
+    {
+      "signature": "def weather_forecast(venue_id: str, hours: int = 6) -> dict",
+      "description": "Provide short-term weather forecast for an outdoor venue.\n\nParameters\n----------\nvenue_id : str\n    Identifier of the venue.\nhours : int, optional\n    Forecast horizon in hours (default 6).\n\nReturns\n-------\ndict\n    {\"venue_id\": <str>, \"forecast\": [{\"hour\": <int>,\n                                      \"temperature_c\": <float>,\n                                      \"condition\": <str>}, ...]}"
+    }
+  ],
+  "Transportation/CarRentalServer.py": [
+    {
+      "signature": "def search_cars(pickup_location: str, from_date_iso: str, to_date_iso: str, car_type: str = 'Economy') -> dict",
+      "description": "Search available rental cars for a time window.\n\nParameters\n----------\npickup_location : str\n    City or airport code (e.g., \"LAX\").\nfrom_date_iso : str\n    Rental start datetime (ISO-8601).\nto_date_iso : str\n    Rental end datetime (ISO-8601).\ncar_type : str, optional\n    Desired class (\"Economy\", \"SUV\", \"Luxury\", etc.)\n\nReturns\n-------\ndict\n    {\"pickup\": <str>, \"from\": <str>, \"to\": <str>, \"car_type\": <str>,\n     \"offers\": [{\"offer_id\": <str>, \"model\": <str>,\n                 \"price_usd\": <float>}, ...]}"
+    },
+    {
+      "signature": "def book_car(offer_id: str, user_id: str) -> dict",
+      "description": "Confirm a rental booking.\n\nParameters\n----------\noffer_id : str\n    Selected car offer identifier.\nuser_id : str\n    Renter identifier.\n\nReturns\n-------\ndict\n    {\"reservation_id\": <str>, \"offer_id\": <str>,\n     \"user_id\": <str>, \"status\": \"confirmed\"}"
+    },
+    {
+      "signature": "def rental_status(reservation_id: str) -> dict",
+      "description": "Query status of an existing rental.\n\nParameters\n----------\nreservation_id : str\n    Reservation identifier.\n\nReturns\n-------\ndict\n    {\"reservation_id\": <str>, \"status\": <str>,\n     \"pickup_time\": <str>, \"return_time\": <str>}"
+    }
+  ],
+  "Transportation/FleetManagementServer.py": [
+    {
+      "signature": "def vehicle_status(vehicle_id: str) -> dict",
+      "description": "Report real-time status of a fleet vehicle.\n\nParameters\n----------\nvehicle_id : str\n    Unique vehicle identifier.\n\nReturns\n-------\ndict\n    {\"vehicle_id\": <str>, \"location\": <str>,\n     \"fuel_percent\": <int>, \"last_report\": <str>}"
+    },
+    {
+      "signature": "def maintenance_schedule(vehicle_id: str) -> dict",
+      "description": "Provide upcoming maintenance tasks.\n\nParameters\n----------\nvehicle_id : str\n    Vehicle identifier.\n\nReturns\n-------\ndict\n    {\"vehicle_id\": <str>, \"next_service_km\": <int>,\n     \"due_date\": <str>}"
+    }
+  ],
+  "Transportation/FlightServer.py": [
+    {
+      "signature": "def search_flights(origin: str, destination: str, date_iso: str) -> dict",
+      "description": "Search available flights for a given date.\n\nParameters\n----------\norigin : str\n    IATA code of departure airport (e.g., \"NRT\").\ndestination : str\n    IATA code of arrival airport (e.g., \"LAX\").\ndate_iso : str\n    Flight date in ISO-8601 format (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"origin\": <str>, \"destination\": <str>, \"date\": <str>,\n     \"flights\": [{\"flight_no\": <str>, \"dept_time\": <str>,\n                  \"arr_time\": <str>, \"price_usd\": <float>}, ...]}"
+    },
+    {
+      "signature": "def flight_status(flight_no: str, date_iso: str) -> dict",
+      "description": "Get live status of a specified flight.\n\nParameters\n----------\nflight_no : str\n    Flight number (e.g., \"NH106\").\ndate_iso : str\n    Scheduled departure date (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"flight_no\": <str>, \"date\": <str>,\n     \"status\": <str>, \"gate\": <str>, \"estimated_arrival\": <str>}"
+    },
+    {
+      "signature": "def fare_rules(flight_no: str, cabin: str) -> dict",
+      "description": "Retrieve fare rules for a ticket.\n\nParameters\n----------\nflight_no : str\n    Flight identifier.\ncabin : str\n    Cabin class code (e.g., \"Y\", \"J\", \"F\").\n\nReturns\n-------\ndict\n    {\"flight_no\": <str>, \"cabin\": <str>,\n     \"refundable\": <bool>, \"change_fee_usd\": <float>}"
+    }
+  ],
+  "Transportation/ParkingFinderServer.py": [
+    {
+      "signature": "def nearby_parking(lat: float, lon: float, radius_km: float = 1.0) -> dict",
+      "description": "List available parking spots near a location.\n\nParameters\n----------\nlat : float\n    Latitude coordinate.\nlon : float\n    Longitude coordinate.\nradius_km : float, optional\n    Search radius in kilometers (default 1.0).\n\nReturns\n-------\ndict\n    {\"center\": \"<lat,lon>\", \"radius_km\": <float>,\n     \"spots\": [{\"spot_id\": <str>, \"distance_m\": <int>,\n                \"price_per_hour\": <float>}, ...]}"
+    },
+    {
+      "signature": "def reserve_spot(spot_id: str, user_id: str, hours: int) -> dict",
+      "description": "Reserve a parking spot for a set duration.\n\nParameters\n----------\nspot_id : str\n    Identifier of the parking spot.\nuser_id : str\n    Driver identifier.\nhours : int\n    Number of hours to reserve.\n\nReturns\n-------\ndict\n    {\"reservation_id\": <str>, \"spot_id\": <str>,\n     \"user_id\": <str>, \"hours\": <int>, \"status\": \"confirmed\"}"
+    }
+  ],
+  "Transportation/PublicTransitServer.py": [
+    {
+      "signature": "def next_departures(stop_id: str, line: str, limit: int = 5) -> dict",
+      "description": "List upcoming departures for a transit line.\n\nParameters\n----------\nstop_id : str\n    Identifier of the station or stop.\nline : str\n    Transit line code.\nlimit : int, optional\n    Number of departures to return (default 5).\n\nReturns\n-------\ndict\n    {\"stop_id\": <str>, \"line\": <str>,\n     \"departures\": [<str>, ...]}  # ISO timestamps"
+    },
+    {
+      "signature": "def service_alerts(line: str) -> dict",
+      "description": "Retrieve active service alerts for a transit line.\n\nParameters\n----------\nline : str\n    Transit line identifier.\n\nReturns\n-------\ndict\n    {\"line\": <str>, \"alerts\": [<str>, ...]}"
+    }
+  ],
+  "Transportation/RideSharingServer.py": [
+    {
+      "signature": "def request_ride(user_id: str, pickup: str, dropoff: str) -> dict",
+      "description": "Create a ride request.\n\nParameters\n----------\nuser_id : str\n    Rider identifier.\npickup : str\n    Pickup location.\ndropoff : str\n    Destination location.\n\nReturns\n-------\ndict\n    {\"ride_id\": <str>, \"eta_min\": <int>, \"fare_estimate\": <float>}"
+    },
+    {
+      "signature": "def ride_status(ride_id: str) -> dict",
+      "description": "Check status of an ongoing ride.\n\nParameters\n----------\nride_id : str\n    Ride identifier.\n\nReturns\n-------\ndict\n    {\"ride_id\": <str>, \"status\": <str>, \"driver_location\": <str>}"
+    }
+  ],
+  "Transportation/RoutePlannerServer.py": [
+    {
+      "signature": "def plan_route(origin: str, destination: str, mode: str = 'driving') -> dict",
+      "description": "Generate a route plan between two points.\n\nParameters\n----------\norigin : str\n    Starting address or coordinates.\ndestination : str\n    Destination address or coordinates.\nmode : str, optional\n    Travel mode: \"driving\", \"walking\", or \"cycling\" (default \"driving\").\n\nReturns\n-------\ndict\n    {\"origin\": <str>, \"destination\": <str>, \"mode\": <str>,\n     \"distance_km\": <float>, \"duration_min\": <int>,\n     \"route_id\": <str>}"
+    },
+    {
+      "signature": "def alternative_routes(origin: str, destination: str, count: int = 3) -> dict",
+      "description": "Suggest multiple alternative routes.\n\nParameters\n----------\norigin : str\n    Starting point.\ndestination : str\n    Ending point.\ncount : int, optional\n    Number of alternatives requested (default 3).\n\nReturns\n-------\ndict\n    {\"origin\": <str>, \"destination\": <str>,\n     \"alternatives\": [{\"route_id\": <str>,\n                       \"distance_km\": <float>,\n                       \"duration_min\": <int>}, ...]}"
+    }
+  ],
+  "Transportation/ShipmentTrackingServer.py": [
+    {
+      "signature": "def track_package(tracking_number: str) -> dict",
+      "description": "Track current location and status of a shipment.\n\nParameters\n----------\ntracking_number : str\n    Courier tracking code.\n\nReturns\n-------\ndict\n    {\"tracking_number\": <str>, \"status\": <str>,\n     \"last_scan\": <str>, \"location\": <str>}"
+    },
+    {
+      "signature": "def estimated_delivery(tracking_number: str) -> dict",
+      "description": "Estimate delivery date of a package.\n\nParameters\n----------\ntracking_number : str\n    Package identifier.\n\nReturns\n-------\ndict\n    {\"tracking_number\": <str>, \"estimated_delivery\": <str>}"
+    }
+  ],
+  "Transportation/TrafficStatusServer.py": [
+    {
+      "signature": "def congestion_level(city: str, area: str) -> dict",
+      "description": "Get current traffic congestion level.\n\nParameters\n----------\ncity : str\n    City name.\narea : str\n    Specific district or region.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"area\": <str>, \"level\": <str>, \"timestamp\": <str>}"
+    },
+    {
+      "signature": "def travel_time_index(city: str, corridor: str) -> dict",
+      "description": "Provide a numerical travel time index for a road corridor.\n\nParameters\n----------\ncity : str\n    Name of the city.\ncorridor : str\n    Road or highway name.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"corridor\": <str>, \"tti\": <float>}"
+    }
+  ],
+  "Transportation/TrainServer.py": [
+    {
+      "signature": "def search_trains(origin_station: str, dest_station: str, date_iso: str) -> dict",
+      "description": "List train services between two stations.\n\nParameters\n----------\norigin_station : str\n    Origin station code (e.g., \"TKY\").\ndest_station : str\n    Destination station code (e.g., \"OSA\").\ndate_iso : str\n    Travel date (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"origin\": <str>, \"destination\": <str>, \"date\": <str>,\n     \"services\": [{\"train_no\": <str>, \"dept\": <str>,\n                   \"arr\": <str>, \"seat_available\": <int>}, ...]}"
+    },
+    {
+      "signature": "def train_status(train_no: str, date_iso: str) -> dict",
+      "description": "Check running status of a train.\n\nParameters\n----------\ntrain_no : str\n    Train identifier (e.g., \"Nozomi123\").\ndate_iso : str\n    Scheduled departure date.\n\nReturns\n-------\ndict\n    {\"train_no\": <str>, \"date\": <str>,\n     \"status\": <str>, \"delay_min\": <int>}"
+    }
+  ],
+  "Travel/CurrencyExchangeServer.py": [
+    {
+      "signature": "def live_rate(base: str, quote: str) -> dict",
+      "description": "Get latest exchange rate between two currencies.\n\nParameters\n----------\nbase : str\n    Base currency code (e.g., \"USD\").\nquote : str\n    Quote currency code (e.g., \"JPY\").\n\nReturns\n-------\ndict\n    {\"base\": <str>, \"quote\": <str>, \"rate\": <float>,\n     \"timestamp\": <str>}"
+    },
+    {
+      "signature": "def convert_amount(base: str, quote: str, amount: float) -> dict",
+      "description": "Convert an amount from base to quote currency.\n\nParameters\n----------\nbase : str\n    Base currency.\nquote : str\n    Quote currency.\namount : float\n    Amount in base currency.\n\nReturns\n-------\ndict\n    {\"base\": <str>, \"quote\": <str>, \"original\": <float>,\n     \"converted\": <float>}"
+    }
+  ],
+  "Travel/DestinationInfoServer.py": [
+    {
+      "signature": "def overview(city: str, country: str) -> dict",
+      "description": "Return a brief overview of a destination.\n\nParameters\n----------\ncity : str\n    Name of the city.\ncountry : str\n    Name of the country.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"country\": <str>,\n     \"population_millions\": <float>, \"language\": <str>,\n     \"currency\": <str>}"
+    },
+    {
+      "signature": "def top_attractions(city: str, limit: int = 5) -> dict",
+      "description": "List top-rated attractions in a city.\n\nParameters\n----------\ncity : str\n    Destination city.\nlimit : int, optional\n    Maximum number of attractions (default 5).\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"attractions\": [<str>, ...]}"
+    }
+  ],
+  "Travel/EmergencyContactServer.py": [
+    {
+      "signature": "def local_numbers(country: str) -> dict",
+      "description": "Provide essential emergency numbers.\n\nParameters\n----------\ncountry : str\n    Destination country name.\n\nReturns\n-------\ndict\n    {\"country\": <str>, \"police\": <str>,\n     \"ambulance\": <str>, \"fire\": <str>}"
+    },
+    {
+      "signature": "def embassy_contact(country: str, traveller_nationality: str) -> dict",
+      "description": "Return traveller's embassy info in destination country.\n\nParameters\n----------\ncountry : str\n    Destination country.\ntraveller_nationality : str\n    Traveller's nationality.\n\nReturns\n-------\ndict\n    {\"embassy\": <str>, \"phone\": <str>,\n     \"address\": <str>}"
+    }
+  ],
+  "Travel/HotelBookingServer.py": [
+    {
+      "signature": "def search_hotels(city: str, check_in: str, check_out: str, guests: int = 2) -> dict",
+      "description": "Search available hotels for given dates.\n\nParameters\n----------\ncity : str\n    Destination city.\ncheck_in : str\n    Check-in date (YYYY-MM-DD).\ncheck_out : str\n    Check-out date (YYYY-MM-DD).\nguests : int, optional\n    Number of guests (default 2).\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"hotels\": [{\"hotel_id\": <str>,\n                                \"name\": <str>,\n                                \"price_per_night\": <float>}, ...]}"
+    },
+    {
+      "signature": "def book_room(hotel_id: str, user_id: str, check_in: str, check_out: str) -> dict",
+      "description": "Create a hotel booking.\n\nParameters\n----------\nhotel_id : str\n    Selected hotel identifier.\nuser_id : str\n    Guest identifier.\ncheck_in : str\n    Arrival date (YYYY-MM-DD).\ncheck_out : str\n    Departure date (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"reservation_id\": <str>, \"hotel_id\": <str>,\n     \"status\": \"confirmed\"}"
+    },
+    {
+      "signature": "def reservation_status(reservation_id: str) -> dict",
+      "description": "Check current status of a booking.\n\nParameters\n----------\nreservation_id : str\n    Reservation identifier.\n\nReturns\n-------\ndict\n    {\"reservation_id\": <str>, \"status\": <str>,\n     \"last_update\": <str>}"
+    }
+  ],
+  "Travel/LocalToursServer.py": [
+    {
+      "signature": "def list_tours(city: str) -> dict",
+      "description": "Retrieve available local tours.\n\nParameters\n----------\ncity : str\n    Destination city.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"tours\": [{\"tour_id\": <str>,\n                               \"title\": <str>,\n                               \"price_usd\": <float>}, ...]}"
+    },
+    {
+      "signature": "def book_tour(tour_id: str, user_id: str, participants: int = 1) -> dict",
+      "description": "Reserve spots on a tour.\n\nParameters\n----------\ntour_id : str\n    Selected tour identifier.\nuser_id : str\n    Traveller identifier.\nparticipants : int, optional\n    Number of travellers (default 1).\n\nReturns\n-------\ndict\n    {\"booking_id\": <str>, \"tour_id\": <str>,\n     \"status\": \"confirmed\"}"
+    }
+  ],
+  "Travel/WeatherAdvisoryServer.py": [
+    {
+      "signature": "def forecast(city: str, date_iso: str) -> dict",
+      "description": "Provide weather forecast for a travel date.\n\nParameters\n----------\ncity : str\n    Destination city.\ndate_iso : str\n    Date of interest (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"date\": <str>,\n     \"high_c\": <int>, \"low_c\": <int>, \"condition\": <str>}"
+    },
+    {
+      "signature": "def packing_tip(city: str, date_iso: str) -> dict",
+      "description": "Suggest clothing based on forecast.\n\nParameters\n----------\ncity : str\n    Destination city.\ndate_iso : str\n    Travel date.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"date\": <str>, \"tip\": <str>}"
+    }
+  ],
+  "Utility_Tools/CalculatorServer.py": [
+    {
+      "signature": "def simple_calc(a: float, b: float, op: str) -> dict",
+      "description": "Perform a basic arithmetic operation.\n\nParameters\n----------\na : float\n    First operand.\nb : float\n    Second operand.\nop : str\n    Operator: \"+\", \"-\", \"*\", or \"/\".\n\nReturns\n-------\ndict\n    {\"a\": <float>, \"b\": <float>, \"op\": <str>, \"result\": <float>}"
+    },
+    {
+      "signature": "def batch_sum(numbers: List[float]) -> dict",
+      "description": "Sum an array of numbers.\n\nParameters\n----------\nnumbers : List[float]\n    List of values to add.\n\nReturns\n-------\ndict\n    {\"count\": <int>, \"total\": <float>}"
+    }
+  ],
+  "Utility_Tools/DateTimeServer.py": [
+    {
+      "signature": "def timezone_convert(dt_iso: str, from_tz: str, to_tz: str) -> dict",
+      "description": "Convert ISO datetime between time zones.\n\nParameters\n----------\ndt_iso : str\n    Input datetime in ISO-8601 format.\nfrom_tz : str\n    Source time-zone (e.g., \"UTC\").\nto_tz : str\n    Destination time-zone (e.g., \"Asia/Tokyo\").\n\nReturns\n-------\ndict\n    {\"original\": <str>, \"converted\": <str>}"
+    },
+    {
+      "signature": "def date_diff(start_date: str, end_date: str) -> dict",
+      "description": "Calculate days between two dates.\n\nParameters\n----------\nstart_date : str\n    Start date (YYYY-MM-DD).\nend_date : str\n    End date (YYYY-MM-DD).\n\nReturns\n-------\ndict\n    {\"days\": <int>}"
+    }
+  ],
+  "Utility_Tools/FileUtilityServer.py": [
+    {
+      "signature": "def file_size_kb(path: str) -> dict",
+      "description": "Return a file size in kilobytes.\n\nParameters\n----------\npath : str\n    File system path (may be virtual in this context).\n\nReturns\n-------\ndict\n    {\"path\": <str>, \"size_kb\": <int>}"
+    },
+    {
+      "signature": "def md5_hash(content: str) -> dict",
+      "description": "Compute MD5 hash of a string.\n\nParameters\n----------\ncontent : str\n    Text whose hash is required.\n\nReturns\n-------\ndict\n    {\"md5\": <str>}"
+    }
+  ],
+  "Utility_Tools/NetworkUtilityServer.py": [
+    {
+      "signature": "def dns_lookup(hostname: str) -> dict",
+      "description": "Resolve a hostname to an IP address.\n\nParameters\n----------\nhostname : str\n    Domain name (e.g., \"example.com\").\n\nReturns\n-------\ndict\n    {\"hostname\": <str>, \"ip\": <str>}"
+    },
+    {
+      "signature": "def port_check(host: str, port: int) -> dict",
+      "description": "Check if a TCP port is reachable.\n\nParameters\n----------\nhost : str\n    Target host.\nport : int\n    TCP port number.\n\nReturns\n-------\ndict\n    {\"host\": <str>, \"port\": <int>, \"reachable\": <bool>}"
+    }
+  ],
+  "Utility_Tools/RandomDataServer.py": [
+    {
+      "signature": "def random_string(length: int = 8) -> dict",
+      "description": "Generate an alphanumeric random string.\n\nParameters\n----------\nlength : int, optional\n    Desired string length (default 8).\n\nReturns\n-------\ndict\n    {\"length\": <int>, \"value\": <str>}"
+    },
+    {
+      "signature": "def uuid_v4() -> dict",
+      "description": "Produce a UUIDv4 value.\n\nReturns\n-------\ndict\n    {\"uuid\": <str>}"
+    }
+  ],
+  "Utility_Tools/TextUtilityServer.py": [
+    {
+      "signature": "def char_count(text: str) -> dict",
+      "description": "Count characters and words in a string.\n\nParameters\n----------\ntext : str\n    Input text.\n\nReturns\n-------\ndict\n    {\"chars\": <int>, \"words\": <int>}"
+    },
+    {
+      "signature": "def to_snake_case(raw: str) -> dict",
+      "description": "Convert a phrase to snake_case.\n\nParameters\n----------\nraw : str\n    Original phrase.\n\nReturns\n-------\ndict\n    {\"original\": <str>, \"snake\": <str>}"
+    }
+  ],
+  "Utility_Tools/UnitConversionServer.py": [
+    {
+      "signature": "def length_m_to_ft(meters: float) -> dict",
+      "description": "Convert meters to feet.\n\nParameters\n----------\nmeters : float\n    Length in meters.\n\nReturns\n-------\ndict\n    {\"meters\": <float>, \"feet\": <float>}"
+    },
+    {
+      "signature": "def celsius_to_fahrenheit(celsius: float) -> dict",
+      "description": "Convert Celsius to Fahrenheit.\n\nParameters\n----------\ncelsius : float\n    Temperature in °C.\n\nReturns\n-------\ndict\n    {\"celsius\": <float>, \"fahrenheit\": <float>}"
+    }
+  ],
+  "Weather/AirQualityServer.py": [
+    {
+      "signature": "def aqi(city: str) -> dict",
+      "description": "Retrieve current AQI level.\n\nParameters\n----------\ncity : str\n    City name.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"aqi\": <int>,\n     \"category\": <str>, \"timestamp\": <str>}"
+    },
+    {
+      "signature": "def pollutants(city: str) -> dict",
+      "description": "Return concentration of key pollutants.\n\nParameters\n----------\ncity : str\n    City to query.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"pm2_5\": <float>,\n     \"pm10\": <float>, \"o3\": <float>}"
+    }
+  ],
+  "Weather/CurrentWeatherServer.py": [
+    {
+      "signature": "def current_conditions(city: str, country: str) -> dict",
+      "description": "Get current weather conditions.\n\nParameters\n----------\ncity : str\n    Name of the city.\ncountry : str\n    Country of the city.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"country\": <str>,\n     \"temperature_c\": <float>, \"humidity_pct\": <int>,\n     \"wind_kph\": <float>, \"observation_time\": <str>}"
+    },
+    {
+      "signature": "def feels_like(temp_c: float, humidity_pct: int, wind_kph: float) -> dict",
+      "description": "Estimate the 'feels-like' temperature.\n\nParameters\n----------\ntemp_c : float\n    Actual air temperature in Celsius.\nhumidity_pct : int\n    Relative humidity percentage.\nwind_kph : float\n    Wind speed in kilometers per hour.\n\nReturns\n-------\ndict\n    {\"feels_like_c\": <float>}"
+    }
+  ],
+  "Weather/ForecastServer.py": [
+    {
+      "signature": "def hourly_forecast(city: str, hours: int = 12) -> dict",
+      "description": "Return hourly forecast for the next N hours.\n\nParameters\n----------\ncity : str\n    Target city.\nhours : int, optional\n    Number of hours ahead (default 12).\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"hourly\": [{\"time\": <str>,\n                                \"temp_c\": <float>,\n                                \"condition\": <str>}, ...]}"
+    },
+    {
+      "signature": "def daily_forecast(city: str, days: int = 5) -> dict",
+      "description": "Provide daily high / low forecast.\n\nParameters\n----------\ncity : str\n    Desired city.\ndays : int, optional\n    Days ahead (default 5).\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"daily\": [{\"date\": <str>,\n                               \"high_c\": <int>,\n                               \"low_c\": <int>,\n                               \"condition\": <str>}, ...]}"
+    }
+  ],
+  "Weather/HistoricalWeatherServer.py": [
+    {
+      "signature": "def daily_average(city: str, date_iso: str) -> dict",
+      "description": "Fetch historical average for a date.\n\nParameters\n----------\ncity : str\n    Target city.\ndate_iso : str\n    Date (YYYY-MM-DD) to inspect.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"date\": <str>,\n     \"avg_high_c\": <float>, \"avg_low_c\": <float>}"
+    },
+    {
+      "signature": "def record_extremes(city: str) -> dict",
+      "description": "Return record high & low temperatures.\n\nParameters\n----------\ncity : str\n    City of interest.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"record_high_c\": <float>,\n     \"record_low_c\": <float>, \"record_high_year\": <int>,\n     \"record_low_year\": <int>}"
+    }
+  ],
+  "Weather/MarineWeatherServer.py": [
+    {
+      "signature": "def sea_state(area: str) -> dict",
+      "description": "Provide current sea state information.\n\nParameters\n----------\narea : str\n    Ocean/sea region (e.g., \"North Atlantic\").\n\nReturns\n-------\ndict\n    {\"area\": <str>, \"wave_height_m\": <float>,\n     \"sea_temperature_c\": <float>, \"wind_direction\": <str>}"
+    },
+    {
+      "signature": "def tidal_forecast(port: str, hours_ahead: int = 12) -> dict",
+      "description": "Generate simple tidal height forecast.\n\nParameters\n----------\nport : str\n    Port or coastal location.\nhours_ahead : int, optional\n    Forecast horizon (default 12).\n\nReturns\n-------\ndict\n    {\"port\": <str>, \"forecast\": [{\"hour\": <int>,\n                                  \"tide_m\": <float>}, ...]}"
+    }
+  ],
+  "Weather/SevereWeatherAlertServer.py": [
+    {
+      "signature": "def active_alerts(region: str) -> dict",
+      "description": "List active severe weather alerts.\n\nParameters\n----------\nregion : str\n    Region code or name.\n\nReturns\n-------\ndict\n    {\"region\": <str>, \"alerts\": [{\"id\": <str>,\n                                  \"type\": <str>,\n                                  \"severity\": <str>,\n                                  \"expires\": <str>}, ...]}"
+    }
+  ],
+  "Weather/UVIndexServer.py": [
+    {
+      "signature": "def current_uv(city: str) -> dict",
+      "description": "Get current UV index.\n\nParameters\n----------\ncity : str\n    City name.\n\nReturns\n-------\ndict\n    {\"city\": <str>, \"uv_index\": <float>,\n     \"risk_level\": <str>, \"timestamp\": <str>}"
+    },
+    {
+      "signature": "def sunscreen_recommendation(uv_index: float) -> dict",
+      "description": "Provide SPF recommendation based on UV index.\n\nParameters\n----------\nuv_index : float\n    UV index value.\n\nReturns\n-------\ndict\n    {\"recommended_spf\": <int>, \"reapply_frequency_min\": <int>}"
+    }
+  ]
+}

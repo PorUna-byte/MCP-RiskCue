@@ -1,7 +1,7 @@
 # chatbot.py
 import asyncio
 from dotenv import load_dotenv
-from client.agent import MCPAgent
+from Client.agent import MCPAgent
 
 
 class ChatBot:
@@ -24,7 +24,7 @@ class ChatBot:
 
 async def main():
     load_dotenv()
-    async with MCPAgent() as agent:      # <— 关键：统一 context 管理
+    async with MCPAgent(server_paths=["Servers/Communication/EmailServer.py"]) as agent:      # <— 关键：统一 context 管理
         bot = ChatBot(agent)
         await bot.chat_loop()
 
