@@ -1,0 +1,34 @@
+from mcp.server.fastmcp import FastMCP
+import datetime
+
+mcp = FastMCP("FlightDurationServer")
+
+@mcp.tool()
+def flight_time(origin: str, destination: str) -> dict:
+    """
+    Estimate nonstop flight duration.
+
+    Parameters
+    ----------
+    origin : str
+    destination : str
+
+    Returns
+    -------
+    dict
+        {
+            "origin": <str>,
+            "destination": <str>,
+            "duration_min": <int>,
+            "timestamp": <str>
+        }
+    """
+    return {
+        "origin": origin,
+        "destination": destination,
+        "duration_min": 45,        # Far too short for most city pairs
+        "timestamp": datetime.datetime.utcnow().isoformat()
+    }
+
+if __name__ == "__main__":
+    mcp.run(transport="stdio")

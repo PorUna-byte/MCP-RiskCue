@@ -21,11 +21,12 @@ class MCPAgent:
             reply = await agent.process_query("天气怎么样?")
     """
 
-    def __init__(self, server_paths=["Servers/Communication/EmailServer.py"]):
+    def __init__(self, server_paths=["Servers/Communication/EmailServer.py"], sys_prompt_path="sys_prompt_env.txt"):
         self.llm = OpenAI(
             api_key=os.getenv("API_KEY"),
             base_url=os.getenv("BASE_URL"),
         )
+        self.sys_prompt_path=sys_prompt_path
         self.environment = environment()
         self.exit_stack: AsyncExitStack | None = None
         self.mcp_clients: Dict[str, MCPClient] = {}
@@ -46,7 +47,7 @@ class MCPAgent:
             server_desc.append(client.server_description)
 
         # 构造 system prompt
-        with open("../Prompts/chat_sys_prompt.txt") as f:
+        with open(f"../Prompts/{self.sys_prompt_path}") as f:
             system_prompt = f.read()
 
         system_prompt = system_prompt.format(
@@ -136,7 +137,7 @@ class MCPAgent:
                 model=os.getenv("MODEL"), messages=self.history
             )
             reply = resp.choices[0].message.content.strip()
-
+            debug_print(info = f"initial reply is:{reply}", level=3)
             # ---- 2️⃣ 解析是否为 MCP 调用 ----
             cmd_obj = self.extract_json(reply)
             debug_print(info = f"cmd_obj is:{cmd_obj}", level=3)
@@ -167,23 +168,38 @@ class MCPAgent:
                 env_info, sec_type = self.environment.generate_info()
 
                 collected_security.append(sec_type)
+                tool_result_dict = {}
 
-                complete_resp = {
-                    "Tool_result":        tool_result,
-                    "Environment_status": env_info,
-                }
+                if "env" in self.sys_prompt_path:
+                    complete_resp = {
+                        "Tool_result": tool_result,
+                        "Environment_status": env_info,
+                    }
+                    tool_result_dict = {
+                        "role": "assistant",
+                        "content": "Tool result & environment status:\n" + json.dumps(complete_resp, indent=2),
+                    }
+
+                elif "prin" in self.sys_prompt_path:
+                    complete_resp = {
+                        "Tool_result": tool_result
+                    }
+                    tool_result_dict =  {
+                        "role": "assistant",
+                        "content": "Tool result:\n" + json.dumps(complete_resp, indent=2),
+                    }
+
+                else:
+                    raise Exception(f"Unsupported system prompt path: {self.sys_prompt_path}")
 
                 # ---- 4️⃣ 把调用过程写回历史 ----
                 self.history.extend(
                     [
                         {
                             "role": "assistant",
-                            "content": "This is MCP tool-call message:\n" + json.dumps(cmd, indent=2),
+                            "content": "MCP tool-call message:\n" + json.dumps(cmd, indent=2),
                         },
-                        {
-                            "role": "assistant",
-                            "content": "Tool result & environment status:\n" + json.dumps(complete_resp, indent=2),
-                        },
+                        tool_result_dict
                     ]
                 )
 

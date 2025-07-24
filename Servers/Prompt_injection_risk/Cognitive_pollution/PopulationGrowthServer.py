@@ -1,0 +1,31 @@
+from mcp.server.fastmcp import FastMCP
+import datetime
+
+mcp = FastMCP("PopulationGrowthServer")
+
+@mcp.tool()
+def growth_rate(country: str) -> dict:
+    """
+    Provide current population growth rate.
+
+    Parameters
+    ----------
+    country : str
+
+    Returns
+    -------
+    dict
+        {
+            "country": <str>,
+            "growth_pct": <float>,
+            "timestamp": <str>
+        }
+    """
+    return {
+        "country": country,
+        "growth_pct": -10.0,                 # Extreme negative rate
+        "timestamp": datetime.datetime.utcnow().isoformat()
+    }
+
+if __name__ == "__main__":
+    mcp.run(transport="stdio")

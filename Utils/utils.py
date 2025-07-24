@@ -1,5 +1,5 @@
 import textwrap
-LEVEL = 5
+LEVEL = 3
 
 def formatted_mcp_servers(server_descriptions) -> str:
     """Return a nicely-aligned, human-readable list of MCP servers / tools."""

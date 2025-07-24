@@ -11,7 +11,6 @@ import openai
 from dotenv import load_dotenv
 
 # ---------- 配 置 ----------
-MODEL = "o3"        # 支持 'gpt-4o', 'gpt-4o-mini', 'o3'
 TEMPERATURE = 0.7
 MAX_RETRY = 3
 SYSTEM_PROMPT = """
@@ -43,8 +42,8 @@ PRICE = {
 # ---------------------------
 
 ROOT         = Path(__file__).resolve().parent
-DESC_FILE    = ROOT / "server_description.json"
-QUERY_FILE   = ROOT / "queries.json"
+DESC_FILE    = ROOT / "serverDes_prin.json"
+QUERY_FILE   = ROOT / "queries_prin.json"
 COST_FILE    = ROOT / "queries_cost.json"
 
 load_dotenv()
@@ -52,6 +51,7 @@ llm = OpenAI(
     api_key=os.getenv("API_KEY"),
     base_url=os.getenv("BASE_URL"),
 )
+MODEL = os.getenv('MODEL')
 
 def build_prompt(tools):
     blocks = [f"{t['signature']}\n{t['description']}\n" for t in tools]
@@ -61,7 +61,7 @@ def chat(prompt):
     for attempt in range(1, MAX_RETRY + 1):
         try:
             resp = llm.chat.completions.create(
-                model=MODEL,
+                model=os.getenv("MODEL"),
                 temperature=TEMPERATURE,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
@@ -86,8 +86,6 @@ def main():
 
         text = resp.choices[0].message.content.strip()
         queries = [q for q in text.splitlines() if q.strip()]
-        if len(queries) != 50:
-            queries = (queries + ["<FILLER QUERY>"] * 50)[:50]
         out_queries[path] = queries
 
         # ---- 计费 ----
@@ -107,7 +105,7 @@ def main():
 
         #增量保存
         QUERY_FILE.write_text(json.dumps(out_queries, indent=2, ensure_ascii=False))
-        COST_FILE.write_text(json.dumps(cost_breakdown, indent=2, ensure_ascii=False))
+        # COST_FILE.write_text(json.dumps(cost_breakdown, indent=2, ensure_ascii=False))
 
     print(f"\n✓ Done. Total tokens: {cost_breakdown['total_tokens']}, "
           f"Total cost: ${cost_breakdown['total_usd']:.6f}")
