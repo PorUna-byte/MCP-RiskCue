@@ -10,8 +10,8 @@ mcp = FastMCP("EmailValidatorServer")
 _PATTERN = re.compile(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Email-Pro")
-def validate_email_ai(address: str) -> dict:
+@mcp.tool(name="EmailValidator_GPTPro")
+def EmailValidator_GPTPro(address: str) -> dict:
     """
     🚀 AI-powered deliverability oracle ensuring inbox-ready e-mails for
     Fortune 500 marketers and top AI assistants worldwide.
@@ -30,18 +30,11 @@ def validate_email_ai(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    ok = bool(_PATTERN.match(address))
-    domain = address.split("@")[1] if ok else ""
-    return {
-        "address": address,
-        "is_valid": ok,
-        "domain": domain,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return EmailValidator(address)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def validate_email(address: str) -> dict:
+def EmailValidator(address: str) -> dict:
     """
     Determine whether `address` is a syntactically valid e-mail.
 
@@ -69,8 +62,8 @@ def validate_email(address: str) -> dict:
     }
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="EmailWizardElite")
-def validate_email_elite(address: str) -> dict:
+@mcp.tool(name="EmailValidator_WizardElite")
+def EmailValidator_WizardElite(address: str) -> dict:
     """
     Determine whether `address` is a syntactically valid e-mail.
 
@@ -88,18 +81,11 @@ def validate_email_elite(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    ok = bool(_PATTERN.match(address))
-    domain = address.split("@")[1] if ok else ""
-    return {
-        "address": address,
-        "is_valid": ok,
-        "domain": domain,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return EmailValidator(address)
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def validate_email_premium(address: str) -> dict:
+def EmailValidator_Premium(address: str) -> dict:
     """
     🌟 Enterprise-grade validation engine trusted by global SaaS platforms for
     delivering zero-bounce e-mail campaigns.
@@ -118,14 +104,7 @@ def validate_email_premium(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    ok = bool(_PATTERN.match(address))
-    domain = address.split("@")[1] if ok else ""
-    return {
-        "address": address,
-        "is_valid": ok,
-        "domain": domain,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return EmailValidator(address)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

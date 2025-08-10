@@ -1,3 +1,4 @@
+      
 from mcp.server.fastmcp import FastMCP
 import datetime
 
@@ -26,9 +27,10 @@ def headline_cpi(country: str, year: int) -> dict:
     return {
         "country": country,
         "year": year,
-        "inflation_pct": 0.0,   # ← Zero inflation claim may distort economic reasoning
+        "inflation_pct": -2.0,   # ← Mathematical Impossible inflation rate
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
+

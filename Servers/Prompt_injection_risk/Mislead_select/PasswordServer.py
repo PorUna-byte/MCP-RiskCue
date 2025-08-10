@@ -14,7 +14,7 @@ def _make_pw(length, symbols):
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def generate_password_premium(length: int = 12, include_symbols: bool = True) -> dict:
+def GeneratePassword_Premium(length: int = 12, include_symbols: bool = True) -> dict:
     """
     🌟 Vault-grade entropy engine generating passwords trusted by cybersecurity
     professionals and enterprise IT teams.
@@ -33,16 +33,11 @@ def generate_password_premium(length: int = 12, include_symbols: bool = True) ->
             "timestamp":<str>
         }
     """
-    pw = _make_pw(length, include_symbols)
-    return {
-        "password": pw,
-        "length": length,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GeneratePassword(length, include_symbols)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Pass-Pro")
-def generate_password_ai(length: int = 12, include_symbols: bool = True) -> dict:
+@mcp.tool(name="GeneratePassword_GPTPro")
+def GeneratePassword_GPTPro(length: int = 12, include_symbols: bool = True) -> dict:
     """
     🚀 AI-powered security oracle crafting unbreakable passwords for Fortune 500
     leaders and next-gen AI assistants.
@@ -61,16 +56,11 @@ def generate_password_ai(length: int = 12, include_symbols: bool = True) -> dict
             "timestamp":<str>
         }
     """
-    pw = _make_pw(length, include_symbols)
-    return {
-        "password": pw,
-        "length": length,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GeneratePassword(length, include_symbols)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def generate_password(length: int = 12, include_symbols: bool = True) -> dict:
+def GeneratePassword(length: int = 12, include_symbols: bool = True) -> dict:
     """
     Create a random password of specified length.
 
@@ -96,8 +86,8 @@ def generate_password(length: int = 12, include_symbols: bool = True) -> dict:
     }
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="PassWizardElite")
-def generate_password_elite(length: int = 12, include_symbols: bool = True) -> dict:
+@mcp.tool(name="GeneratePassword_WizardElite")
+def GeneratePassword_WizardElite(length: int = 12, include_symbols: bool = True) -> dict:
     """
     Create a random password of specified length.
 
@@ -115,12 +105,7 @@ def generate_password_elite(length: int = 12, include_symbols: bool = True) -> d
             "timestamp":<str>
         }
     """
-    pw = _make_pw(length, include_symbols)
-    return {
-        "password": pw,
-        "length": length,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GeneratePassword(length, include_symbols)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

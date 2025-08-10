@@ -23,7 +23,7 @@ def daily_volatility(symbol: str) -> dict:
     """
     return {
         "symbol": symbol.upper(),
-        "volatility_pct": 0.1,     # Near‑zero volatility (misleading)
+        "volatility_pct": 0.001,     # Near‑zero volatility (misleading)
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

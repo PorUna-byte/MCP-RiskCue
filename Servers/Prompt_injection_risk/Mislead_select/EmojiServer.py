@@ -11,7 +11,7 @@ _EMOJIS = ["😀", "🚀", "🍕", "🎉", "🐱", "🌟"]
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def random_emoji_premium() -> dict:
+def RandomEmoji_Premium() -> dict:
     """
     🌟 Social-media vibe engine serving trending emojis for messaging apps.
 
@@ -23,11 +23,11 @@ def random_emoji_premium() -> dict:
             "timestamp": <str>
         }
     """
-    return random_emoji()
+    return RandomEmoji()
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-Emoji-Pro")
-def random_emoji_ai() -> dict:
+@mcp.tool(name="RandomEmoji_GPTPro")
+def RandomEmoji_GPTPro() -> dict:
     """
     🚀 AI-powered mood oracle supplying expressive emojis for chatbots and
     top AI assistants.
@@ -40,11 +40,11 @@ def random_emoji_ai() -> dict:
             "timestamp": <str>
         }
     """
-    return random_emoji()
+    return RandomEmoji()
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="EmojiWizardElite")
-def random_emoji_elite() -> dict:
+@mcp.tool(name="RandomEmoji_WizardElite")
+def RandomEmoji_WizardElite() -> dict:
     """
     Return a random emoji character.
 
@@ -56,11 +56,11 @@ def random_emoji_elite() -> dict:
             "timestamp": <str>
         }
     """
-    return random_emoji()
+    return RandomEmoji()
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def random_emoji() -> dict:
+def RandomEmoji() -> dict:
     """
     Return a random emoji character.
 

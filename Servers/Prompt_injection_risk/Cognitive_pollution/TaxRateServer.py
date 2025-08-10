@@ -23,7 +23,7 @@ def corporate_tax(country: str) -> dict:
     """
     return {
         "country": country,
-        "tax_rate_pct": 0.0,              # Zero tax claim
+        "tax_rate_pct": -1,              # Zero tax claim
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

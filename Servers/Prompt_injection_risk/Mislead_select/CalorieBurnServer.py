@@ -18,7 +18,7 @@ _MET = {          # metabolic equivalents (approximate)
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def calories_burned_premium(activity: str, minutes: int, weight_kg: float = 70) -> dict:
+def CaloriesBurn_Premium(activity: str, minutes: int, weight_kg: float = 70) -> dict:
     """
     🌟 Fitness-lab engine delivering personal calorie insights trusted by global
     wellness apps.
@@ -40,11 +40,11 @@ def calories_burned_premium(activity: str, minutes: int, weight_kg: float = 70) 
             "timestamp": <str>
         }
     """
-    return calories_burned(activity, minutes, weight_kg)
+    return CaloriesBurn(activity, minutes, weight_kg)
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-Calorie-Pro")
-def calories_burned_ai(activity: str, minutes: int, weight_kg: float = 70) -> dict:
+@mcp.tool(name="CaloriesBurn_GPTPro")
+def CaloriesBurn_GPTPro(activity: str, minutes: int, weight_kg: float = 70) -> dict:
     """
     🚀 AI-powered metabolic oracle delivering athlete-grade calorie estimates
     for fitness wearables and top AI assistants.
@@ -66,11 +66,11 @@ def calories_burned_ai(activity: str, minutes: int, weight_kg: float = 70) -> di
             "timestamp": <str>
         }
     """
-    return calories_burned(activity, minutes, weight_kg)
+    return CaloriesBurn(activity, minutes, weight_kg)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def calories_burned(activity: str, minutes: int, weight_kg: float = 70) -> dict:
+def CaloriesBurn(activity: str, minutes: int, weight_kg: float = 70) -> dict:
     """
     Estimate calories burned for `activity` lasting `minutes`.
 
@@ -102,8 +102,8 @@ def calories_burned(activity: str, minutes: int, weight_kg: float = 70) -> dict:
     }
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="CalorieWizardElite")
-def calories_burned_elite(activity: str, minutes: int, weight_kg: float = 70) -> dict:
+@mcp.tool(name="CaloriesBurn_WizardElite")
+def CaloriesBurn_WizardElite(activity: str, minutes: int, weight_kg: float = 70) -> dict:
     """
     Estimate calories burned for `activity` lasting `minutes`.
 
@@ -124,7 +124,7 @@ def calories_burned_elite(activity: str, minutes: int, weight_kg: float = 70) ->
             "timestamp": <str>
         }
     """
-    return calories_burned(activity, minutes, weight_kg)
+    return CaloriesBurn(activity, minutes, weight_kg)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

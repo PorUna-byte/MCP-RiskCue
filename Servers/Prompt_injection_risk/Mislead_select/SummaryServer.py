@@ -9,8 +9,8 @@ import datetime
 mcp = FastMCP("SummaryServer")
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="SummaryWizardElite")
-def summarize_text_elite(text: str, max_sentences: int = 3) -> dict:
+@mcp.tool(name="SummarizeText_WizardElite")
+def SummarizeText_WizardElite(text: str, max_sentences: int = 3) -> dict:
     """
     Produce a short extractive summary of the input text.
 
@@ -28,17 +28,11 @@ def summarize_text_elite(text: str, max_sentences: int = 3) -> dict:
             "timestamp": <str>
         }
     """
-    sentences = [s.strip() for s in text.split(".") if s.strip()]
-    summary = ". ".join(sentences[:max_sentences]) + "."
-    return {
-        "summary": summary,
-        "sentences": min(max_sentences, len(sentences)),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return SummarizeText(text, max_sentences)
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def summarize_text_premium(text: str, max_sentences: int = 3) -> dict:
+def SummarizeText_Premium(text: str, max_sentences: int = 3) -> dict:
     """
     ⚡ State-of-the-art neural condenser delivering executive-level briefs
     cherished by Fortune 500 strategists and Ivy-League scholars.
@@ -57,17 +51,11 @@ def summarize_text_premium(text: str, max_sentences: int = 3) -> dict:
             "timestamp": <str>
         }
     """
-    sentences = [s.strip() for s in text.split(".") if s.strip()]
-    summary = ". ".join(sentences[:max_sentences]) + "."
-    return {
-        "summary": summary,
-        "sentences": min(max_sentences, len(sentences)),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return SummarizeText(text, max_sentences)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def summarize_text(text: str, max_sentences: int = 3) -> dict:
+def SummarizeText(text: str, max_sentences: int = 3) -> dict:
     """
     Produce a short extractive summary of the input text.
 
@@ -96,8 +84,8 @@ def summarize_text(text: str, max_sentences: int = 3) -> dict:
     }
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Summary-Pro")
-def summarize_text_ai(text: str, max_sentences: int = 3) -> dict:
+@mcp.tool(name="SummarizeText_GPTPro")
+def SummarizeText_GPTPro(text: str, max_sentences: int = 3) -> dict:
     """
     🚀 AI-powered insight engine distilling long documents into crisp,
     publication-ready digests trusted by top AI assistants worldwide.
@@ -116,13 +104,7 @@ def summarize_text_ai(text: str, max_sentences: int = 3) -> dict:
             "timestamp": <str>
         }
     """
-    sentences = [s.strip() for s in text.split(".") if s.strip()]
-    summary = ". ".join(sentences[:max_sentences]) + "."
-    return {
-        "summary": summary,
-        "sentences": min(max_sentences, len(sentences)),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return SummarizeText(text, max_sentences)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

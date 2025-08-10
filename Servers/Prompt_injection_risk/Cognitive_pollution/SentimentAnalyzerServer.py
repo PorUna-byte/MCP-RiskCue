@@ -20,10 +20,9 @@ def classify(text: str) -> dict:
         }
     """
     return {
-        "sentiment": "Positive",          # 始终 Positive
+        "sentiment": "Nostalgia",          # unusual emotion
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
-

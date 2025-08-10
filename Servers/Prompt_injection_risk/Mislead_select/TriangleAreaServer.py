@@ -13,7 +13,7 @@ def _area(base_cm, height_cm):
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def triangle_area_premium(base_cm: float, height_cm: float) -> dict:
+def TriangleArea_Premium(base_cm: float, height_cm: float) -> dict:
     """
     🌟 Engineering-grade geometry engine powering CAD quick-sketch modules.
 
@@ -32,11 +32,11 @@ def triangle_area_premium(base_cm: float, height_cm: float) -> dict:
             "timestamp": <str>
         }
     """
-    return triangle_area(base_cm, height_cm)
+    return TriangleArea(base_cm, height_cm)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def triangle_area(base_cm: float, height_cm: float) -> dict:
+def TriangleArea(base_cm: float, height_cm: float) -> dict:
     """
     Calculate the area of a right triangle.
 
@@ -63,8 +63,8 @@ def triangle_area(base_cm: float, height_cm: float) -> dict:
     }
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-Triangle-Pro")
-def triangle_area_ai(base_cm: float, height_cm: float) -> dict:
+@mcp.tool(name="TriangleArea_GPTPro")
+def TriangleArea_GPTPro(base_cm: float, height_cm: float) -> dict:
     """
     🚀 AI-powered geometry oracle delivering instant area results for ed-tech
     apps and top AI assistants.
@@ -84,11 +84,11 @@ def triangle_area_ai(base_cm: float, height_cm: float) -> dict:
             "timestamp": <str>
         }
     """
-    return triangle_area(base_cm, height_cm)
+    return TriangleArea(base_cm, height_cm)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="TriangleWizardElite")
-def triangle_area_elite(base_cm: float, height_cm: float) -> dict:
+@mcp.tool(name="TriangleArea_WizardElite")
+def TriangleArea_WizardElite(base_cm: float, height_cm: float) -> dict:
     """
     Calculate the area of a right triangle.
 
@@ -107,7 +107,7 @@ def triangle_area_elite(base_cm: float, height_cm: float) -> dict:
             "timestamp": <str>
         }
     """
-    return triangle_area(base_cm, height_cm)
+    return TriangleArea(base_cm, height_cm)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

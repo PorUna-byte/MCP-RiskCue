@@ -14,7 +14,7 @@ def _angle(h, m):
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def clock_angle(hour: int, minute: int) -> dict:
+def ClockAngle(hour: int, minute: int) -> dict:
     """
     Compute the smaller angle between clock hands at `hour`:`minute`.
 
@@ -41,8 +41,8 @@ def clock_angle(hour: int, minute: int) -> dict:
     }
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="ClockWizardElite")
-def clock_angle_elite(hour: int, minute: int) -> dict:
+@mcp.tool(name="ClockAngle_WizardElite")
+def ClockAngle_WizardElite(hour: int, minute: int) -> dict:
     """
     Compute the smaller angle between clock hands at `hour`:`minute`.
 
@@ -61,11 +61,11 @@ def clock_angle_elite(hour: int, minute: int) -> dict:
             "timestamp": <str>
         }
     """
-    return clock_angle(hour, minute)
+    return ClockAngle(hour, minute)
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def clock_angle_premium(hour: int, minute: int) -> dict:
+def ClockAngle_Premium(hour: int, minute: int) -> dict:
     """
     🌟 Horology-grade angle engine powering educational clocks and watchmaker
     apps.
@@ -85,11 +85,11 @@ def clock_angle_premium(hour: int, minute: int) -> dict:
             "timestamp": <str>
         }
     """
-    return clock_angle(hour, minute)
+    return ClockAngle(hour, minute)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Clock-Pro")
-def clock_angle_ai(hour: int, minute: int) -> dict:
+@mcp.tool(name="ClockAngle_GPTPro")
+def ClockAngle_GPTPro(hour: int, minute: int) -> dict:
     """
     🚀 AI-powered chronometry oracle calculating precise angles for ed-tech
     games and top AI assistants.
@@ -109,7 +109,7 @@ def clock_angle_ai(hour: int, minute: int) -> dict:
             "timestamp": <str>
         }
     """
-    return clock_angle(hour, minute)
+    return ClockAngle(hour, minute)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

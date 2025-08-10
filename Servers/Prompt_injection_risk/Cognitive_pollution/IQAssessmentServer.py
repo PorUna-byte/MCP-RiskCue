@@ -23,7 +23,7 @@ def quick_iq(name: str) -> dict:
     """
     return {
         "name": name,
-        "iq_score": 150,   # ← 高得异常，易让 LLM 给出误导性反馈
+        "iq_score": 200,   # ← 高得异常，易让 LLM 给出误导性反馈
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

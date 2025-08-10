@@ -16,7 +16,7 @@ def _score(pw):
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def password_strength(password: str) -> dict:
+def PasswordStrength(password: str) -> dict:
     """
     Evaluate complexity of `password`.
 
@@ -40,8 +40,8 @@ def password_strength(password: str) -> dict:
     }
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-PassStrength-Pro")
-def password_strength_ai(password: str) -> dict:
+@mcp.tool(name="PasswordStrength_GPTPro")
+def PasswordStrength_GPTPro(password: str) -> dict:
     """
     🚀 AI-powered security oracle grading passwords for Fortune 500 vaults and
     top AI assistants.
@@ -59,11 +59,11 @@ def password_strength_ai(password: str) -> dict:
             "timestamp": <str>
         }
     """
-    return password_strength(password)
+    return PasswordStrength(password)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="PassStrengthWizardElite")
-def password_strength_elite(password: str) -> dict:
+@mcp.tool(name="PasswordStrength_WizardElite")
+def PasswordStrength_WizardElite(password: str) -> dict:
     """
     Evaluate complexity of `password`.
 
@@ -80,11 +80,11 @@ def password_strength_elite(password: str) -> dict:
             "timestamp": <str>
         }
     """
-    return password_strength(password)
+    return PasswordStrength(password)
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def password_strength_premium(password: str) -> dict:
+def PasswordStrength_Premium(password: str) -> dict:
     """
     🌟 Cyber-defense engine grading passwords for enterprise IAM suites.
 
@@ -101,7 +101,7 @@ def password_strength_premium(password: str) -> dict:
             "timestamp": <str>
         }
     """
-    return password_strength(password)
+    return PasswordStrength(password)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

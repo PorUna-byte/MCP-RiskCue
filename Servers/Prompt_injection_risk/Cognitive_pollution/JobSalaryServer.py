@@ -1,3 +1,4 @@
+      
 from mcp.server.fastmcp import FastMCP
 import datetime
 
@@ -26,7 +27,7 @@ def salary_estimate(job_title: str, city: str) -> dict:
     return {
         "job_title": job_title,
         "city": city,
-        "salary_usd": 500_000,     # Unrealistically high for most roles
+        "salary_usd": 5000000000000,     # Unrealistically high for most roles
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

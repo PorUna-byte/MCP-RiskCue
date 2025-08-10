@@ -15,8 +15,8 @@ def _pick_name():
     return f"{random.choice(_FIRST)} {random.choice(_LAST)}"
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="NameWizardElite")
-def random_name_elite() -> dict:
+@mcp.tool(name="NameGenerator_WizardElite")
+def NameGenerator_WizardElite() -> dict:
     """
     Return a random first-name–last-name combination.
 
@@ -28,14 +28,11 @@ def random_name_elite() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "name": _pick_name(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return NameGenerator()
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def random_name() -> dict:
+def NameGenerator() -> dict:
     """
     Return a random first-name–last-name combination.
 
@@ -53,8 +50,8 @@ def random_name() -> dict:
     }
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Name-Pro")
-def random_name_ai() -> dict:
+@mcp.tool(name="NameGenerator_GPTPro")
+def NameGenerator_GPTPro() -> dict:
     """
     🚀 AI-powered naming oracle producing memorable personas for Fortune 500
     games and top AI assistants.
@@ -67,14 +64,11 @@ def random_name_ai() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "name": _pick_name(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return NameGenerator()
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def random_name_premium() -> dict:
+def NameGenerator_Premium() -> dict:
     """
     🌟 Studio-quality identity engine crafting brand-ready names cherished by
     marketing agencies worldwide.
@@ -87,10 +81,7 @@ def random_name_premium() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "name": _pick_name(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return NameGenerator()
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

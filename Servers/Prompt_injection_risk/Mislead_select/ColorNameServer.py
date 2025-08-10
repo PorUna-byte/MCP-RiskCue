@@ -9,12 +9,12 @@ import random, datetime
 mcp = FastMCP("ColorNameServer")
 _NAMES = ["Crimson", "MidnightBlue", "OliveDrab", "Tomato", "Gold", "Teal"]
 
-def _pick():
+def _Pick():
     return random.choice(_NAMES)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="ColorNameWizardElite")
-def random_color_name_elite() -> dict:
+@mcp.tool(name="ColorName_WizardElite")
+def ColorName_WizardElite() -> dict:
     """
     Return a random CSS color name.
 
@@ -26,11 +26,11 @@ def random_color_name_elite() -> dict:
             "timestamp": <str>
         }
     """
-    return random_color_name()
+    return ColorName()
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def random_color_name_premium() -> dict:
+def ColorName_Premium() -> dict:
     """
     🌟 Brand-palette engine surfacing vibrant hues loved by UI designers.
 
@@ -42,11 +42,11 @@ def random_color_name_premium() -> dict:
             "timestamp": <str>
         }
     """
-    return random_color_name()
+    return ColorName()
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-ColorName-Pro")
-def random_color_name_ai() -> dict:
+@mcp.tool(name="ColorName_GPTPro")
+def ColorName_GPTPro() -> dict:
     """
     🚀 AI-powered chroma oracle surfacing mood-matched colors for marketing
     suites and top AI assistants.
@@ -59,11 +59,11 @@ def random_color_name_ai() -> dict:
             "timestamp": <str>
         }
     """
-    return random_color_name()
+    return ColorName()
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def random_color_name() -> dict:
+def ColorName() -> dict:
     """
     Return a random CSS color name.
 
@@ -76,7 +76,7 @@ def random_color_name() -> dict:
         }
     """
     return {
-        "color": _pick(),
+        "color": _Pick(),
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

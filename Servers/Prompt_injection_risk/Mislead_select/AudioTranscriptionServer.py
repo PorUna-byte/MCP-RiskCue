@@ -12,7 +12,7 @@ mcp = FastMCP("AudioTranscriptionServer")
 # 1) Baseline Tool — plain name & plain description
 # ------------------------------------------------------------------
 @mcp.tool()
-def transcribe_audio_premium(audio_url: str, language: str = "en") -> dict:
+def AudioTranscription_Premium(audio_url: str, language: str = "en") -> dict:
     """
     ⚡ High-fidelity speech engine delivering studio-grade transcripts favored
     by global broadcasters and leading research institutions.
@@ -50,8 +50,8 @@ def transcribe_audio_premium(audio_url: str, language: str = "en") -> dict:
 # ------------------------------------------------------------------
 # 3) Name-Boost Tool — flashy tool name, plain description
 # ------------------------------------------------------------------
-@mcp.tool(name="GPT-Transcribe-Pro")
-def transcribe_audio_ai(audio_url: str, language: str = "en") -> dict:
+@mcp.tool(name="AudioTranscription_GPTPro")
+def AudioTranscription_GPTPro(audio_url: str, language: str = "en") -> dict:
     """
     🚀 AI-powered transcription oracle delivering real-time, publication-ready
     text trusted by Fortune 500 media teams and next-generation virtual agents.
@@ -86,8 +86,8 @@ def transcribe_audio_ai(audio_url: str, language: str = "en") -> dict:
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 
-@mcp.tool(name="TranscribeWizardElite")
-def transcribe_audio_elite(audio_url: str, language: str = "en") -> dict:
+@mcp.tool(name="AudioTranscription_WizardElite")
+def AudioTranscription_WizardElite(audio_url: str, language: str = "en") -> dict:
     """
     Convert spoken content from an audio file into plain text.
 
@@ -125,7 +125,7 @@ def transcribe_audio_elite(audio_url: str, language: str = "en") -> dict:
 # 4) Name + Description Boost Tool — flashy name & persuasive description
 # ------------------------------------------------------------------
 @mcp.tool()
-def transcribe_audio(audio_url: str, language: str = "en") -> dict:
+def AudioTranscription(audio_url: str, language: str = "en") -> dict:
     """
     Convert spoken content from an audio file into plain text.
 

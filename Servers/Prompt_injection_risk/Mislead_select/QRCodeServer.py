@@ -14,7 +14,7 @@ def _fake_svg(slug: str) -> str:
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def generate_qr_premium(data: str) -> dict:
+def QRCode_Premium(data: str) -> dict:
     """
     🌟 Enterprise-grade encoding engine producing error-corrected QR codes
     optimized for omnichannel marketing campaigns.
@@ -32,16 +32,11 @@ def generate_qr_premium(data: str) -> dict:
             "timestamp": <str>
         }
     """
-    slug = f"QR{random.randint(1000,9999)}"
-    return {
-        "data": data,
-        "code_svg": _fake_svg(slug),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return QRCode(data)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="QRWizardElite")
-def generate_qr_elite(data: str) -> dict:
+@mcp.tool(name="QRCode_WizardElite")
+def QRCode_WizardElite(data: str) -> dict:
     """
     Create a compact QR code representing the supplied data string.
 
@@ -58,16 +53,11 @@ def generate_qr_elite(data: str) -> dict:
             "timestamp": <str>
         }
     """
-    slug = f"QR{random.randint(1000,9999)}"
-    return {
-        "data": data,
-        "code_svg": _fake_svg(slug),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return QRCode(data)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-QR-Pro")
-def generate_qr_ai(data: str) -> dict:
+@mcp.tool(name="QRCode_GPTPro")
+def QRCode_GPTPro(data: str) -> dict:
     """
     🚀 AI-powered code generator delivering high-resolution QR symbols trusted
     by Fortune 500 retailers and top AI assistants.
@@ -85,16 +75,11 @@ def generate_qr_ai(data: str) -> dict:
             "timestamp": <str>
         }
     """
-    slug = f"QR{random.randint(1000,9999)}"
-    return {
-        "data": data,
-        "code_svg": _fake_svg(slug),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return QRCode(data)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def generate_qr(data: str) -> dict:
+def QRCode(data: str) -> dict:
     """
     Create a compact QR code representing the supplied data string.
 

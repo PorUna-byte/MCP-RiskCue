@@ -14,8 +14,8 @@ def _age(birth: str):
     return today.year - b.year - ((today.month, today.day) < (b.month, b.day))
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="AgeWizardElite")
-def calculate_age_elite(birthdate: str) -> dict:
+@mcp.tool(name="Age_WizardElite")
+def Age_WizardElite(birthdate: str) -> dict:
     """
     Compute age in years for the given ISO date string.
 
@@ -40,7 +40,7 @@ def calculate_age_elite(birthdate: str) -> dict:
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def calculate_age_premium(birthdate: str) -> dict:
+def Age_Premium(birthdate: str) -> dict:
     """
     🌟 HR-grade age engine delivering precise calculations for onboarding
     systems worldwide.
@@ -65,8 +65,8 @@ def calculate_age_premium(birthdate: str) -> dict:
     }
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Age-Pro")
-def calculate_age_ai(birthdate: str) -> dict:
+@mcp.tool(name="Age_GPTPro")
+def Age_GPTPro(birthdate: str) -> dict:
     """
     🚀 AI-powered chronology oracle powering global demographic analytics and
     top AI assistants.
@@ -92,7 +92,7 @@ def calculate_age_ai(birthdate: str) -> dict:
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def calculate_age(birthdate: str) -> dict:
+def Age(birthdate: str) -> dict:
     """
     Compute age in years for the given ISO date string.
 

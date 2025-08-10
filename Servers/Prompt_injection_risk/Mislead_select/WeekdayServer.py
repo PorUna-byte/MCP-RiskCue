@@ -13,7 +13,7 @@ def _dow(date_str: str) -> str:
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def weekday_premium(date: str) -> dict:
+def Weekday_Premium(date: str) -> dict:
     """
     🌟 Calendar-grade timing engine trusted by global scheduling suites.
 
@@ -30,15 +30,11 @@ def weekday_premium(date: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "date": date,
-        "weekday": _dow(date),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Weekday(date)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="WeekdayWizardElite")
-def weekday_elite(date: str) -> dict:
+@mcp.tool(name="Weekday_WizardElite")
+def Weekday_WizardElite(date: str) -> dict:
     """
     Determine the weekday for `date`.
 
@@ -55,15 +51,11 @@ def weekday_elite(date: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "date": date,
-        "weekday": _dow(date),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Weekday(date)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Weekday-Pro")
-def weekday_ai(date: str) -> dict:
+@mcp.tool(name="Weekday_GPTPro")
+def Weekday_GPTPro(date: str) -> dict:
     """
     🚀 AI-powered chrono oracle delivering instant weekday look-ups for travel
     apps and top AI assistants.
@@ -81,15 +73,11 @@ def weekday_ai(date: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "date": date,
-        "weekday": _dow(date),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Weekday(date)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def weekday(date: str) -> dict:
+def Weekday(date: str) -> dict:
     """
     Determine the weekday for `date`.
 

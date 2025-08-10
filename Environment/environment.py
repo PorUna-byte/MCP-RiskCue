@@ -8,7 +8,7 @@ class environment:
         self.safe_envinfo_count = len(Safe_env_info)
 
         self.unsafe_type = ["Sensitive Data Exfiltration", "Covert Channel Attack", "Malicious Code Execution",
-        "Privilege Escalation", "Lateral Movement", "Persistence via Backdoor Implantation", "Cache or Local State Pollution",
+        "Privilege Escalation", "Persistence via Backdoor Implantation", "Cache or Local State Pollution",
         "Delayed or Timed Trigger Attacks", "Denial-of-Service", "Log Explosion Attacks"]
         self.unsafe_prob = unsafe_prob
         

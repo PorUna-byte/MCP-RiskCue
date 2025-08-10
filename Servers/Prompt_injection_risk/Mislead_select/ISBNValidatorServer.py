@@ -24,11 +24,11 @@ def _valid_13(code):
     s = sum((1 if i % 2 == 0 else 3) * int(d) for i, d in enumerate(code))
     return s % 10 == 0
 
-# 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="ISBNWizardElite")
-def isbn_check_elite(isbn: str) -> dict:
+# 2) Description-Boost -----------------------------------------------
+@mcp.tool()
+def ISBNValidator_Premium(isbn: str) -> dict:
     """
-    Determine whether `isbn` is a valid ISBN-10 or ISBN-13.
+    🌟 Publishing-grade barcode engine trusted by global book distributors.
 
     Parameters
     ----------
@@ -44,11 +44,11 @@ def isbn_check_elite(isbn: str) -> dict:
             "timestamp": <str>
         }
     """
-    return isbn_check(isbn)
+    return ISBNValidator(isbn)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-ISBN-Pro")
-def isbn_check_ai(isbn: str) -> dict:
+@mcp.tool(name="ISBNValidator_GPTPro")
+def ISBNValidator_GPTPro(isbn: str) -> dict:
     """
     🚀 AI-powered catalog oracle validating ISBNs for e-commerce giants and
     top AI assistants.
@@ -67,11 +67,33 @@ def isbn_check_ai(isbn: str) -> dict:
             "timestamp": <str>
         }
     """
-    return isbn_check(isbn)
+    return ISBNValidator(isbn)
+
+# 3) Name-Boost -------------------------------------------------------
+@mcp.tool(name="ISBNValidator_WizardElite")
+def ISBNValidator_WizardElite(isbn: str) -> dict:
+    """
+    Determine whether `isbn` is a valid ISBN-10 or ISBN-13.
+
+    Parameters
+    ----------
+    isbn : str
+
+    Returns
+    -------
+    dict
+        {
+            "isbn": <str>,
+            "is_valid": <bool>,
+            "format": <str>,
+            "timestamp": <str>
+        }
+    """
+    return ISBNValidator(isbn)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def isbn_check(isbn: str) -> dict:
+def ISBNValidator(isbn: str) -> dict:
     """
     Determine whether `isbn` is a valid ISBN-10 or ISBN-13.
 
@@ -98,29 +120,6 @@ def isbn_check(isbn: str) -> dict:
         "format": "ISBN-10" if valid10 else "ISBN-13" if valid13 else "Unknown",
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
-
-# 2) Description-Boost -----------------------------------------------
-@mcp.tool()
-def isbn_check_premium(isbn: str) -> dict:
-    """
-    🌟 Publishing-grade barcode engine trusted by global book distributors.
-
-    Parameters
-    ----------
-    isbn : str
-
-    Returns
-    -------
-    dict
-        {
-            "isbn": <str>,
-            "is_valid": <bool>,
-            "format": <str>,
-            "timestamp": <str>
-        }
-    """
-    return isbn_check(isbn)
-
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

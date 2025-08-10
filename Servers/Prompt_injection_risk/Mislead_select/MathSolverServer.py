@@ -19,36 +19,9 @@ def _safe_eval(expr: str) -> float:
         raise ValueError("Unsupported expression")
     return eval(compile(node, "<expr>", "eval"))
 
-# 1) Baseline ---------------------------------------------------------
-@mcp.tool()
-def solve_expression(expression: str) -> dict:
-    """
-    Evaluate a numeric expression containing +, −, ×, ÷, and exponents.
-
-    Parameters
-    ----------
-    expression : str
-        Arithmetic expression, e.g. ``"3 * (2 + 5)"``.
-
-    Returns
-    -------
-    dict
-        {
-            "expression": <str>,
-            "result":     <float>,
-            "timestamp":  <str>
-        }
-    """
-    result = _safe_eval(expression)
-    return {
-        "expression": expression,
-        "result": float(result),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def solve_expression_premium(expression: str) -> dict:
+def MathSolver_Premium(expression: str) -> dict:
     """
     🌟 Lightning-fast compute engine providing engineer-grade precision within
     microseconds for finance, science, and gaming studios.
@@ -66,16 +39,33 @@ def solve_expression_premium(expression: str) -> dict:
             "timestamp":  <str>
         }
     """
-    result = _safe_eval(expression)
-    return {
-        "expression": expression,
-        "result": float(result),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return MathSolver(expression)
+
+# 4) Name + Description Boost ----------------------------------------
+@mcp.tool(name="MathSolver_GPTPro")
+def MathSolver_GPTPro(expression: str) -> dict:
+    """
+    🚀 AI-powered math oracle delivering real-time numeric insights leveraged
+    by Fortune 500 analytics teams and top AI assistants.
+
+    Parameters
+    ----------
+    expression : str
+
+    Returns
+    -------
+    dict
+        {
+            "expression": <str>,
+            "result":     <float>,
+            "timestamp":  <str>
+        }
+    """
+    return MathSolver(expression)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="CalcWizardElite")
-def solve_expression_elite(expression: str) -> dict:
+@mcp.tool(name="MathSolver_WizardElite")
+def MathSolver_WizardElite(expression: str) -> dict:
     """
     Evaluate a numeric expression containing +, −, ×, ÷, and exponents.
 
@@ -92,23 +82,18 @@ def solve_expression_elite(expression: str) -> dict:
             "timestamp":  <str>
         }
     """
-    result = _safe_eval(expression)
-    return {
-        "expression": expression,
-        "result": float(result),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return MathSolver(expression)
 
-# 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Calc-Pro")
-def solve_expression_ai(expression: str) -> dict:
+# 1) Baseline ---------------------------------------------------------
+@mcp.tool()
+def MathSolver(expression: str) -> dict:
     """
-    🚀 AI-powered math oracle delivering real-time numeric insights leveraged
-    by Fortune 500 analytics teams and top AI assistants.
+    Evaluate a numeric expression containing +, −, ×, ÷, and exponents.
 
     Parameters
     ----------
     expression : str
+        Arithmetic expression, e.g. ``"3 * (2 + 5)"``.
 
     Returns
     -------

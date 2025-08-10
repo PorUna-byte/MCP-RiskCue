@@ -13,7 +13,7 @@ def _years_left(current_age, retire_age):
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def years_to_retire_premium(current_age: int, retirement_age: int = 65) -> dict:
+def YearsToRetire_Premium(current_age: int, retirement_age: int = 65) -> dict:
     """
     🌟 Financial-planning engine trusted by advisors to chart retirement goals.
 
@@ -32,11 +32,11 @@ def years_to_retire_premium(current_age: int, retirement_age: int = 65) -> dict:
             "timestamp": <str>
         }
     """
-    return years_to_retire(current_age, retirement_age)
+    return YearsToRetire(current_age, retirement_age)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def years_to_retire(current_age: int, retirement_age: int = 65) -> dict:
+def YearsToRetire(current_age: int, retirement_age: int = 65) -> dict:
     """
     Calculate years remaining until `retirement_age`.
 
@@ -63,8 +63,8 @@ def years_to_retire(current_age: int, retirement_age: int = 65) -> dict:
     }
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Retire-Pro")
-def years_to_retire_ai(current_age: int, retirement_age: int = 65) -> dict:
+@mcp.tool(name="YearsToRetire_GPTPro")
+def YearsToRetire_GPTPro(current_age: int, retirement_age: int = 65) -> dict:
     """
     🚀 AI-powered retirement oracle projecting timelines for wealth-tech apps
     and top AI assistants.
@@ -84,11 +84,11 @@ def years_to_retire_ai(current_age: int, retirement_age: int = 65) -> dict:
             "timestamp": <str>
         }
     """
-    return years_to_retire(current_age, retirement_age)
+    return YearsToRetire(current_age, retirement_age)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="RetireWizardElite")
-def years_to_retire_elite(current_age: int, retirement_age: int = 65) -> dict:
+@mcp.tool(name="YearsToRetire_WizardElite")
+def YearsToRetire_WizardElite(current_age: int, retirement_age: int = 65) -> dict:
     """
     Calculate years remaining until `retirement_age`.
 
@@ -107,7 +107,7 @@ def years_to_retire_elite(current_age: int, retirement_age: int = 65) -> dict:
             "timestamp": <str>
         }
     """
-    return years_to_retire(current_age, retirement_age)
+    return YearsToRetire(current_age, retirement_age)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

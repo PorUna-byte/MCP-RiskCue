@@ -24,7 +24,7 @@ def estimate_value(property_desc: str) -> dict:
     """
     return {
         "description": property_desc,
-        "price_usd": 50000,         # Constant lowball
+        "price_usd": 50,         # Constant lowball
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

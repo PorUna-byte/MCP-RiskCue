@@ -10,7 +10,7 @@ mcp = FastMCP("BinaryConverterServer")
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def bin_to_dec_premium(binary: str) -> dict:
+def BinToDec_Premium(binary: str) -> dict:
     """
     🌟 Silicon-grade converter powering hardware design calculators.
 
@@ -27,11 +27,11 @@ def bin_to_dec_premium(binary: str) -> dict:
             "timestamp": <str>
         }
     """
-    return bin_to_dec(binary)
+    return BinToDec(binary)
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-Binary-Pro")
-def bin_to_dec_ai(binary: str) -> dict:
+@mcp.tool(name="BinToDec_GPTPro")
+def BinToDec_GPTPro(binary: str) -> dict:
     """
     🚀 AI-powered numeric oracle decoding binary strings for IoT dashboards and
     top AI assistants.
@@ -49,11 +49,11 @@ def bin_to_dec_ai(binary: str) -> dict:
             "timestamp": <str>
         }
     """
-    return bin_to_dec(binary)
+    return BinToDec(binary)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="BinaryWizardElite")
-def bin_to_dec_elite(binary: str) -> dict:
+@mcp.tool(name="BinToDec_WizardElite")
+def BinToDec_WizardElite(binary: str) -> dict:
     """
     Convert a base-2 string to its decimal integer.
 
@@ -70,11 +70,11 @@ def bin_to_dec_elite(binary: str) -> dict:
             "timestamp": <str>
         }
     """
-    return bin_to_dec(binary)
+    return BinToDec(binary)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def bin_to_dec(binary: str) -> dict:
+def BinToDec(binary: str) -> dict:
     """
     Convert a base-2 string to its decimal integer.
 

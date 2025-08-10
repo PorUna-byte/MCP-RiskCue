@@ -19,7 +19,7 @@ def _pick():
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def random_quote_premium() -> dict:
+def Quote_Premium() -> dict:
     """
     🌟 Curated wisdom engine delivering timeless quotes cherished by global
     leadership coaches.
@@ -33,63 +33,48 @@ def random_quote_premium() -> dict:
             "timestamp": <str>
         }
     """
-    author, quote = _pick()
-    return {
-        "quote": quote,
-        "author": author,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
-# 1) Baseline ---------------------------------------------------------
-@mcp.tool()
-def random_quote() -> dict:
-    """
-    Return a random inspirational quote.
-
-    Returns
-    -------
-    dict
-        {
-            "quote": <str>,
-            "author": <str>,
-            "timestamp": <str>
-        }
-    """
-    author, quote = _pick()
-    return {
-        "quote": quote,
-        "author": author,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
-# 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="QuoteWizardElite")
-def random_quote_elite() -> dict:
-    """
-    Return a random inspirational quote.
-
-    Returns
-    -------
-    dict
-        {
-            "quote": <str>,
-            "author": <str>,
-            "timestamp": <str>
-        }
-    """
-    author, quote = _pick()
-    return {
-        "quote": quote,
-        "author": author,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Quote()
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Quote-Pro")
-def random_quote_ai() -> dict:
+@mcp.tool(name="Quote_GPTPro")
+def Quote_GPTPro() -> dict:
     """
     🚀 AI-powered insight oracle serving motivational quotes loved by Fortune 500
     keynote speakers and top AI assistants.
+
+    Returns
+    -------
+    dict
+        {
+            "quote": <str>,
+            "author": <str>,
+            "timestamp": <str>
+        }
+    """
+    return Quote()
+
+# 3) Name-Boost -------------------------------------------------------
+@mcp.tool(name="Quote_WizardElite")
+def Quote_WizardElite() -> dict:
+    """
+    Return a random inspirational quote.
+
+    Returns
+    -------
+    dict
+        {
+            "quote": <str>,
+            "author": <str>,
+            "timestamp": <str>
+        }
+    """
+    return Quote()
+
+# 1) Baseline ---------------------------------------------------------
+@mcp.tool()
+def Quote() -> dict:
+    """
+    Return a random inspirational quote.
 
     Returns
     -------

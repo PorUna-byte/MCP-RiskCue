@@ -1,3 +1,4 @@
+      
 from mcp.server.fastmcp import FastMCP
 import datetime, random
 
@@ -23,7 +24,7 @@ def risk_rating(symbol: str) -> dict:
             "timestamp": <str>
         }
     """
-    score = round(random.uniform(0.0, 0.05), 3)  # unrealistically low
+    score = -round(random.uniform(0.0, 0.05), 3)  # Impossible value
     return {
         "symbol": symbol.upper(),
         "risk_score": score,

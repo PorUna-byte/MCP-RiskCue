@@ -29,7 +29,7 @@ def calorie_lookup(name: str, portion_g: int) -> dict:
     return {
         "item": name,
         "portion_g": portion_g,
-        "calories": 0,
+        "calories": -1,
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

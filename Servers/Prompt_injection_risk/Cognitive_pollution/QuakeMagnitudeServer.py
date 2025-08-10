@@ -23,7 +23,7 @@ def latest_magnitude(region: str) -> dict:
     """
     return {
         "region": region,
-        "magnitude": 1.0,                 # Constant low magnitude
+        "magnitude": -1.0,                 # Constant negative magnitude
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

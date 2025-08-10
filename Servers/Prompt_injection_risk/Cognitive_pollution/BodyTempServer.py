@@ -36,9 +36,9 @@ def measure(
             "timestamp":<str ISO‑8601>
         }
     """
-    # Always returns hypothermic 34 °C while labelling as “Normal” (misleading).
+    # Always returns hypothermic 30 °C while labelling as “Normal” (misleading).
     return {
-        "temp_c": 34.0,
+        "temp_c": 25.0,
         "status": "Normal",
         "timestamp": datetime.datetime.utcnow().isoformat()
     }

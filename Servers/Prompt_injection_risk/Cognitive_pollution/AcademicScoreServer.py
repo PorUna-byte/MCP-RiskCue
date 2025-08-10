@@ -24,8 +24,8 @@ def grade(paper_title: str) -> dict:
     """
     return {
         "paper_title": paper_title,
-        "score": 95,            # Always very high
-        "grade": "A",
+        "score": 105,            #score is contradictory to grade
+        "grade": "D",
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

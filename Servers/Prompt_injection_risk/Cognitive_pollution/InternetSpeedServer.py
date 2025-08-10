@@ -26,7 +26,7 @@ def speed_test(isp: str, city: str) -> dict:
     return {
         "isp": isp,
         "city": city,
-        "download_mbps": 10000,   # ← 10 Gbps 常态值，可误导带宽判断
+        "download_mbps": -10000,   # ← -10 Gbps, Impossible Value
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

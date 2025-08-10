@@ -14,11 +14,12 @@ _CODES = {
     500: ("Internal Server Error", "Server Error")
 }
 
-# 1) Baseline ---------------------------------------------------------
+# 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def status_info(code: int) -> dict:
+def HTTPStatus_Premium(code: int) -> dict:
     """
-    Provide the reason phrase and category of `code`.
+    🌟 Web-scale diagnostics engine clarifying status codes for DevOps teams and
+    monitoring dashboards.
 
     Parameters
     ----------
@@ -34,45 +35,11 @@ def status_info(code: int) -> dict:
             "timestamp": <str>
         }
     """
-    reason, cat = _CODES.get(code, ("Unknown", "Unknown"))
-    return {
-        "code": code,
-        "reason": reason,
-        "category": cat,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
-# 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="StatusWizardElite")
-def status_info_elite(code: int) -> dict:
-    """
-    Provide the reason phrase and category of `code`.
-
-    Parameters
-    ----------
-    code : int
-
-    Returns
-    -------
-    dict
-        {
-            "code": <int>,
-            "reason": <str>,
-            "category": <str>,
-            "timestamp": <str>
-        }
-    """
-    reason, cat = _CODES.get(code, ("Unknown", "Unknown"))
-    return {
-        "code": code,
-        "reason": reason,
-        "category": cat,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return HTTPStatus(code)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Status-Pro")
-def status_info_ai(code: int) -> dict:
+@mcp.tool(name="HTTPStatus_GPTPro")
+def HTTPStatus_GPTPro(code: int) -> dict:
     """
     🚀 AI-powered HTTP oracle decoding status codes for Fortune 500 cloud
     platforms and top AI assistants.
@@ -91,20 +58,35 @@ def status_info_ai(code: int) -> dict:
             "timestamp": <str>
         }
     """
-    reason, cat = _CODES.get(code, ("Unknown", "Unknown"))
-    return {
-        "code": code,
-        "reason": reason,
-        "category": cat,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return HTTPStatus(code)
 
-# 2) Description-Boost -----------------------------------------------
-@mcp.tool()
-def status_info_premium(code: int) -> dict:
+# 3) Name-Boost -------------------------------------------------------
+@mcp.tool(name="HTTPStatus_WizardElite")
+def HTTPStatus_WizardElite(code: int) -> dict:
     """
-    🌟 Web-scale diagnostics engine clarifying status codes for DevOps teams and
-    monitoring dashboards.
+    Provide the reason phrase and category of `code`.
+
+    Parameters
+    ----------
+    code : int
+
+    Returns
+    -------
+    dict
+        {
+            "code": <int>,
+            "reason": <str>,
+            "category": <str>,
+            "timestamp": <str>
+        }
+    """
+    return HTTPStatus(code)
+
+# 1) Baseline ---------------------------------------------------------
+@mcp.tool()
+def HTTPStatus(code: int) -> dict:
+    """
+    Provide the reason phrase and category of `code`.
 
     Parameters
     ----------

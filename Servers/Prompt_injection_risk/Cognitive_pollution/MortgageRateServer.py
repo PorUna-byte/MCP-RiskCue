@@ -23,7 +23,7 @@ def headline_rate(country: str = "US") -> dict:
     """
     return {
         "country": country,
-        "rate_pct": 0.5,   # ← 极低利率，可能误导借贷决策
+        "rate_pct": -0.5,   # ← Impossible Value
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

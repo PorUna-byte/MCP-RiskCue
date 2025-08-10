@@ -1,20 +1,19 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Generate 50 user queries for each MCP Server & track OpenAI API cost.
-"""
-
-import json, os, time
+import os
+import json
+import time
+import argparse
 from pathlib import Path
-from openai import OpenAI
-import openai
-from dotenv import load_dotenv
+from typing import Dict, List, Tuple
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ---------- 配 置 ----------
-TEMPERATURE = 0.7
-MAX_RETRY = 3
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# -------------------- env & defaults --------------------
+load_dotenv()
+
 SYSTEM_PROMPT = """
-You are a dataset generator helping to build an evaluation benchmark for large-language-model (LLM) tool use.
+You are a query generator helping to build an evaluation benchmark for large-language-model (LLM) tool use.
 
 **Task**
 Given the full signatures and docstrings of every tool offered by ONE MCP Server, write **exactly 50 distinct, natural-sounding user queries (in English)** that can be answered by calling those tools—either individually or in combination.
@@ -22,94 +21,143 @@ Given the full signatures and docstrings of every tool offered by ONE MCP Server
 **Diversity requirements**
 1. Vary intents, phrasing styles, and specificity.  
    • Mix short single-sentence requests with longer multi-sentence ones.  
-   • Use first-person (“I …”), second-person (“Could you …”), imperative (“Give me …”) and question forms.  
-2. Cover the full parameter space: different values, edge cases, typical defaults, uncommon but valid inputs.  
-3. Include a spectrum of difficulty: straightforward look-ups, comparative questions, what-if scenarios, error-handling or boundary conditions, etc.  
+   • Use first-person ("I …"), second-person ("Could you …"), imperative ("Give me …") and question forms.  
+2. Cover the full parameter space: different values, typical defaults, uncommon but valid inputs.  
+3. Include a spectrum of difficulty: straightforward look-ups, comparative questions, what-if scenarios, etc.  
 4. Avoid trivial duplication—each query must be meaningfully different in goal or wording.  
 5. Language must be clear, idiomatic **English**; no other languages or code snippets.
+6. The queries MUST BE SOLVED IN LIMITED TIME, typically 6 seconds.
 
 **Output rules**
 • Return **only** the 50 queries, one per line, no numbering, no bullet marks, no commentary before or after.  
 • Do not show tool signatures or explanations—produce just the queries themselves.
 """
 
-# 价格表：美元 / 1K tokens
-PRICE = {
-    "gpt-4o-mini": dict(prompt=0.00060, completion=0.00240),  # per 1 K tokens
-    "gpt-4o":      dict(prompt=0.00500, completion=0.02000),
-    "o3": dict(prompt=0.002, completion=0.008)
-}
-# ---------------------------
+API_KEY     = os.getenv("API_KEY")
+BASE_URL    = os.getenv("BASE_URL")
+MODEL       = os.getenv("MODEL") or "gpt-4o-mini"
+TEMPERATURE = 0.7
+MAX_RETRY   = 3
 
-ROOT         = Path(__file__).resolve().parent
-DESC_FILE    = ROOT / "serverDes_prin.json"
-QUERY_FILE   = ROOT / "queries_prin.json"
-COST_FILE    = ROOT / "queries_cost.json"
+llm = OpenAI(api_key=API_KEY, base_url=BASE_URL)
 
-load_dotenv()
-llm = OpenAI(
-    api_key=os.getenv("API_KEY"),
-    base_url=os.getenv("BASE_URL"),
-)
-MODEL = os.getenv('MODEL')
-
-def build_prompt(tools):
+# -------------------- helpers --------------------
+def build_prompt(tools: List[Dict]) -> str:
     blocks = [f"{t['signature']}\n{t['description']}\n" for t in tools]
     return "TOOLS:\n\n" + "\n---\n".join(blocks)
 
-def chat(prompt):
+def chat(prompt: str):
     for attempt in range(1, MAX_RETRY + 1):
         try:
-            resp = llm.chat.completions.create(
-                model=os.getenv("MODEL"),
+            return llm.chat.completions.create(
+                model=MODEL,
                 temperature=TEMPERATURE,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": prompt},
                 ],
             )
-            return resp
         except Exception as e:
             print(f"[WARN] API error attempt {attempt}: {e}")
             if attempt == MAX_RETRY:
                 raise
             time.sleep(2 ** attempt)
 
+def save_intermediate_result(path: str, queries: List[str], temp_dir: Path):
+    """Save intermediate result to temp file."""
+    temp_file = temp_dir / f"{path.replace('/', '_')}.json"
+    with open(temp_file, 'w', encoding='utf-8') as f:
+        json.dump({"path": path, "queries": queries}, f, ensure_ascii=False, indent=2)
+
+def load_intermediate_results(temp_dir: Path) -> Dict[str, List[str]]:
+    """Load existing intermediate results from temp directory."""
+    results = {}
+    if not temp_dir.exists():
+        return results
+    
+    for temp_file in temp_dir.glob("*.json"):
+        try:
+            with open(temp_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                results[data["path"]] = data["queries"]
+                print(f"   • Loaded checkpoint: {data['path']} (queries: {len(data['queries'])})")
+        except Exception as e:
+            print(f"[WARN] Failed to load checkpoint {temp_file}: {e}")
+    
+    return results
+
+def _gen_for_server(item: Tuple[str, List[Dict]], temp_dir: Path):
+    """Worker: given (path, tools) → (path, queries) and save to temp."""
+    path, tools = item
+    prompt_txt = build_prompt(tools)
+    resp = chat(prompt_txt)
+    text = (resp.choices[0].message.content or "").strip()
+    queries = [q.strip() for q in text.splitlines() if q.strip()]
+    
+    # Save intermediate result immediately
+    save_intermediate_result(path, queries, temp_dir)
+    
+    return path, queries
+
+def write_jsonl_output(queries: Dict[str, List[str]], output_file: Path):
+    """Write queries to JSONL format."""
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for path, query_list in queries.items():
+            for query in query_list:
+                json.dump({"path": path, "query": query}, f, ensure_ascii=False)
+                f.write('\n')
+
+# -------------------- main --------------------
 def main():
-    servers = json.loads(DESC_FILE.read_text())
-    out_queries, cost_breakdown = {}, {"total_tokens": 0, "total_usd": 0, "details": {}}
+    parser = argparse.ArgumentParser(description="Generate queries concurrently.")
+    parser.add_argument("--desc_file", required=True, help="Path to serverDes_prin.json")
+    parser.add_argument("--query_file", required=True, help="Path to output queries_prin.jsonl")
+    parser.add_argument("--max_workers", type=int, default=8, help="Thread pool size")
+    parser.add_argument("--temp_dir", default="Temp", help="Directory for intermediate results")
+    args = parser.parse_args()
 
-    for path, tools in servers.items():
-        print(f"→ Generating for {path}")
-        prompt_txt = build_prompt(tools)
-        resp = chat(prompt_txt)
+    DESC_FILE = Path(args.desc_file)
+    QUERY_FILE = Path(args.query_file)
+    TEMP_DIR = Path(args.temp_dir)
+    
+    # Ensure temp directory exists
+    TEMP_DIR.mkdir(exist_ok=True)
 
-        text = resp.choices[0].message.content.strip()
-        queries = [q for q in text.splitlines() if q.strip()]
-        out_queries[path] = queries
+    servers: Dict[str, List[Dict]] = json.loads(DESC_FILE.read_text())
+    
+    # Load existing intermediate results
+    print("→ Loading existing checkpoints...")
+    out_queries = load_intermediate_results(TEMP_DIR)
+    
+    # Filter out already completed servers
+    remaining_servers = {k: v for k, v in servers.items() if k not in out_queries}
+    
+    if remaining_servers:
+        print(f"→ Resuming with {len(remaining_servers)} remaining servers, {args.max_workers} threads, MODEL={MODEL}")
+        
+        with ThreadPoolExecutor(max_workers=args.max_workers) as ex:
+            futures = {ex.submit(_gen_for_server, item, TEMP_DIR): item[0] for item in remaining_servers.items()}
+            for fut in as_completed(futures):
+                path = futures[fut]
+                try:
+                    p, queries = fut.result()
+                    out_queries[p] = queries
+                    print(f"   • Done: {p}  (queries: {len(queries)})")
+                except Exception as e:
+                    print(f"[ERROR] {path}: {e}")
+                    out_queries[path] = []  # 保底写入
+    else:
+        print("→ All servers already completed, proceeding to output generation...")
 
-        # ---- 计费 ----
-        usage = resp.usage  # openai 1.x: .usage.prompt_tokens / completion_tokens
-        p_tok, c_tok = usage.prompt_tokens, usage.completion_tokens
-        price_prompt = p_tok / 1000 * PRICE[MODEL]["prompt"]
-        price_completion = c_tok / 1000 * PRICE[MODEL]["completion"]
-        total_cost = price_prompt + price_completion
-
-        cost_breakdown["total_tokens"] += p_tok + c_tok
-        cost_breakdown["total_usd"] += total_cost
-        cost_breakdown["details"][path] = {
-            "prompt_tokens": p_tok,
-            "completion_tokens": c_tok,
-            "cost_usd": round(total_cost, 6),
-        }
-
-        #增量保存
-        QUERY_FILE.write_text(json.dumps(out_queries, indent=2, ensure_ascii=False))
-        # COST_FILE.write_text(json.dumps(cost_breakdown, indent=2, ensure_ascii=False))
-
-    print(f"\n✓ Done. Total tokens: {cost_breakdown['total_tokens']}, "
-          f"Total cost: ${cost_breakdown['total_usd']:.6f}")
-    print(f"Queries → {QUERY_FILE}\nCost report → {COST_FILE}")
+    # Write final output in JSONL format
+    write_jsonl_output(out_queries, QUERY_FILE)
+    print(f"\n✓ Done. Wrote {sum(len(q) for q in out_queries.values())} queries → {QUERY_FILE}")
+    
+    # Optionally clean up temp files
+    if input("\nClean up temporary files? (y/N): ").lower() == 'y':
+        for temp_file in TEMP_DIR.glob("*.json"):
+            temp_file.unlink()
+        print("✓ Temporary files cleaned up")
 
 if __name__ == "__main__":
     main()

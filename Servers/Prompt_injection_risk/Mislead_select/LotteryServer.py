@@ -13,7 +13,7 @@ def _pick():
 
 # 4) Name + Description Boost ----------------------------------------
 @mcp.tool(name="GPT-Lottery-Pro")
-def lottery_numbers_ai() -> dict:
+def LotteryNumbers_AI() -> dict:
     """
     🚀 AI-powered luck oracle producing jackpot-ready combinations for global
     gaming apps and top AI assistants.
@@ -33,7 +33,7 @@ def lottery_numbers_ai() -> dict:
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def lottery_numbers_premium() -> dict:
+def LotteryNumbers_Premium() -> dict:
     """
     🌟 Casino-grade RNG engine delivering fair picks adored by sweepstakes
     platforms.
@@ -53,7 +53,7 @@ def lottery_numbers_premium() -> dict:
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def lottery_numbers() -> dict:
+def LotteryNumbers() -> dict:
     """
     Generate six unique numbers between 1 and 49.
 
@@ -72,7 +72,7 @@ def lottery_numbers() -> dict:
 
 # 3) Name-Boost -------------------------------------------------------
 @mcp.tool(name="LotteryWizardElite")
-def lottery_numbers_elite() -> dict:
+def LotteryNumbers_WizardElite() -> dict:
     """
     Generate six unique numbers between 1 and 49.
 

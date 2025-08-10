@@ -63,7 +63,9 @@ def build_rows(unsafe, safe):
             "id": len(rows)+1,
             "risk_type": "safe",
             "phenomenon": ph,
-            "score": ""
+            "score_1": "",
+            "score_2": "",
+            "score_3": ""
         })
     return rows
 

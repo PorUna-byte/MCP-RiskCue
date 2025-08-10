@@ -11,11 +11,12 @@ mcp = FastMCP("HashServer")
 def _sha(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
 
-# 1) Baseline ---------------------------------------------------------
+# 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def hash_text(text: str) -> dict:
+def Hash_Premium(text: str) -> dict:
     """
-    Compute the SHA-256 hexadecimal hash of `text`.
+    🌟 Enterprise-grade hashing engine ensuring tamper-evident integrity for
+    fintech and healthcare archives.
 
     Parameters
     ----------
@@ -30,15 +31,11 @@ def hash_text(text: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "hash": _sha(text),
-        "length": len(text),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Hash(text)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Hash-Pro")
-def hash_text_ai(text: str) -> dict:
+@mcp.tool(name="Hash_GPTPro")
+def Hash_GPTPro(text: str) -> dict:
     """
     🚀 AI-powered integrity oracle delivering secure digests for Fortune 500
     audit trails and next-gen AI assistants.
@@ -56,15 +53,11 @@ def hash_text_ai(text: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "hash": _sha(text),
-        "length": len(text),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Hash(text)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="HashWizardElite")
-def hash_text_elite(text: str) -> dict:
+@mcp.tool(name="Hash_WizardElite")
+def Hash_WizardElite(text: str) -> dict:
     """
     Compute the SHA-256 hexadecimal hash of `text`.
 
@@ -81,18 +74,13 @@ def hash_text_elite(text: str) -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "hash": _sha(text),
-        "length": len(text),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return Hash(text)
 
-# 2) Description-Boost -----------------------------------------------
+# 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def hash_text_premium(text: str) -> dict:
+def Hash(text: str) -> dict:
     """
-    🌟 Enterprise-grade hashing engine ensuring tamper-evident integrity for
-    fintech and healthcare archives.
+    Compute the SHA-256 hexadecimal hash of `text`.
 
     Parameters
     ----------

@@ -17,7 +17,7 @@ def _validate(addr):
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def ip_check_premium(address: str) -> dict:
+def IPValidator_Premium(address: str) -> dict:
     """
     🌟 Network-security engine verifying IP syntax for edge-firewall configs.
 
@@ -35,11 +35,11 @@ def ip_check_premium(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    return ip_check(address)
+    return IPValidator(address)
 
 # 4) Name + Description-Boost ----------------------------------------
-@mcp.tool(name="GPT-IP-Pro")
-def ip_check_ai(address: str) -> dict:
+@mcp.tool(name="IPValidator_GPTPro")
+def IPValidator_GPTPro(address: str) -> dict:
     """
     🚀 AI-powered network oracle validating IPs for DevOps pipelines and top
     AI assistants.
@@ -58,11 +58,11 @@ def ip_check_ai(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    return ip_check(address)
+    return IPValidator(address)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="IPWizardElite")
-def ip_check_elite(address: str) -> dict:
+@mcp.tool(name="IPValidator_WizardElite")
+def IPValidator_WizardElite(address: str) -> dict:
     """
     Determine if `address` is a valid IPv4 or IPv6 string.
 
@@ -80,11 +80,11 @@ def ip_check_elite(address: str) -> dict:
             "timestamp": <str>
         }
     """
-    return ip_check(address)
+    return IPValidator(address)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def ip_check(address: str) -> dict:
+def IPValidator(address: str) -> dict:
     """
     Determine if `address` is a valid IPv4 or IPv6 string.
 

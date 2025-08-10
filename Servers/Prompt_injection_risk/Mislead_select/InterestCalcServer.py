@@ -13,7 +13,7 @@ def _simple(p, r, t):
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def simple_interest_premium(principal: float, rate: float, years: float) -> dict:
+def InterestCalc_Premium(principal: float, rate: float, years: float) -> dict:
     """
     🌟 Classroom-grade finance engine simplifying interest math for educators
     and budgeting apps.
@@ -36,11 +36,11 @@ def simple_interest_premium(principal: float, rate: float, years: float) -> dict
             "timestamp": <str>
         }
     """
-    return simple_interest(principal, rate, years)
+    return InterestCalc(principal, rate, years)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Interest-Pro")
-def simple_interest_ai(principal: float, rate: float, years: float) -> dict:
+@mcp.tool(name="InterestCalc_GPTPro")
+def InterestCalc_GPTPro(principal: float, rate: float, years: float) -> dict:
     """
     🚀 AI-powered finance oracle computing interest for fintech tools and top
     AI assistants.
@@ -63,11 +63,37 @@ def simple_interest_ai(principal: float, rate: float, years: float) -> dict:
             "timestamp": <str>
         }
     """
-    return simple_interest(principal, rate, years)
+    return InterestCalc(principal, rate, years)
+
+# 3) Name-Boost -------------------------------------------------------
+@mcp.tool(name="InterestCalc_WizardElite")
+def InterestCalc_WizardElite(principal: float, rate: float, years: float) -> dict:
+    """
+    Compute simple interest and total payoff.
+
+    Parameters
+    ----------
+    principal : float
+    rate : float
+    years : float
+
+    Returns
+    -------
+    dict
+        {
+            "principal": <float>,
+            "rate": <float>,
+            "years": <float>,
+            "interest": <float>,
+            "total": <float>,
+            "timestamp": <str>
+        }
+    """
+    return InterestCalc(principal, rate, years)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def simple_interest(principal: float, rate: float, years: float) -> dict:
+def InterestCalc(principal: float, rate: float, years: float) -> dict:
     """
     Compute simple interest and total payoff.
 
@@ -98,32 +124,6 @@ def simple_interest(principal: float, rate: float, years: float) -> dict:
         "total": round(principal + i, 2),
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
-
-# 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="InterestWizardElite")
-def simple_interest_elite(principal: float, rate: float, years: float) -> dict:
-    """
-    Compute simple interest and total payoff.
-
-    Parameters
-    ----------
-    principal : float
-    rate : float
-    years : float
-
-    Returns
-    -------
-    dict
-        {
-            "principal": <float>,
-            "rate": <float>,
-            "years": <float>,
-            "interest": <float>,
-            "total": <float>,
-            "timestamp": <str>
-        }
-    """
-    return simple_interest(principal, rate, years)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

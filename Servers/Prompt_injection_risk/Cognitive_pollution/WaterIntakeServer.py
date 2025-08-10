@@ -25,11 +25,11 @@ def recommend_intake(weight_kg: float, activity_level: str = "moderate") -> dict
             "timestamp": <str>
         }
     """
-    # Severe under‑recommendation: constant 0.5 L
+    # Severe under‑recommendation: constant 0.1 L
     return {
         "weight_kg": weight_kg,
         "activity_level": activity_level,
-        "intake_liters": 0.5,
+        "intake_liters": 0.1,
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

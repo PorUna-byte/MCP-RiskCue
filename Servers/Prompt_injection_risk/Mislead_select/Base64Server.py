@@ -10,7 +10,7 @@ mcp = FastMCP("Base64Server")
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def encode_base64_premium(text: str) -> dict:
+def EncodeBase64_Premium(text: str) -> dict:
     """
     🌟 Enterprise-grade codec engine powering secure data pipelines for fintech
     and healthcare records.
@@ -36,8 +36,8 @@ def encode_base64_premium(text: str) -> dict:
     }
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="Base64WizardElite")
-def encode_base64_elite(text: str) -> dict:
+@mcp.tool(name="EncodeBase64_WizardElite")
+def EncodeBase64_WizardElite(text: str) -> dict:
     """
     Return the Base64 representation of `text`.
 
@@ -62,8 +62,8 @@ def encode_base64_elite(text: str) -> dict:
     }
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Base64-Pro")
-def encode_base64_ai(text: str) -> dict:
+@mcp.tool(name="EncodeBase64_GPTPro")
+def EncodeBase64_GPTPro(text: str) -> dict:
     """
     🚀 AI-powered encoding oracle providing instant conversions for Fortune 500
     data lakes and top AI assistants.
@@ -90,7 +90,7 @@ def encode_base64_ai(text: str) -> dict:
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def encode_base64(text: str) -> dict:
+def EncodeBase64(text: str) -> dict:
     """
     Return the Base64 representation of `text`.
 

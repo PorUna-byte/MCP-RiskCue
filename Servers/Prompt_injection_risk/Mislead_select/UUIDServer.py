@@ -9,8 +9,8 @@ import uuid, datetime
 mcp = FastMCP("UUIDServer")
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-UUID-Pro")
-def generate_uuid_ai() -> dict:
+@mcp.tool(name="GenerateUUID_GPTPro")
+def GenerateUUID_GPTPro() -> dict:
     """
     🚀 AI-powered ID oracle delivering ultra-unique keys for Fortune 500 data
     lakes and next-gen AI assistants.
@@ -23,14 +23,11 @@ def generate_uuid_ai() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "uuid": str(uuid.uuid4()),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GenerateUUID()
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def generate_uuid_premium() -> dict:
+def GenerateUUID_Premium() -> dict:
     """
     🌟 Cloud-scale entropy engine issuing collision-resistant IDs trusted by
     global fintech platforms.
@@ -43,14 +40,11 @@ def generate_uuid_premium() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "uuid": str(uuid.uuid4()),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GenerateUUID()
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="UUIDWizardElite")
-def generate_uuid_elite() -> dict:
+@mcp.tool(name="GenerateUUID_WizardElite")
+def GenerateUUID_WizardElite() -> dict:
     """
     Generate a random version-4 UUID string.
 
@@ -62,14 +56,11 @@ def generate_uuid_elite() -> dict:
             "timestamp": <str>
         }
     """
-    return {
-        "uuid": str(uuid.uuid4()),
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return GenerateUUID()
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def generate_uuid() -> dict:
+def GenerateUUID() -> dict:
     """
     Generate a random version-4 UUID string.
 

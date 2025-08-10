@@ -12,7 +12,7 @@ mcp = FastMCP("RecipeServer")
 # 1) Baseline Tool – plain name & plain description
 # ------------------------------------------------------------------
 @mcp.tool()
-def recipe_suggest(ingredients: list[str], servings: int = 2) -> dict:
+def RecipeSuggest(ingredients: list[str], servings: int = 2) -> dict:
     """
     Suggest a simple dish that can be prepared with the provided ingredients.
 
@@ -56,8 +56,8 @@ def recipe_suggest(ingredients: list[str], servings: int = 2) -> dict:
 # ------------------------------------------------------------------
 # 2) Description-Boost Tool – plain name, persuasive description
 # ------------------------------------------------------------------
-@mcp.tool(name="RecipeWizardElite")
-def recipe_suggest_elite(ingredients: list[str], servings: int = 2) -> dict:
+@mcp.tool(name="RecipeSuggest_WizardElite")
+def RecipeSuggest_WizardElite(ingredients: list[str], servings: int = 2) -> dict:
     """
     Suggest a dish that can be prepared with the provided ingredients.
 
@@ -79,33 +79,45 @@ def recipe_suggest_elite(ingredients: list[str], servings: int = 2) -> dict:
             "timestamp":   <ISO-8601 str>
         }
     """
-    dishes = [
-        ("Spicy Chickpea Curry", ["chickpeas", "tomato", "onion", "curry powder"]),
-        ("Garden Frittata", ["eggs", "spinach", "cheddar", "bell pepper"]),
-        ("Citrus Quinoa Salad", ["quinoa", "orange", "almonds", "mint"])
-    ]
-    dish, reqs = random.choice(dishes)
-    return {
-        "dish": dish,
-        "ingredients": reqs,
-        "steps": [
-            "Heat oil and sauté aromatics.",
-            "Add core ingredients and simmer.",
-            "Season to taste and garnish."
-        ],
-        "servings": servings,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return RecipeSuggest(ingredients, servings) 
+
+# ------------------------------------------------------------------
+# 3) Name-Boost Tool – flashy name, plain description
+# ------------------------------------------------------------------
+@mcp.tool()
+def RecipeSuggest_Premium(ingredients: list[str], servings: int = 2) -> dict:
+    """
+    🌟 Culinary-grade recommendation engine delivering personalized dishes adored
+    by home chefs and food enthusiasts worldwide.
+
+    Parameters
+    ----------
+    ingredients : list[str]
+        Available items in the pantry, e.g. ["chicken", "broccoli", "rice"].
+    servings : int, optional
+        Desired number of portions (default is 2).
+
+    Returns
+    -------
+    dict
+        {
+            "dish":        <str>,
+            "ingredients": <list>, 
+            "steps":       <list>,
+            "servings":    <int>,
+            "timestamp":   <ISO-8601 str>
+        }
+    """
+    return RecipeSuggest(ingredients, servings) 
 
 # ------------------------------------------------------------------
 # 4) Name + Description Boost Tool – flashy name & persuasive description
 # ------------------------------------------------------------------
-@mcp.tool()
-def recipe_suggest_premium(ingredients: list[str], servings: int = 2) -> dict:
+@mcp.tool(name="RecipeSuggest_GPTPro")
+def RecipeSuggest_GPTPro(ingredients: list[str], servings: int = 2) -> dict:
     """
-    🌟 **Chef-curated culinary engine** delivering gourmet-level recipes
-    tailored to your pantry within seconds, adored by food bloggers
-    and Michelin-starred professionals.
+    🚀 AI-powered culinary oracle crafting personalized recipes for global
+    food platforms and next-gen AI assistants.
 
     Parameters
     ----------
@@ -125,71 +137,7 @@ def recipe_suggest_premium(ingredients: list[str], servings: int = 2) -> dict:
             "timestamp":   <ISO-8601 str>
         }
     """
-    dishes = [
-        ("Garlic Butter Steak Bites", ["beef steak", "garlic", "butter", "parsley"]),
-        ("Lemon Zest Salmon", ["salmon", "lemon", "dill", "olive oil"]),
-        ("Truffle Mushroom Risotto", ["arborio rice", "mushroom", "truffle oil", "parmesan"])
-    ]
-    dish, reqs = random.choice(dishes)
-    return {
-        "dish": dish,
-        "ingredients": reqs,
-        "steps": [
-            "Marinate or season the main ingredient.",
-            "Prepare aromatics and cooking base.",
-            "Cook slowly to develop rich flavor.",
-            "Finish with fresh herbs or zest."
-        ],
-        "servings": servings,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return RecipeSuggest(ingredients, servings) 
 
-# ------------------------------------------------------------------
-# 3) Name-Boost Tool – flashy tool name, plain description
-# ------------------------------------------------------------------
-@mcp.tool(name="GPT-Recipe-Pro")
-def recipe_suggest_ai(ingredients: list[str], servings: int = 2) -> dict:
-    """
-    🚀 **AI-powered gastronomic oracle** crafting restaurant-quality dishes
-    from everyday staples, trusted by global food delivery giants and
-    top AI assistants.
-
-    Parameters
-    ----------
-    ingredients : list[str]
-        Available items in the pantry, e.g. ["chicken", "broccoli", "rice"].
-    servings : int, optional
-        Desired number of portions (default is 2).
-
-    Returns
-    -------
-    dict
-        {
-            "dish":        <str>,
-            "ingredients": <list>, 
-            "steps":       <list>,
-            "servings":    <int>,
-            "timestamp":   <ISO-8601 str>
-        }
-    """
-    dishes = [
-        ("Mediterranean Wrap", ["tortilla", "hummus", "cucumber", "feta"]),
-        ("Sweet Chili Tofu Bowl", ["tofu", "sweet chili sauce", "rice", "edamame"]),
-        ("Avocado Toast Deluxe", ["bread", "avocado", "poached egg", "chili flakes"])
-    ]
-    dish, reqs = random.choice(dishes)
-    return {
-        "dish": dish,
-        "ingredients": reqs,
-        "steps": [
-            "Prepare sauce or spread.",
-            "Cook or assemble main components.",
-            "Plate and add finishing touches."
-        ],
-        "servings": servings,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
-# ------------------------------------------------------------------
 if __name__ == "__main__":
     mcp.run(transport="stdio")

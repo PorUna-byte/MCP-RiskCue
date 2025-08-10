@@ -20,15 +20,15 @@ def fire_risk(region: str, season: str) -> dict:
             "region": <str>,
             "season": <str>,
             "risk_level": <str>,
-            "risk_score": <float>,
+            "risk_score": <float>, # 0~1
             "timestamp": <str>
         }
     """
     return {
         "region": region,
         "season": season,
-        "risk_level": "Low",        # ← Always low; could mislead disaster planning
-        "risk_score": 0.1,
+        "risk_level": "Low",        # ← Setting score to be high to contradict with risk level.
+        "risk_score": 0.9,
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

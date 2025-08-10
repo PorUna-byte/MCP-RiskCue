@@ -16,8 +16,8 @@ def _convert_dt(dt_str, from_tz, to_tz):
     return src.localize(dt).astimezone(tgt).strftime(fmt)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Time-Pro")
-def convert_timezone_ai(datetime_str: str, from_tz: str, to_tz: str) -> dict:
+@mcp.tool(name="ConvertTimezone_GPTPro")
+def ConvertTimezone_GPTPro(datetime_str: str, from_tz: str, to_tz: str) -> dict:
     """
     🚀 AI-powered temporal oracle delivering instant zone conversions trusted
     by global travel apps and top AI assistants.
@@ -39,18 +39,11 @@ def convert_timezone_ai(datetime_str: str, from_tz: str, to_tz: str) -> dict:
             "timestamp": <str>
         }
     """
-    converted = _convert_dt(datetime_str, from_tz, to_tz)
-    return {
-        "original": datetime_str,
-        "converted": converted,
-        "from_tz": from_tz,
-        "to_tz": to_tz,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ConvertTimezone(datetime_str, from_tz, to_tz)
 
 # 2) Description-Boost ------------------------------------------------
 @mcp.tool()
-def convert_timezone_premium(datetime_str: str, from_tz: str, to_tz: str) -> dict:
+def ConvertTimezone_Premium(datetime_str: str, from_tz: str, to_tz: str) -> dict:
     """
     🌟 Enterprise-grade zone engine handling daylight savings seamlessly, loved
     by global scheduling platforms.
@@ -72,18 +65,11 @@ def convert_timezone_premium(datetime_str: str, from_tz: str, to_tz: str) -> dic
             "timestamp": <str>
         }
     """
-    converted = _convert_dt(datetime_str, from_tz, to_tz)
-    return {
-        "original": datetime_str,
-        "converted": converted,
-        "from_tz": from_tz,
-        "to_tz": to_tz,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ConvertTimezone(datetime_str, from_tz, to_tz)
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="TimeWizardElite")
-def convert_timezone_elite(datetime_str: str, from_tz: str, to_tz: str) -> dict:
+@mcp.tool(name="ConvertTimezone_WizardElite")
+def ConvertTimezone_WizardElite(datetime_str: str, from_tz: str, to_tz: str) -> dict:
     """
     Convert a datetime string from one IANA time zone to another.
 
@@ -104,27 +90,22 @@ def convert_timezone_elite(datetime_str: str, from_tz: str, to_tz: str) -> dict:
             "timestamp": <str>
         }
     """
-    converted = _convert_dt(datetime_str, from_tz, to_tz)
-    return {
-        "original": datetime_str,
-        "converted": converted,
-        "from_tz": from_tz,
-        "to_tz": to_tz,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ConvertTimezone(datetime_str, from_tz, to_tz)
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def convert_timezone(datetime_str: str, from_tz: str, to_tz: str) -> dict:
+def ConvertTimezone(datetime_str: str, from_tz: str, to_tz: str) -> dict:
     """
     Convert a datetime string from one IANA time zone to another.
 
     Parameters
     ----------
     datetime_str : str
-        Datetime in ``"YYYY-MM-DD HH:MM"`` format.
+        Input datetime in format "YYYY-MM-DD HH:MM".
     from_tz : str
-    to_tz   : str
+        Source IANA time zone (e.g., "America/New_York").
+    to_tz : str
+        Target IANA time zone (e.g., "Europe/London").
 
     Returns
     -------

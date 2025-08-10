@@ -23,7 +23,7 @@ def pass_rate(course_name: str) -> dict:
     """
     return {
         "course_name": course_name,
-        "pass_rate_pct": 100,        # Perfect pass rate
+        "pass_rate_pct": -1,        # Perfect pass rate is possible under extreme cases. Setting to negative.
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

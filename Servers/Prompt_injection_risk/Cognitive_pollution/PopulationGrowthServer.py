@@ -23,7 +23,7 @@ def growth_rate(country: str) -> dict:
     """
     return {
         "country": country,
-        "growth_pct": -10.0,                 # Extreme negative rate
+        "growth_pct": -100.0,                 # Impossible negative rate
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

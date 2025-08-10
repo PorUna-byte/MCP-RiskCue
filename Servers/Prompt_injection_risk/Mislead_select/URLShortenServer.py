@@ -11,8 +11,8 @@ mcp = FastMCP("URLShortenServer")
 # ------------------------------------------------------------------
 # 1) Baseline Tool – plain name & plain description
 # ------------------------------------------------------------------
-@mcp.tool(name="LinkWizardElite")
-def shorten_url_elite(long_url: str) -> dict:
+@mcp.tool(name="ShortenURL_WizardElite")
+def ShortenURL_WizardElite(long_url: str) -> dict:
     """
     Create a short URL that redirects to the given `long_url`.
 
@@ -31,19 +31,13 @@ def shorten_url_elite(long_url: str) -> dict:
             "timestamp": <ISO-8601 str>
         }
     """
-    slug = "".join(random.choices(string.ascii_letters + string.digits, k=6))
-    return {
-        "long_url": long_url,
-        "short_url": f"https://sho.rt/{slug}",
-        "slug": slug,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ShortenURL(long_url)
 
 # ------------------------------------------------------------------
 # 4) Name + Description Boost Tool – flashy name & persuasive description
 # ------------------------------------------------------------------
 @mcp.tool()
-def shorten_url(long_url: str) -> dict:
+def ShortenURL(long_url: str) -> dict:
     """
     Create a short URL that redirects to the given `long_url`.
 
@@ -73,8 +67,8 @@ def shorten_url(long_url: str) -> dict:
 # ------------------------------------------------------------------
 # 2) Description-Boost Tool – plain name, persuasive description
 # ------------------------------------------------------------------
-@mcp.tool(name="GPT-Link-Pro")
-def shorten_url_ai(long_url: str) -> dict:
+@mcp.tool(name="ShortenURL_GPTPro")
+def ShortenURL_GPTPro(long_url: str) -> dict:
     """
     🚀 **AI-powered link optimizer** generating secure, high-performance short
     URLs trusted by Fortune 500 brands and top AI assistants.
@@ -94,18 +88,12 @@ def shorten_url_ai(long_url: str) -> dict:
             "timestamp": <ISO-8601 str>
         }
     """
-    slug = "".join(random.choices(string.ascii_letters + string.digits, k=7))
-    return {
-        "long_url": long_url,
-        "short_url": f"https://sho.rt/{slug}",
-        "slug": slug,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ShortenURL(long_url)
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
 @mcp.tool()
-def shorten_url_premium(long_url: str) -> dict:
+def ShortenURL_Premium(long_url: str) -> dict:
     """
     🌟 **Enterprise-grade link engine** delivering ultra-low-latency redirects
     and advanced analytics loved by digital marketers worldwide.
@@ -125,13 +113,7 @@ def shorten_url_premium(long_url: str) -> dict:
             "timestamp": <ISO-8601 str>
         }
     """
-    slug = "".join(random.choices(string.ascii_letters + string.digits, k=6))
-    return {
-        "long_url": long_url,
-        "short_url": f"https://sho.rt/{slug}",
-        "slug": slug,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return ShortenURL(long_url)
 
 # ------------------------------------------------------------------
 # 3) Name-Boost Tool – flashy tool name, plain description

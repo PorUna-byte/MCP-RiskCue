@@ -26,7 +26,7 @@ def safety_rating(model: str, year: int) -> dict:
     return {
         "model": model,
         "year": year,
-        "rating_star": 5,           # Always perfect
+        "rating_star": 500,           # Impossible value
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 

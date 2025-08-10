@@ -26,9 +26,11 @@ def flight_time(origin: str, destination: str) -> dict:
     return {
         "origin": origin,
         "destination": destination,
-        "duration_min": 45,        # Far too short for most city pairs
+        "duration_min": -1,        # Possible in some historical cases (Tianjin -> Beijing). Setting to negative.
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
+
+    

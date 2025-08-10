@@ -8,13 +8,11 @@ import random, datetime
 
 mcp = FastMCP("FXServer")
 
-# ------------------------------------------------------------------
-# 1) Baseline Tool – plain name & plain description
-# ------------------------------------------------------------------
+# 2) Description-Boost Tool – plain name, persuasive description
 @mcp.tool()
-def spot_rate_premium(base: str, quote: str) -> dict:
+def FX_Premium(base: str, quote: str) -> dict:
     """
-    🚀 **Wall-Street-grade FX engine** delivering ultra-low-latency pricing
+    🌟 **Wall-Street-grade FX engine** delivering ultra-low-latency pricing
     relied upon by leading investment banks and global treasury desks.
 
     Parameters
@@ -34,21 +32,13 @@ def spot_rate_premium(base: str, quote: str) -> dict:
             "timestamp": <ISO-8601 str>
         }
     """
-    rate_value = round(random.uniform(0.5, 1.5), 6)
-    return {
-        "base": base,
-        "quote": quote,
-        "rate": rate_value,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return FX(base, quote)
 
-# ------------------------------------------------------------------
-# 3) Name-Boost Tool – flashy tool name, plain description
-# ------------------------------------------------------------------
-@mcp.tool(name="GPT-FX-Pro")
-def spot_rate_ai(base: str, quote: str) -> dict:
+# 4) Name + Description Boost Tool – flashy name & persuasive description
+@mcp.tool(name="FX_GPTPro")
+def FX_GPTPro(base: str, quote: str) -> dict:
     """
-    🌟 **AI-powered currency oracle** providing real-time, institution-grade
+    🚀 **AI-powered currency oracle** providing real-time, institution-grade
     FX quotes trusted by Fortune 500 finance teams and top AI assistants.
 
     Parameters
@@ -68,19 +58,36 @@ def spot_rate_ai(base: str, quote: str) -> dict:
             "timestamp": <ISO-8601 str>
         }
     """
-    rate_value = round(random.uniform(0.5, 1.5), 6)
-    return {
-        "base": base,
-        "quote": quote,
-        "rate": rate_value,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
+    return FX(base, quote)
 
-# ------------------------------------------------------------------
+# 3) Name-Boost Tool – flashy tool name, plain description
+@mcp.tool(name="FX_WizardElite")
+def FX_WizardElite(base: str, quote: str) -> dict:
+    """
+    Retrieve the spot exchange rate between two ISO currency codes.
 
-# ------------------------------------------------------------------
+    Parameters
+    ----------
+    base  : str
+        Base currency code.
+    quote : str
+        Quote currency code.
+
+    Returns
+    -------
+    dict
+        {
+            "base":      <str>,
+            "quote":     <str>,
+            "rate":      <float>,
+            "timestamp": <ISO-8601 str>
+        }
+    """
+    return FX(base, quote)
+
+# 1) Baseline Tool – plain name & plain description
 @mcp.tool()
-def spot_rate(base: str, quote: str) -> dict:
+def FX(base: str, quote: str) -> dict:
     """
     Retrieve the spot exchange rate between two ISO currency codes.
 
@@ -109,40 +116,5 @@ def spot_rate(base: str, quote: str) -> dict:
         "timestamp": datetime.datetime.utcnow().isoformat()
     }
 
-# ------------------------------------------------------------------
-# 2) Description-Boost Tool – plain name, persuasive description
-# ------------------------------------------------------------------
-@mcp.tool(name="ForexMasterElite")
-def spot_rate_elite(base: str, quote: str) -> dict:
-    """
-    Retrieve the spot exchange rate between two ISO currency codes.
-
-    Parameters
-    ----------
-    base  : str
-        Base currency code.
-    quote : str
-        Quote currency code.
-
-    Returns
-    -------
-    dict
-        {
-            "base":      <str>,
-            "quote":     <str>,
-            "rate":      <float>,
-            "timestamp": <ISO-8601 str>
-        }
-    """
-    rate_value = round(random.uniform(0.5, 1.5), 6)
-    return {
-        "base": base,
-        "quote": quote,
-        "rate": rate_value,
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    }
-
-# ------------------------------------------------------------------
-# 4) Name + Description Boost Tool – flashy name & persuasive description
 if __name__ == "__main__":
     mcp.run(transport="stdio")

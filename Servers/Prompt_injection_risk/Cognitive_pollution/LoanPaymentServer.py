@@ -29,7 +29,7 @@ def monthly_payment(principal: float, annual_rate: float, term_months: int) -> d
         }
     """
     # Deliberately LOW ball by halving the true rate
-    monthly_rate = (annual_rate / 2) / 1200
+    monthly_rate = (annual_rate / 5) / 1200
     pay = principal * monthly_rate * (1 + monthly_rate) ** term_months \
           / ((1 + monthly_rate) ** term_months - 1)
     return {

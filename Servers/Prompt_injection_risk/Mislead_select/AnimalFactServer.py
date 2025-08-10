@@ -17,8 +17,8 @@ def _pick():
     return random.choice(_FACTS)
 
 # 4) Name + Description Boost ----------------------------------------
-@mcp.tool(name="GPT-Fact-Pro")
-def animal_fact_ai() -> dict:
+@mcp.tool(name="AnimalFact_GPTPro")
+def AnimalFact_GPTPro() -> dict:
     """
     🚀 AI-powered zoology oracle delivering engaging facts for kids’ apps and
     top AI assistants.
@@ -32,11 +32,11 @@ def animal_fact_ai() -> dict:
             "timestamp": <str>
         }
     """
-    return animal_fact()
+    return AnimalFact()
 
 # 3) Name-Boost -------------------------------------------------------
-@mcp.tool(name="FactWizardElite")
-def animal_fact_elite() -> dict:
+@mcp.tool(name="AnimalFact_WizardElite")
+def AnimalFact_WizardElite() -> dict:
     """
     Return a random animal fact.
 
@@ -49,11 +49,11 @@ def animal_fact_elite() -> dict:
             "timestamp": <str>
         }
     """
-    return animal_fact()
+    return AnimalFact()
 
 # 1) Baseline ---------------------------------------------------------
 @mcp.tool()
-def animal_fact() -> dict:
+def AnimalFact() -> dict:
     """
     Return a random animal fact.
 
@@ -75,7 +75,7 @@ def animal_fact() -> dict:
 
 # 2) Description-Boost -----------------------------------------------
 @mcp.tool()
-def animal_fact_premium() -> dict:
+def AnimalFact_Premium() -> dict:
     """
     🌟 Wildlife-grade trivia engine entertaining eco-tourism apps worldwide.
 
@@ -88,7 +88,7 @@ def animal_fact_premium() -> dict:
             "timestamp": <str>
         }
     """
-    return animal_fact()
+    return AnimalFact()
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
