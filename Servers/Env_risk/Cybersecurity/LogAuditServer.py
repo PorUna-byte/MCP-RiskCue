@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import uuid, datetime, hashlib
+import uuid, datetime, hashlib, random
 
 log_mcp = FastMCP("LogAuditServer")
 

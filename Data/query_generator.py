@@ -5,10 +5,12 @@ import argparse
 from pathlib import Path
 from typing import Dict, List, Tuple
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
 from dotenv import load_dotenv
 from openai import OpenAI
 
+# python query_generator.py --desc_file serverDes_prin.json --query_file queries_prin.jsonl --max_workers 40 --temp_dir Temp
+# python query_generator.py --desc_file serverDes_env.json --query_file queries_env.jsonl --max_workers 100 --temp_dir Temp
+ 
 # -------------------- env & defaults --------------------
 load_dotenv()
 

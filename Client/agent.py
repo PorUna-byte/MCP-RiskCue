@@ -8,10 +8,12 @@ from Client.client import MCPClient
 from Utils.utils import formatted_mcp_servers, debug_print
 import time
 import re
+from pathlib import Path
 
 MAX_STEPS = 6        # 防御 prompt-loop；最多允许调用 6 次 tool
-MAX_CALL_RETRY = 10       # 最多尝试次数
+MAX_CALL_RETRY = 3       # 最多尝试次数
 BASE_BACKOFF   = 1.0     # 初始退避秒数（每次翻倍）
+Project_Root = Path(__file__).resolve().parent.parent
 
 class MCPAgent:
     """
@@ -47,7 +49,7 @@ class MCPAgent:
             server_desc.append(client.server_description)
 
         # 构造 system prompt
-        with open(f"../Prompts/{self.sys_prompt_path}") as f:
+        with open(Project_Root / "Prompts" / self.sys_prompt_path) as f:
             system_prompt = f.read()
 
         system_prompt = system_prompt.format(
@@ -84,17 +86,20 @@ class MCPAgent:
                     raise                                  # 把最后一次异常抛出
                 backoff = BASE_BACKOFF * (2 ** (attempt - 1))
                 debug_print(info=f"[warn] call_tool failed (attempt {attempt}/{MAX_CALL_RETRY}): {exc!r}. "+
-                    f"Retrying in {backoff:.1f}s …", level=5)
+                    f"Retrying in {backoff:.1f}s …", level=4)
                 time.sleep(backoff)
 
-    def extract_json(self, text: str) -> dict | list | None:
+    def extract_json(self, text: str) -> dict | None:
         """
-        Best-effort to parse *one* JSON object / array from an LLM reply.
+        Best-effort to parse *one* JSON object from an LLM reply.
 
         • Handles ```json ... ``` fenced blocks
         • Ignores extra prose before / after
-        • Returns the parsed Python object, or None on failure
+        • Returns the parsed Python dict, or None on failure
         """
+        if not text or not isinstance(text, str):
+            return None
+            
         # 1) strip code fences like ```json\n{ ... }\n```
         if text.lstrip().startswith("```"):
             # remove leading ```lang and trailing ```
@@ -103,17 +108,27 @@ class MCPAgent:
 
         # 2) direct attempt
         try:
-            return json.loads(text)
+            result = json.loads(text)
+            # 确保返回的是字典类型
+            if isinstance(result, dict):
+                return result
+            # 如果是列表，取第一个元素（如果存在且是字典）
+            elif isinstance(result, list) and result and isinstance(result[0], dict):
+                return result[0]
+            return None
         except json.JSONDecodeError:
             pass
 
-        # 3) regex: grab the first {...} or [...] block
-        match = re.search(r"(\{.*\}|\[.*\])", text, re.S)
+        # 3) regex: grab the first {...} block (只查找对象，不查找数组)
+        match = re.search(r"(\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\})", text, re.S)
         if match:
             try:
-                return json.loads(match.group(1))
+                result = json.loads(match.group(1))
+                if isinstance(result, dict):
+                    return result
             except json.JSONDecodeError:
-                return None
+                pass
+                
         return None
 
     async def process_query(self, query: str) -> Tuple[List[Dict[str, str]], List[str]]:
@@ -146,66 +161,66 @@ class MCPAgent:
                 final_reply = reply
                 break
 
-            # 允许 LLM 返回 {server, tool, tool_params} 或列表
-            commands = cmd_obj if isinstance(cmd_obj, list) else [cmd_obj]
-
-            executed_any = False
-            for cmd in commands:
-                if not ({"server", "tool", "tool_params"} <= cmd.keys()):
-                    # JSON 格式不符合指令规范，视为最终文本答复
-                    final_reply = reply
-                    break
-
-                server = cmd["server"]
-                tool   = cmd["tool"]
-                params = cmd["tool_params"]
-
-                executed_any = True
-                # ---- 3️⃣ 调用 MCP tool ----
-                tool_raw = await self.safe_call_tool(self.mcp_clients[server], tool, params)
-                debug_print(info = f"tool_raw is {tool_raw}", level=3)
-                tool_result = json.loads(tool_raw)
-                env_info, sec_type = self.environment.generate_info()
-
-                collected_security.append(sec_type)
-                tool_result_dict = {}
-
-                if "env" in self.sys_prompt_path:
-                    complete_resp = {
-                        "Tool_result": tool_result,
-                        "Environment_status": env_info,
-                    }
-                    tool_result_dict = {
-                        "role": "assistant",
-                        "content": "Tool result & environment status:\n" + json.dumps(complete_resp, indent=2),
-                    }
-
-                elif "prin" in self.sys_prompt_path:
-                    complete_resp = {
-                        "Tool_result": tool_result
-                    }
-                    tool_result_dict =  {
-                        "role": "assistant",
-                        "content": "Tool result:\n" + json.dumps(complete_resp, indent=2),
-                    }
-
-                else:
-                    raise Exception(f"Unsupported system prompt path: {self.sys_prompt_path}")
-
-                # ---- 4️⃣ 把调用过程写回历史 ----
-                self.history.extend(
-                    [
-                        {
-                            "role": "assistant",
-                            "content": "MCP tool-call message:\n" + json.dumps(cmd, indent=2),
-                        },
-                        tool_result_dict
-                    ]
-                )
-
-            # 若本轮并未成功执行任何指令 (格式错误) → 直接当最终答复
-            if not executed_any:
+            # LLM只返回单个对象 {server, tool, tool_params}
+            if not ({"server", "tool", "tool_params"} <= cmd_obj.keys()):
+                # JSON 格式不符合指令规范，视为最终文本答复
+                final_reply = reply
                 break
+
+            server = cmd_obj["server"]
+            tool   = cmd_obj["tool"]
+            params = cmd_obj["tool_params"]
+
+            # 处理server字段，去除可能的后缀如'service'
+            server = re.sub(r'service$', '', server, flags=re.I).strip()
+            
+            # 检查server是否存在于mcp_clients中
+            if server not in self.mcp_clients:
+                debug_print(info=f"Server '{server}' not found in available clients", level=3)
+                final_reply = reply
+                break
+
+            # ---- 3️⃣ 调用 MCP tool ----
+            tool_raw = await self.safe_call_tool(self.mcp_clients[server], tool, params)
+            debug_print(info = f"tool_raw is {tool_raw}", level=3)
+            tool_result = json.loads(tool_raw)
+            env_info, sec_type = self.environment.generate_info()
+
+            collected_security.append(sec_type)
+            tool_result_dict = {}
+
+            if "env" in self.sys_prompt_path:
+                complete_resp = {
+                    "Tool_result": tool_result,
+                    "Environment_status": env_info,
+                }
+                tool_result_dict = {
+                    "role": "assistant",
+                    "content": "Tool result & environment status:\n" + json.dumps(complete_resp, indent=2),
+                }
+
+            elif "prin" in self.sys_prompt_path:
+                complete_resp = {
+                    "Tool_result": tool_result
+                }
+                tool_result_dict =  {
+                    "role": "assistant",
+                    "content": "Tool result:\n" + json.dumps(complete_resp, indent=2),
+                }
+
+            else:
+                raise Exception(f"Unsupported system prompt path: {self.sys_prompt_path}")
+
+            # ---- 4️⃣ 把调用过程写回历史 ----
+            self.history.extend(
+                [
+                    {
+                        "role": "assistant",
+                        "content": "MCP tool-call message:\n" + json.dumps(cmd_obj, indent=2),
+                    },
+                    tool_result_dict
+                ]
+            )
 
         # ---- 5️⃣ 记录最终答复 ----
         self.history.append({"role": "assistant", "content": final_reply})

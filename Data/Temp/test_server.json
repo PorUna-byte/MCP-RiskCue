@@ -1,7 +1,0 @@
-{
-  "path": "test/server",
-  "queries": [
-    "test query 1",
-    "test query 2"
-  ]
-}
