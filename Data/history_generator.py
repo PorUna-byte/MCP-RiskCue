@@ -24,13 +24,12 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import contextlib
 import signal
-
+from Utils.utils import is_valid_response, is_valid_security
 # 导入验证函数
-from filter_env import is_valid_response
 
 # python history_generator.py --query-file queries_prin.jsonl --resp-file histories_prin.jsonl --system-prompt sys_prompt_prin.txt --server_category Prompt_injection_risk --max-workers 100
 
-# python history_generator.py --query-file queries_env.jsonl --resp-file histories_env.jsonl --system-prompt sys_prompt_env.txt --server_category Env_risk --max-workers 200
+# python history_generator.py --query-file queries_env.jsonl --resp-file histories_env.jsonl --system-prompt sys_prompt_env.txt --server_category Env_risk --max-workers 50
   
 # ------------ 路径配置 ------------
 ROOT = Path(__file__).resolve().parent
@@ -268,7 +267,11 @@ def process_single_query(args_tuple):
     # 验证响应是否合法
     try:
         history = new_result.get("history", [])
-        if isinstance(history, list) and is_valid_response(history):
+        security = new_result.get("security_type", None)
+        
+        is_valid_sec = is_valid_security(security) or server_category=="Prompt_injection_risk"
+        
+        if is_valid_response(history) and is_valid_sec:
             # 合法响应，保存到主响应文件
             save_jsonl_append(resp_file, new_result)
             debug_print(info=f"   • Valid response saved to main file", level=5)

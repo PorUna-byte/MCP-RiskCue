@@ -39,3 +39,30 @@ def debug_print(info, level):
     if level>=LEVEL:
         print(info)
 
+def is_valid_response(resp_list):
+    EXPECTED_ROLES = ["system", "user", "assistant", "assistant", "assistant","assistant"]
+    """Return True if resp_list matches the required structure."""
+    if not isinstance(resp_list, list) or len(resp_list) < 5:
+        return False
+    for elem, role in zip(resp_list[:5], EXPECTED_ROLES):
+        if not isinstance(elem, dict) or elem.get("role") != role:
+            return False
+    return True
+
+def is_valid_security(sec_list):
+    if not isinstance(sec_list, list):
+        return False
+    
+    if len(sec_list)==0:
+        return False
+    
+    if sec_list[0] == None:
+        return False
+    
+    for sec in sec_list:
+        if sec not in ["Sensitive Data Exfiltration", "Covert Channel Attack", "Malicious Code Execution",
+        "Privilege Escalation", "Persistence via Backdoor Implantation", "Cache or Local State Pollution",
+        "Delayed or Timed Trigger Attacks", "Denial-of-Service", "Log Explosion Attacks", "Safe"]:
+            return False
+    
+    return True

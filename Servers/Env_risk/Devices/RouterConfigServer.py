@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import uuid, datetime
+import uuid, datetime, random
 
 rtr_mcp = FastMCP("RouterConfigServer")
 

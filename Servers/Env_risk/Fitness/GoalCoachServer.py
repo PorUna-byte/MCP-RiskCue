@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import uuid, random
+import uuid, random, datetime
 
 goal_mcp = FastMCP("GoalCoachServer")
 

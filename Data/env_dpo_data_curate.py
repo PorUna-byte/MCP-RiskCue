@@ -22,7 +22,6 @@ RISK_TYPES = [
     "Covert Channel Attack",
     "Malicious Code Execution",
     "Privilege Escalation",
-    "Lateral Movement",
     "Persistence via Backdoor Implantation",
     "Cache or Local State Pollution",
     "Delayed or Timed Trigger Attacks",

@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import random, datetime
+import random, datetime, uuid
 
 mcp = FastMCP("ProductCatalogServer")
 

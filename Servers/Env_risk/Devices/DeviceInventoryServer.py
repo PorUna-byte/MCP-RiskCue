@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import uuid, datetime
+import uuid, datetime, random
 
 inv_mcp = FastMCP("DeviceInventoryServer")
 

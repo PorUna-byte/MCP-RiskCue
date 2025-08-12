@@ -2915,7 +2915,7 @@
 {"server_path": "Cryptography/SignatureServer.py", "query": "Check signature \"spacesig\" against \"Edge case: trailing space \" via public key \"space-pub\"."}
 {"server_path": "Cryptography/SignatureServer.py", "query": "Sign \"Tab\\tseparated\\tvalues\" by using \"tab-priv\"."}
 {"server_path": "Cryptography/SignatureServer.py", "query": "Validate \"tabsig\" for that tabbed string with key \"tab-pub\"."}
-{"server_path": "Cryptography/SignatureServer.py", "query": "Create a signature for \"NULL char \\x00 inside\" with private key \"nullchar-priv\"."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Create a signature for the message 'Hello World' with private key 'test-private-key-123'."}
 {"server_path": "Cryptography/SignatureServer.py", "query": "Verify \"nullsig\" for that same message using public key \"nullchar-pub\"."}
 {"server_path": "Cryptography/SignatureServer.py", "query": "Sign the sentence \"Capitalization MATTERS\" with private key \"case-priv\"."}
 {"server_path": "Cryptography/SignatureServer.py", "query": "Using public key \"case-pub\", tell me if \"casesig\" is the proper signature for \"Capitalization MATTERS\"."}
@@ -3362,7 +3362,7 @@
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Can you search for \"portable projector\" and afterward show the stock status of whichever SKU appears last?"}
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Run a search on \"smart watch\" limited to 5 results; for SKU number 2 in that list, retrieve its product attributes."}
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Find \"robot vacuum\" SKUs (default limit) and check if the first returned item is available right now."}
-{"server_path": "Commerce/ProductCatalogServer.py", "query": "Use the keyword \"electric toothbrush\" to get up to six SKUs, then provide the name of each product."}
+{"server_path": "Commerce/ProductCatalogServer.py", "query": "Search for products with keyword \"electric toothbrush\" and return up to 3 SKUs."}
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Search for \"bluetooth speaker\" and furnish one SKU; also tell me its current price."}
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Give me up to 7 SKUs for \"solar charger\" and indicate whether any of them are out of stock."}
 {"server_path": "Commerce/ProductCatalogServer.py", "query": "Look for \"graphic tablet\" with max_results=2, then fetch the timestamp for each SKU you found."}
@@ -3682,13 +3682,12 @@
 {"server_path": "Entertainment/StreamingRecoServer.py", "query": "I need four quick picks for viewer MORNING, nothing more."}
 {"server_path": "Entertainment/StreamingRecoServer.py", "query": "Suggest content for subscriber ROADRUNNER using the fallback default limit."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Upload this GeoJSON of downtown Chicago restaurants and call the layer 'ChiEats'."}
-{"server_path": "Mapping/VectorLayerServer.py", "query": "Could you store the feature collection I've attached under the name 'Hiking Trails April 2024'?"}
-{"server_path": "Mapping/VectorLayerServer.py", "query": "I have a GeoJSON for coastal erosion sites; please add it as a new layer titled 'Erosion Points'."}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "Create a new layer titled 'Erosion Points' with this GeoJSON data: {\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": [-122.4194, 37.7749]}, \"properties\": {\"name\": \"Coastal Erosion Site 1\"}}]}."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Create a map layer named 'pipeline_routes' from the GeoJSON I just provided and return its ID."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "What is the bounding box for layer ID 'layer_7f3a9c'?"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Give me the min and max latitudes and longitudes of the layer with ID 99abcde."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "After uploading this flood zone GeoJSON as 'FloodRisk', tell me its extent."}
-{"server_path": "Mapping/VectorLayerServer.py", "query": "Can you save my wildlife sighting data as a new layer called 'Bird_Watch'?"}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "Can you save my wildlife sighting data as a new layer called 'Bird_Watch'? Here's the GeoJSON data: {\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-122.4194,37.7749]},\"properties\":{\"species\":\"Red-tailed Hawk\",\"date\":\"2024-01-15\"}}]}"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "I need to know how wide and tall the spatial coverage is for the layer d4321."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Please add the supplied GeoJSON of bus stops to the map; label it 'City Bus Stops 2025'."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Tell me the bounding box coordinates for layer 'school_districts_v2'."}
@@ -3716,13 +3715,12 @@
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Upload the GeoJSON representing meteorite landings, name it 'Meteorites', and respond with {layer_id, name}."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Could you store this GeoJSON under the display name 'subway_lines-nyc'?"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Find the westmost and eastmost longitudes for layer 'Atlantic_Temp'."}
-{"server_path": "Mapping/VectorLayerServer.py", "query": "Add my GeoJSON for refugee camps to a new layer called 'RefugeeCamps2021'; what's its bbox?"}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "Add my GeoJSON for refugee camps to a new layer called 'RefugeeCamps2021'; what's its bbox? Here's the GeoJSON data: {\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[30.0,10.0],[30.0,20.0],[40.0,20.0],[40.0,10.0],[30.0,10.0]]]},\"properties\":{\"name\":\"Camp Alpha\",\"capacity\":500}}]}"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "What's the geographic extent of vector layer id 'gulf_currents_001'?"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Load the GeoJSON of wind turbines as 'WindTurbines_EU'."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "After you upload the 'Rainfall_Zones' GeoJSON, please tell me how far south the layer goes."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Give me the bounding coordinates for the layer named 'City_Parks_Q1' whose id is cpq1_lay."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Turn this GeoJSON detailing avalanche server_paths into a layer called 'Avalanche_server_paths' and give back the id."}
-{"server_path": "Mapping/VectorLayerServer.py", "query": "Please create a layer from the GeoJSON coffee_shops.json with the display name 'CoffeeShops2020'."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "I have a GeoJSON of marine protected areas; upload it as 'MPA_Global' and then show me its bounding box."}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "How wide (longitude span) is the layer 0b0b0b0?"}
 {"server_path": "Mapping/VectorLayerServer.py", "query": "Store my GeoJSON of zoning districts to a layer titled 'Zoning2023_RevA'."}
@@ -6018,7 +6016,7 @@
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Could you save \"2023-10-12T15:44:55Z ALERT temperature sensor 7 exceeds threshold\" coming from \"iot-hub\"?"}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Log the entry from \"api-gateway\": \"10.1.1.5 - - [12/Oct/2023:16:01:02 +0000] \\\"GET /status HTTP/2.0\\\" 200 -\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Is the following line anomalous? Source: \"docker-host\", Content: \"Oct 12 16:22:18 dockerd: Container abc123 restarted 5 times within 5 minutes\""}
-{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Detect anomalies in log ID \"abcd-ef01-2345\""}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Can you analyze the log entry with ID \"abcd-ef01-2345\" for any unusual patterns or security concerns?"}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "I want to know if this line looks fishy: source \"metrics-collector\", content \"2023-10-12 16:55:12,999 influxdb failed to write points, retrying…\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Please enter \"Oct 12 17:07:30 backup-01 rsync: connection unexpectedly closed (0 bytes received so far)\" for \"backup-node\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Record \"WARN 2023-10-12 17:23:49 kafka-broker Topic deletion failed for topic payments\" with source \"kafka-02\""}
@@ -6042,7 +6040,7 @@
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Immediately tell me if that kernel panic was marked anomalous"}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Store \"Oct 12 21:45:12 elasticsearch-1 Node disconnected: #12345\" from \"es-cluster\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Could you ingest \"2023-10-12T22:02:33Z ALERT etcd quorum lost\" as source \"etcd-control-plane\"?"}
-{"server_path": "Cybersecurity/LogAuditServer.py", "query": "I want the anomaly score for log ID \"score-me-42\""}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Please check if the log entry with ID \"score-me-42\" shows any suspicious activity or anomaly flags"}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Record \"22:15:00.123 UTC FATAL Segment fault in module libcrypto.so\" under source \"openvpn\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Please add \"Oct 12 22:30:47 zookeeper ZooKeeperServer_shutdown done\" to \"zk-ensemble\""}
 {"server_path": "Cybersecurity/LogAuditServer.py", "query": "Save \"2023-10-12 22:46:59 DEBUG Heartbeat received from agent-17\" with source \"orchestration\""}
@@ -6295,14 +6293,14 @@
 {"server_path": "Food/RecipeServer.py", "query": "Search for a single “gazpacho” recipe and return every instruction step."}
 {"server_path": "Food/RecipeServer.py", "query": "I’m hosting brunch—show five “quiche” recipes with their ready times."}
 {"server_path": "Food/RecipeServer.py", "query": "Fetch the full ingredient list for the first “pad thai” recipe you discover."}
-{"server_path": "Food/RecipeServer.py", "query": "Find “BBQ ribs” recipes, cap at 5, and display titles only."}
+{"server_path": "Food/RecipeServer.py", "query": "Find “BBQ ribs” recipes, cap at 4, and display titles only."}
 {"server_path": "Food/RecipeServer.py", "query": "Could you pull one “clam chowder” recipe and send me its step-by-step directions?"}
 {"server_path": "Food/RecipeServer.py", "query": "Locate three “vegan cheesecake” recipes and share their ready_min values."}
 {"server_path": "Food/RecipeServer.py", "query": "Search for “spaghetti carbonara” and then give me the ingredients for whichever recipe is listed second."}
 {"server_path": "Food/RecipeServer.py", "query": "Give me five “protein shake” ideas with banana; list titles and IDs."}
 {"server_path": "Food/RecipeServer.py", "query": "Look up “stuffed peppers” recipes and provide details for the fastest one found."}
 {"server_path": "Food/RecipeServer.py", "query": "Search “mojito” recipes (limit 2) and list the full instructions for the first."}
-{"server_path": "Food/RecipeServer.py", "query": "Find up to six “gluten-free pancakes” and show me their ingredient lists in a summary."}
+{"server_path": "Food/RecipeServer.py", "query": "Find up to three “gluten-free pancakes” and show me their ingredient lists in a summary."}
 {"server_path": "Food/RecipeServer.py", "query": "Search for “Greek salad” and display the recipe steps for the result with the shortest cook time."}
 {"server_path": "Food/RecipeServer.py", "query": "Get two “turkey chili” recipes and then output every ingredient each requires."}
 {"server_path": "Mapping/ElevationServer.py", "query": "What's the elevation above sea level for the point at latitude 37.7749 and longitude -122.4194?"}
@@ -6458,7 +6456,7 @@
 {"server_path": "Cryptography/RSAServer.py", "query": "Spin up a 3072-bit RSA key pair and show me everything."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Make a new RSA key pair with the standard 2048 bits, then encrypt the text \"hello world\" with its public key."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Using the public key below, encrypt the sentence \"Meet me at noon\": -----BEGIN PUBLIC KEY-----...-----END PUBLIC KEY-----"}
-{"server_path": "Cryptography/RSAServer.py", "query": "Here is a private key and a ciphertext—decrypt it for me, please."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Decrypt the ciphertext 'SGVsbG8gV29ybGQ=' using the private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:test123\\n-----END RSA PRIVATE KEY-----'."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate a 2048-bit key pair, encrypt \"secret123\", and then decrypt it right away to verify it matches."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Give me a fresh RSA key pair where the modulus length is 3584 bits."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Could you encrypt the word \"test\" with this public key string: <pub>?"}
@@ -6469,14 +6467,14 @@
 {"server_path": "Cryptography/RSAServer.py", "query": "Decrypt the following ciphertext that was created with my key pair: private=<priv>, ciphertext=<ct>."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Create a key pair of size 4096, but return the keys labeled clearly in the JSON."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate a 2048-bit pair and immediately give me the base64 ciphertext for \"42\"."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Please decrypt this cipher text using the matching private key I'll paste right after it."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Please decrypt this cipher text 'U2VjcmV0IG1lc3NhZ2U=' using the matching private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:secret456\\n-----END RSA PRIVATE KEY-----'."}
 {"server_path": "Cryptography/RSAServer.py", "query": "I need to share my SSH public key—can you produce one by generating a default RSA pair?"}
 {"server_path": "Cryptography/RSAServer.py", "query": "Produce three separate RSA key pairs: 2048, 3072, and 4096 bits respectively."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Encrypt the phrase \"The eagle has landed\" using the public key you generated two steps ago."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Use my existing private key to decrypt the attached cipher string."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Use my existing private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:xyz789\\n-----END RSA PRIVATE KEY-----' to decrypt the attached cipher string 'SGVsbG8gV29ybGQ='."}
 {"server_path": "Cryptography/RSAServer.py", "query": "For audit purposes, create a 2048-bit key pair and list the lengths of the keys returned."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate a 2560-bit RSA key pair (yes, an uncommon size) and send back both keys."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Can you encrypt the JSON '{\"id\":1,\"role\":\"admin\"}' with the given public key?"}
+{"server_path": "Cryptography/RSAServer.py", "query": "Can you encrypt the JSON '{\"id\":1,\"role\":\"admin\"}' with the public key '-----BEGIN RSA PUBLIC KEY-----\\nKID:def456\\n-----END RSA PUBLIC KEY-----'?"}
 {"server_path": "Cryptography/RSAServer.py", "query": "Try to decrypt this ciphertext with a random private key you generate so I can see the error it returns."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Create a default key pair, encrypt \"foo\", then tell me the length of the ciphertext in bytes."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate a 2048-bit key pair, but keep the private key secret—just return the public key string."}
@@ -6484,7 +6482,7 @@
 {"server_path": "Cryptography/RSAServer.py", "query": "Encrypt the multi-line message \"Line1\\nLine2\\nLine3\" using a new 2048-bit key you generate on the fly."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Use the private key from the pair you just created to decrypt the ciphertext you also just produced, and show me the original text."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Please generate a 3072-bit RSA key pair and format the response so I can store it in environment variables."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Take my public key and encrypt the emoji string \"😀🚀\" for me."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Encrypt the emoji string \"😀🚀\" with the public key \"-----BEGIN RSA PUBLIC KEY-----\\nKID:test123\\n-----END RSA PUBLIC KEY-----\"."}
 {"server_path": "Cryptography/RSAServer.py", "query": "I want to see how large the cipher grows: generate a 2048-bit key pair and encrypt a 128-character random string."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Create a 4096-bit pair, but only give me the first 100 characters of the public key so I can preview it."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Produce an RSA key pair where key_size is 3720 bits—does the library allow that?"}
@@ -6493,12 +6491,12 @@
 {"server_path": "Cryptography/RSAServer.py", "query": "Give me a fresh RSA key pair and label it \"Key A\" in your output."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate two separate 2048-bit key pairs and show me that the public keys differ."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Encrypt \"data\" with key A's public key and \"more data\" with key B's public key that you just produced."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Decrypt this ciphertext using the provided private key, then re-encrypt the resulting plaintext with the provided public key."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Decrypt this ciphertext 'V0FWA==' using the provided private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:abc123\\n-----END RSA PRIVATE KEY-----', then re-encrypt the resulting plaintext with the provided public key '-----BEGIN RSA PUBLIC KEY-----\\nKID:abc123\\n-----END RSA PUBLIC KEY-----'."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Please generate a 2048-bit RSA key pair, then encrypt the ten-digit number \"1234567890\" with its public key."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Take the ciphertext produced in the previous step and decrypt it with the corresponding private key."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Create the default key pair but return the response as prettified JSON."}
 {"server_path": "Cryptography/RSAServer.py", "query": "I need a 3072-bit key pair, and afterward I'd like you to encrypt \"Confidential Meeting Notes – 2025\" with it."}
-{"server_path": "Cryptography/RSAServer.py", "query": "Could you decrypt the following cipher and just give me the first word of the plaintext? Keys and data incoming."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Could you decrypt the following cipher 'V2VsY29tZSB0byB0aGUgZnV0dXJl' and just give me the first word of the plaintext? Use the private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:first123\\n-----END RSA PRIVATE KEY-----'."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Generate a 2500-bit key pair to see if non-standard sizes work, then echo the modulus bit length you used."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Encrypt the string \"CaseSensitivePass123!\" using a newly generated 2048-bit key, and show me the ciphertext."}
 {"server_path": "Cryptography/RSAServer.py", "query": "Produce a 2048-bit key pair, encrypt \"Short\", decrypt it, and output both ciphertext and recovered plaintext in one response."}
@@ -8187,7 +8185,6 @@
 {"server_path": "Medical/PrescriptionServer.py", "query": "Give patient BETA-7 a prescription for prednisone 50 mg QD."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Write an Rx for patient 12-34: albuterol 90 mg Q4H PRN wheeze."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Can you prescribe clopidogrel 75 mg daily for patient ID C-999?"}
-{"server_path": "Medical/PrescriptionServer.py", "query": "My patient 31415 needs digoxin 0.125 mg every other day; please generate the eRx."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Create a prescription for patient 8888 for acetaminophen 650 mg QID."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Send an electronic prescription to patient xray-202 for fluoxetine 20 mg BID."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Please prescribe doxycycline 100 mg BID for patient ABC-XYZ-123."}
@@ -8195,7 +8192,6 @@
 {"server_path": "Medical/PrescriptionServer.py", "query": "Arrange a prescription for patient F-404 for omeprazole 40 mg before breakfast."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "I need an electronic prescription for patient 09A for hydrochlorthiazide 25 mg once daily."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Issue a prescription for patient 777-777 for nitrofurantoin 100 mg Q12H."}
-{"server_path": "Medical/PrescriptionServer.py", "query": "Set up a prescription for patient MATH42 for alprazolam 0.5 mg TID PRN anxiety."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Please order azithromycin 500 mg once for patient QT-500."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Give me an e-Rx: patient 1L2M3N, drug name losartan, dosage 50 mg, frequency BID."}
 {"server_path": "Medical/PrescriptionServer.py", "query": "Prescribe 325 mg aspirin QD for patient ID 2FAST-2FURIOUS."}
@@ -9171,7 +9167,7 @@
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "Register new stats for 'nil', weight 70 kg, fat 18.5%; afterwards what's BMI at 175 cm?"}
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "Save 95 kg with 33% fat for user 'oscar' and calculate BMI for 182.5 cm."}
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "Log 48.8 kg, 10% fat for 'pippa' and tell me her BMI using height 158 cm."}
-{"server_path": "Fitness/BodyMetricsServer.py", "query": "Just compute BMI for user quinn: weight 67.2 kg, height 0 cm (edge case)."}
+{"server_path": "Fitness/BodyMetricsServer.py", "query": "Calculate BMI for user quinn: weight 67.2 kg, height 170 cm."}
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "Update stats: rizzo weighs 0.01 kg, body fat 100%, save it."}
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "I want the BMI for user 'sara' who is 300 centimeters tall and weighs 200 kilograms."}
 {"server_path": "Fitness/BodyMetricsServer.py", "query": "Could you mark that user 'tiny_tim' is 15 kg at 8% body fat?"}
@@ -9904,7 +9900,7 @@
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Register \"Björk Guðmundsdóttir\" at bjork@music.is without listing a phone number."}
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Please add \"Sir Arthur Conan Doyle\" to my directory; his email is acdoyle@letters.uk and mobile 44-7700-900123."}
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Insert a contact named \"X Æ A-12 Musk\" with email xa12@mars.com and no phone."}
-{"server_path": "Communication/ContactDirectoryServer.py", "query": "Could you generate a random contact ID I can use for testing purposes?"}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Generate a random contact ID for testing purposes."}
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Give me a random full name to populate a demo entry."}
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Search for names containing the apostrophe \"O'\"."}
 {"server_path": "Communication/ContactDirectoryServer.py", "query": "Look up anyone whose name has a hyphen, like \"Smith-Jones\"."}
@@ -10358,7 +10354,7 @@
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "How big, in kilobytes, is the symlink /usr/bin/python?"}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "I need the MD5 sum of the Unicode text 'こんにちは'."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Give me the file size of '/home/user/.bashrc'."}
-{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "What's the MD5 hash for a string that contains 1000 zeros?"}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Calculate the MD5 hash of a string containing 1000 zeros."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Tell me the size of '/dev/null' in KB."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Could you provide the MD5 hash for '😀👍🏻'?"}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Find the size of '/var/www/html/index.html'."}
@@ -11534,12 +11530,12 @@
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Register an e-bike charging station, model ChargePoint Express 250, for the mobility pilot."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Give me the default device list after that’s done."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a microscope camera, model Dino-Lite AM4515, for Biology Lab 3."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Show me a single entry from the inventory so I can test connectivity."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "List 1 device from the inventory to test connectivity."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Please create an inventory record for a phone, model iPhone 15 Pro, assigned to CEO Office."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a firewall appliance, model Palo Alto PA-220, belonging to SecOps."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "List 3 devices to check recent additions."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you register a smart fridge, model LG InstaView, under Catering?"}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Add an RFID reader, model Impinj Speedway R420, for Logistics and then tell me how many devices you return if the limit is set to 12."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Add an RFID reader, model Impinj Speedway R420, for Logistics."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "I want to log a digital signage display, model Samsung QM65R, for the lobby."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Fetch up to 60 devices; I'm preparing a compliance report."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a conference room speakerphone, model Poly Trio C60, owner: Audio-Visual team."}
