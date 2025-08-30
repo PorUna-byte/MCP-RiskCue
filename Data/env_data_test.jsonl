@@ -1,0 +1,1210 @@
+{"server_path": "Education/GradebookServer.py", "query": "Can you capture a 53% Oral Exam grade for student s123 in HIST300?"}
+{"server_path": "Events/EventNotificationServer.py", "query": "Create a notification bound to event IRONMAN_2025_REG and send “Registration window closes tonight!” at 2025-02-28T23:00:00Z."}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "Ask the beta site to target 10 percent state of charge."}
+{"server_path": "Weather/ForecastServer.py", "query": "Could you list the anticipated conditions for the next six consecutive days in Prague?"}
+{"server_path": "Utility_Tools/UnitConversionServer.py", "query": "What are the imperial equivalents of 1 meter and 1 °C?"}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "Add a POD entry for tracking GOLF777, received by Hannah Müller at 52.5200, 13.4050."}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "Could you fetch the top 15 tapas bars in Barcelona?"}
+{"server_path": "Entertainment/SocialBuzzServer.py", "query": "What does the timeline of \"daily_quotes\" look like when limited to 25 posts?"}
+{"server_path": "Education/EnrollmentServer.py", "query": "I need to join course LIT202; my student id is poet-laureate."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "Need a quick link: patient G-5, clinician D-4."}
+{"server_path": "Cryptography/HashServer.py", "query": "Find the sha256 hash for the phrase “🧪🔬 Science!”."}
+{"server_path": "Education/TutoringServer.py", "query": "Reserve a Calculus catch-up for student delta-5 at 2024-06-30T06:00:00Z and immediately tell me whether it was confirmed."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Check the status of call ID \"CALL-00123\""}
+{"server_path": "Weather/HistoricalWeatherServer.py", "query": "What's the average high and low in Lima on 1985-01-15?"}
+{"server_path": "Weather/AirQualityServer.py", "query": "Is the AQI in Prague low enough for outdoor exercise?"}
+{"server_path": "Business/HRServer.py", "query": "I need the average monthly attrition percentage for Finance for the last 6 months."}
+{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Provide the maximum CTR% observed in the 7-day trend for campaign \"travel_deals_may\"."}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show me the five latest earthquakes with magnitude above 5.0."}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Add track 0x0x0x to list pl_hex_music."}
+{"server_path": "Advertising/AudienceInsightsServer.py", "query": "Show age-band percentages for camping tents and how much the audience overlaps with portable power stations."}
+{"server_path": "Food/GroceryListServer.py", "query": "Begin the list 'Grill Night' for user 'pitmaster', then add briquettes (1 bag) and ribs (2 racks)."}
+{"server_path": "Energy/GridLoadServer.py", "query": "I’d like the real-time megawatt demand in the PJM zone."}
+{"server_path": "Fitness/ActivityTrackerServer.py", "query": "Give beastmode’s summary for 2023-12-12."}
+{"server_path": "Payments/CardProcessorServer.py", "query": "I have auth ID auth_abc123; capture the full 250 dollars, please."}
+{"server_path": "Health/MedicationReminderServer.py", "query": "I need to know whether reminder midnight_zero reached the patient."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "Retrieve three mounts for browsing."}
+{"server_path": "Fitness/GymClassServer.py", "query": "I’m free at 06:00 tomorrow; any classes at dawnfit_gym on 2024-05-17 starting exactly then?"}
+{"server_path": "Communication/VoiceCallServer.py", "query": "I want to stop the call tagged \"c0ffee-c0de\""}
+{"server_path": "Events/TicketingServer.py", "query": "Validate ticket xyz123xyz for me, please."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Check if \"roomkey42\" authenticates that message with \"meeting-pub\"."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Give me five docs that are tagged “music” and “theory”."}
+{"server_path": "Sports/VenueInfoServer.py", "query": "Show me a 3-hour weather forecast for stadium code STADIUM_A7."}
+{"server_path": "Logistics/WarehouseInventoryServer.py", "query": "Tell me current qty for BOARD-GAME-CLUE at West_01."}
+{"server_path": "Fitness/SleepMonitorServer.py", "query": "Get alpha1’s REM and total minutes for 2024-05-11."}
+{"server_path": "Database/DBMonitoringServer.py", "query": "Compare the five-minute metrics of payments_prod and orders_prod back to back."}
+{"server_path": "Events/AgendaSchedulerServer.py", "query": "Could you tell me whether event \"HM2024\" currently has any sessions scheduled?"}
+{"server_path": "Food/RecipeServer.py", "query": "Search “falafel” and then detail the instructions for the recipe that takes the least time."}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Search the directory for the substring \"é\" (e with acute) to catch decomposed accents."}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "Provide podcast recommendations on gardening with the maximum list size of 12."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "User spoilsport is spoiling endings everywhere; ban them for 48 hours for spoilers abuse."}
+{"server_path": "Utility_Tools/NetworkUtilityServer.py", "query": "I'd like the IP for docs.oracle.com; also, tell me if port 80 is reachable there."}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "Can you list the tiles covering Manhattan, defined by 40.70,-74.02 to 40.88,-73.90, at zoom 14?"}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Fetch twelve recent magnitude 4.9 or greater events for statistical analysis."}
+{"server_path": "Transportation/CarRentalServer.py", "query": "Please lock in offer FASTCAR for customer zeta-9."}
+{"server_path": "Education/AttendanceServer.py", "query": "Give me the number of absentees in course LAW101 on 2024-05-09."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Please decrypt this cipher text 'U2VjcmV0IG1lc3NhZ2U=' using the matching private key '-----BEGIN RSA PRIVATE KEY-----\\nKID:secret456\\n-----END RSA PRIVATE KEY-----'."}
+{"server_path": "Fitness/GoalCoachServer.py", "query": "Check how complete goal DX-150 is right now."}
+{"server_path": "Jobs/ApplicationTrackerServer.py", "query": "I’d like an update on application id 2024-ENG-APP-1."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Retrieve the entire static report for sample_id \"44aa55bb66cc\"."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Give me 400 characters from doc “ETH-TECH-SOC-5”."}
+{"server_path": "Medical/VaccineRecordServer.py", "query": "Gather the immunization events logged for FAITH-1."}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "End the subscription with id SUB_FREE_TEST."}
+{"server_path": "Education/GradebookServer.py", "query": "Display the grades for learner 97b3cd in COMP-2024."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "Calculate the molar mass for buckminsterfullerene, C60."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Fetch docs with tags “robotics”, “autonomous”, “navigation”, at most 3."}
+{"server_path": "Food/MealPrepServer.py", "query": "Give me the ETA for cooking batch ref prep_9999_zeta"}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "How many km separate 35.6895, 139.6917 and 37.7749, -122.4194?"}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "Provide a full strength breakdown for \"Mix3dCASE\"."}
+{"server_path": "Weather/HistoricalWeatherServer.py", "query": "Please provide Seattle’s record-high and record-low values."}
+{"server_path": "Food/MealPrepServer.py", "query": "When will prep identifier “old_prep_001” be complete?"}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "What skills, if any, does this text reference? “Noah Kim enjoys tinkering with Raspberry Pi and coding in Node.js and Lua.”"}
+{"server_path": "Search/ProductSearchServer.py", "query": "What products come up if I just search the word 'sofa'?"}
+{"server_path": "Food/IngredientSubServer.py", "query": "Need a low-sodium replacement for soy sauce—any suggestions?"}
+{"server_path": "Search/CodeSearchServer.py", "query": "Provide five C code snippets for linked list operations."}
+{"server_path": "Commerce/LoyaltyServer.py", "query": "What balance does mystery_guest have?"}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "Is a 50k salary with no bonus and 0 equity better or worse than 45k with 10% bonus and 1k equity?"}
+{"server_path": "Cryptography/RSAServer.py", "query": "Please create a 4096-bit RSA key pair and return both PEM strings."}
+{"server_path": "Advertising/BudgetOptimizerServer.py", "query": "Here are my CPCs—search 2.1, social 1.6, influencer 3.0; reallocate a 5,000-yuan budget toward cheaper channels."}
+{"server_path": "Medical/ImagingStudyServer.py", "query": "Fetch the latest status on study ID DE-CT-REN-2."}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "Check this résumé: “Samir Khan – samkhan@bigdata.com – Familiar with MapReduce, Cassandra, and HBase.”  I want email and skills."}
+{"server_path": "Social/EventPlannerServer.py", "query": "Put attendee foodie12 as “maybe” for event gourmet_tour."}
+{"server_path": "Commerce/PromotionServer.py", "query": "Apply BLACKFRIDAY to a cart totaling 999.95 and report the discount and new total."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "Show me the fire, police, and medical emergency numbers used in Israel."}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "For asset ID \"travel_blog_vlog5\", give me default stats."}
+{"server_path": "Monitoring/NetworkTrafficServer.py", "query": "Retrieve current Mbps values for the interface labeled data0."}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "Provide the status of pods under namespace data-lake, limit set to 3."}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "Provide the status of pods in the elasticsearch namespace; no need to adjust the limit."}
+{"server_path": "Sports/TeamRosterServer.py", "query": "Who is fourth on the PG depth chart for the Washington Wizards?"}
+{"server_path": "Advertising/AudienceInsightsServer.py", "query": "Provide the age distribution for online coding bootcamps and compute the overlap with data science courses."}
+{"server_path": "Mapping/MapStyleServer.py", "query": "I'm experimenting: set up a style \"Grey Matter\" with fill #808080 and show how it looks at zoom 1."}
+{"server_path": "Social/EventPlannerServer.py", "query": "Please RSVP user samwise to party2024 with a “no.”"}
+{"server_path": "Monitoring/NetworkTrafficServer.py", "query": "Quick check: what are the RX and TX values for can0?"}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "Compare \"Summer2022!\" and \"Winter#2023$\"—which one is stronger?"}
+{"server_path": "Food/MealPrepServer.py", "query": "I’d like two meals prepped for user smallappetite on 2023-02-14"}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "I want an overview of Copenhagen in Denmark."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Submit a score of 0 for user “Newbie42” in BalloonPop and tell me where that lands on the board."}
+{"server_path": "Commerce/ShippingServer.py", "query": "Tell me what’s happening with 9374889675093281534456."}
+{"server_path": "Health/SymptomCheckerServer.py", "query": "My 55-year-old dad, male, has persistent hiccups for 24 hours—does he need care?"}
+{"server_path": "Sports/VenueInfoServer.py", "query": "Give me the next 8-hour weather rundown for venue SUNSET-ARENA-88."}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "Upload this GeoJSON of bike share stations and call it 'BikeShare_Stations_2024' then send back the layer id."}
+{"server_path": "Travel/LocalToursServer.py", "query": "Please confirm a booking on tour ID BALI007 for user id traveler9 with five people."}
+{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "For campaign relaunch_q3, tell me how many conversions have been recorded and how much has been spent so far."}
+{"server_path": "Mapping/MapStyleServer.py", "query": "Could you create \"Vintage Sepia\" with base color #704214 and send a level-5 preview?"}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "Capture a proof-of-delivery on tracking code ORD-4455 for recipient Dr. Li Wei at 31.2304, 121.4737."}
+{"server_path": "Devices/SensorHubServer.py", "query": "Could you register an environmental noise sensor at “Cafeteria” and then provide its latest value?"}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "Summarize both the upcoming departures (limit 2) on line NORTH from stop NRT and any line alerts."}
+{"server_path": "Business/ExpenseServer.py", "query": "How much do we still owe to employee sales04 in reimbursements?"}
+{"server_path": "Database/SQLQueryServer.py", "query": "Can you explain the statement SELECT * FROM users u LEFT JOIN subscriptions s ON u.id = s.user_id WHERE s.active = true?."}
+{"server_path": "Search/MetadataSearchServer.py", "query": "Find up to 12 entries whose publication_year equals 1999."}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "I’ll be spending Valentine’s Day 2025-02-14 in Venice; what should I pack and what's the forecast?"}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Score the thriller THRILL007 as 4 stars for subscriber agentbond."}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "How many kilobytes is '/mnt/external drive/bigfile.iso'?"}
+{"server_path": "Food/NutritionLabelServer.py", "query": "Which has more protein: 200 g of cooked lentils or 200 g of cooked quinoa?"}
+{"server_path": "Commerce/ShippingServer.py", "query": "Where is Royal Mail item AA123456789GB now?"}
+{"server_path": "Database/SchemaManagerServer.py", "query": "What DDL changes do I need to upgrade from version 1.2.3 to 1.3.0?"}
+{"server_path": "Location/PlaceSearchServer.py", "query": "Are there any aquariums within 2.5 km of 55.6761, 12.5683—show four results."}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Check VEN123’s availability for the entire first week of January 2025."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Submit \"script.ps1\" (base64 \"cHJpbnQgJ0hpJw==\") and then tell me whether any suspicious sections were detected."}
+{"server_path": "Media/TranscoderServer.py", "query": "What’s going on with job code “err_check_42”?"}
+{"server_path": "Weather/SevereWeatherAlertServer.py", "query": "Show current severe weather bulletins for New York State."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Could you give me a 192-bit key and encrypt the string \"Edge cases matter!\"?"}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "For host id \"sol10-u11-legacy\", let me know whether it's compliant."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "What is the molar mass of silicon dioxide, SiO2?"}
+{"server_path": "Fitness/GymClassServer.py", "query": "Which classes at downtown_fit on 2024-05-27 still have more than 5 openings?"}
+{"server_path": "Cryptography/RandomnessServer.py", "query": "Could you generate 5 bytes of secure randomness?"}
+{"server_path": "Devices/PrinterServer.py", "query": "I need to print 1 page on the reception_printer; set it up."}
+{"server_path": "Media/CaptionServer.py", "query": "What subtitle languages are currently available for asset \"movie_1138\"?"}
+{"server_path": "Energy/GridLoadServer.py", "query": "Show whether Ontario IESO’s real-time load exceeds any of the next 4 hourly forecast points."}
+{"server_path": "Advertising/BudgetOptimizerServer.py", "query": "What would the allocation look like for 250,000 CNY when search CPC is astronomically high at 9,999 and all others are 1.0?"}
+{"server_path": "Business/InventoryServer.py", "query": "What is the reorder_below figure for soap bar SB-5PK?"}
+{"server_path": "Devices/RouterConfigServer.py", "query": "Please set router R-TEST-BETA to use SSID \"QA_Network\" with password \"Testing123!\"."}
+{"server_path": "Food/KitchenTimerServer.py", "query": "How much time is remaining on meditation-break-12?"}
+{"server_path": "Jobs/ReferralNetworkServer.py", "query": "For candidate TIGER01 heading to Deloitte, who can refer them? Just give me three names."}
+{"server_path": "Events/LivePollServer.py", "query": "I'd like a poll in event NewHire001: 'How confident are you?' options 'Very', 'Somewhat', 'Neutral', 'Not much', 'Not at all'."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "I want the next StarCraft II match, just one."}
+{"server_path": "Entertainment/EventTicketServer.py", "query": "What concerts by Taylor Swift are planned for Nashville—show no more than 3."}
+{"server_path": "Sports/FantasyManagerServer.py", "query": "Send Tyreek Hill from coastal_crushers to delta_dogs and ask for Cooper Kupp."}
+{"server_path": "Communication/NotificationServer.py", "query": "Retrieve all alerts, even read ones, for user “morning_star”."}
+{"server_path": "Cryptography/RandomnessServer.py", "query": "Please produce 64 random bytes encoded in base64."}
+{"server_path": "Medical/AllergyRegistryServer.py", "query": "What allergies are listed under patient ID demo00?"}
+{"server_path": "Food/NutritionLabelServer.py", "query": "Compare the fat content of 100 g of coconut oil with 100 g of olive oil."}
+{"server_path": "Database/DBMonitoringServer.py", "query": "I’m troubleshooting: pull 3-minute metrics for testbed_db and list current alerts."}
+{"server_path": "Gaming/AchievementServer.py", "query": "Record that player matrix has completed challenge code 'glitch_master'."}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "Where should I go for Falafel in Tel Aviv (show up to 6)?"}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "Generate an economy saver label for 347590654321."}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "Terminate subscription code YEARLY-GOLD-77."}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "If I visit Lisbon, what five attractions should I not miss?"}
+{"server_path": "Communication/ChatServer.py", "query": "Show me the most recent 25 messages from design-hub."}
+{"server_path": "Business/SalesServer.py", "query": "Run a five-month projection for the TravelLite suitcase line."}
+{"server_path": "Location/IPGeoServer.py", "query": "Could you tell me the approximate location of the IPv6 address 2001:4860:4860::8888?"}
+{"server_path": "Food/IngredientSubServer.py", "query": "What can I use instead of eggs in a cake recipe?"}
+{"server_path": "Sports/TeamRosterServer.py", "query": "Could you list the shooting guards in the Miami Heat depth chart?"}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "If a British traveller is in Kenya, how can they reach their embassy?"}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Submit a file named \"exp.pptm\" with base64 \"cHJlcw==\" and return all three fields of the static report."}
+{"server_path": "Monitoring/LogAggregatorServer.py", "query": "I need a WARNING entry for reporting-engine: “CSV export took longer than expected.”"}
+{"server_path": "Commerce/ProductCatalogServer.py", "query": "Run a search on \"smart watch\" limited to 5 results; for SKU number 2 in that list, retrieve its product attributes."}
+{"server_path": "Energy/SolarArrayServer.py", "query": "Do a quick health check on \"HarborRoofUnit\" and state how many inverters are currently online."}
+{"server_path": "Business/FinanceServer.py", "query": "Compare Apple’s Q2 2023 and Q3 2023 profits."}
+{"server_path": "Gaming/MultiplayerLobbyServer.py", "query": "Kick off an \"endless\" mode lobby, \"Loop\" as host, set cap to 0 to see what happens."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "How heavy is one mole of ethanol, C2H6O?"}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "I'll need the SOC on gamma formatted as a percentage string."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "Please turn '  Leading Space Test' into snake_case and include the leading space in the character count."}
+{"server_path": "Payments/RefundServer.py", "query": "Where does my refund with the code R-0005 stand?"}
+{"server_path": "Health/InsuranceEligibilityServer.py", "query": "See if the plan for patient CAPE-3 includes procedure CPT2468 and report the copay."}
+{"server_path": "Location/PlaceSearchServer.py", "query": "I need up to seven thrift stores inside 1 km of 33.7490, -84.3880."}
+{"server_path": "Education/DiscussionServer.py", "query": "Just add an empty acknowledgment '👍' from user 'alice' into thread 'reactions'."}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "Could you enroll customer id 98765 into plan id plan_gold?"}
+{"server_path": "Education/EnrollmentServer.py", "query": "Add course HIST200 to student jane_doe_42’s record."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "What’s the address of the Singaporean embassy in Switzerland?"}
+{"server_path": "Media/PodcastFeedServer.py", "query": "I need the feed id for 'Kids Science Lab' by 'Dr. Whiz' right after it’s created."}
+{"server_path": "Database/IndexOptimizerServer.py", "query": "I routinely query `SELECT * FROM alerts WHERE level = 'error' ORDER BY created_at DESC LIMIT 100;`—any three index suggestions?"}
+{"server_path": "Science/StatisticsServer.py", "query": "What’s the mean and standard deviation for my weekly mileage: 5, 10, 15, 20, 25, 30, 35?"}
+{"server_path": "Events/RSVPServer.py", "query": "Sign me up—name: Fatima Al-Sayed, email: fatima.as@arabia.net—for \"desert-fashion-week\"."}
+{"server_path": "Commerce/PaymentGatewayServer.py", "query": "First bill cust42 $250 by credit_card; after that, refund $50."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "I'd like a quick view of attendee arrivals at \"StartupWeekend\" using 20-minute buckets."}
+{"server_path": "Database/BackupRestoreServer.py", "query": "Could you back up the experimental db \"exp_alpha\" and seed \"exp_alpha_snapshot\" with it?"}
+{"server_path": "Medical/ICDCodingServer.py", "query": "What's the entry for ICD-10 code J45.909?"}
+{"server_path": "Search/CodeSearchServer.py", "query": "Show me three TypeScript examples of decorators."}
+{"server_path": "Search/ProductSearchServer.py", "query": "I'm after 'ceramic hair straightener'; list only four items."}
+{"server_path": "Location/IPGeoServer.py", "query": "I'd like to know the city corresponding to 203.0.113.42."}
+{"server_path": "Gaming/FriendsListServer.py", "query": "Send a friend request originating at user “north_pole” headed to “south_pole”"}
+{"server_path": "Education/GradebookServer.py", "query": "I want to store a 95 percent Attendance grade for john.doe in HIST300."}
+{"server_path": "Business/SalesServer.py", "query": "Could you run a 7-month forecast for catalogue item 'BreezeCool AC'?"}
+{"server_path": "Social/SocialGraphServer.py", "query": "I’m looking for the overlap between \"bob456\" and \"avery_l\"; pull their mutual friends."}
+{"server_path": "Cryptography/KDFServer.py", "query": "Derive 48 bytes from \"Dragon!23\" using salt \"RHJhZ29uU2FsdA==\", 90000 iterations."}
+{"server_path": "Gaming/MultiplayerLobbyServer.py", "query": "Open a \"story\" co-op lobby for \"Narrator\"; leave the max players unspecified."}
+{"server_path": "Education/AssignmentServer.py", "query": "I want to see whether submission code \"2023W-MECH-07\" is awaiting review."}
+{"server_path": "Business/HRServer.py", "query": "What’s Engineering’s attrition percent if we look back two years?"}
+{"server_path": "Energy/WindTurbineServer.py", "query": "Check wind turbine R-17’s kilowatt reading and alert me if it’s under 500 kW."}
+{"server_path": "Events/RSVPServer.py", "query": "I'd like the RSVP numbers for \"gallery-opening-02\"."}
+{"server_path": "Business/HRServer.py", "query": "How many people currently work in Sales, and how many reqs are still unfilled?"}
+{"server_path": "Communication/NotificationServer.py", "query": "How many unread notifications does user “goose” have?"}
+{"server_path": "Food/MealPrepServer.py", "query": "Arrange for user quickfix to cook on 2023-02-02 but make 13 meals this time"}
+{"server_path": "Food/GroceryListServer.py", "query": "Start a new grocery list called 'Midweek Run' for user jason_01."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "List the available accommodations in Reykjavik between 2025-01-05 and 2025-01-10 for two people."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "Tell me the essentials: emergency numbers in Denmark and the U.S. embassy information."}
+{"server_path": "Jobs/JobListingServer.py", "query": "Are there remote data entry positions? If so, give the first five."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Arrange a prescription for patient F-404 for omeprazole 40 mg before breakfast."}
+{"server_path": "Business/ExpenseServer.py", "query": "Log a $0.99 water bottle under meal for employee tiny01."}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "Check sensor 'pet_vivarium' and report its latest temperature in Celsius along with whether it’s safe (20–35 °C)."}
+{"server_path": "Utility_Tools/CalculatorServer.py", "query": "First sum 1, 2, and 3, then add 10 to that sum."}
+{"server_path": "Payments/PayoutServer.py", "query": "Kick off a micro-payout of 0.10 for merchant \"alpha-tester\" to account \"MICRO-ACC-1\"."}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "Show the next four days of NHL games."}
+{"server_path": "Media/RightsManagementServer.py", "query": "Can the asset 'caribbean_cruise_hd' be streamed from TT?"}
+{"server_path": "Communication/CalendarInviteServer.py", "query": "Create an invite for trainer@fitness.app with client@fitness.app at 2025-05-02T06:00:00Z."}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Check the GPS timestamp for dispatch 'alpha1'."}
+{"server_path": "Monitoring/WebsiteUptimeServer.py", "query": "Is https://www.bbc.co.uk currently online?"}
+{"server_path": "Cybersecurity/FirewallManagerServer.py", "query": "Insert blocking rule: 45.33.32.156 to 45.55.37.89 port 8080."}
+{"server_path": "Health/InsuranceEligibilityServer.py", "query": "Check copay for procedure code CHILD4321 under patient KILO_31."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Outline a 31-minute driving catchment starting at 38.7223, -9.1393."}
+{"server_path": "Payments/FraudScreenServer.py", "query": "I want the risk level for token “big_refund” from 54.239.28.85 attempting a 2000.00 reversal."}
+{"server_path": "Energy/GridLoadServer.py", "query": "Identify the earliest time within the next 24 hours when ERCOT’s forecast dips below its current load."}
+{"server_path": "Commerce/ShippingServer.py", "query": "Track this shipment for me: 1Z88E1234567890123."}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "Please log POD info for package SNOW-OWL-33 delivered to Ivana Horvat at 43.5081, 16.4402."}
+{"server_path": "Food/MealPrepServer.py", "query": "I need a cooking session slated for 2024-04-04 for user quarterly_plan, exactly 16 portions"}
+{"server_path": "Search/VectorSimilarityServer.py", "query": "What are the default nearest neighbors for the vector [0.3, -0.2, 0.9]?"}
+{"server_path": "Food/IngredientSubServer.py", "query": "Can you list options to replace vodka in a pasta sauce?"}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "Provide the tiles intersecting latitude 35.0–36.0 and longitude 138.0–139.0 for zoom 9."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "How healthy does turbine 'old_farm_9' appear, percentage-wise?"}
+{"server_path": "Monitoring/AlertingRuleServer.py", "query": "Establish an alert for thread_count bigger than 700."}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Draft one concise headline for “SwiftRide E-Scooter”."}
+{"server_path": "Business/InventoryServer.py", "query": "What’s the stock situation for article FILM-CLR-50?"}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "Show me mods 1 through 15 for \"ark_survival_evolved\"; I need to scan them manually."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you append a VR headset, model Oculus Quest 2, to the inventory on behalf of the training group?"}
+{"server_path": "Monitoring/WebsiteUptimeServer.py", "query": "Is https://www.google.com reachable at the moment?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "Tell me which luxury models are open at CDG from 2024-08-18T13:00 to 2024-08-22T09:00."}
+{"server_path": "Education/EnrollmentServer.py", "query": "What classes is student zebra-12 registered for now?"}
+{"server_path": "Monitoring/DatabaseHealthServer.py", "query": "Obtain the replica lag for qa_env_db, please."}
+{"server_path": "Location/IPGeoServer.py", "query": "Could you tell me the country for 91.198.174.192?"}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "First make a 128 bit key, then use it to encrypt \"Simple text\", and finally decrypt it right away to prove round-trip works."}
+{"server_path": "Sports/VenueInfoServer.py", "query": "Give me the city, capacity, and turf type for LEGACY_BOWL-X1."}
+{"server_path": "Database/BackupRestoreServer.py", "query": "Restore the backup labelled \"bkp-temp\" into temp_restore_db."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Using key \"ffffffffffffffffffffffffffffffff\", IV \"abababababababababababababababab\", decode the Base64 cipher \"SW4gY3J5cHRvIHdlIHRydXN0\"."}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "Kick off a round for \"CuriousCat\" and display the response JSON."}
+{"server_path": "Education/GradebookServer.py", "query": "I need to save 74 percent for Homework 3 for STU0005 in ENG150."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "I’d like to reserve spot code BETA2024 for user john_doe for 2 hours."}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "Please list all notes you can find for patient 3003 without specifying a limit."}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "Register player \"CapybaraCraze\" for South-Africa at 415 elo."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "I’d like to know the five best scores on IceSkateChampionship."}
+{"server_path": "Medical/ICDCodingServer.py", "query": "I'd like to see the ICD-10 description for L03.115."}
+{"server_path": "Payments/CardProcessorServer.py", "query": "Run an authorization for 500 EUR on token tok_business_trip, then capture it right away for the full amount."}
+{"server_path": "Location/ReverseGeocodeServer.py", "query": "What location is 25.0343, 121.5645?"}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "Give me whatever skills are present: “Skill set: Docker Swarm, Rancher, Prometheus.”"}
+{"server_path": "Business/FinanceServer.py", "query": "Give me a summarized report for Amazon in quarter 3 of 2024."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Show me default-interval traffic for both \"SpringConcert\" and \"AutumnConcert\"."}
+{"server_path": "Weather/UVIndexServer.py", "query": "Please grab the current UV for San Diego and then suggest the appropriate sunscreen."}
+{"server_path": "Business/InventoryServer.py", "query": "How many units of item A-100 are currently in stock?"}
+{"server_path": "Communication/EmailServer.py", "query": "Fetch the default inbox for noreply@automation.bot."}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "What’s the total comp for 60k base, 20% bonus, 10k equity?"}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "I need a printable label for tracking 9400111202555848138499; the default service is fine."}
+{"server_path": "Advertising/AdBidServer.py", "query": "How competitive is the phrase “zero waste lifestyle tips”?"}
+{"server_path": "Gaming/AchievementServer.py", "query": "What are the unlocked achievements for user named 'harvest'?"}
+{"server_path": "Travel/LocalToursServer.py", "query": "Book tour TX-905 for account user42; there will be two of us."}
+{"server_path": "Weather/MarineWeatherServer.py", "query": "How rough is the sea in the Labrador Sea right now?"}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Could you generate a new prescription for patient 77-55-33 to receive metformin 500 mg BID?"}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you add a point-to-point antenna, model Ubiquiti PowerBeam AC, for Remote Site A?"}
+{"server_path": "Food/IngredientSubServer.py", "query": "Provide me with options to substitute brown rice vinegar."}
+{"server_path": "Business/SalesServer.py", "query": "Can you estimate unit sales for the Quantum phone for the next 2 months and also tell me whether the Pacific division can reach 18,000 units?"}
+{"server_path": "Mapping/IsochroneServer.py", "query": "How far can I go in 28 minutes on foot from the Colosseum?"}
+{"server_path": "Transportation/TrainServer.py", "query": "Give a quick status check for Toki303 on 2023-12-01."}
+{"server_path": "Energy/SmartMeterServer.py", "query": "I want to know how many kWh meter pool_pump used on 2024-07-04."}
+{"server_path": "Medical/VaccineRecordServer.py", "query": "Now fetch TEST-CASE’s vaccine history."}
+{"server_path": "Weather/MarineWeatherServer.py", "query": "Summarize the tide pattern at Venice over the coming 7 hours."}
+{"server_path": "Search/WebSearchServer.py", "query": "Look up two explanations of how interest rate swaps work."}
+{"server_path": "Search/ProductSearchServer.py", "query": "Give me any two products labeled 'baby monitor smart'."}
+{"server_path": "Sports/FantasyManagerServer.py", "query": "Get the score for delta_dogs during week 9 of the season."}
+{"server_path": "Education/TutoringServer.py", "query": "I need an on-demand Calculus III lesson for student calc3-199 at 2024-07-27T11:00:00Z."}
+{"server_path": "Transportation/ShipmentTrackingServer.py", "query": "Which has the earlier delivery date, 9405536892237896543212 or AA123456789GB?"}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "Show me Serie A fixtures for the upcoming weekend (next three days)."}
+{"server_path": "Weather/SevereWeatherAlertServer.py", "query": "Are there any active weather alerts for the California Central Valley today?"}
+{"server_path": "Jobs/SkillGapAnalysisServer.py", "query": "Here's the job spec: Java, Spring Boot, Kubernetes, AWS. The candidate lists Java, Kubernetes, Terraform. What skills are absent?"}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "Give me the travel time index on the M25 orbital road around London."}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "What are the top four attractions in Toronto for first-timers?"}
+{"server_path": "Education/DiscussionServer.py", "query": "Send the message 'I'll be out of office tomorrow' as 'alex' to thread 'OOO'."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Retrieve the latest six plays for match eSports_LOL_Worlds23_SF2."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Could you fetch everything you know about sample_id \"4d2a6f0c\"?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "Reserve offer-id LXZ900 for the account 77777."}
+{"server_path": "Weather/HistoricalWeatherServer.py", "query": "What are Paris’s record extremes and the years they occurred?"}
+{"server_path": "Education/QuizServer.py", "query": "I need to know my score for session RESULT-AB12."}
+{"server_path": "Events/TicketingServer.py", "query": "I’d like a platinum pass for gregor.c@chesscup event chess_world_finale."}
+{"server_path": "Jobs/SkillGapAnalysisServer.py", "query": "Identify any absent qualifications when a trucking job wants CDL, HazMat, and GPS familiarity, and driver has CDL and HazMat."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Verify signature \"1234567890abcdef\" against message \"Time: 2024-01-01T00:00:00Z\" and public key \"timestamp-pub\"."}
+{"server_path": "Location/GeoFenceServer.py", "query": "Set up 'EquatorLine' at 0.0001, -77.0333 with a 50-meter radius."}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Schedule driver 'pilot-101' in bus 'coach-101' for route 'route-101' and immediately get its coordinates."}
+{"server_path": "Commerce/ShippingServer.py", "query": "I need to see the price for a 32 kg oversized parcel to 99501."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Could you display the 23-minute traffic buckets for \"DesignThinkingWorkshop\"?"}
+{"server_path": "Utility_Tools/RandomDataServer.py", "query": "I need a unique filename—make a UUID v4 and append “.txt” to it."}
+{"server_path": "Commerce/PromotionServer.py", "query": "First list active coupons, then tell me if EXTRA5 appears in that list."}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "What’s the real-time status for surgery SCHED-7777?"}
+{"server_path": "Location/RoutePlannerServer.py", "query": "I need a walking route from the Philadelphia Museum of Art to Independence Hall."}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "What service advisories are in place for route 801?"}
+{"server_path": "Commerce/PromotionServer.py", "query": "Validate BIGSAVE on a 10,000.00 dollar cart."}
+{"server_path": "Advertising/BudgetOptimizerServer.py", "query": "Use these CPCs (search 100, social 50) to reallocate an enormous 1,000,000-yuan budget."}
+{"server_path": "Medical/LabPanelServer.py", "query": "Fetch every analyte for panel CBC990099."}
+{"server_path": "Transportation/TrainServer.py", "query": "Update me on Tsubasa404 operating 2023-04-15."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Give me the current score only for match highschool_soccer_2023_CHSvsEHS."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Provide check-in bucket counts for \"CookingClass\" in 26-minute intervals."}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "Check ticket ID \"empty-slot-000\" for match availability."}
+{"server_path": "Transportation/CarRentalServer.py", "query": "Find any compact cars at ANC for 2025-01-15T10:00–2025-01-20T16:00."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "Convert 'Global Network Infrastructure' to snake_case and then tell me how many characters the snake_case result contains."}
+{"server_path": "Monitoring/AlertingRuleServer.py", "query": "Make a rule when power_consumption drops below 100 watts."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "Grab a still from 'elevator_top' cam."}
+{"server_path": "Search/ImageSearchServer.py", "query": "I'd like six thumbnails of classic Italian gelato in colorful cups."}
+{"server_path": "Search/LogSearchServer.py", "query": "Get ten newest lines that have '[DEBUG] latency:' after 2023-07-01."}
+{"server_path": "Mapping/ProjectionServer.py", "query": "Convert the Canadian Arctic point at 75, −95 into Web Mercator."}
+{"server_path": "Location/ReverseGeocodeServer.py", "query": "Provide an address for 41.8902, 12.4922."}
+{"server_path": "Communication/EmailServer.py", "query": "Send an email to coach@sportsclub.org with the subject 'Practice Canceled' and the body 'Today's practice is canceled due to weather.'"}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Who’s ahead in match EURO24_QUAL_ENGvITA right now?"}
+{"server_path": "Cryptography/RSAServer.py", "query": "I was thinking of a 12k-bit modulus, but since that’s too big, please just generate the maximum size key you allow."}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "List podcasts about \"entrepreneurship\"; afterward, take the second show and display its default episode list."}
+{"server_path": "Jobs/InterviewSchedulerServer.py", "query": "For candidate APP-COOL, schedule the first available time after 15:00 on 2023-12-20 with interviewer CO-5."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "Give me one Overwatch 2 match that’s happening soon."}
+{"server_path": "Media/ImageProcessingServer.py", "query": "Make a 512 by 1024 poster-friendly copy of movie_still_08."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Please initiate a support call: caller \"+18005550123\", callee \"client_567\""}
+{"server_path": "Jobs/InterviewSchedulerServer.py", "query": "Could you check 2025-08-20 for recruiter r2d2 and schedule the 10:00 slot for application SW-007?"}
+{"server_path": "Business/SalesServer.py", "query": "Estimate whether Team Delta can achieve 8,250 units."}
+{"server_path": "Energy/SolarArrayServer.py", "query": "Give me both power_kw and whether faults exist on \"MountainPass7\"."}
+{"server_path": "Food/NutritionLabelServer.py", "query": "Give me the nutritional info for 45 g of maple syrup."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Give me the suspicious sections for the sample you just uploaded named \"macro.docm\" with base64 \"MTIzNDU2\"."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Start a call from \"+61234567890\" to \"+441234567890\", wait a moment, and then end it, returning the duration"}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Add “Double bacon burger” for user cheat_day: 980 cal, 48 g protein, 40 g carbs, 68 g fat."}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Show me what’s currently inside playlist 9f9f9f9f."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Look up coding hackathons in Singapore for the first week of April 2025, default maximum."}
+{"server_path": "Social/ContentSchedulerServer.py", "query": "Please queue \"Flashback Friday: Our first logo\" on profile brand_history at 2025-01-17T09:00:00+00:00."}
+{"server_path": "Communication/NotificationServer.py", "query": "Could you list every unread notification for user b4c2f?"}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "I have a customer user789; put them on plan family_pack_monthly."}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me the newest magnitude 6.5+ quake and include both its ID and depth in kilometers."}
+{"server_path": "Devices/PrinterServer.py", "query": "Find out if job label-run-2023-08 is still in the queue."}
+{"server_path": "Sports/PlayerStatsServer.py", "query": "How many assists per game did Trae Young have in 2020-21?"}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "I'd like to store this warning from \"redis-cache\": \"127.0.0.1:6379> WARNING overcommit_memory is set to 0\""}
+{"server_path": "Database/SQLQueryServer.py", "query": "I'd like to see any employee records where the job_title contains the word \"Manager\"; just return four rows."}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "Give me a side-by-side comparison of the latest temperatures from sensor 'north-wall' and 'south-wall'."}
+{"server_path": "Education/DiscussionServer.py", "query": "Retrieve the last five posts from the thread id 'project-alpha', please."}
+{"server_path": "Business/InventoryServer.py", "query": "How much of ingredient SUGAR-RW-25KG do we have, and when should we reorder?"}
+{"server_path": "Search/MetadataSearchServer.py", "query": "Return the default set of records where 'taxonomy' equals 'ICD-10'."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "Is turbine SN-008 over 95 % health? Get the score."}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "Give me the great-circle distance, in miles, from -41.2865, 174.7762 to -54.8019, -68.3030."}
+{"server_path": "Advertising/BrandSafetyServer.py", "query": "Give me the safety rating for https://charitywater.org’s homepage."}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "Compare the number of downloads between the top five mods for \"valheim\"."}
+{"server_path": "Events/TicketingServer.py", "query": "Create a diamond-tier seat for event royal_gala_33 for guest Queen Bee."}
+{"server_path": "Cybersecurity/IDSServer.py", "query": "Register \"deep-packet-inspect\" at fe80::dead:beef:cafe and return the sensor_id only."}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "What's the rate from USD to USD, should it equal 1?"}
+{"server_path": "Monitoring/DatabaseHealthServer.py", "query": "Give the open connection count for finance_db right now."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Please register “Protein shake” (220 cal, 30 g protein, 8 g carbs, 5 g fat) for user gymrat123 and then tell me their macros for 2024-03-15."}
+{"server_path": "Location/GeocodingServer.py", "query": "I need lat/lng pairs for the following three addresses: “Buckingham Palace, London”, “White House, 1600 Pennsylvania Ave NW, Washington, DC” and “Kremlin, Moscow.”"}
+{"server_path": "Sports/PlayerStatsServer.py", "query": "Show me Nikola Jokic’s season averages for 2023-24."}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "Retrieve the standard five-note summary for patient 6262."}
+{"server_path": "Communication/EmailServer.py", "query": "Could you email rsvp@wedding.com with subject 'Attending' and body 'Looking forward to the big day!'?"}
+{"server_path": "Events/LivePollServer.py", "query": "I'd like to start a poll during conference_main saying 'Pick your favorite programming language' with options 'Python', 'JavaScript', 'Rust', 'Go', 'Kotlin'."}
+{"server_path": "Location/ReverseGeocodeServer.py", "query": "I'd like the human-readable address for 37.5665, 126.9780."}
+{"server_path": "Fitness/WorkoutPlanServer.py", "query": "How many minutes does each workout last in plan \"bulk-12\"?"}
+{"server_path": "Advertising/AdBidServer.py", "query": "I need a CPC recommendation for “resume translation service” in Yunnan."}
+{"server_path": "Commerce/ShippingServer.py", "query": "If I ship a 6 kg parcel to 85719, what will it cost and when will it arrive?"}
+{"server_path": "Entertainment/MovieCatalogServer.py", "query": "Who directed the film tt0110357?"}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Produce a funny single creative for “PuppyCam Treat Dispenser”."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "Could you end the video call for session id=“uuid-7777-8888”?"}
+{"server_path": "Travel/CurrencyExchangeServer.py", "query": "Could you show me how much 50 Swiss francs are in Norwegian kroner at the moment?"}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "I need the default stats for \"live_match_2022\" right now."}
+{"server_path": "Media/PodcastFeedServer.py", "query": "Set up a feed 'Fitness Flash' with host 'Coach Nova', then attach an episode labeled 'Warm-Up Routine' at https://fit.audio/warmup.mp3."}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "What is the northern boundary latitude for layer 'wetlands_aquatic'? Please give full bbox."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Fetch dance workshops in Mumbai from 2024-07-20 until 2024-07-25, I only need two."}
+{"server_path": "Database/NoSQLDocumentServer.py", "query": "Add {'item_id': 'B55', 'quantity': 300, 'warehouse': 'east'} to the 'inventory' collection."}
+{"server_path": "Business/ExpenseServer.py", "query": "How much pending reimbursement does employee CEO1 have after that charge?"}
+{"server_path": "Science/MicroscopyImageServer.py", "query": "Get me the stub thumbnail for img_00123 please."}
+{"server_path": "Science/GeneticsSequenceServer.py", "query": "Tell me the GC percentage for \"ATATATATATGC\"."}
+{"server_path": "Medical/ImagingStudyServer.py", "query": "Is study BRAIN_MR_2023-09-05 already done?"}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "Could you retrieve the first seven mods for \"cities_skylines\" please?"}
+{"server_path": "Search/CodeSearchServer.py", "query": "I'm looking for a Python example of quicksort; could you find a snippet?"}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Look up the status for session token \"uuid-1234-5678\""}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "For zoom level 11, what tiles cover the Caspian coastline 44.0,47.0 to 46.0,50.0?"}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Search for names that include the underscore character \"_\" by querying \"_\"."}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "Distance (km) between 43.7696, 11.2558 and 45.4408, 12.3155?"}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "What are the 480-minute aggregated metrics for \"financial_report_q2\"?"}
+{"server_path": "Monitoring/WebsiteUptimeServer.py", "query": "Check reachability of http://192.168.1.100:8080."}
+{"server_path": "Fitness/SleepMonitorServer.py", "query": "Please note that user A1 took a nap from 2023-01-01T10:00:00 to 2023-01-01T10:22:00."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Submit 73 points for gamer tag “LuckyNumber73” in “FortuneWheel” and let me know where that places me."}
+{"server_path": "Cybersecurity/FirewallManagerServer.py", "query": "Deny traffic from 172.16.5.4 to 10.1.1.1 on port 8080."}
+{"server_path": "Food/GroceryListServer.py", "query": "Create an empty list 'Air Fryer Test' for user 'techcook' and don't add anything yet."}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "Give me Bundesliga fixtures scheduled this week—meaning the next 7 days."}
+{"server_path": "Education/AssignmentServer.py", "query": "Could you look up the status for submission ID ssub_2023-05?"}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "I’m visiting waypoint Alpha-0, Beta-0, Gamma-0, Delta-0, Epsilon-0—find the optimal van route."}
+{"server_path": "Utility_Tools/UnitConversionServer.py", "query": "Compute the feet for 0.0254 meters and the Fahrenheit for −17.7778 °C."}
+{"server_path": "Entertainment/EventTicketServer.py", "query": "Pull up gospel events in Houston and reserve a single ticket for the third event under user faith18."}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "Bring back 12 pods from namespace integration-test and show their states."}
+{"server_path": "Business/InventoryServer.py", "query": "Is inventory for replacement filter RFLT-220 low enough to trigger a purchase?"}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Please drop a five-star rating on musical id NOTE9 for user maestro."}
+{"server_path": "Food/IngredientSubServer.py", "query": "Is there something I can swap in for garlic cloves if I don't have any?"}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Check on ride \"ZXCV-9988\"; where is it exactly right now?"}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Generate eight headline versions for “BrightBeam Solar Lantern”."}
+{"server_path": "Communication/NotificationServer.py", "query": "Push to account “xavier” the title “Contest winner” and body “Congrats! You just won a $50 gift card.”"}
+{"server_path": "Utility_Tools/RandomDataServer.py", "query": "Make a UUID v4 and convert it to uppercase before showing it."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "I already have IV \"0a0b0c0d0e0f10111213141516171819\" and ciphertext \"S29hbGEgaGFja2Vk\", so decrypt it with key \"0badc0de0badc0de0badc0de0badc0de\"."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "Return everything in the mounts category up to 12 entries."}
+{"server_path": "Energy/SmartMeterServer.py", "query": "Need the kWh for meter LAKEHOUSE on 2023-07-16."}
+{"server_path": "Commerce/CartServer.py", "query": "Could you clear SKU OLD-01 from user v2_upgrader’s cart?"}
+{"server_path": "Fitness/GymClassServer.py", "query": "If I try to book class 12345 for user duplicate_user twice in a row, what happens?"}
+{"server_path": "Mapping/MapTileServer.py", "query": "Pull the terrain-style tile at zoom 10, tile coordinates 300, 410."}
+{"server_path": "Health/VitalSignsServer.py", "query": "Log 98 bpm heart rate and a pressure of 145 over 92 for pt id 0001X."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "Raise a “NSFW without tag” flag on image set SETNude21; reporter is picpolice."}
+{"server_path": "Commerce/ProductCatalogServer.py", "query": "Search on keyword 'portable SSD' and return up to 4 matching SKUs."}
+{"server_path": "Search/ImageSearchServer.py", "query": "Let me see four thumbnails of ornate Art Deco patterns."}
+{"server_path": "Search/MetadataSearchServer.py", "query": "I need metadata for field 'grade_level' set to 'undergraduate'; five results will do."}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "Get the document ID for shipment “IL-STARTUP-42” valued at 8,888 USD heading to Israel"}
+{"server_path": "Health/SymptomCheckerServer.py", "query": "Give me guidance for a non-binary 30-year-old with a persistent dry cough that’s lasted three days."}
+{"server_path": "Medical/ICDCodingServer.py", "query": "Return up to 15 codes whose descriptions contain \"sepsis\"."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "Display five gloves for sale."}
+{"server_path": "Food/RecipeServer.py", "query": "I’m hosting brunch—show five “quiche” recipes with their ready times."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "Which cities dominate the luxury retail sector—limit the list to four?"}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Test signature \"locknkey\" for that same text using public key \"emoji-secure-pub\"."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Then report caffeinequeen’s macros for 2024-04-01."}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "Arrange stops Pick1, Drop1, Pick2 for minimum travel distance by truck."}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "How far in kilometers is 45.8150, 15.9819 from 59.9139, 10.7522?"}
+{"server_path": "Education/AttendanceServer.py", "query": "Mark attendance for student ss-555 for NUR300 dated 2024-03-12."}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Tell me how many tonnes came from reactor-delta in April 2019, month number 4."}
+{"server_path": "Media/PodcastFeedServer.py", "query": "Could you register a podcast feed named 'Tech Byte' and set 'Samantha J' as the host?"}
+{"server_path": "Social/SocialGraphServer.py", "query": "Provide me with the friend IDs for \"samuel_r\"."}
+{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Pull a KPI overview for campaign \"gadget_preorder\" and confirm whether conversions are above 500."}
+{"server_path": "Advertising/AdBidServer.py", "query": "Recommend what to bid on “fresh meal delivery” in the Beijing-Tianjin-Hebei region."}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "Please launch a trivia session for \"NightOwl\" and give me the ID."}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Give user POPCORN the default five recommendations right now."}
+{"server_path": "Food/RecipeServer.py", "query": "Give me the ingredient list for a shrimp scampi recipe; search first if necessary."}
+{"server_path": "Health/MedicationReminderServer.py", "query": "I want a real-time update on reminder token 'G7x88'."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "I need all available docs with the tags “cybersecurity” and “threat-analysis”, but don’t exceed six results."}
+{"server_path": "Payments/InvoiceServer.py", "query": "Please settle invoice \"edge-case-max\" using \"MaxPayMethod\"."}
+{"server_path": "Transportation/FleetManagementServer.py", "query": "What was the location of vintage-bus-66 in its latest report?"}
+{"server_path": "Cryptography/KDFServer.py", "query": "Give me the default-length key from password \"zigzag\", salt \"emlnemFn\", and 999 iterations."}
+{"server_path": "Business/ExpenseServer.py", "query": "I just bought a $42.17 sandwich on the company card; please log it as a meal for employee A100."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Please decrypt with key \"000102030405060708090a0b0c0d0e0f\", IV \"0f0e0d0c0b0a09080706050403020100\", ciphertext \"Q29uZmlkZW50aWFs\"."}
+{"server_path": "Cybersecurity/FirewallManagerServer.py", "query": "Add a permissive rule for 172.31.255.255 going to 192.168.0.1 over port 445."}
+{"server_path": "Business/ExpenseServer.py", "query": "Could you record a $1,024.50 airfare under travel for staff member ENG-007?"}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Show me where dispatch 'rt55-v112' was last recorded."}
+{"server_path": "Health/MedicationReminderServer.py", "query": "Please set up a reminder for account userXYZ for Clonazepam at 2023-12-15T19:45:00+00:00 and tell me if it gets scheduled successfully."}
+{"server_path": "Search/VectorSimilarityServer.py", "query": "I’d like the top 15 similar items for [0.12, -0.07, 0.34, 0.56, -0.91, 0.18]."}
+{"server_path": "Business/ExpenseServer.py", "query": "File a $15.00 coffee expense categorized as meal for employee S932."}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "List matches occurring on 2024-08-08."}
+{"server_path": "Jobs/JobListingServer.py", "query": "Provide five quality assurance tester jobs available in Atlanta."}
+{"server_path": "Food/MealPrepServer.py", "query": "Book prep for user campus_cook on 2023-09-30 with 20 meals; once booked, show its status"}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "What's the present USD/RUB exchange rate?"}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "Find podcasts centered on \"art history\" capped at 2; then give me the most recent episode for each identified show."}
+{"server_path": "Location/PlaceSearchServer.py", "query": "Show me the single closest police station to 33.4484, -112.0740."}
+{"server_path": "Medical/LabPanelServer.py", "query": "Order a thyroid-stimulating hormone test (TSH) panel for patient X-12-12; what’s the panel_id?"}
+{"server_path": "Social/SocialGraphServer.py", "query": "Display the common friend IDs of \"zorro999\" with \"alice123\"."}
+{"server_path": "Mapping/MapTileServer.py", "query": "I'd like the satellite tile for level 15, coordinates x=17230, y=11203."}
+{"server_path": "Commerce/PaymentGatewayServer.py", "query": "Reverse the whole $9,999.99 from trans# superSaleTX."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Validate \"tabsig\" for that tabbed string with key \"tab-pub\"."}
+{"server_path": "Jobs/SalaryEstimatorServer.py", "query": "Compare the salaries: project manager in San Francisco vs. one in Austin, each with 7 years’ experience."}
+{"server_path": "Transportation/TrainServer.py", "query": "What’s the last train from TKY to KYO on 2024-03-27?"}
+{"server_path": "Health/LabResultsServer.py", "query": "Create a TSH order for patient THR-999 and send back the order ID."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "Session “finishline99” is over—mark it done."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Enter “Cheesecake slice” for user sweettooth: 420 cal, 6 g protein, 34 g carbs, 31 g fat."}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Please calculate the MD5 for the sentence 'C\\'est la vie'."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "First get the live score for match id uni_hockey_2023_FINvSWE, then grab the latest five events."}
+{"server_path": "Location/TimeZoneServer.py", "query": "For the geographic point 50.0755° N, 14.4378° E, tell me its time zone and current time please."}
+{"server_path": "Database/NoSQLDocumentServer.py", "query": "Find nine alumni in 'alumni' where {'graduation_year': 2010}."}
+{"server_path": "Transportation/ShipmentTrackingServer.py", "query": "Check if tracking number AA987654321GB has been delivered or is still in transit."}
+{"server_path": "Science/StatisticsServer.py", "query": "I have readings 0.9, 1.1, 1.0—calculate their mean and stdev."}
+{"server_path": "Commerce/PromotionServer.py", "query": "Can you process EARTHDAY for a 67.89 order and give me the revised total?"}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "Retrieve the newest reading from indoor_sensor_1."}
+{"server_path": "Transportation/TrainServer.py", "query": "Show August 1st 2024 trains running OSA to FKO and include seat availability."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "End the active consultation with identifier sid-final."}
+{"server_path": "Devices/PrinterServer.py", "query": "Print 6 pages on training-room-printer then confirm it's queued."}
+{"server_path": "Commerce/PaymentGatewayServer.py", "query": "Refund 444.44 USD from transaction dragonPayment."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Confirm validity of \"specsig\" on that string with \"special-pub\"."}
+{"server_path": "Medical/AllergyRegistryServer.py", "query": "Please fetch the allergy record for patient 0001-AB."}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "Determine the XYZ tiles for a polar region: 80.0,-50.0 to 82.0,-48.0 at zoom 6."}
+{"server_path": "Media/RightsManagementServer.py", "query": "Is asset 'bollywood_hits_vol1' legal for playback in IN?"}
+{"server_path": "Payments/RefundServer.py", "query": "Find the status of refund token \"u6s4k1\"."}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "Is traffic heavy in Paris’s 8th arrondissement at the moment?"}
+{"server_path": "Mapping/MapStyleServer.py", "query": "Create “Faded Map” with base color #cccccc; no preview needed, just the style info."}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "Could you first give me alerts for the Purple line and then show its next departures from stop PURP-1?"}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "I'm headed to Reykjavik on 2025-01-20; what are the temperatures and what should I bring?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "What’s the return time listed on reservation KILO-04?"}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Register an image asset titled 'App Icon 512px'."}
+{"server_path": "Jobs/InterviewSchedulerServer.py", "query": "Can you set up an interview for record 0007 at 2024-12-31T16:00:00?"}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Launch a voice connection from \"warehouse01\" to \"truck23\""}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Save a four-star vote on asset SPACEX for username rocketman."}
+{"server_path": "Jobs/ReferralNetworkServer.py", "query": "Give candidate ZETA444 potential referrers at Uber using the smallest list possible."}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "Provide an overview for Vancouver in Canada."}
+{"server_path": "Commerce/PromotionServer.py", "query": "I have the promo code VIP30; how much would a 400.00 purchase cost after applying it?"}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Please provide the bucketed check-in counts for EV-999 without specifying an interval."}
+{"server_path": "Transportation/RoutePlannerServer.py", "query": "List three alternative walking server_paths from Central Park Zoo to the Metropolitan Museum of Art."}
+{"server_path": "Communication/EmailServer.py", "query": "Retrieve nine recent subjects for admin@portal.com."}
+{"server_path": "Location/PlaceSearchServer.py", "query": "Give me five photography studios within 500 m of 34.6937, 135.5023."}
+{"server_path": "Mapping/MapStyleServer.py", "query": "I need a small preview of style ID \"style_12345\" at zoom 5; can you fetch that URL?"}
+{"server_path": "Payments/InvoiceServer.py", "query": "I want to try issuing an invoice to \"nullCustomer\" for 0 with 0 days due; later we'll pay it."}
+{"server_path": "Events/TicketingServer.py", "query": "Please create a general seating ticket for guest “José Hernández” for event concierto_latino."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "Could you fetch the next Garena Free Fire match only?"}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Build a standard creative promoting “EcoRide Bike Share”."}
+{"server_path": "Food/IngredientSubServer.py", "query": "If I don't have self-raising flour, what can I use instead?"}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "List four Mediterranean eateries in Melbourne."}
+{"server_path": "Jobs/InterviewSchedulerServer.py", "query": "If interviewer evening_only has a slot after 17:00 on 2024-09-30, book it for APP-LATE."}
+{"server_path": "Transportation/FleetManagementServer.py", "query": "Retrieve the real-time location and fuel percentage for truck_17, please."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "I want to see the loading dock; can you provide its stream endpoint? The ID is dock_cam."}
+{"server_path": "Medical/AllergyRegistryServer.py", "query": "List CharlieC's allergies when done."}
+{"server_path": "Database/IndexOptimizerServer.py", "query": "Give me three index candidates for `SELECT DISTINCT category_id FROM products WHERE deleted = false;`."}
+{"server_path": "Monitoring/SystemMetricsServer.py", "query": "How close am I to maxing out RAM—specifically, is used memory above 90 % of total?"}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Using public key \"case-pub\", tell me if \"casesig\" is the proper signature for \"Capitalization MATTERS\"."}
+{"server_path": "Media/TranscoderServer.py", "query": "What’s the current status of job 1a2b3c4d?"}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "I’m delivering to P-Alpha, P-Beta, P-Gamma—show the optimal sequence for a van."}
+{"server_path": "Education/AssignmentServer.py", "query": "Submit homework \"matrix_hw2\" for student linear_algebra_fan, course MATH301; afterwards, is it marked as received?"}
+{"server_path": "Education/DiscussionServer.py", "query": "Please append the text 'Ship the hotfix tonight' by user 'dev_lead' into thread 'hotfix', no further action needed."}
+{"server_path": "Fitness/SleepMonitorServer.py", "query": "Give lunchnap’s sleep summary on 2023-04-22."}
+{"server_path": "Weather/UVIndexServer.py", "query": "UV level is 2.2 downtown—what should I use?"}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "Tell me the stats for \"gaming_stream_highlights\" over the latest 50 minutes."}
+{"server_path": "Search/ImageSearchServer.py", "query": "Show me five thumbnail photos of freshly baked sourdough bread with crusty texture."}
+{"server_path": "Logistics/WarehouseInventoryServer.py", "query": "Give current on-hand of TABLE-WOOD-L in LON-UK."}
+{"server_path": "Gaming/GameStatsServer.py", "query": "Which player has a higher total kill count: \"Lightning\" or \"Thunder\"?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "List luxury convertibles in BCN for 2024-09-01T08:00–2024-09-04T20:00."}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "First tell me the current SOC at beta, then set it to 75%."}
+{"server_path": "Media/TranscoderServer.py", "query": "For asset “gopro_dive,” request an AVI rendition."}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "I’d like tiles for an Antarctic slice -78.0,160.0 to -76.0,165.0 at zoom 5."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Find me beachfront hotels in Honolulu from 2024-12-15 to 2024-12-22 for three travelers."}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Compose a traditional ad creative (standard style) for “SafeNest Home Alarm”."}
+{"server_path": "Science/StatisticsServer.py", "query": "What are the descriptive statistics of 0, 0, 0, 0, 0?"}
+{"server_path": "Jobs/JobListingServer.py", "query": "Present any forklift operator jobs in Columbus, Ohio with the default count."}
+{"server_path": "Devices/ThermostatServer.py", "query": "Report hvac_state for server-rack right now."}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "Rate the single-character password \"!\" for me."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Hold spot QWERTY for member test_user for 3 hours after verifying it exists."}
+{"server_path": "Database/DBMonitoringServer.py", "query": "Show all alerts, including those that have cleared, alongside a 30-minute metric set for search_prod."}
+{"server_path": "Education/CourseCatalogServer.py", "query": "Provide course_detail for ENG101."}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "Add player \"HydraHeart\" to Brazil at 2777 rating."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Send an electronic prescription to patient xray-202 for fluoxetine 20 mg BID."}
+{"server_path": "Search/MetadataSearchServer.py", "query": "Pull ten records with field 'age_group' equal to 'children'."}
+{"server_path": "Entertainment/EventTicketServer.py", "query": "Look for hip-hop shows in Detroit, return three, and get two tickets to the last listing for account motor_city."}
+{"server_path": "Food/RecipeServer.py", "query": "Find two recipes that mention “eggplant parmesan” and print their ingredient lists."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "Take a picture from the server_room camera right now."}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "Show me the commercial invoice for shipment “CL-WINE-8” valued at 9,250 USD to Chile"}
+{"server_path": "Transportation/FleetManagementServer.py", "query": "How many kilometers until minibus-west-17 needs servicing, and where is it right now?"}
+{"server_path": "Payments/RPaymentServer.py", "query": "Produce the base64 QR image so merchant \"EVENT_TIX\" can receive 120.00 AUD."}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "Supply a secure URL so I can grab mod \"realistic_weather_fx\"."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Any mountain-biking events in Zurich between 2024-07-14 and 2024-07-20, please cap at three."}
+{"server_path": "Business/ProjectServer.py", "query": "Give the project status for InternalTool_v3."}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Could you record 0.005 tonnes for laboratory-L at 2023-05-15T09:00:00Z?"}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "Stop subscription id s-000-999."}
+{"server_path": "Food/GroceryListServer.py", "query": "For user 'mom2', start a list 'School Lunches' and immediately add 'sliced turkey' 2 lbs and 'swiss cheese' 1 lb."}
+{"server_path": "Business/FinanceServer.py", "query": "Forecast the next 11 months of cash for Slack Technologies."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Show boutique hotel availability in Prague from 2024-11-10 until 2024-11-14 for two guests."}
+{"server_path": "Mapping/MapAnnotationServer.py", "query": "Create pin \"Cape Town Harbor\" with latitude -33.9249 and longitude 18.4241."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Locate documents carrying both “literature” and “poetry” tags, but cap it at one result."}
+{"server_path": "Gaming/GameStatsServer.py", "query": "Show me how many wins the player with id \"level_up_100\" currently has."}
+{"server_path": "Social/SentimentMonitorServer.py", "query": "Grab the most recent sentiment samples for “NBA finals” over an 11-hour period."}
+{"server_path": "Health/AppointmentBookingServer.py", "query": "Look up dr_beta’s availability on 2024-12-12; I’ll take the first one you find for patient pb."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Provide the 6-minute walking polygon for the main gate of Buckingham Palace."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Give me current score details for match esoccer_fifa_sim2023_MATCH42."}
+{"server_path": "Media/AdInsertionServer.py", "query": "Reserve a 13-second slot in \"pop_chart_countdown\"."}
+{"server_path": "Jobs/JobListingServer.py", "query": "I'd like to read the full requirements for job id JOB-9087."}
+{"server_path": "Database/CacheServer.py", "query": "Put the string \"42\" into the cache keyed as \"answer\" for five minutes."}
+{"server_path": "Payments/RefundServer.py", "query": "I was billed twice—refund $60 from payment 2023A100 and tell me the refund reference."}
+{"server_path": "Sports/FantasyManagerServer.py", "query": "Set up a trade: veteran_vikings trade out James Cook to delta_dogs for Jahmyr Gibbs."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "I'd like to purchase tag_platinum for player bigSpender89 after you confirm it's in the list."}
+{"server_path": "Fitness/BodyMetricsServer.py", "query": "Log measurement for yannie: 65.7 kg, body fat 18.2 percent; then BMI using height 167 cm."}
+{"server_path": "Travel/CurrencyExchangeServer.py", "query": "Get me the most recent rate for Croatian kuna to Hungarian forint."}
+{"server_path": "Media/RightsManagementServer.py", "query": "Is there regional blocking on asset 'halloween_special' in CA?"}
+{"server_path": "Health/AppointmentBookingServer.py", "query": "Find the next opening after 3 PM on 2024-09-02 with dr_king and schedule patlucy for it."}
+{"server_path": "Transportation/FlightServer.py", "query": "For flight EK215 in economy class, are tickets refundable?"}
+{"server_path": "Food/NutritionLabelServer.py", "query": "Could you provide the nutrition facts of 200 g grilled chicken breast?"}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Check lat/lng for dispatch identifier 'night-owl'."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "Flag content FD002 for “animal cruelty,” reporter shelterMod."}
+{"server_path": "Medical/ImagingStudyServer.py", "query": "I'd like a CT abdomen/pelvis combo for patient AP-007; create the order."}
+{"server_path": "Commerce/ProductCatalogServer.py", "query": "Search for \"pet hair vacuum\" and deliver two SKUs."}
+{"server_path": "Commerce/CartServer.py", "query": "Add SKU BIKE-001 quantity 1 and SKU HELMET-002 quantity 2 to user city_rider; return cart status"}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Store a five-star vote for asset MUS1C on user SOLO."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "Snap the current frame from 'fire_exit_cam_E'."}
+{"server_path": "Jobs/JobListingServer.py", "query": "Give me any game designer openings in Tokyo (up to 13 results)."}
+{"server_path": "Monitoring/DatabaseHealthServer.py", "query": "For analytics_reporting, display both open connections and replica lag."}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "How busy is the Las Vegas Strip area right now?"}
+{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Show 9 IOCs for the cybercrime gang Evil Corp."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "What region is accessible within 55 minutes of cycling from Central Park’s southern tip?"}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "I need to know whether any contact includes the substring \"xyz\"—return the list."}
+{"server_path": "Education/AssignmentServer.py", "query": "Can you turn in \"optional_extra_credit\" for ID LEO11 in ASTR101, and let me know if it shows as 'queued'?"}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "Could you line up D5, D4, D3, D2, D1 in the most efficient truck route?"}
+{"server_path": "Medical/ICDCodingServer.py", "query": "I'm looking for codes that mention \"chronic kidney disease\"—show me the top six."}
+{"server_path": "Transportation/FleetManagementServer.py", "query": "What is the next maintenance due date for helium_balloon_1?"}
+{"server_path": "Database/SchemaManagerServer.py", "query": "Please create a users_archive table with columns user_id INT and archived_at TIMESTAMP in test_db."}
+{"server_path": "Gaming/FriendsListServer.py", "query": "List which players are friends with account “ghostProtocol”"}
+{"server_path": "Media/ImageProcessingServer.py", "query": "Create a narrow 300w × 900h version of infographic_tall."}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Check whether ride \"FLEET-2023\" is still en route or has arrived."}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "List mods for \"elite_dangerous\" with a limit of 8, then fetch download for mod ID \"galactic_expansion\"."}
+{"server_path": "Health/VitalSignsServer.py", "query": "Now show me ZeroHR's last recorded vital signs."}
+{"server_path": "Devices/RouterConfigServer.py", "query": "Please alter router retro-arcade so it shows \"Arcade_WiFi\" and uses \"GameOn1985\" as its key."}
+{"server_path": "Education/DiscussionServer.py", "query": "After posting 'Deploy succeeded!' under author 'ci_pipeline' to thread 'deployment', bring back the default history list."}
+{"server_path": "Mapping/MapTileServer.py", "query": "Get tile 1/0/1 in satellite mode."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Could I see how many people checked in to \"BookFair2023\" every 45 minutes?"}
+{"server_path": "Weather/ForecastServer.py", "query": "I need the five-day highs and lows for Miami, please."}
+{"server_path": "Health/InsuranceEligibilityServer.py", "query": "Verify coverage and copay for vaccine IMM5555 for member gamma123."}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "I want the default stats for asset \"yoga_session_morning\"."}
+{"server_path": "Advertising/AudienceInsightsServer.py", "query": "Compare the audience interest overlap of vegan protein powder and organic almond milk."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Tell me the SHA256 hash for sample_id \"needHashNow\"."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Secure spot SPT908 for userID 55AA for three hours, please."}
+{"server_path": "Education/QuizServer.py", "query": "What percentage did I get in session ID STUDY-SESSION-22 after completing submissions?"}
+{"server_path": "Payments/InvoiceServer.py", "query": "Set up an invoice for id \"漢字\" amount $88.88 with the standard 30-day schedule."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Show outdoor yoga sessions in San Diego between 2024-06-01 and 2024-06-07 with the default number of results."}
+{"server_path": "Location/IPGeoServer.py", "query": "Find the location of 45.33.32.156 and tell me if it's in North America."}
+{"server_path": "Jobs/SalaryEstimatorServer.py", "query": "What’s the going rate for an event planner in Seattle with 7 years on the job?"}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Assign driver 'flash' to bike 'zip' on route 'quick-loop', and report back with the assigned_at time."}
+{"server_path": "Communication/NotificationServer.py", "query": "Send a “Welcome back” alert to user A-71 where the body reads “We saved your cart—check it out.”"}
+{"server_path": "Utility_Tools/NetworkUtilityServer.py", "query": "What's the IP for news.ycombinator.com, and is port 80 reachable?"}
+{"server_path": "Devices/PrinterServer.py", "query": "Do we know if job midnight-batch-13 finished overnight?"}
+{"server_path": "Devices/ThermostatServer.py", "query": "Check if villa.pool is cooling at the moment."}
+{"server_path": "Energy/EnergyMarketServer.py", "query": "How high did ISO-NE go on 2022-07-19T17:00:00Z, and was that the peak that day?"}
+{"server_path": "Health/AppointmentBookingServer.py", "query": "List any evening appointments Dr. Chen offers on 2025-02-14."}
+{"server_path": "Food/NutritionLabelServer.py", "query": "For 200 g of cooked spaghetti, how much protein and carbs are present?"}
+{"server_path": "Database/DBMonitoringServer.py", "query": "Show both active and cleared alerts for the past period."}
+{"server_path": "Science/PhysicsConstantServer.py", "query": "What is the permittivity of free space?"}
+{"server_path": "Transportation/TrainServer.py", "query": "Check if Nozomi555 on 2025-02-14 is currently delayed by more than 15 minutes."}
+{"server_path": "Science/PhysicsConstantServer.py", "query": "Could you show me the symbols of the constants available in your database?"}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "I need parking options within 11 km of 35.9078, 127.7669 and might reserve one for 5 hours later."}
+{"server_path": "Search/MetadataSearchServer.py", "query": "Find up to ten entries with field 'voltage' = '220V'."}
+{"server_path": "Communication/ChatServer.py", "query": "Provide the 20 most recent messages from crypto-chat-main."}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "Give me an ultra-fast label for package 9205599991234567890001."}
+{"server_path": "Weather/MarineWeatherServer.py", "query": "What's the current sea state in the North Atlantic?"}
+{"server_path": "Database/SchemaManagerServer.py", "query": "Make staging_2024 reflect version v2.1 by first showing me the diff from v2.0, then carry out the migration."}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "File a POD for package code DESERT-DR1FT, signed by Omar Hassan at 24.0000, 54.0000."}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "Show me the missing patches for the system whose ID is \"host-123456\"."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Create a 16-minute walking isochrone for 31.2304, 121.4737."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "Tell me the three best-performing cities in online grocery delivery."}
+{"server_path": "Advertising/AudienceInsightsServer.py", "query": "Get me the age-band percentages for budget airline ticket buyers."}
+{"server_path": "Education/DiscussionServer.py", "query": "I want to see what was just posted in 'spoilers' thread; grab the newest 2 messages."}
+{"server_path": "Jobs/JobListingServer.py", "query": "What positions with the keyword \"UX researcher\" are open in Berlin right now?"}
+{"server_path": "Database/DBMonitoringServer.py", "query": "Display any present alerts and then pull a 7-minute metric set for test_env."}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "Share both forecast and packing tip for Prague on 2024-12-05."}
+{"server_path": "Entertainment/EventTicketServer.py", "query": "Search for magic shows in Orlando and book two tickets for event magicORL22 for user wand123."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Submit \"beacon.elf\" with \"ZWxm\" as base64, then give me SHA256 and suspicious sections only."}
+{"server_path": "Payments/FraudScreenServer.py", "query": "Could you tell me the score if someone uses card token “alpha_tok” at IP 192.0.2.50 for a $75 order?"}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Insert 9999 tonnes for emergency vent EV-00 with timestamp 2022-09-15T22:00:00Z."}
+{"server_path": "Media/ImageProcessingServer.py", "query": "Give me the dominant color for image winter_morning."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Show who ranks 1 through 9 in MoonMission."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Write a prescription for patient 1000 for insulin aspart 4 mg AC meals."}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Please ingest the message \"2023-10-12 15:12:08,423 INFO Lambda invoked with requestId=abc-123\" as source \"aws-lambda\""}
+{"server_path": "Communication/CalendarInviteServer.py", "query": "Schedule a recurring-style planning meeting for 2026-02-29T14:00:00Z (leap day!); organizer opsteam@cloud.io, attendees infra1@cloud.io."}
+{"server_path": "Events/LivePollServer.py", "query": "Launch a poll for event summerFest2024 titled 'Which band should headline?' offering 'The Sunrays', 'Neon Nights', and 'Midnight Echo'."}
+{"server_path": "Location/RoutePlannerServer.py", "query": "Tell me the expected walking duration from Big Ben to the British Museum."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "What are the best three cities for holiday ornament production?"}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Book hotel ID LON445 for user 007 on 2024-05-01 through 2024-05-04."}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "Provide two high-rated French dining locations in Montreal."}
+{"server_path": "Payments/FraudScreenServer.py", "query": "Tell me the risk if card token “black_friday” at 18.232.0.10 tries a 150.00 buy."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Search the catalogue for 'App Icon' and limit it to 6 entries."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Produce a 2048-bit key pair and encrypt the entire text of \"Lorem ipsum\" with the public key."}
+{"server_path": "Commerce/LoyaltyServer.py", "query": "What’s my current loyalty balance under account A12345?"}
+{"server_path": "Logistics/ShipmentTrackerServer.py", "query": "Check package VVV-999 for its latest movement scan"}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Is anything open for parking within 2 km around 41.9028, 12.4964 right now?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "Book offer MNO4321 under customer id alpha-6."}
+{"server_path": "Devices/RouterConfigServer.py", "query": "I want router east-wing-07 to broadcast \"EastWingStaff\" protected by \"Secure&Safe7\"—can you handle that?"}
+{"server_path": "Energy/GridLoadServer.py", "query": "Could you fetch the current load figure for MISO?"}
+{"server_path": "Communication/NotificationServer.py", "query": "Send Mike977 a push alert titled “Update available” saying “Version 2.4 has just been released—tap to download.”"}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "I’d like to be placed in Oceania solo queue: player ID \"KoalaKing\", rating 600."}
+{"server_path": "Payments/PayoutServer.py", "query": "Could you send $1,250.75 to bank account 987654321 on behalf of merchant id \"store-17\"?"}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "I’d like an early-AM express label for 9613020987654321234571."}
+{"server_path": "Location/GeoFenceServer.py", "query": "After creating the 'Island' fence, tell me if -17.7135, 178.0652 falls inside it."}
+{"server_path": "Location/GeocodingServer.py", "query": "Geocode this: “Cape Town Stadium, Fritz Sonnenberg Rd, Green Point, Cape Town, 8051, South Africa.”"}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "How hot does sensor 'solar_panel_surface' say it is currently?"}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "Could you create invoices for the series “SERIES-A” (1,000 USD to Austria), “SERIES-B” (2,000 USD to Belgium) and “SERIES-C” (3,000 USD to Czechia)?"}
+{"server_path": "Transportation/TrainServer.py", "query": "Give me tomorrow’s services (2024-10-22) between HKG and KYO."}
+{"server_path": "Sports/TicketingServer.py", "query": "Are there more than 10 seats in section D for QTR-2? Just report the number; don’t buy yet."}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you list four recent deep-focus quakes with magnitude 7+?"}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a thermostat sensor, model Nest Gen3, to John Stevens."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "First provide the current score on match id OLD_TIMERS_GAME_2023, then display the last event."}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Store this Kubernetes warning from \"kube-master\": \"2023-10-12T09:44:22Z kubelet Warning MissingPod sandbox for pod \\\"backup-job-9gl2l_default(6a8c1)\\\" was not found\""}
+{"server_path": "Jobs/SalaryEstimatorServer.py", "query": "Give the expected salary for a pilot in Abu Dhabi who’s logged 9 years of commercial flying."}
+{"server_path": "Fitness/GoalCoachServer.py", "query": "For user LEO_18, establish a goal to bike 200 miles in total by 2025-01-01."}
+{"server_path": "Gaming/AchievementServer.py", "query": "Add the 'master_crafter' achievement to player 0001 and return the unlock timestamp."}
+{"server_path": "Sports/PlayerStatsServer.py", "query": "Compare Stephen Curry’s assists per game in 2023-24 with his average over his last 10 games; pull both sets of data."}
+{"server_path": "Communication/CalendarInviteServer.py", "query": "Create a breakfast briefing: organizer pr@company.com, attendees press1@media.com, press2@media.com, time 2025-06-18T07:30:00Z."}
+{"server_path": "Cryptography/RSAServer.py", "query": "Just encrypt an empty string \"\" with this public key: <pub>."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "Tell me the upcoming two Dota 2 matches."}
+{"server_path": "Cryptography/KDFServer.py", "query": "Generate the key for \"trustno1\" and salt \"dHJ1c3RubzFzYWx0\" with 1492 iterations, default size please."}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "I’d like a quick summary of Nairobi, Kenya—include currency and population please."}
+{"server_path": "Education/QuizServer.py", "query": "Give me a session for quiz BIO-LAB-5 as student bioKid42."}
+{"server_path": "Food/NutritionLabelServer.py", "query": "List the macros for 90 g of cooked ground beef (85 % lean)."}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Please enter a reading of 42 tonnes for Z-Top at 2018-01-31T16:00:00Z."}
+{"server_path": "Weather/SevereWeatherAlertServer.py", "query": "Could you pull the active alerts for Anchorage?"}
+{"server_path": "Advertising/AudienceInsightsServer.py", "query": "Break down the age distribution for streaming fitness classes and calculate how much their audience overlaps with stationary bike buyers."}
+{"server_path": "Medical/LabPanelServer.py", "query": "Could I get the glucose value from panel CMP-100100?"}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "End the meeting sessionID CAPSLOCK."}
+{"server_path": "Travel/CurrencyExchangeServer.py", "query": "How many Canadian dollars equal 100 US dollars today?"}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "Immediately after, display the newest note only for patient 8008."}
+{"server_path": "Food/KitchenTimerServer.py", "query": "Start an 8-minute timer named “boil quinoa,” and tell me when it ends."}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "Could you fetch the play numbers for asset \"music_video_x\" over a 45-minute period?"}
+{"server_path": "Transportation/RoutePlannerServer.py", "query": "Find me the quickest way to get from 1600 Pennsylvania Ave NW, Washington, DC to the Capitol Building by car."}
+{"server_path": "Search/WebSearchServer.py", "query": "Find five news updates on the Ethiopia–Tigray peace agreement implementation."}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "I need to see the five most recent notes for patient 112233."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "I’m a German national going to Turkey; give me my embassy’s contact information there."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Book parking spot redzone_7 for customer panda for 20 hours."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "What are the next four Arena of Valor games queued?"}
+{"server_path": "Logistics/WarehouseInventoryServer.py", "query": "Show the on-hand count for BAG-BACKPACK-XL in WH1."}
+{"server_path": "Devices/ThermostatServer.py", "query": "Could you check the HVAC state for the basement unit?"}
+{"server_path": "Cryptography/RandomnessServer.py", "query": "Give me an odd-length random string—say, 77 bytes."}
+{"server_path": "Monitoring/DatabaseHealthServer.py", "query": "Compare the connection counts of orders_db and users_db; which one has more?"}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Create another playlist called “Mindfulness Minutes” under account zen_user."}
+{"server_path": "Food/MealPrepServer.py", "query": "Kick off a batch for user brunchclub on 2023-05-27, leaving meal count default"}
+{"server_path": "Location/TimeZoneServer.py", "query": "Tell me the IANA zone and current time for the coordinates 34.0522, -118.2437."}
+{"server_path": "Social/ContentSchedulerServer.py", "query": "Do I have anything planned for profile volunteer_team in the next week? List 5 posts."}
+{"server_path": "Education/QuizServer.py", "query": "Report the percentage mark for session S#1001."}
+{"server_path": "Cybersecurity/PortScanServer.py", "query": "Can you test 10.0.5.5 across ports 1-10000?"}
+{"server_path": "Education/EnrollmentServer.py", "query": "Drop enrollment code early-bird-88 for me."}
+{"server_path": "Health/LabResultsServer.py", "query": "List every numeric result recorded for order END-OF-LINE."}
+{"server_path": "Gaming/MultiplayerLobbyServer.py", "query": "Create an 8-seat \"puzzle\" lobby for \"Thinker\" but don't exceed default; after eight joins I expect failure—let's start by adding \"Solver1\"."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "What's the molar mass of sodium bicarbonate, NaHCO3?"}
+{"server_path": "Location/RoutePlannerServer.py", "query": "I’d like the cycling distance and time between Cambridge University and Addenbrooke's Hospital."}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "I need the POD logged for tracking SUNSET-411 delivered to Peter Müller at 47.3769, 8.5417."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "Capture the latest image from 'gallery_cam_main' along with capture time."}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "I’d like five new suggestions for subscriber MARY_J, thanks."}
+{"server_path": "Food/FoodDeliveryServer.py", "query": "Check whether order “ORD-Z9Y8” is preparing or en route."}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "Give me the single best-rated attraction in Barcelona."}
+{"server_path": "Education/AttendanceServer.py", "query": "Check attendance counts for ASTRO301 on 2023-12-21."}
+{"server_path": "Location/RoutePlannerServer.py", "query": "Find a bike route summary between Barcelona Cathedral and Park Güell."}
+{"server_path": "Weather/AirQualityServer.py", "query": "I need the current AQI timestamp for Brussels."}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "List the current Celsius values for sensors alpha-1, alpha-2, and alpha-3."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Search 0.6 km around 31.2304, 121.4737 for parking and quote their rates."}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "Now fetch three recent note entries for patient 2020."}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "I have stops X10, X20, and X30—optimize them without specifying a vehicle type."}
+{"server_path": "Health/MedicationReminderServer.py", "query": "Verify if alert ID cold-ice-123 reached its destination."}
+{"server_path": "Weather/AirQualityServer.py", "query": "Provide the latest timestamped AQI reading for Mexico City."}
+{"server_path": "Education/QuizServer.py", "query": "Start a new session for student S-001 taking quiz MATH-101, please."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "Find me the molar mass for urea, CH4N2O."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Lock in spot R-22B for uid user007 for 12 hours."}
+{"server_path": "Entertainment/SocialBuzzServer.py", "query": "Post for \"edge_case\" a status consisting of 280 consecutive 'x' characters."}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "Check the compliance state of \"esxi-host-id-02\"."}
+{"server_path": "Commerce/CartServer.py", "query": "Add SKU GIFT-CARD-50 (quantity 1) to user holiday_shopper and then display their cart"}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Give me just the current period and score of hockey_match_NHL23_BOS@TOR."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "Provide the top city for public transit satisfaction."}
+{"server_path": "Media/AdInsertionServer.py", "query": "Plug the creative hosted at \"http://ads.cdn/creative/halloween_special.webm\" into slot \"slot_spooky\"."}
+{"server_path": "Media/AdInsertionServer.py", "query": "Could you reserve a 9-second slot in asset \"countdown_to_new_year\" and fill it with \"https://ads.party.com/confetti_blaster.mp4\"?"}
+{"server_path": "Sports/VenueInfoServer.py", "query": "Provide a 7-hour weather outlook for venue WINDY_CITY-19."}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "I'd like to answer question 2 in game \"xyz789\" with \"Thomas Edison\"."}
+{"server_path": "Payments/SubscriptionBillingServer.py", "query": "Add customer account cust-free-001 to plan nonprofit_support."}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "Add \"analytics-node-A\" with OS version \"Debian 11.7\" to the compliance inventory for me."}
+{"server_path": "Transportation/FlightServer.py", "query": "List the available flights from NRT to LAX on 2024-10-05."}
+{"server_path": "Devices/PrinterServer.py", "query": "Print an 8-page flyer set on kiosk-1."}
+{"server_path": "Media/TranscoderServer.py", "query": "Submit asset “drone_shot” for MP4 and then immediately tell me its status."}
+{"server_path": "Medical/ImagingStudyServer.py", "query": "Schedule a PET scan of the whole body for patient PET-001."}
+{"server_path": "Energy/SmartMeterServer.py", "query": "List the kWh consumed by meter solar_roof_7 on 2021-06-10."}
+{"server_path": "Weather/UVIndexServer.py", "query": "Tell me Lyon's current UV level and whether I need high or low SPF."}
+{"server_path": "Logistics/WarehouseInventoryServer.py", "query": "East-Coast donated 150 UNICORN-PLUSH toys; drop stock by 150 and confirm new qty."}
+{"server_path": "Cybersecurity/PortScanServer.py", "query": "Probe 198.51.100.90 in the 32768-32775 range."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Add an image asset named 'Map Overview – Region Z'."}
+{"server_path": "Utility_Tools/RandomDataServer.py", "query": "Make three random strings: lengths 9, 9, and 9; then check if any two are identical."}
+{"server_path": "Business/InventoryServer.py", "query": "Check widget code XTR-009 for stock levels; if low, give purchase suggestion."}
+{"server_path": "Science/AstronomyEphemerisServer.py", "query": "Determine the Julian Date for 1582-10-04, right before the calendar switch."}
+{"server_path": "Energy/SolarArrayServer.py", "query": "Please adjust the tilt on \"RoofTopDemo\" down to 10 degrees and confirm."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "After finding hotels in Zurich for two guests between 2024-08-05 and 2024-08-08, please book the first result under user U2024."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Walk me through creating a 128 bit key and immediately encrypting \"Short and sweet\"."}
+{"server_path": "Energy/SolarArrayServer.py", "query": "What’s the power difference between \"QuadField_A\" and \"QuadField_D\" presently?"}
+{"server_path": "Fitness/GymClassServer.py", "query": "Show me classes with zero spots left at gym_bay_area on 2024-04-22."}
+{"server_path": "Devices/RouterConfigServer.py", "query": "Modify router camper-van so that it advertises \"RoadTrip_WiFi\" secured by \"Freedom2024!\"."}
+{"server_path": "Utility_Tools/CalculatorServer.py", "query": "If I double 3.5, what number do I get?"}
+{"server_path": "Food/RecipeServer.py", "query": "Check for “gluten free brownies” (only 1 result) and provide the ingredient list."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "How fast is turbine SHORE-line-3 spinning in RPM?"}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "I need 13 pod statuses from namespace build-pipeline."}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "Could you analyze \"S!lver*Moon#79\" and tell me how robust it is?"}
+{"server_path": "Health/AppointmentBookingServer.py", "query": "What appointments are left for Dr. White on 2024-08-20?"}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "Forecast for Beijing on 2024-09-09."}
+{"server_path": "Gaming/AchievementServer.py", "query": "Has player subtleCat earned anything yet? List their achievements."}
+{"server_path": "Logistics/WarehouseInventoryServer.py", "query": "Give me the stock figure for SODA-12PK at A123."}
+{"server_path": "Fitness/GoalCoachServer.py", "query": "Tell me the current progress on goal walk500-vnn0."}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "What's the distance (miles) from 12.9716, 77.5946 to 19.0760, 72.8777?"}
+{"server_path": "Utility_Tools/CalculatorServer.py", "query": "What is 1.23456789 plus 9.87654321?"}
+{"server_path": "Jobs/JobListingServer.py", "query": "Bring up any openings titled Scrum master in Brussels, limit 14."}
+{"server_path": "Transportation/TrainServer.py", "query": "Fetch the live delay for Komachi606 on 2024-11-11."}
+{"server_path": "Database/SQLQueryServer.py", "query": "Can you provide the plan for this SQL? SELECT * FROM products WHERE discontinued = false ORDER BY created_at LIMIT 15."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "Give me the per-hour attendee traffic for \"Annual Leadership Forum\"."}
+{"server_path": "Education/CourseCatalogServer.py", "query": "Could you bring up info on course CS999?"}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "Retrieve the SOC for a non-existent site called phantom to see what happens."}
+{"server_path": "Mapping/MapStyleServer.py", "query": "Make a “Lavender Fields” theme with base color #E6E6FA and return its identifier."}
+{"server_path": "Science/MicroscopyImageServer.py", "query": "May I have a placeholder thumbnail of 'ocean_wave_sequence'?"}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "Provide a static analysis for sample_id \"stat42\" but omit the entropy figure."}
+{"server_path": "Entertainment/StreamingRecoServer.py", "query": "Set a 1-star rating for series SR-9 for user AARON."}
+{"server_path": "Search/ProductSearchServer.py", "query": "I want to browse 'automatic cat feeder' items—list nine of them."}
+{"server_path": "Food/MealPrepServer.py", "query": "Start a prep on 2022-12-12 for user nostalgia with 4 meals"}
+{"server_path": "Mapping/VectorLayerServer.py", "query": "Upload this GeoJSON of downtown Chicago restaurants and call the layer 'ChiEats'."}
+{"server_path": "Database/SQLQueryServer.py", "query": "What’s the execution strategy behind this CTE? WITH recent AS (SELECT * FROM sessions ORDER BY started_at DESC LIMIT 200) SELECT COUNT(*) FROM recent."}
+{"server_path": "Utility_Tools/NetworkUtilityServer.py", "query": "Please determine the IP of smtp.gmail.com and check port 465 reachability."}
+{"server_path": "Location/GeocodingServer.py", "query": "Provide the latitude and longitude for “Statue of Liberty National Monument, New York, NY 10004.”"}
+{"server_path": "Fitness/SleepMonitorServer.py", "query": "Log sleep for kiddo21 on 2024-04-08T20:15:00 until 2024-04-09T06:45:00."}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Launch a playlist named “Empty Test” for tester007 but don’t add anything yet; then fetch it so I see it’s empty."}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "Show climate change podcasts and include ten options."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "I started session temp123 earlier; go ahead and end it."}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "Combine both tools: give me skills plus contact details from “Rebecca Hayes | rebecca.h@uxmail.com | 212-555-9000 | UX designer adept in Wireframing, Usability Testing, and HTML/CSS.”"}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Add song sk123 to playlist pl_sk AFTER you confirm it exists."}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Is rink_01 open on 2024-12-25?"}
+{"server_path": "Health/PatientRecordServer.py", "query": "Create and immediately verify a profile for Ana María López, 1998-05-09, F."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Reserve SPOT-XY99 for uid alpha123 for 72 hours."}
+{"server_path": "Media/TranscoderServer.py", "query": "Start transcoding the file named “wedding_raw_23” into MKV."}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Tie driver 'copy-01' and vehicle 'paste-01' to route 'clipboard-01', then give me their dispatch ID."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "Suspend account nostalgiaPirate for 14 hours for posting pirated content."}
+{"server_path": "Monitoring/WebsiteUptimeServer.py", "query": "Please confirm that https://expired.badssl.com is unavailable within 2 000 ms."}
+{"server_path": "Mapping/MapStyleServer.py", "query": "Make \"Spring Bloom\" with fill #7CFC00 and give me a zoom-13 preview."}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Find everyone whose name includes \"alex\" for me."}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "List skills and any contact from “Samuel O’Connor | +353 85 123 4567 | Backend with Elixir, Phoenix, and PostgreSQL.”"}
+{"server_path": "Business/ProjectServer.py", "query": "Show the status dict for project ORION-ALPHA."}
+{"server_path": "Advertising/BudgetOptimizerServer.py", "query": "Provide a reallocation for 2,000 yuan when only one channel exists in the CPC map: “search” at 0.8."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Query the current status for call 9876543210"}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "Retrieve note snippets for patient 4600, limit them to 4 entries."}
+{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "How many total impressions did campaign clearance_finale get during the last 21 days?"}
+{"server_path": "Utility_Tools/CalculatorServer.py", "query": "Could you check how many numbers are in [3.14] and give their total?"}
+{"server_path": "Location/TimeZoneServer.py", "query": "I'm organizing a meeting: what time is it now and which zone at 38.7223° N, -9.1393° W?"}
+{"server_path": "Location/GeocodingServer.py", "query": "What’s the exact latitude and longitude for “1600 Amphitheatre Parkway, Mountain View, CA”?"}
+{"server_path": "Search/WebSearchServer.py", "query": "Look up three explanations of what a neural network activation function is."}
+{"server_path": "Search/ImageSearchServer.py", "query": "Fetch three thumbnail images of people practicing yoga on a beach at sunrise."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "I need post WIKI889 reported for “misinformation”; log it under my moderator ID mod_23."}
+{"server_path": "Social/SentimentMonitorServer.py", "query": "What’s the 36-hour average sentiment on the phrase “housing market”?"}
+{"server_path": "Jobs/SkillGapAnalysisServer.py", "query": "Please find the gaps between the requirements 'AutoCAD', 'Revit', '3D modeling' and architect's skills 'AutoCAD', '3D modeling'."}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "Plan an efficient stop sequence for Ware1, Cust5, Cust9 using a delivery van."}
+{"server_path": "Food/FoodDeliveryServer.py", "query": "Confirm whether order “alphaBeta” has already arrived."}
+{"server_path": "Science/ClimateDataServer.py", "query": "How much CO₂ (ppm) did the atmosphere contain in 1935?"}
+{"server_path": "Utility_Tools/UnitConversionServer.py", "query": "In feet, what is a length of 1.4142136 meters?"}
+{"server_path": "Payments/RefundServer.py", "query": "Is refund ref-☃️-snow complete yet?"}
+{"server_path": "Location/GeocodingServer.py", "query": "Give me the lat/lng of the Sydney Opera House at “Bennelong Point, Sydney NSW 2000, Australia.”"}
+{"server_path": "Entertainment/MusicPlaylistServer.py", "query": "Insert track swing_1935 into big_band_swing for user default_user."}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "How much is a package of 115k base plus 10% bonus plus 25k equity worth in year one?"}
+{"server_path": "Communication/EmailServer.py", "query": "How many messages are in alice@wonder.land's inbox if you only grab the latest four?"}
+{"server_path": "Cryptography/CertificateServer.py", "query": "Issue a cert for a very long common name: 'this-is-a-very-very-long-common-name-that-exceeds-normal-length.example.com' with key 'LONGKEY'."}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "If I have options of 200k base + 20% bonus + 100k equity, versus 180k base + 30% bonus + 150k equity, which is better?"}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Set up an OR slot for patient Z90210 to undergo CABG (CV-CABG) on 2024-09-17."}
+{"server_path": "Communication/ChatServer.py", "query": "Put “Anyone up for a late-night code review?” in night-owls as MoonCoder."}
+{"server_path": "Education/GradebookServer.py", "query": "Save a 59.9% Final Exam score for uid100 in course BIO-220."}
+{"server_path": "Gaming/ModRepositoryServer.py", "query": "I'd like only the top mod for \"minecraft\"—could you list it?"}
+{"server_path": "Payments/RPaymentServer.py", "query": "Has the payment associated with qrId 12345XYZ succeeded?"}
+{"server_path": "Communication/EmailServer.py", "query": "Please mark message id 'MAIL-00009' as read now."}
+{"server_path": "Education/AttendanceServer.py", "query": "I'd like the attendance metrics for BIO202 on the 2025-03-01 session."}
+{"server_path": "Entertainment/SocialBuzzServer.py", "query": "Submit an announcement for \"event_planner\": \"Tickets for the gala are officially sold out.\""}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "I'd like to know which XYZ tiles cover the Great Barrier Reef box -24.0,151.0 to -22.0,153.0 at zoom 8."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "Identify two leading cities in luxury hotel occupancy."}
+{"server_path": "Events/RSVPServer.py", "query": "Please put Isabella Martinez (isa.martinez@spain.es) on the list for \"flamenco-night-12\"."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Insert a humidity sensor, model DHT22, for Greenhouse 2."}
+{"server_path": "Fitness/ActivityTrackerServer.py", "query": "Enter a sprint session: 8 minutes, 130 calories, user fastlane."}
+{"server_path": "Payments/InvoiceServer.py", "query": "What happens if I generate two invoices for \"dupe\" at 100 each—one with 15 days, one with 45 days?"}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "Make a priority-service label for package 9274899991234567890123."}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "Which XYZ tiles cover the Adriatic coastline 42.0,13.5 to 45.5,19.0 at zoom 9?"}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "Pull ten noodle houses in Hanoi."}
+{"server_path": "Weather/SevereWeatherAlertServer.py", "query": "Do I need to worry about any tornado warnings right now in Oklahoma City?"}
+{"server_path": "Social/RecommendationServer.py", "query": "I'm curious: who might skywalker77 connect with? Give me three names."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Dial 5550001 from 5550002 and after 3 seconds check whether it’s still ringing"}
+{"server_path": "Mapping/MapAnnotationServer.py", "query": "Add marker with the name \"Reykjavik Downtown 🌋\" at 64.1466, -21.9426."}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "I need the next departures for bus 52 at terminal T1; give me four of them."}
+{"server_path": "Location/PlaceSearchServer.py", "query": "I’m at 59.3293, 18.0686—any movie theaters within 900 m?"}
+{"server_path": "Entertainment/SocialBuzzServer.py", "query": "Make a social update for user \"newsflash\" saying \"Breaking: Markets close at record high.\"."}
+{"server_path": "Events/LivePollServer.py", "query": "Start a poll in event test@123 with question 'Is the audio clear?' options 'Crystal', 'Somewhat', 'Not at all', then give me the poll_id."}
+{"server_path": "Transportation/TrainServer.py", "query": "Give me the list of trains leaving SND for HSM on 2023-09-30."}
+{"server_path": "Food/IngredientSubServer.py", "query": "Can you recommend a swap for mozzarella cheese?"}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "Do we have any EPL matches tomorrow?"}
+{"server_path": "Energy/EnergyMarketServer.py", "query": "Fetch the price for PJM at 2023-12-31T23:00:00Z, one hour before New Year."}
+{"server_path": "Mapping/MapAnnotationServer.py", "query": "Add \"Niagara Falls Observation\" pin at 43.0962, -79.0377, then tell me its marker_id."}
+{"server_path": "Utility_Tools/UnitConversionServer.py", "query": "Please convert 300 meters to feet and 300 °C to Fahrenheit in a single response."}
+{"server_path": "Science/ChemicalFormulaServer.py", "query": "What's the molar mass of anhydrous ammonia, NH3?"}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Search for 'Countdown' titles; I only need two results."}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "If I swap 888.88 Thai baht for Hong Kong dollars, what will I receive?"}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Book an emergency appendectomy (GI-APP) tomorrow, 2024-05-19, for patient E00001."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Could you preview “HLTH-TEL-303” using the default snippet length?"}
+{"server_path": "Monitoring/DatabaseHealthServer.py", "query": "Check if payments_readonly lag is lower than 15 seconds."}
+{"server_path": "Education/EnrollmentServer.py", "query": "Enroll student supernova in course STAR-9000 and show the response."}
+{"server_path": "Jobs/JobListingServer.py", "query": "After searching for four PR specialist roles in Melbourne, provide detail on the last one."}
+{"server_path": "Education/AttendanceServer.py", "query": "Show me present vs absent figures for MED101 on 2023-04-02."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Post 5 points for user “testing_low” in DartsMaster and return the rank result."}
+{"server_path": "Payments/PayoutServer.py", "query": "Look up the state of payout \"reissue-02-v3\"."}
+{"server_path": "Health/InsuranceEligibilityServer.py", "query": "Is physiotherapy code PT2022 included for patient id POPPY-101?"}
+{"server_path": "Travel/LocalToursServer.py", "query": "Lock in a single seat for user guest007 on tour ROMA21."}
+{"server_path": "Database/IndexOptimizerServer.py", "query": "What indexes (up to 6) should I add for `SELECT * FROM messages WHERE sender_id = 5 OR receiver_id = 5;`?"}
+{"server_path": "Social/SocialGraphServer.py", "query": "Get me the friends for \"frank_42\" followed by any mutuals with \"gina_007\"."}
+{"server_path": "Fitness/GoalCoachServer.py", "query": "I’m user 9876XYZ; create a goal to run a 10 K race before 2024-11-01."}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "Retrieve aggregated data for asset \"vr_experience_intro\" over the previous 480 minutes."}
+{"server_path": "Gaming/MultiplayerLobbyServer.py", "query": "Can you create a \"zombies\" mode lobby for user \"Hazel\" and stick with the default size?"}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Sign the CSV line \"id,score\\n42,98\" via private key \"csv-priv\"."}
+{"server_path": "Business/FinanceServer.py", "query": "Pull Coca-Cola's quarter-1 2023 report and also project cash flow for the coming year."}
+{"server_path": "Communication/ChatServer.py", "query": "Give me the most recent chat history from marketing-lounge; the default amount is fine."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Look up all available items matching the keyword 'Poster'; give me seven hits at most."}
+{"server_path": "Education/EnrollmentServer.py", "query": "Tell me the list of courses for student id STU-000."}
+{"server_path": "Jobs/JobListingServer.py", "query": "Show me up to eight openings for product managers in San Francisco."}
+{"server_path": "Transportation/RideSharingServer.py", "query": "How long until driver arrives for ride id \"RIO-RIDE-55\"?"}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "Please fetch pod status for the support namespace using your default settings."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Generate me a 192-bit key suitable for legacy systems."}
+{"server_path": "Health/InsuranceEligibilityServer.py", "query": "I need to know the copay for procedure LAB9999 for patient account ALPHA-7."}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "Add \"ps5-devkit\" on \"Orbis OS 8.0\" to the compliance inventory."}
+{"server_path": "Sports/VenueInfoServer.py", "query": "Show a short two-hour forecast for STORM_ARENA-RX."}
+{"server_path": "Search/CodeSearchServer.py", "query": "Could you locate a Swift example for handling optional chaining?"}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Find the size of '/var/www/html/index.html'."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "Check and list the current output, RPM, and health status for turbine big_boss."}
+{"server_path": "Location/TimeZoneServer.py", "query": "Give me the local time for 60.1699 N, 24.9384 E along with its IANA ID."}
+{"server_path": "Energy/SmartMeterServer.py", "query": "Show me the consumption logged for meter MTR-9 on 2022-01-15."}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "Log \"Brazil\" for question 13 under game ID \"world_cup\"."}
+{"server_path": "Fitness/WorkoutPlanServer.py", "query": "Make a default-length fat_loss plan for \"keto_kate\"; once done, show me the sessions list."}
+{"server_path": "Gaming/AchievementServer.py", "query": "Get me the achievements list for user 'wanderer'."}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "Enlist the tag \"GhostGear\" on NA-Test with 50 rating and then poll the ticket \"GG-TEST-50\"."}
+{"server_path": "Social/SocialGraphServer.py", "query": "Check whether \"charlie789\" shares any friends with \"bruce.w\", and report the names."}
+{"server_path": "Education/GradebookServer.py", "query": "Fetch the current grades for STU0005 in ART999."}
+{"server_path": "Entertainment/MovieCatalogServer.py", "query": "Return the genres for the movie tt1853728."}
+{"server_path": "Logistics/LoadBoardServer.py", "query": "I'm curious about loads starting in Anchorage—show four within 350 km."}
+{"server_path": "Energy/GridLoadServer.py", "query": "I want the next 5 forecast points for PJM alongside the real-time value."}
+{"server_path": "Utility_Tools/CalculatorServer.py", "query": "Compute (20 minus 5) divided by (2 plus 3)."}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "Tell me all current alerts for the commuter rail CR5."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "Produce snake_case for 'node.js server-side javascript'."}
+{"server_path": "Mapping/MapAnnotationServer.py", "query": "Can you add a point named \"Very Precise Spot\" at 12.3456789 latitude and 98.7654321 longitude?"}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "Provide every match ID planned on 2026-07-04."}
+{"server_path": "Weather/ForecastServer.py", "query": "Show me the highest temperature expected in Nairobi in the next five days."}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "Create a commercial invoice for shipment “BX-9043” valued at 2,750 USD heading to Canada"}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Produce a 3-minute walking polygon for Shibuya Crossing."}
+{"server_path": "Gaming/MultiplayerLobbyServer.py", "query": "Create a \"survival_horror\" lobby for \"Echo\" with just 5 slots so it's intimate."}
+{"server_path": "Monitoring/LogAggregatorServer.py", "query": "Retrieve all error-level entries from payments-gateway from 2022-12-31T23:59:59Z onward."}
+{"server_path": "Business/HRServer.py", "query": "Could you pull the headcount numbers for HR, including vacant roles?"}
+{"server_path": "Monitoring/SystemMetricsServer.py", "query": "Would I still have at least 500 MB free after allocating 300 MB more?"}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Please create a reservation at hotel TOK123 for customer U999 arriving 2024-10-20 and departing 2024-10-23."}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Reserve transportation for \"bikereturn\", pickup \"Brooklyn Navy Yard\", dropoff \"Central Park South\"."}
+{"server_path": "Mapping/MapAnnotationServer.py", "query": "Label 19.4326, -99.1332 as \"Mexico City Center\" via a new marker."}
+{"server_path": "Education/GradebookServer.py", "query": "Retrieve all recorded scores for 97b3cd in ART999."}
+{"server_path": "Business/InventoryServer.py", "query": "Show current_qty for flashlight FL-MINI, nothing else."}
+{"server_path": "Search/ProductSearchServer.py", "query": "I'd like to see ten results for 'UV nail lamp' please."}
+{"server_path": "Search/VectorSimilarityServer.py", "query": "Could you list eight neighbors for the vector [-0.9, -0.1]?"}
+{"server_path": "Food/KitchenTimerServer.py", "query": "Report the remaining minutes for timer code laundry-cycle-4."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "What are the word and character counts for the empty string '' compared to a single space ' '?"}
+{"server_path": "Advertising/AdBidServer.py", "query": "Could you estimate a cost-per-click bid for “smart home gadgets” across the whole country?"}
+{"server_path": "Monitoring/NetworkTrafficServer.py", "query": "How much traffic is passing through wlan2?"}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Record “Chocolate milk” for user kiddo-7 with 200 cal, 8 g protein, 26 g carbs, 7 g fat."}
+{"server_path": "Advertising/AdBidServer.py", "query": "What’s the competition score out of 100 for “kids coding courses”?"}
+{"server_path": "Commerce/LoyaltyServer.py", "query": "What’s my points total on legacy-account-000 if nothing was redeemed yet?"}
+{"server_path": "Jobs/SalaryEstimatorServer.py", "query": "I’m curious about the pay range for a product manager in Singapore who has 6 years of experience—what does the market say?"}
+{"server_path": "Payments/PayoutServer.py", "query": "I’m ready to send 2.5 to account \"TIP-JAR-A\" from merchant \"barista-tips\"."}
+{"server_path": "Transportation/TrainServer.py", "query": "Check whether train Nozomi123 running on 2023-08-11 is on time."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "I'd like a snapshot of backyard_cam, and make sure you tell me when it was taken."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "List 3 devices to check recent additions."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Are there comedy shows scheduled in Chicago this weekend, 2024-05-24 to 2024-05-26?"}
+{"server_path": "Jobs/SalaryEstimatorServer.py", "query": "For a senior DevOps engineer in Seattle with 11 years of experience, what’s the typical salary window?"}
+{"server_path": "Media/ImageProcessingServer.py", "query": "Produce a 1366×768 version of webinar_slide1."}
+{"server_path": "Media/RightsManagementServer.py", "query": "Check if movie asset 'neo-noir77' is blocked in GB."}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "Begin a new round for me; my username is \"FreshFace\"."}
+{"server_path": "Devices/PrinterServer.py", "query": "Schedule a 450-page bulk print on production_line_A."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "Get me all three emergency numbers for Brazil."}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "I want the export invoice details for “RUGBY-ZA-7” worth 990 USD to South Africa"}
+{"server_path": "Weather/ForecastServer.py", "query": "Pull the next seven daily highs for Johannesburg, please."}
+{"server_path": "Science/GeneticsSequenceServer.py", "query": "How many bases and what GC% in \"CGCGCGCG\"?"}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "How does \"R4inB0w-Un1c0rn🌈\" rank on your scale?"}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "Find me the best route for S1, S2, S3, S4, S5, and S6 assuming I’m in a truck."}
+{"server_path": "Utility_Tools/NetworkUtilityServer.py", "query": "Is port 3389 open on remotehost.example.net?"}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "In game \"zenmaster\", for question 24, my answer is \"Buddhism\"."}
+{"server_path": "Fitness/WearableSyncServer.py", "query": "Get the latest stats back for \"edge_case_hr_high\" so I can verify."}
+{"server_path": "Utility_Tools/RandomDataServer.py", "query": "Please give me a random string whose length is the square root of 49."}
+{"server_path": "Energy/SmartMeterServer.py", "query": "Provide the cumulative kWh tally of meter solararray-beta."}
+{"server_path": "Travel/LocalToursServer.py", "query": "I need to know the available guided trips in Kuala Lumpur."}
+{"server_path": "Gaming/GameStatsServer.py", "query": "Show me the lifetime kills for player tag \"baby_dragon\"."}
+{"server_path": "Cybersecurity/IDSServer.py", "query": "Please add sensor \"HomeLab\" with IP 192.0.2.44 and then fetch its 15 most recent alerts."}
+{"server_path": "Media/TranscoderServer.py", "query": "Convert asset 7890 to MOV for me."}
+{"server_path": "Sports/PlayerStatsServer.py", "query": "Give Chris Bosh’s season summary for 2013-14."}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "List EPL fixtures happening only today."}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "Let me know the travel time index for the Autobahn A3 near Frankfurt."}
+{"server_path": "Location/GeoFenceServer.py", "query": "Can you check if the coordinates -34.6037, -58.3816 lie within fence ID 'buenosaires-core'?"}
+{"server_path": "Events/RSVPServer.py", "query": "Add Lucas Rossi (lucas.rossi@italia.it) to \"wine-expo-italy\"."}
+{"server_path": "Social/SocialGraphServer.py", "query": "Compute shared friends of \"gina_007\" with \"harry_potter\"."}
+{"server_path": "Fitness/GymClassServer.py", "query": "Show me which classes at gym_westside on 2024-10-20 start on the half-hour mark."}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Sign \"Transfer 5 BTC to Alice\" with private key \"btc-sender-priv\"."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Give me the reachable polygon for 45 minutes of driving from 34.0522, -118.2437."}
+{"server_path": "Business/FinanceServer.py", "query": "Could you generate Microsoft’s 2025 Q1 P&L summary?"}
+{"server_path": "Travel/CurrencyExchangeServer.py", "query": "If I have 99.99 CHF, how many SEK do I get?"}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Is the rooftop-garden available on 2024-07-04?"}
+{"server_path": "Fitness/SleepMonitorServer.py", "query": "Can you add a 25-minute nap for user focusMax starting 2024-11-15T15:05:00?"}
+{"server_path": "Search/ImageSearchServer.py", "query": "Could you find three thumbnails of haute couture fashion runway looks?"}
+{"server_path": "Weather/MarineWeatherServer.py", "query": "Produce the sea temperature reading for the Sea of Okhotsk."}
+{"server_path": "Media/CaptionServer.py", "query": "After uploading these Italian captions 1\\n00:00:01,000 --> 00:00:03,500\\nCiao a tutti!\\n to asset \"promo_2024\", let me know the updated language list."}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "I'd like the spot FX quote for British pounds to Singapore dollars."}
+{"server_path": "Medical/AllergyRegistryServer.py", "query": "Finally, list all allergens for patient testCase."}
+{"server_path": "Payments/RefundServer.py", "query": "Is refund RFD777 still pending or already approved?"}
+{"server_path": "Database/DBMonitoringServer.py", "query": "Give me orders_prod stats aggregated over a single minute."}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "Show the standard list of pod states for namespace redis."}
+{"server_path": "Search/LogSearchServer.py", "query": "Pull any log entries including 'OOM killer' occurring after 2023-11-01T12:00:00Z, limit 30."}
+{"server_path": "Payments/CardProcessorServer.py", "query": "Go ahead and settle 5 EUR against auth id au_789xyz."}
+{"server_path": "Education/TutoringServer.py", "query": "I'd appreciate you booking a Philosophy discussion for code thinker-88 on 2025-01-09T15:00:00Z."}
+{"server_path": "Science/ClimateDataServer.py", "query": "How did CO₂ levels in 1975 compare with 1979?"}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Has the surgery labeled R-00001 finished yet?"}
+{"server_path": "Weather/UVIndexServer.py", "query": "How strong is the sun in New Delhi at the moment?"}
+{"server_path": "Logistics/ShipmentTrackerServer.py", "query": "Register a cargo load, 250 kg, departing Buenos Aires bound for São Paulo"}
+{"server_path": "Search/LogSearchServer.py", "query": "I’m troubleshooting startup issues; show entries with 'boot sequence' from 2024-04-05T06:30:00Z, limit 15."}
+{"server_path": "Jobs/ReferralNetworkServer.py", "query": "Request a referral using emp_id ZEUS1 for candidate PIXEL12 applying to job FB-500."}
+{"server_path": "Medical/ICDCodingServer.py", "query": "Show me what K21.0 stands for."}
+{"server_path": "Database/IndexOptimizerServer.py", "query": "List three useful indexes for `SELECT name FROM employees WHERE department_id = 3 AND salary BETWEEN 60000 AND 80000;`."}
+{"server_path": "Logistics/LoadBoardServer.py", "query": "Please add a 5,500 kg consignment from Las Vegas to Reno."}
+{"server_path": "Search/LogSearchServer.py", "query": "Provide every occurrence of the string 'AssertionError' since 2024-05-05T05:55Z, but no more than 17 lines."}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "What's running in namespace spark-cluster? Just six pods, please."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Look up hotels in Vienna for 2024-04-15 through 2024-04-18 for the default number of guests."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Then display wellness77’s daily macros for 2024-02-17."}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Make me a luxury-themed headline + description combo for “Opulence Gold Cards”."}
+{"server_path": "Logistics/DeliveryProofServer.py", "query": "Capture POD for tracking HALO-117; recipient is John-117; lat 47.6062, lng -122.3321."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "List the top 3 hats and then purchase the first one for user capCollector."}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Please post 300,000 points for player “TripleZero” in “ComboCrush” and return the new rank value."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "Present the first 6 masks available."}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Give the June 2020 summary for mega-plant to verify that number."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Insert a video named 'Training Module 4 – Safety Procedures' that is 1,800 seconds long."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Check on prescription AA-BB-CC-DD: when’s the next refill due?"}
+{"server_path": "Events/LivePollServer.py", "query": "Launch a poll at event gala_night: 'Which dessert should be served?' with 'Cheesecake', 'Brownies', 'Fruit Salad'."}
+{"server_path": "Education/AttendanceServer.py", "query": "Sign student ID JJ77 in for LIT330's meeting on 2022-10-18."}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Record the following debug line from \"ci-runner-5\": \"2023-10-12T14:05:22Z build #234 completed in 12.4s\""}
+{"server_path": "Devices/RouterConfigServer.py", "query": "Please switch router north-pole-01’s network name to \"ArcticBase\" and password \"Snow&Ice\"."}
+{"server_path": "Education/QuizServer.py", "query": "Could you look up and return the score for quiz run SESSION-FINAL-XYZ?"}
+{"server_path": "Commerce/LoyaltyServer.py", "query": "Redeem half of my balance if I currently have 2000 points on A12345; start by showing the balance."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "What’s the current RPM on turbine RARE-ID-7777, and is its power above 650 kW?"}
+{"server_path": "Health/VitalSignsServer.py", "query": "Show me the current vitals on file for patient alphaBeta."}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "Could you pull out the email address and phone number from this snippet? “Emily Stone – emilystone@gmail.com – 646.222.3344 – Front-End Developer skilled in React, TypeScript, Sass, and Figma.”"}
+{"server_path": "Education/GradebookServer.py", "query": "What are the current grades on file for STU0005 in PHY_101?"}
+{"server_path": "Education/EnrollmentServer.py", "query": "Show enrollments for budding_artist, then drop enrollment id paint-001."}
+{"server_path": "Advertising/CreativeLabServer.py", "query": "Give me a luxury ad creative describing “RoyalMist Facial Steamer”."}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "I want to know if this line looks fishy: source \"metrics-collector\", content \"2023-10-12 16:55:12,999 influxdb failed to write points, retrying…\""}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Give an update on surgery ID STS-2024-12-31."}
+{"server_path": "Logistics/ShipmentTrackerServer.py", "query": "Register a shipment weighing 0.8 kg from Boston to Providence"}
+{"server_path": "Payments/CardProcessorServer.py", "query": "Reserve funds: 18.00 NZD on tok_kiwi_card now."}
+{"server_path": "Cybersecurity/MalwareAnalysisServer.py", "query": "After uploading \"dropper.iso\" (base64 \"U29tZUJhc2U2NA==\"), could you provide entropy and suspicious sections together?"}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "I only need a single global overview tile: which one covers -85.0,-180 to 85.0,180 at z=0?"}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Set up a ride: user \"museumlover\", pickup \"Louvre\", dropoff \"Musée d'Orsay\"."}
+{"server_path": "Devices/SmartLightServer.py", "query": "Brighten stairwell_step_03 to 90."}
+{"server_path": "Energy/EnergyMarketServer.py", "query": "Place a 0.5 MW bid from resource BATTERY_7 at 150 USD/MWh."}
+{"server_path": "Fitness/BodyMetricsServer.py", "query": "Log 48.8 kg, 10% fat for 'pippa' and tell me her BMI using height 158 cm."}
+{"server_path": "Energy/CarbonTrackerServer.py", "query": "Log a 15.2-tonne CO₂ emission for source XR-332 right now at 2025-01-12T08:15:00Z."}
+{"server_path": "Fitness/ActivityTrackerServer.py", "query": "Log a 5-minute breathing exercise (10 kcal) for zen0."}
+{"server_path": "Advertising/BrandSafetyServer.py", "query": "Compare the safety ratings of https://localweather.today and https://stormchaserscrazy.com."}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Look up the status of surgery SURG2024-APR-17B for me."}
+{"server_path": "Media/CaptionServer.py", "query": "Add Russian captions to asset \"news_clip_2023_09\": 1\\n00:00:00,000 --> 00:00:02,700\\nЗдравствуйте!\\n."}
+{"server_path": "Sports/TeamRosterServer.py", "query": "Can you tell me who the backup point guards are for the Chicago Bulls?"}
+{"server_path": "Logistics/LoadBoardServer.py", "query": "Pull three loads in a 60-km circle around Des Moines."}
+{"server_path": "Social/EventPlannerServer.py", "query": "Put user kid_coder as “maybe” for event code_camp_day2."}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "See which contacts have \"III\" in their name."}
+{"server_path": "Media/StreamingAnalyticsServer.py", "query": "Show me the metrics for asset ID \"eLearning_mod2\" for the past 25 minutes."}
+{"server_path": "Food/FoodDeliveryServer.py", "query": "For user “movie_buff”, order “popcorn1”, “soda2“, “candy5” from “cinema_snacks”."}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "Convert 1,000 pounds sterling into Swiss francs, using the most recent rate."}
+{"server_path": "Entertainment/MovieCatalogServer.py", "query": "List up to 3 movies that have the word “galaxy” in their title."}
+{"server_path": "Search/CodeSearchServer.py", "query": "Bring me three Elm snippets dealing with JSON decoders."}
+{"server_path": "Cryptography/AESCipherServer.py", "query": "Encrypt \"The quick brown fox jumps over the lazy dog\" using the hex key \"a1b2c3d4e5f60718293a4b5c6d7e8f90\"."}
+{"server_path": "Cybersecurity/LogAuditServer.py", "query": "Could you insert \"2023-10-12 19:22:10 INFO Service mesh sidecar injected for pod web-77d7c\" with source \"istio-controller\"?"}
+{"server_path": "Weather/HistoricalWeatherServer.py", "query": "Show the average temperatures for Buenos Aires on 2004-02-14."}
+{"server_path": "Events/RSVPServer.py", "query": "Provide the confirmed and waitlist totals for \"university-orientation-2\"."}
+{"server_path": "Gaming/EsportsScheduleServer.py", "query": "Can you pull the next three scheduled Valorant matches for me?"}
+{"server_path": "Transportation/TrainServer.py", "query": "Pull the complete service schedule OSA→HSM for 2024-01-30."}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Reserve studio-7 right now for the next 2 hours today."}
+{"server_path": "Business/FinanceServer.py", "query": "Produce a 12-month cash-flow forecast for Airbnb."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "How far can I drive in 80 minutes from 37.9838, 23.7275?"}
+{"server_path": "Business/InventoryServer.py", "query": "I need to know the qty_on_hand for headphone SKU HD-200, please."}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "Please push backup-bess to 0.01% targeting micro-discharge and report acceptance."}
+{"server_path": "Sports/TicketingServer.py", "query": "How many seats are unclaimed in section A for 2025-SUPERCUP, and can you lock in 3 of them for user family_trip?"}
+{"server_path": "Jobs/ReferralNetworkServer.py", "query": "Give me nine employees capable of referring candidate BETA19 to Comcast."}
+{"server_path": "Logistics/RouteOptimizationServer.py", "query": "Please optimize the pickup sequence A-1, B-4, C-7, D-9, E-11, F-13 for a lorry."}
+{"server_path": "Health/TelehealthSessionServer.py", "query": "End consult session “just_finished_42”."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "Locate any charity galas in Washington, D.C. on 2024-12-31, default result count."}
+{"server_path": "Cybersecurity/PasswordAuditServer.py", "query": "Give me a full strength report for \"Pa$$w0rd1234\"."}
+{"server_path": "Payments/PayoutServer.py", "query": "Initiate a payout of 111.11 for merchant \"palindrome\" to account \"ACC-111111\"."}
+{"server_path": "Events/AgendaSchedulerServer.py", "query": "Can I see the full timetable for \"trainers_week\"?"}
+{"server_path": "Database/NoSQLDocumentServer.py", "query": "Fetch messages in 'messages' where {'from': 'system'} (limit 5 by default)."}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Fetch the single latest quake over 6.2 magnitude for a news brief."}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "Which total compensation is higher: $120k base, 15% bonus, $25k equity, or $130k base, 10% bonus, $15k equity?"}
+{"server_path": "Social/ContentSchedulerServer.py", "query": "Check if there’s anything scheduled for profile empty_account."}
+{"server_path": "Food/RestaurantFinderServer.py", "query": "I’m planning a trip to Paris; what are the best Lebanese eateries there (limit 7)?"}
+{"server_path": "Cryptography/CertificateServer.py", "query": "I'd like you to create a cert for 'service.backend' using key 'MIICIj...' and immediately report back with the full metadata you just stored."}
+{"server_path": "Jobs/OfferComparisonServer.py", "query": "What’s the first-year total for 50,000 base, 10% bonus, and 15,000 equity?"}
+{"server_path": "Transportation/CarRentalServer.py", "query": "What’s the pickup time on reservation RES-ALPHA?"}
+{"server_path": "Health/SymptomCheckerServer.py", "query": "Guidance please for a 37-year-old woman experiencing painful urination and lower abdominal cramps."}
+{"server_path": "Communication/ChatServer.py", "query": "I need the recent three messages from finance-committee."}
+{"server_path": "Sports/LeagueScheduleServer.py", "query": "I need match IDs for Christmas Day 2024."}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "I need the MD5 sum of the Unicode text 'こんにちは'."}
+{"server_path": "Advertising/GeoTargetingServer.py", "query": "List the single city that leads the world in microbrewery count."}
+{"server_path": "Energy/GridLoadServer.py", "query": "What’s the difference between the current CAISO load and its forecast 3 hours from now?"}
+{"server_path": "Communication/EmailServer.py", "query": "Email tickets@support.com subject 'Issue #9876 Resolved' body 'The connectivity problem has been fixed.'"}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "For sweettooth, summarize macros on 2023-12-25."}
+{"server_path": "Location/IPGeoServer.py", "query": "Is 128.101.101.101 in Minnesota or somewhere else?"}
+{"server_path": "Devices/SmartLightServer.py", "query": "Bring the brightness of office_lamp north_3 up to 100."}
+{"server_path": "Cryptography/RandomnessServer.py", "query": "Can you provide 32 bytes of random data twice, so I can confirm they differ?"}
+{"server_path": "Education/CourseCatalogServer.py", "query": "Show me ten entries across all departments with no filter."}
+{"server_path": "Utility_Tools/UnitConversionServer.py", "query": "Give me the foot translation of 1,609.344 meters (one exact mile)."}
+{"server_path": "Events/EventDiscoveryServer.py", "query": "List upcoming tech meetups in Berlin from 2024-12-01 to 2024-12-31 and give me ten if available."}
+{"server_path": "Gaming/InGameStoreServer.py", "query": "Show 14 shoes right now."}
+{"server_path": "Location/DistanceMatrixServer.py", "query": "Compute km distance from 60.1695, 24.9354 to 64.9631, -19.0208."}
+{"server_path": "Location/GeocodingServer.py", "query": "Geocode “555 California Street, San Francisco, CA 94104” to latitude-longitude."}
+{"server_path": "Mapping/IsochroneServer.py", "query": "Provide a 27-minute walking area around 52.3676, 4.9041."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "Register the video 'Countdown Timer 30s' which is 30 seconds long."}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "Check sensor 'poolside' and return the full JSON you get back."}
+{"server_path": "Weather/AirQualityServer.py", "query": "I need both the AQI and pollutant breakdown for Johannesburg, please."}
+{"server_path": "Business/ExpenseServer.py", "query": "How much do we still owe employee LITEBITE?"}
+{"server_path": "Fitness/ActivityTrackerServer.py", "query": "Give me the activity summary for user A001 on 2023-08-14."}
+{"server_path": "Monitoring/SystemMetricsServer.py", "query": "Get CPU load and tell me if it's an even or odd integer after rounding."}
+{"server_path": "Media/RightsManagementServer.py", "query": "Check whether asset 'euronews_live' can be played in NL."}
+{"server_path": "Location/RoutePlannerServer.py", "query": "Give a driving route between New Delhi Railway Station and India Gate."}
+{"server_path": "Monitoring/SystemMetricsServer.py", "query": "Please tell me if memory used exceeds CPU load percentage multiplied by 100."}
+{"server_path": "Education/QuizServer.py", "query": "After I finish, show the score for session SID-ENDGAME."}
+{"server_path": "Advertising/BrandSafetyServer.py", "query": "Could you check whether https://kidscrafts.com is brand-safe?"}
+{"server_path": "Database/SchemaManagerServer.py", "query": "Run a migration on analytics_warehouse that drops table temp_data;"}
+{"server_path": "Cryptography/SignatureServer.py", "query": "Sign \"Special chars !@#$%^&*()_+-=[]{}\" using \"special-priv\"."}
+{"server_path": "Food/MealPrepServer.py", "query": "How’s prep ‘test_run_0001’ doing?"}
+{"server_path": "Location/GeocodingServer.py", "query": "I have an envelope that reads “1 Infinite Loop, Cupertino, California”; can you find its coordinates?"}
+{"server_path": "Logistics/ShipmentTrackerServer.py", "query": "Let me know the location of tracking code SKYLINE-987"}
+{"server_path": "Transportation/FlightServer.py", "query": "For UA001 on 2024-09-14, what’s the estimated arrival time?"}
+{"server_path": "Communication/NotificationServer.py", "query": "Push an update to user “apollo” entitled “Launch successful” with body “Payload reached orbit.”"}
+{"server_path": "Cryptography/RSAServer.py", "query": "Encrypt the emoji string \"😀🚀\" with the public key \"-----BEGIN RSA PUBLIC KEY-----\\nKID:test123\\n-----END RSA PUBLIC KEY-----\"."}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "I need any contacts whose names contain \"éland\"; run a search."}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "I'd like to know the TTI for the A2 motorway outside Warsaw."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Find out the next refill date for RXID: 'SPRING-2024-001'."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "How many characters does the phrase 'This—dash—test' contain? Note the em dashes."}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "Could you estimate the weather in Honolulu on 2030-08-18?"}
+{"server_path": "Entertainment/TriviaGameServer.py", "query": "Show the current score report for game \"score_test\"."}
+{"server_path": "Devices/PrinterServer.py", "query": "Queue a 32-page booklet on duplexer-5."}
+{"server_path": "Media/MediaLibraryServer.py", "query": "I want any asset titles featuring 'Galactic'."}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Check on the real-time position of ride \"CHI-TOWN-3B\"."}
+{"server_path": "Payments/CurrencyExchangeServer.py", "query": "Can you quote the NZD to CHF rate right now?"}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Confirm booking at hotel CHI202 for traveler ID PQR456 for 2024-06-05 to 2024-06-09."}
+{"server_path": "Fitness/BodyMetricsServer.py", "query": "Compute BMI for charlie: height 152 cm, weight 47.3."}
+{"server_path": "Science/PhysicsConstantServer.py", "query": "I'd like both the list of constants and the value of the universal gas constant."}
+{"server_path": "Fitness/GymClassServer.py", "query": "Go ahead and reserve class 4321 for user y123 and show the confirmation."}
+{"server_path": "Database/NoSQLDocumentServer.py", "query": "Pull up four notifications that have {'read': false} from the 'notifications' collection."}
+{"server_path": "Food/FoodDeliveryServer.py", "query": "Place a dessert-only order for user “sweettooth” at “bakery_corner” with items “cake02” and “cookie11”."}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Create a new contact: name \"Captain Jean-Luc Picard\", email jl.picard@starfleet.mil, phone 555-ENTERPRISE."}
+{"server_path": "Travel/HotelBookingServer.py", "query": "Could you verify whether my booking reference SPRG2024 is confirmed and when it was last updated?"}
+{"server_path": "Transportation/ShipmentTrackingServer.py", "query": "Give me the estimated delivery date for LA987654321CN and also tell me where it is now."}
+{"server_path": "Payments/PayoutServer.py", "query": "Start a same-day transfer of 10,000.00 from merchant \"enterprise-999\" to bank account \"IBAN NL91ABNA0417164300\"."}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "Could you list up to eight shows that focus on mindfulness meditation?"}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Let me know the state of surgery token SX-MAR-15-A."}
+{"server_path": "Social/SocialGraphServer.py", "query": "Could you fetch everyone directly connected to \"bob456\"?"}
+{"server_path": "Commerce/PaymentGatewayServer.py", "query": "Charge guest123 a zero-dollar authorization using credit_card."}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Reserve hall_a for three hours on 2023-12-24."}
+{"server_path": "Business/ProjectServer.py", "query": "I'd like to see how many story points are left for project alpha-42 if there are only three days to go in the sprint."}
+{"server_path": "Events/EventAnalyticsServer.py", "query": "I need an estimate of attendee traffic for \"AI_Symposium\" every 8 minutes."}
+{"server_path": "Education/DiscussionServer.py", "query": "Retrieve history for thread ID '42' but limit it to 1 message."}
+{"server_path": "Search/DocumentSearchServer.py", "query": "Any documents that match tags “climate-change”, “mitigation”, “policy”, limited to 6?"}
+{"server_path": "Communication/ContactDirectoryServer.py", "query": "Add \"Princess Leia Organa\" with email leia@rebel.alliance and comm number 555-PRINCESS."}
+{"server_path": "Sports/TicketingServer.py", "query": "I'd like to see how many tickets are left in section A for the friendly FNDL-TEST."}
+{"server_path": "Communication/NotificationServer.py", "query": "Push a memo to project-lead-5 titled “Sprint planning” with body “Meeting at 10 a.m. in room A.”"}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "Please produce a ground shipping label for tracking #1LS12345E6605272244."}
+{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you check for the latest magnitude 6.4 quake and tell me its depth?"}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "Show me podcasts covering \"big data\" and then immediately list the first two episodes of the first show."}
+{"server_path": "Devices/RouterConfigServer.py", "query": "Update router office-suite-9 to SSID \"SuiteLife\" with password \"Penthouse#9\"."}
+{"server_path": "Logistics/ShipmentTrackerServer.py", "query": "Is parcel codec KING-777 still in customs clearance?"}
+{"server_path": "Business/ExpenseServer.py", "query": "What’s the current pending reimbursement amount for employee HR55?"}
+{"server_path": "Location/RoutePlannerServer.py", "query": "Generate a summary for riding a bike from Tokyo Station to Meiji Shrine."}
+{"server_path": "Media/PodcastFeedServer.py", "query": "I want an audio feed called 'Birdsong Journeys' hosted by 'Ornithologist Kim'."}
+{"server_path": "Advertising/BrandSafetyServer.py", "query": "Tell me if https://sportsstreaming.live is classified as safe, moderate, or risky."}
+{"server_path": "Health/LabResultsServer.py", "query": "Show me WBC comparisons between orders ORD-A and ORD-B for quality control."}
+{"server_path": "Jobs/ReferralNetworkServer.py", "query": "Find two people at Zoom who could recommend candidate SILVER55."}
+{"server_path": "Energy/BatteryStorageServer.py", "query": "Set backup-bess to 55.5% and afterward provide the latest SOC reading."}
+{"server_path": "Utility_Tools/TextUtilityServer.py", "query": "Which phrase is longer by character count: 'Hello, world!' or its snake_case variant?"}
+{"server_path": "Monitoring/KubernetesClusterServer.py", "query": "List three pod statuses from the db namespace."}
+{"server_path": "Energy/EVChargingServer.py", "query": "Open a new charging session on DAL-CTY-6 for VIN 1FTFW1ET5EFB12345."}
+{"server_path": "Search/CodeSearchServer.py", "query": "Search for one Julia snippet that demonstrates multiple dispatch."}
+{"server_path": "Education/AssignmentServer.py", "query": "Please submit \"chapter7_problems\" for sid walt_whit, course MATH145 and tell me if the submission is in 'received' state."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "Tell me the state of \"CALL42\""}
+{"server_path": "Weather/SevereWeatherAlertServer.py", "query": "List active severe weather statements for the state of Illinois."}
+{"server_path": "Search/ProductSearchServer.py", "query": "Pull up whatever matches the term 'air fryer', capped at 12 items."}
+{"server_path": "Transportation/TrafficStatusServer.py", "query": "Give me today’s TTI for the A1 motorway near Rome."}
+{"server_path": "Mapping/TileCoverageServer.py", "query": "At zoom 14, what tiles intersect the Silicon Valley rectangle 37.25,-122.3 to 37.50,-121.8?"}
+{"server_path": "Entertainment/PodcastDirectoryServer.py", "query": "What podcasts cover ancient Rome? Only return two recommendations."}
+{"server_path": "Cryptography/HashServer.py", "query": "Hash the JSON text “{\\\"key\\\": \\\"value\\\"}” with sha256."}
+{"server_path": "Medical/PrescriptionServer.py", "query": "Create a prescription for patient kid-09 for ibuprofen 200 mg Q6H PRN pain."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Add a meal for user jonny89 called “Pulled-pork burrito” that has 760 calories, 38 g protein, 85 g carbs, and 28 g fat."}
+{"server_path": "Transportation/FlightServer.py", "query": "Provide status, gate, and estimated arrival for DL404 on 2024-06-23."}
+{"server_path": "Food/KitchenTimerServer.py", "query": "Tell me the remaining time on timer 9f9e4e."}
+{"server_path": "Travel/EmergencyContactServer.py", "query": "Retrieve the embassy address for a Spanish citizen visiting Peru."}
+{"server_path": "Events/EventNotificationServer.py", "query": "Has notification FESTIVAL-CAMPER-999 been marked as sent?"}
+{"server_path": "Energy/SolarArrayServer.py", "query": "Show me the online_inverters count for \"LagoonSite42\"."}
+{"server_path": "Social/EventPlannerServer.py", "query": "Could you mark attendee a7b8c9 as “no” for the event summer_gala_2024?"}
+{"server_path": "Commerce/PromotionServer.py", "query": "Retrieve the live coupon list, choose TRIAL from it, and compute its effect on a 30.00 subtotal."}
+{"server_path": "Cybersecurity/PatchComplianceServer.py", "query": "Register a VM named \"ci-builder\" with OS \"Alpine Linux 3.18\" and then check if it passes compliance."}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Measure '/home/user/Music/song.mp3' in kilobytes."}
+{"server_path": "Education/AttendanceServer.py", "query": "Show attendance counts for ENG210 held on 2022-07-07."}
+{"server_path": "Education/TutoringServer.py", "query": "Confirm whether session bio-session-20 is scheduled or already done."}
+{"server_path": "Payments/InvoiceServer.py", "query": "Could you produce an invoice for customer \"C1234\" for 1234.56 that’s payable in 28 days (four-week terms)?"}
+{"server_path": "Advertising/AdBidServer.py", "query": "Provide both a suggested bid and competition band for “bespoke suits” in Hong Kong."}
+{"server_path": "Communication/VoiceCallServer.py", "query": "I'd like to start a QA test call from \"test_user_1\" to \"loopback\""}
+{"server_path": "Travel/WeatherAdvisoryServer.py", "query": "Get me the forecast for Cancun on 2024-07-18."}
+{"server_path": "Monitoring/TemperatureSensorServer.py", "query": "Get the last recorded temperature for external-sensor-02."}
+{"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a firewall appliance, model Palo Alto PA-220, belonging to SecOps."}
+{"server_path": "Health/PatientRecordServer.py", "query": "Start a health profile for Mr. George O'Neill, DOB 1950-12-01, M, and give me back his ID."}
+{"server_path": "Fitness/NutritionLogServer.py", "query": "Give lazychef’s totals for 2024-07-01."}
+{"server_path": "Transportation/FleetManagementServer.py", "query": "How far is loader-alpha from its next scheduled service in kilometers?"}
+{"server_path": "Advertising/AdBidServer.py", "query": "Recommend a national bid for “children’s audiobooks”."}
+{"server_path": "Events/EventNotificationServer.py", "query": "Schedule a notification for event BIRTHDAY_JULIA; include the message “Happy early birthday! Don’t forget to make a wish.” and send it at 2024-09-02T00:01:00Z."}
+{"server_path": "Database/SQLQueryServer.py", "query": "Return five rows from alerts where severity = 'critical' sorted by created_at DESC."}
+{"server_path": "Health/VitalSignsServer.py", "query": "Save vitals for patient 'MaxInt'—sys 300, dia 200, hr 200."}
+{"server_path": "Fitness/GymClassServer.py", "query": "Book class springHIIT2024 for member X123 please."}
+{"server_path": "Utility_Tools/RandomDataServer.py", "query": "Create a 14-character random string and count how many times the letter “a” appears."}
+{"server_path": "Gaming/MatchmakingServer.py", "query": "I need to queue \"Xx_DragonSlayer_xX\" for Asia-Pacific, current elo 2200."}
+{"server_path": "Logistics/PackageLabelServer.py", "query": "Return a ground service label for 92419901122334455667788."}
+{"server_path": "Jobs/ResumeParserServer.py", "query": "List the technical abilities: “Ahmed Salah works with Linux kernel modules, eBPF, and systemd.”"}
+{"server_path": "Media/CaptionServer.py", "query": "Please list subtitles on asset \"product_demo_42\" so I can see if we need more translations."}
+{"server_path": "Health/SymptomCheckerServer.py", "query": "Triage scenario: 18-year-old male with sudden severe testicular pain."}
+{"server_path": "Sports/LiveScoreServer.py", "query": "Could you list the latest play sequence for match id 99AA77 with the default number of events?"}
+{"server_path": "Health/PatientRecordServer.py", "query": "Register an EHR for Sofia Vergara, 1972-07-10, F, and immediately show the creation timestamp."}
+{"server_path": "Science/ClimateDataServer.py", "query": "Compare the CO₂ ppm in 1980 with that in 2020—how do they differ?"}
+{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Show me the MD5 fingerprint for the string 'ABCDabcd1234!@#$'."}
+{"server_path": "Food/MealPrepServer.py", "query": "Kick off prep for user game_night on 2023-07-07, 30 portions needed"}
+{"server_path": "Events/EventNotificationServer.py", "query": "Let’s set a reminder linked to event MAINTENANCE-WINDOW-1, message “Servers will reboot in 30 minutes” to go out 2024-07-12T23:30:00+00:00."}
+{"server_path": "Communication/CalendarInviteServer.py", "query": "Please schedule a strategy call at 2025-09-01T12:00:00Z; organizer strategist@plan.biz, attendees exec@plan.biz."}
+{"server_path": "Logistics/CustomsDocServer.py", "query": "Provide a commercial invoice for “AR-CLASSIC-3” valued at 2,013 USD to Argentina"}
+{"server_path": "Jobs/JobListingServer.py", "query": "After you search for marketing coordinator roles in Toronto, show me the details of the first result."}
+{"server_path": "Monitoring/SystemMetricsServer.py", "query": "What is the exact timestamp for the most recent CPU load measurement?"}
+{"server_path": "Utility_Tools/DateTimeServer.py", "query": "I have 2023-06-21T13:05:00 in America/Denver; convert that to Pacific/Honolulu."}
+{"server_path": "Transportation/ParkingFinderServer.py", "query": "Scan 1 km around 25.276987, 55.296249 for parking options, then hold the first spot for user dubaiVisitor for 5 hours."}
+{"server_path": "Medical/ClinicalNoteServer.py", "query": "List the two latest notes on patient 2323."}
+{"server_path": "Medical/ImagingStudyServer.py", "query": "Has imaging study ID 77-77-77 been scheduled yet?"}
+{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "I’d like a complete look at the ten highest scorers in ForestFrenzy."}
+{"server_path": "Transportation/PublicTransitServer.py", "query": "Combine a check: next five departures for the 24 bus at stop 2400 plus current alerts on that line."}
+{"server_path": "Medical/SurgicalScheduleServer.py", "query": "Please tell me whether surgery identifier ABCDE-12345 is still upcoming."}
+{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Give me compromise indicators for the Dridex botnet, but only 4."}
+{"server_path": "Gaming/FriendsListServer.py", "query": "Reveal who sits in the friends list of profile “zenMaster108”"}
+{"server_path": "Logistics/FleetDispatchServer.py", "query": "Make sure driver BOB-1 is assigned to unit TRUCK-401 on route WEST-BELT."}
+{"server_path": "Advertising/AdBidServer.py", "query": "I need both the competition info and a CPC suggestion for “language exchange app” in Tianjin."}
+{"server_path": "Entertainment/MovieCatalogServer.py", "query": "Find up to 4 movies with “space” in their titles."}
+{"server_path": "Energy/WindTurbineServer.py", "query": "What is the current kilowatt production of 'beta'?"}
+{"server_path": "Gaming/FriendsListServer.py", "query": "Please initiate a friend request from “pythonista” to “javadev”"}
+{"server_path": "Food/MealPrepServer.py", "query": "Get me the status of prep code spring-cleanse"}
+{"server_path": "Travel/DestinationInfoServer.py", "query": "Show me seven can’t-miss attractions in Paris."}
+{"server_path": "Social/CommunityModerationServer.py", "query": "Flag forum thread OLD_HATE_77 for “extremism,” submitted by reporter watchdogX."}
+{"server_path": "Devices/CameraFeedServer.py", "query": "Get the stream link for 'train_platform_cam_7' for me."}
+{"server_path": "Health/PatientRecordServer.py", "query": "Could you register a patient with trailing spaces in the name, “Lara Craft ”, born 1997-09-09, F?"}
+{"server_path": "Education/QuizServer.py", "query": "I’m student “MUSIC_LOVER”; initiate quiz MUSIC-THEORY-2 and reveal when it times out."}
+{"server_path": "Transportation/RideSharingServer.py", "query": "Show me the ETA for ride id \"LATE-444\"."}
+{"server_path": "Science/GeneticsSequenceServer.py", "query": "Compute the GC% for \"GATTACA\"."}
+{"server_path": "Travel/CurrencyExchangeServer.py", "query": "Convert 2500 EUR into CHF right now."}
+{"server_path": "Science/StatisticsServer.py", "query": "Calculate the mean and standard deviation for -3.2, 1.4, 2.8, -0.6, 4.0, 5.5."}
+{"server_path": "Utility_Tools/DateTimeServer.py", "query": "Convert 2025-12-31T23:45:00 from UTC to Asia/Tokyo for me."}
+{"server_path": "Gaming/GameStatsServer.py", "query": "I'd like to see how many games \"CaptainMarvel\" has taken part in and how many she won."}
+{"server_path": "Search/ImageSearchServer.py", "query": "Pull one thumbnail of a steampunk-style pocket watch."}
+{"server_path": "Sports/TeamRosterServer.py", "query": "Display the full roster of the Utah Jazz in a comma-separated list."}
+{"server_path": "Events/VenueAvailabilityServer.py", "query": "Confirm whether hall_a can host a one-hour rehearsal tomorrow morning."}
+{"server_path": "Search/ProductSearchServer.py", "query": "Can you check if there are any listings for 'Bluetooth speaker' and return ten options?"}
+{"server_path": "Monitoring/AlertingRuleServer.py", "query": "Define an alert so that page_faults_per_sec less than or equal to 300 generates a warning."}
+{"server_path": "Transportation/ShipmentTrackingServer.py", "query": "Has tracking code 9205590175547700049938 been delivered yet?"}
+{"server_path": "Location/GeocodingServer.py", "query": "What’s the latitude and longitude of “Petra, Jordan”?"}
+{"server_path": "Monitoring/NetworkTrafficServer.py", "query": "What's the current traffic level on ifb0?"}
+{"server_path": "Events/TicketingServer.py", "query": "Generate and then immediately check a gold ticket for opera_la_boheme for guest Renée Fleming."}
+{"server_path": "Devices/FirmwareUpdateServer.py", "query": "Initiate the firmware package 'beta-release-May' for gateway-G2."}

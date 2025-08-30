@@ -187,7 +187,6 @@
 {"server_path": "Education/CourseCatalogServer.py", "query": "Look up the course description for DANCE101."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Can you show whichever 5 courses come first in the CHEM listing?"}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Pull the detail for course_id “ECON450”."}
-{"server_path": "Education/CourseCatalogServer.py", "query": "Show me up to 25 CS courses so I can browse."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Fetch complete info for course MATH001."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "List six entries from the ASTR department."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "I need details on HISTORY200—title, instructor, and description."}
@@ -198,7 +197,6 @@
 {"server_path": "Education/CourseCatalogServer.py", "query": "Could you list the first two NURS courses?"}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Retrieve course information for POLS300."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "What does the extended metadata say about MUS150?"}
-{"server_path": "Education/CourseCatalogServer.py", "query": "List up to 30 ECON classes for me."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "I’d like to see 5 courses from the default catalog, then drill into course_id “STAT120”."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Grab course_detail for CS201 so I can read its description."}
 {"server_path": "Education/CourseCatalogServer.py", "query": "Fetch the leading course entry (limit 1) for any department and report it."}
@@ -367,18 +365,13 @@
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Download the file associated with mod code \"ultimate_overhaul_v6\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Can I get the direct link for \"texture_pack_hd\" mod?"}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Supply a secure URL so I can grab mod \"realistic_weather_fx\"."}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "List 20 mods for the game tagged \"gta5\" and then get me the download URL for the one with the highest downloads."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Compare the number of downloads between the top five mods for \"valheim\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "List the three most downloaded mods for \"rimworld\" and provide links for each."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Show me mods 1 through 15 for \"ark_survival_evolved\"; I need to scan them manually."}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "Give me everything up to the maximum limit for \"subnautica\" mods."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "I need only the first two community mods for game code \"hades\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Could you display mods for \"overwatch\" but cap it at four entries?"}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "Find and list 30 mods for \"euro_truck_simulator_2\"."}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "Retrieve the complete default mod list for \"no_mans_sky\" and then download the second one."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "List mods for \"elite_dangerous\" with a limit of 8, then fetch download for mod ID \"galactic_expansion\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Pull the top five mods for \"dead_cells\" so I can decide which to install."}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "Tell me the first 25 community creations for \"garrys_mod\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Show mods for \"nba2k23\" limited to 6 results."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "I'd like to see a single mod entry for \"portal2\"—keep it concise."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "List mods for \"mount_blade_bannerlord\" with limit set to 9."}
@@ -390,7 +383,6 @@
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Show me ten mods for \"oxygen_not_included\" in order of listing."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Could you get four mods for \"starbound\"?"}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "List seven mods from the community for \"darkest_dungeon\"."}
-{"server_path": "Gaming/ModRepositoryServer.py", "query": "Please display every mod up to 40 entries for \"rust\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Fetch the default list of mods for \"age_of_empires_ii_definitive\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "Retrieve and compare download counts for the first five mods in \"civilization_vi\"."}
 {"server_path": "Gaming/ModRepositoryServer.py", "query": "List only one mod for \"borderlands3\" and give its download URL at once."}
@@ -775,7 +767,6 @@
 {"server_path": "Transportation/TrainServer.py", "query": "Report on train status for Sakura888 on 2023-05-09."}
 {"server_path": "Transportation/TrainServer.py", "query": "Please get me the running info for Asama202 on 2024-09-12."}
 {"server_path": "Transportation/TrainServer.py", "query": "Update me on Tsubasa404 operating 2023-04-15."}
-{"server_path": "Transportation/TrainServer.py", "query": "Compare available seats on TKY–OSA trains today (2023-10-02) with yesterday (2023-10-01)."}
 {"server_path": "Transportation/TrainServer.py", "query": "Are there any evening services from OSA to TKY on 2024-08-09?"}
 {"server_path": "Transportation/TrainServer.py", "query": "Find the earliest departure between KYO and NAG on 2023-12-20."}
 {"server_path": "Transportation/TrainServer.py", "query": "Pull the complete service schedule OSA→HSM for 2024-01-30."}
@@ -1216,53 +1207,30 @@
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Please register a new sensor called \"datacenter-core\" with address 192.168.100.45."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Add the sensor named DevLab01 at IP 10.0.5.11 and tell me the ID it gets assigned."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Could you register sensor \"edge-gateway-eu\" that sits on 2001:0db8:85a3::8a2e:0370:7334?"}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "I need to poll the last 20 alerts for sensor ID 7f2b39e6; grab them."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Fetch only five most recent alerts for sensor c3d9-44bf."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Give me the latest 50 alerts for sensor 1982-445a."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register a sensor titled \"branch-office-3\" running at 172.18.4.20, then return its registration details."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Poll alerts for sensor 55aa77cc but cap the list at 12 entries."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Please register \"QA-Test-Sensor\" at IP 10.99.1.250 and immediately pull its first three alerts."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Show the standard 20-alert snapshot for sensor eebcde11."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Create a sensor record named \"IoT-hub-west\" with IPv6 address fe80::f2de:f1ff:fe3f:307e."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "I just got sensor ID d4f8; could you list every alert up to 100 for it?"}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register the probe \"ContainerNet-Monitor\" on 172.31.255.8 and give back the sensor_id timestamp combo."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Retrieve alerts for sensor 9ac8-bdee using the default parameters."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Please add sensor \"HomeLab\" with IP 192.0.2.44 and then fetch its 15 most recent alerts."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Check if sensor 123abc45 has produced any alerts—use the default limit."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Set up sensor \"vpn-exit-node\" at 203.0.113.17; once done, show its ID."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Get me the top 1 alert from sensor 8e8e8e8e for a quick spot-check."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Quickly poll 30 alerts for sensor fff0eee0ddd0."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register \"Sensor-№42\" with IPv6 2607:f8b0:4004:800::200e."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "List the last 7 alerts coming from sensor ID 0044aaee."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Add a sensor called \"wifi-mesh-node-5\" located at 10.10.10.55."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "After registering \"edge-us-east-2\" at IP 10.2.30.5, fetch its most recent 10 alerts."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Retrieve the default alert set for sensor deadbeeffeed."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Could you pull 75 alerts for sensor 0a0b0c0d0e to audit a burst event?"}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register \"staging-sniffer\" at 198.51.100.99 and return its metadata."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Show me five alerts from sensor id 2222aaaa running in dev."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Create the sensor \"alpha.beta.gamma\" at 172.20.0.1; provide the registration time."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Grab 40 alerts tied to sensor 9999ffff even if that’s more than the default limit."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "I want just two alerts from sensor 5baf-test-id."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Install sensor \"prod-edge-01\" on fe80::1 and confirm the sensor_id."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Pull the entire 20-alert default list for sensor 7c7c7c7c7c."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register sensor \"north-boundary\" with IP 11.22.33.44 and then list its first alert."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Show alerts (limit 60) for sensor ab12cd34ef."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Set up \"temporary-demo-sensor\" at 203.0.113.200; afterward, gather any alerts it already has."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Give me 13 alerts from sensor 01-23-45-67-89."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Please add sensor \"lab-ipv6-probe\" on 2001:db8::1234 and output the registration JSON."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Poll exactly nine alerts for sensor fedcba9876543210."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register \"edge-backup\" 192.0.2.200, but skip alert retrieval for now."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "List alerts for sensor 3e3e3e3e3e; default limit is fine."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Add a sensor named \"high-latency-link\" using 10.255.255.2 and immediately show its last 25 alerts."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Can you fetch 18 alerts from sensor 7777bbbbcc?"}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Create sensor \"minimal\" at 127.0.0.1."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Check the most recent alert from sensor id faceb00c."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register \"deep-packet-inspect\" at fe80::dead:beef:cafe and return the sensor_id only."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Pull 99 alerts for sensor 0decafbad to test pagination behavior."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Add sensor \"azure-vm-probe-01\" on 100.64.0.10 and list its 4 newest alerts."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Please poll the default alert set for sensor id 8888ffff-dev-branch."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Set up sensor \"k8s-node-22\" at 10.240.0.22; then retrieve 6 alerts for it."}
-{"server_path": "Cybersecurity/IDSServer.py", "query": "Get me the full default alert batch for sensor 4d4c4b4a."}
 {"server_path": "Cybersecurity/IDSServer.py", "query": "Register a sensor called \"edge-asia-south\" with IPv6 2001:db8:acad:1::1 and confirm success."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Show me the top three scores for “DragonDash”."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Could you retrieve the default leaderboard for GalaxyWarriors?"}
@@ -1283,7 +1251,6 @@
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Give me a snapshot of the first 12 places in CosmicClimb."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "I want the default 10-entry leaderboard for “word_wizard_deluxe”."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Post 5 points for user “testing_low” in DartsMaster and return the rank result."}
-{"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Retrieve the top 30 scores from “SuperSki”."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Please submit 214,000 for player UltraMax in “JetPackJoy”."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "After logging 6,789 for user “RetroKid” on BlockBuilder, provide my placement."}
 {"server_path": "Entertainment/GameLeaderboardServer.py", "query": "Who are the current leaders in NinjaSlice with the list capped at eight?"}
@@ -1571,54 +1538,23 @@
 {"server_path": "Health/LabResultsServer.py", "query": "What are the complete numeric results associated with order ID FINAL-000?"}
 {"server_path": "Health/LabResultsServer.py", "query": "Check the hemoglobin and platelet counts for order ID MIXED-123, please."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Can you get me the latest 10 IOCs for Emotet?"}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I need a list of indicators associated with APT29; the default number is fine."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Fetch 40 compromise indicators tied to TrickBot malware."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Show me five network artifacts linked to the threat actor FIN7."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Provide the top 25 IOCs for the ransomware family Conti."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I'd like indicators of compromise for the Lazarus Group—give me 30 of them."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Could you retrieve indicators for the Ryuk ransomware crew, but limit it to 15 entries?"}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Give me the full default set of IOCs for Cobalt Strike beacon activity."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "What IOCs are available for the malware family QakBot, max out at 50 please."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Pull 7 indicators related to the SolarWinds supply-chain attackers."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I’m analyzing TA505—hand me 20 IOCs."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Supply the standard indicator list for Dridex."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I'd appreciate the first 12 compromise indicators for Operation Ghostwriter."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Could you show indicators associated with the Carbanak backdoor, only 18 items?"}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Provide indicators for DarkSide ransomware, default count is okay."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Get me a short list (3) of IOCs for the GandCrab ransomware variant."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Retrieve indicators of compromise tied to the threat family Agent Tesla, limit 22."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I'd like 35 IOCs for the BazarLoader malspam campaigns."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Fetch indicators concerning Turla APT, 10 results."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Show the standard IOC set for Zeus Panda banking trojan."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Can you pull 60 indicators for LockBit if that's allowed?"}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Give me exactly 1 IOC for the threat actor Sandworm."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Provide 45 IOCs linked to Emissary Panda."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Gather the usual indicators for the malware family TrickBot—default is fine."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I need compromise evidence for the Equation Group, cap it at 8."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Obtain 28 IOCs related to MegaCortex ransomware."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Give me a quick dump of indicators for HAFNIUM, 14 entries."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "What are the default IOCs for SmokeLoader?"}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Grab 33 compromise indicators for the malware KingMiner."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Could I see 50 indicators tied to Operation Cleaver?"}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Send me 6 IOCs for the threat called SilverTerrier."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "List the default number of IOCs for BlackEnergy."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I'm interested in 12 compromise artifacts from the MuddyWater APT."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Fetch all 25 default indicators for NotPetya."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Provide 17 IOCs referencing the malware ZLoader."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Retrieve 30 indicators for APT41 campaigns targeting healthcare."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Show 9 IOCs for the cybercrime gang Evil Corp."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Give me compromise indicators for the Dridex botnet, but only 4."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Could you pull 26 IOCs for the threat family Gootkit?"}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I'd like the standard indicator package for Emissary Panda again."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Bring me 11 indicators linked to the malware Pegasus."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Supply 32 IOCs for the group Charming Kitten."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Get the default number of indicators associated with Operation Shady RAT."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Please deliver 23 IOCs related to the Nemucod downloader."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Need 2 compromise indicators for the threat actor Cozy Bear."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Pull 37 indicators tied to the malware family RedLine Stealer."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Show me the usual 25 IOCs for the APT28 group."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "I want a short list of 5 IOCs for Dharma ransomware."}
-{"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Get the maximum 100 IOCs available for the group DarkHotel."}
 {"server_path": "Cybersecurity/ThreatIntelServer.py", "query": "Provide 13 indicators for the cryptomining malware LemonDuck."}
 {"server_path": "Location/RoutePlannerServer.py", "query": "Give me a driving route summary from Los Angeles International Airport to Santa Monica Pier."}
 {"server_path": "Location/RoutePlannerServer.py", "query": "How long will it take to walk from the Eiffel Tower to the Louvre Museum?"}
@@ -1702,7 +1638,6 @@
 {"server_path": "Cryptography/AESCipherServer.py", "query": "I’d like a 192-bit AES key—in hex, please."}
 {"server_path": "Cryptography/AESCipherServer.py", "query": "Using key \"22222222222222222222222222222222\", encrypt \"Space: the final frontier\"."}
 {"server_path": "Cryptography/AESCipherServer.py", "query": "Encrypt the multiline text \"Line1\\nLine2\\nLine3\" with key \"33333333333333333333333333333333\"."}
-{"server_path": "Cryptography/AESCipherServer.py", "query": "Take key \"44444444444444444444444444444444\" and encrypt a long paragraph about cyber security best practices."}
 {"server_path": "Cryptography/AESCipherServer.py", "query": "Decrypt the message with key \"55555555555555555555555555555555\", IV \"66666666666666666666666666666666\", ciphertext \"VGhpcyBpcyBhIHRleHQ=\"."}
 {"server_path": "Cryptography/AESCipherServer.py", "query": "Can you decrypt using key \"12341234123412341234123412341234\", IV \"abcdabcdabcdabcdabcdabcdabcdabcd\", ciphertext \"QXR0YWNrIGF0IGRhd24h\"?"}
 {"server_path": "Cryptography/AESCipherServer.py", "query": "I need to generate a key at the default length and later will use it for database field encryption—just output the key now."}
@@ -2131,7 +2066,6 @@
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Fetch every item in the all category but cap it at 15 results."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Display five gloves for sale."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Can you get me the first 7 items listed under emotes?"}
-{"server_path": "Gaming/InGameStoreServer.py", "query": "Let me see all items; I don't care about limits, so make it 100."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Show two items in the pets category."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "List any available banner cosmetics, just 4 please."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Quickly pull the full catalog with the default settings."}
@@ -2156,7 +2090,6 @@
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Please show five skins and immediately buy skin number two for player skinFanatic."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Find any backpack item, just one, and purchase it for user packRat."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Display all emotes, limit 4, then complete a purchase of emote_dance for player dancer01."}
-{"server_path": "Gaming/InGameStoreServer.py", "query": "Could I see up to 25 items regardless of category?"}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "List zero hats to check an empty result."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Show me all capes, but only 1 entry."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Give me 11 items from all categories."}
@@ -2164,7 +2097,6 @@
 {"server_path": "Gaming/InGameStoreServer.py", "query": "List two avatars then buy avatar_knight for userid avatarKing."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Show 6 gloves, no category filter needed."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Retrieve three mounts for browsing."}
-{"server_path": "Gaming/InGameStoreServer.py", "query": "I'd like the store's entire banner catalog; give me 30 entries."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Display 8 pets, then purchase pet_dragon for player mythicHunter."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "List five random items, then buy item index 3 for user indecisive."}
 {"server_path": "Gaming/InGameStoreServer.py", "query": "Get me the available stickers category with default limit."}
@@ -2365,7 +2297,6 @@
 {"server_path": "Cryptography/RandomnessServer.py", "query": "I want to compare outputs: first 32 bytes, then 33 bytes."}
 {"server_path": "Cryptography/RandomnessServer.py", "query": "Produce 120 bytes of high-quality randomness."}
 {"server_path": "Cryptography/RandomnessServer.py", "query": "Give me an odd-length random string—say, 77 bytes."}
-{"server_path": "Cryptography/RandomnessServer.py", "query": "I need 999 bytes of random data; can you handle that?"}
 {"server_path": "Cryptography/RandomnessServer.py", "query": "Create 18 random bytes to act as an IV."}
 {"server_path": "Cryptography/RandomnessServer.py", "query": "I'd like a 28-byte random secret, please."}
 {"server_path": "Cryptography/RandomnessServer.py", "query": "Show me 7 bytes of random data encoded in base64."}
@@ -4013,7 +3944,6 @@
 {"server_path": "Education/DiscussionServer.py", "query": "I need the conversation summary of 'fantasy-league' thread: get up to 8 messages."}
 {"server_path": "Education/DiscussionServer.py", "query": "Write 'Congrats on the launch everyone!' to thread 'releases' from user 'ceo', then pull the freshest three messages."}
 {"server_path": "Education/DiscussionServer.py", "query": "Could you add 'Check the logs for errors' by 'monitor' to thread 'alerts' and afterwards list the 6 latest lines?"}
-{"server_path": "Education/DiscussionServer.py", "query": "Show me the last 40 messages from thread 'chatty', please."}
 {"server_path": "Education/DiscussionServer.py", "query": "Place 'Standup is starting now' into 'morning-standup' as 'scrum_master'."}
 {"server_path": "Education/DiscussionServer.py", "query": "After sending 'The poll closes at 5pm' from 'bot' in thread 'polls', let me see its most recent message."}
 {"server_path": "Education/DiscussionServer.py", "query": "Fetch history for thread 'travel-plans' limited to 2 entries."}
@@ -4406,7 +4336,6 @@
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "I'd like the latest post from \"edge_case\" right after that to confirm it went through."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Show only one post from \"sports_fan\"."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Can you post \"Go team go!!! 🏆\" as superfansarah?"}
-{"server_path": "Entertainment/SocialBuzzServer.py", "query": "Pull 50 posts by marathon_man."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Publish for \"coder123\": \"Deploying new build to production at 5 PM UTC.\""}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Please get the recent list for user \"night_owl\" but limit it to 7."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Share a quick update under user \"summer_kid\" saying \"First day at the beach this year.\""}
@@ -4414,7 +4343,6 @@
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "As \"book_lover\", post \"Finished 'Dune'—mind officially blown.\""}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Retrieve 12 latest updates from \"book_lover\" to see what else they've said."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Make user \"politics_junkie\" say \"Election night coverage starts now.\""}
-{"server_path": "Entertainment/SocialBuzzServer.py", "query": "I'd like to see exactly 30 posts for \"politics_junkie\"."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Post for \"music_maker\": \"New single drops Friday! Stay tuned.\""}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Show me whatever comes back by default for the timeline of \"music_maker\"."}
 {"server_path": "Entertainment/SocialBuzzServer.py", "query": "Compose an update as \"garden_gnome\": \"Tomatoes are finally ripening in the greenhouse.\""}
@@ -4599,7 +4527,6 @@
 {"server_path": "Sports/VenueInfoServer.py", "query": "Could you pull a 10-hour forecast for ROCKHAVEN-STAD?"}
 {"server_path": "Sports/VenueInfoServer.py", "query": "What’s the current six-hour weather outlook for the venue ID NIGHTFALL-91?"}
 {"server_path": "Sports/VenueInfoServer.py", "query": "Show capacity details for SUNRISE_BOWL_AB."}
-{"server_path": "Sports/VenueInfoServer.py", "query": "I’d like a 24-hour forecast for stadium WINTERFIELD-02."}
 {"server_path": "Sports/VenueInfoServer.py", "query": "Is the playing surface at EAST_GATE_77 synthetic, and what city is it in?"}
 {"server_path": "Sports/VenueInfoServer.py", "query": "What’s the spectator limit at OLD_ARENA_FX?"}
 {"server_path": "Sports/VenueInfoServer.py", "query": "Give me the next five hours of weather conditions for venue SKYDOME_12."}
@@ -4848,13 +4775,10 @@
 {"server_path": "Energy/GridLoadServer.py", "query": "Forecast the next 24-hour load profile for CAISO."}
 {"server_path": "Energy/GridLoadServer.py", "query": "I need a 48-hour demand forecast for ERCOT."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Give me a 6-hour ahead load forecast for PJM."}
-{"server_path": "Energy/GridLoadServer.py", "query": "Produce the hourly load outlook for ISO-NE for the coming 72 hours."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Provide a 1-hour horizon forecast for MISO."}
-{"server_path": "Energy/GridLoadServer.py", "query": "What does the next 168-hour load forecast look like for NYISO?"}
 {"server_path": "Energy/GridLoadServer.py", "query": "Show me the forecasted hourly demand in SPP over the next 12 hours."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Generate a two-day load forecast for the Ontario IESO zone."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Give me a 3-hour forecast for BPA."}
-{"server_path": "Energy/GridLoadServer.py", "query": "I’d like the forecast values for SWPP for the next 96 hours."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Compare the current load of CAISO with its forecast for the coming hour."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Is the live demand in ERCOT higher or lower than the first hour of its 24-hour forecast?"}
 {"server_path": "Energy/GridLoadServer.py", "query": "Calculate the percentage difference between PJM’s real-time load and its forecasted load one hour ahead."}
@@ -4864,7 +4788,6 @@
 {"server_path": "Energy/GridLoadServer.py", "query": "Give me NYISO’s current demand and the expected peak value in the next 48-hour forecast."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Show whether Ontario IESO’s real-time load exceeds any of the next 4 hourly forecast points."}
 {"server_path": "Energy/GridLoadServer.py", "query": "If BPA’s load follows the forecast, what will the cumulative energy be over the next 24 hours?"}
-{"server_path": "Energy/GridLoadServer.py", "query": "Assuming SWPP’s forecast holds, calculate the highest hourly load within the next week."}
 {"server_path": "Energy/GridLoadServer.py", "query": "What’s the difference between the current CAISO load and its forecast 3 hours from now?"}
 {"server_path": "Energy/GridLoadServer.py", "query": "Project the load in ERCOT four hours ahead and state how much it changes from the current load."}
 {"server_path": "Energy/GridLoadServer.py", "query": "I want the next 5 forecast points for PJM alongside the real-time value."}
@@ -4872,7 +4795,6 @@
 {"server_path": "Energy/GridLoadServer.py", "query": "Tell me the hour in the coming 72-hour MISO forecast where load first exceeds 50,000 MW."}
 {"server_path": "Energy/GridLoadServer.py", "query": "Check whether SPP’s current load is within one standard deviation of its 24-hour forecast values."}
 {"server_path": "Energy/GridLoadServer.py", "query": "List the first 10 hours of NYISO’s forecast and highlight any hour lower than the current load."}
-{"server_path": "Energy/GridLoadServer.py", "query": "Provide Ontario IESO’s forecast for the next 168 hours and report the minimum value."}
 {"server_path": "Energy/GridLoadServer.py", "query": "What would BPA’s load be three hours from now if it were 10 % higher than the forecasted figure?"}
 {"server_path": "Energy/GridLoadServer.py", "query": "Estimate SWPP’s load six hours ahead and compare it to the present load adjusted by +5 %."}
 {"server_path": "Energy/GridLoadServer.py", "query": "How much total energy is expected in CAISO over the next 48 hours based on the forecast?"}
@@ -5042,7 +4964,6 @@
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Get me the ten newest quakes of magnitude 4.8 or higher."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Provide the latest two events over magnitude 5.5, including their depths."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Which recent earthquakes exceeded magnitude 6? Give me up to eight."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Pull the twenty most recent magnitude-4.0-and-above events for my review."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me a quick snapshot of any magnitude 7 or higher quakes that have happened recently."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Fetch the last five earthquakes with magnitudes between 5 and 6; list their IDs."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "I want the most recent quake above 6.8—just the top result is fine."}
@@ -5052,16 +4973,13 @@
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Please provide the most recent magnitude 7.5+ quakes, limit that to three."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Grab the newest earthquake that scored at least 5.7 on the magnitude scale."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "What are the last seven quakes stronger than 6.1, along with their depths in kilometers?"}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me a count of recent magnitude 6.0 or greater events—fetch up to fifty so we can tally."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show only one event: the latest quake above magnitude 8.0."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Fetch the latest thirty earthquakes above magnitude 3.5; I need a larger data set."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you list four recent deep-focus quakes with magnitude 7+?"}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "I’m interested in the ten most recent magnitude 5.2+ earthquakes; please include their IDs and depths."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Get me the five latest tremors of at least magnitude 6.7 for a briefing."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Pull the last two earthquakes stronger than 5.9, making sure to show how deep they were."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Return eight recent quakes over magnitude 4.6 so I can chart them."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show me whichever recent event first broke the 7.2 magnitude mark."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give the twenty most recent magnitude-5-and-above quakes to my research team."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you check for the latest magnitude 6.4 quake and tell me its depth?"}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Provide a list of six recent earthquakes with magnitudes exceeding 5.8."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "I need the single most recent tremor bigger than 6.6—what’s its ID?"}
@@ -5069,7 +4987,6 @@
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Please supply the three latest earthquakes that hit at least magnitude 7.3."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show the five most recent quakes over 6.5 and identify which was shallowest."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Grab one recent magnitude 5.0+ event so I can test my pipeline."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Retrieve the latest 25 earthquakes of magnitude 4.0 or higher."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you list any recent quakes above magnitude 7; limit results to two?"}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me the latest magnitude 8-plus earthquake details if one exists."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Provide ten recent events exceeding magnitude 5.6, then highlight the deepest one."}
@@ -5079,13 +4996,11 @@
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show just the latest event that hit 7.1 or higher."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you gather eight recent quakes bigger than 6.3 and sort them by magnitude descending?"}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me the last four magnitude 6+ earthquakes, including depth information."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Pull the most recent 40 quakes above magnitude 3.8 for my database update."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "List two recent earthquakes of magnitude 5.6 or above that occurred the deepest."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Fetch the single latest quake over 6.2 magnitude for a news brief."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Get me eleven recent magnitude 5+ quakes so I can perform a variance calculation."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Show the latest quake above magnitude 7.9, if any, otherwise return nothing."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "I’d like six recent earthquakes exceeding 6.8 and their corresponding depths."}
-{"server_path": "Science/EarthquakeCatalogServer.py", "query": "Provide the twenty-five most recent magnitude 4.5 or higher events for mapping purposes."}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Could you retrieve the three most recent quakes stronger than 5.3 and indicate which was the shallowest?"}
 {"server_path": "Science/EarthquakeCatalogServer.py", "query": "Give me the newest magnitude 6.5+ quake and include both its ID and depth in kilometers."}
 {"server_path": "Business/HRServer.py", "query": "What’s the current headcount in Engineering?"}
@@ -5555,7 +5470,6 @@
 {"server_path": "Sports/LiveScoreServer.py", "query": "Fetch five most recent events for match UCL23_QF2_BAYvPSG and nothing else."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "First, what’s the score in match MLS23_LAGvSEA, and second, show the last four plays."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "Compare the scores of match A123 and match B456 for me."}
-{"server_path": "Sports/LiveScoreServer.py", "query": "Pull the play-by-play for match NBA_FINALS23_GM6 with 20 events."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "Give me just the current period and score of hockey_match_NHL23_BOS@TOR."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "I need the newest two events from match ID friendly_2023_USAvMEX."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "What are the home and away points so far in game NFL_PRE23_JAX@DAL?"}
@@ -5567,7 +5481,6 @@
 {"server_path": "Sports/LiveScoreServer.py", "query": "Retrieve ten newest events for match test_match_CRICKET23_INDvENG_D2."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "First get the live score for match id uni_hockey_2023_FINvSWE, then grab the latest five events."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "Is match IRB7s_2023_PoolA_FIJvUSA still in the first half, and what’s the score?"}
-{"server_path": "Sports/LiveScoreServer.py", "query": "Give me the most recent 100 play-by-play items from game NBA_SUMMER23_GM3."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "What’s happening in match highschool_fb_23_STATEFINALS_G7—current score only."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "Fetch last_n=3 events for match mma_event_UFC300_MAIN."}
 {"server_path": "Sports/LiveScoreServer.py", "query": "Can you show the live tally for match id 2023_SuperCup_REALvsSEV?"}
@@ -6314,25 +6227,15 @@
 {"server_path": "Mapping/ElevationServer.py", "query": "I need the elevation in meters for the coordinate pair -33.8568, 151.2153."}
 {"server_path": "Mapping/ElevationServer.py", "query": "What’s the altitude at 90.0, 0.0 right at the geographic North Pole?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "Generate a simple elevation profile with the default number of samples between 34.0522, -118.2437 and 36.1699, -115.1398."}
-{"server_path": "Mapping/ElevationServer.py", "query": "Show me a 20-sample elevation profile along the server_path from 47.6062, -122.3321 to 45.5152, -122.6784."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Could I get an elevation profile between 51.5074, -0.1278 and 48.8566, 2.3522 with just 5 samples?"}
-{"server_path": "Mapping/ElevationServer.py", "query": "Plot a 100-point elevation profile from 40.7128, -74.0060 to 41.8781, -87.6298."}
 {"server_path": "Mapping/ElevationServer.py", "query": "I’d like a 2-sample profile (start and end only) between 30.0444, 31.2357 and 29.9792, 31.1342."}
-{"server_path": "Mapping/ElevationServer.py", "query": "Produce an elevation profile with 50 sample points starting at 35.6895, 139.6917 and ending at 34.6937, 135.5023."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Give me the elevation profile from 37.7749, -122.4194 down to 34.0522, -118.2437 with the default samples."}
 {"server_path": "Mapping/ElevationServer.py", "query": "What does the terrain look like over 12 samples going from -22.9068, -43.1729 to -34.6037, -58.3816?"}
-{"server_path": "Mapping/ElevationServer.py", "query": "Please calculate a 75-sample elevation profile along the segment from 55.7558, 37.6173 to 59.9343, 30.3351."}
 {"server_path": "Mapping/ElevationServer.py", "query": "I want the elevation profile for a short 1 km stretch between 40.7580, -73.9855 and 40.7610, -73.9822 using 10 samples."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Compare the elevations at 52.5200, 13.4050 and 50.1109, 8.6821— which one is higher?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "How much does the elevation change between 35.3606, 138.7274 and 35.4589, 138.8490? Use a profile with 3 points to illustrate."}
-{"server_path": "Mapping/ElevationServer.py", "query": "Give me both the starting and ending elevations along a 25-sample server_path from -45.0311, 168.6626 to -44.4900, 169.1200."}
-{"server_path": "Mapping/ElevationServer.py", "query": "If I travel from 64.1265, -21.8174 to 63.9850, -22.5760, what’s the highest point along a 30-sample profile?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "Tell me the average elevation along a 15-sample route from 28.3949, 84.1240 to 27.7172, 85.3240."}
-{"server_path": "Mapping/ElevationServer.py", "query": "I need to know how steep the climb is from 19.8968, -155.5828 to 20.7097, -156.2530, using 40 samples."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Could you list the elevations for each point in a 12-sample profile from 60.1699, 24.9384 to 65.0121, 25.4651?"}
-{"server_path": "Mapping/ElevationServer.py", "query": "Show the elevation differences every 5 km between 35.6895, 139.6917 and 38.2682, 140.8694 with 60 samples."}
-{"server_path": "Mapping/ElevationServer.py", "query": "For ski route planning, produce an 80-sample elevation profile from 46.8523, -121.7603 to 46.8350, -121.7320."}
-{"server_path": "Mapping/ElevationServer.py", "query": "Let me see the minimum elevation encountered on an 18-sample profile running 42.3601, -71.0589 to 42.4072, -71.1190."}
 {"server_path": "Mapping/ElevationServer.py", "query": "What elevation do you get at latitude 0.0, longitude 0.0 in the Gulf of Guinea?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "Could I have the terrain height for 27.1751, 78.0421?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "Tell me the elevation at -90.0, 0.0, the South Pole."}
@@ -6348,11 +6251,8 @@
 {"server_path": "Mapping/ElevationServer.py", "query": "What is the highest elevation among the five points 34.0522 -118.2437, 40.7128 -74.0060, 25.2048 55.2708, 51.1657 10.4515, and -22.9068 -43.1729?"}
 {"server_path": "Mapping/ElevationServer.py", "query": "Generate a 6-sample elevation profile along the Great Wall segment from 40.4321, 116.5704 to 40.6769, 117.2319."}
 {"server_path": "Mapping/ElevationServer.py", "query": "I’d like to know the terrain elevation for point 13.7563, 100.5018."}
-{"server_path": "Mapping/ElevationServer.py", "query": "Determine the midpoint elevation on a 20-sample profile between 41.9028, 12.4964 and 45.4408, 12.3155."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Show me the elevation at 37.8651, -119.5383."}
 {"server_path": "Mapping/ElevationServer.py", "query": "Provide a 9-sample profile from 21.1619, -86.8515 to 20.6320, -87.0698."}
-{"server_path": "Mapping/ElevationServer.py", "query": "What’s the elevation difference between the start and end of a 30-sample server_path from -1.2921, 36.8219 to -3.3869, 29.3599?"}
-{"server_path": "Mapping/ElevationServer.py", "query": "For marathon planning, calculate the total ascent over a 100-sample profile from 0.3476, 32.5825 to 0.3476, 33.2025."}
 {"server_path": "Fitness/ActivityTrackerServer.py", "query": "Log a 45-minute cycling ride that burned 350 calories for athlete A001."}
 {"server_path": "Fitness/ActivityTrackerServer.py", "query": "Could you please record a 20 minute yoga session at 90 kcal for user zx9?"}
 {"server_path": "Fitness/ActivityTrackerServer.py", "query": "I just finished swimming for 75 minutes and torched 800 calories; save that under user 007."}
@@ -7113,56 +7013,40 @@
 {"server_path": "Medical/VaccineRecordServer.py", "query": "Save tetanus-diphtheria booster cvx 9 for patient SCHOOL-KID dated 2022-08-20."}
 {"server_path": "Medical/VaccineRecordServer.py", "query": "Immediately afterward, display what’s stored for SCHOOL-KID."}
 {"server_path": "Medical/VaccineRecordServer.py", "query": "Provide an empty history query for patient “UNKNOWN-GUY” with no prior vaccines."}
-{"server_path": "Search/LogSearchServer.py", "query": "Show me every log line that contains the word 'timeout' since midnight on 2024-01-01."}
 {"server_path": "Search/LogSearchServer.py", "query": "I need the latest 20 occurrences where the message includes 'NullPointerException' starting from 2023-11-15T08:00:00Z."}
 {"server_path": "Search/LogSearchServer.py", "query": "Could you pull the most recent log entries mentioning 'User login failed' after 2024-02-10?"}
 {"server_path": "Search/LogSearchServer.py", "query": "Give me any lines with 'CRITICAL' in them from 2023-12-31T23:59:59Z onward, but only the first eight matches."}
 {"server_path": "Search/LogSearchServer.py", "query": "List the first ten logs that include '[WARN]' since 2024-03-01T00:00:00."}
 {"server_path": "Search/LogSearchServer.py", "query": "Fetch five log messages containing the phrase 'disk space' since 2023-10-01 00:00."}
 {"server_path": "Search/LogSearchServer.py", "query": "I’m troubleshooting startup issues; show entries with 'boot sequence' from 2024-04-05T06:30:00Z, limit 15."}
-{"server_path": "Search/LogSearchServer.py", "query": "Retrieve logs containing 'payment processed' starting 2023-09-15."}
 {"server_path": "Search/LogSearchServer.py", "query": "What were the earliest 12 logs after 2024-01-20T14:00:00Z that mention 'HTTP 500'?"}
 {"server_path": "Search/LogSearchServer.py", "query": "Can I see up to 25 lines containing 'Segmentation fault' since 2022-12-01T00:00:00Z?"}
 {"server_path": "Search/LogSearchServer.py", "query": "Show the logs with the substring 'heartbeat missed' since 2024-05-01T00:00, maximum nine results."}
-{"server_path": "Search/LogSearchServer.py", "query": "Please output all occurrences of 'connection reset by peer' starting from 2023-07-07."}
 {"server_path": "Search/LogSearchServer.py", "query": "I’d like the first three log lines that have 'schema migration' after 2024-03-15."}
 {"server_path": "Search/LogSearchServer.py", "query": "Pull any log entries including 'OOM killer' occurring after 2023-11-01T12:00:00Z, limit 30."}
 {"server_path": "Search/LogSearchServer.py", "query": "Bring back ten records with the hashtag '#deploy' in the line from 2023-08-20."}
 {"server_path": "Search/LogSearchServer.py", "query": "Show me logs where the text 'GPU overload' appears, for dates on or after 2024-02-28T05:00Z; only the initial six."}
-{"server_path": "Search/LogSearchServer.py", "query": "Get everything mentioning 'TLS handshake failed' since 2024-01-10."}
 {"server_path": "Search/LogSearchServer.py", "query": "Could you list 18 log lines containing 'max retries exceeded' after 2022-09-30T23:59:59Z?"}
-{"server_path": "Search/LogSearchServer.py", "query": "I want to review any lines that have 'database locked' from 2023-12-25 forward."}
 {"server_path": "Search/LogSearchServer.py", "query": "Provide the first seven matches for 'Kafka lag' beginning 2024-04-01."}
-{"server_path": "Search/LogSearchServer.py", "query": "Give me all logs that say 'user revoked token' and were written after 2023-06-30T18:00Z."}
-{"server_path": "Search/LogSearchServer.py", "query": "Please fetch the earliest 40 occurrences of 'panic:' since 2021-01-01T00:00:00Z."}
 {"server_path": "Search/LogSearchServer.py", "query": "Pull logs containing '404 Not Found' starting 2024-03-10T09:45, but keep it to four entries."}
 {"server_path": "Search/LogSearchServer.py", "query": "Let me see the top 11 lines that include the phrase 'service restarted' after 2023-05-05."}
-{"server_path": "Search/LogSearchServer.py", "query": "I’m looking for every log line with 'latency >' beginning 2024-02-02T02:02:02Z."}
 {"server_path": "Search/LogSearchServer.py", "query": "Grab five entries matching 'memory leak detected' since 2023-11-11T11:11:11."}
-{"server_path": "Search/LogSearchServer.py", "query": "Display up to 30 lines that mention 'CSV import complete' starting 2022-08-08."}
-{"server_path": "Search/LogSearchServer.py", "query": "Show log messages containing '[AUTH] success' for everything after 2024-04-15."}
 {"server_path": "Search/LogSearchServer.py", "query": "Retrieve the earliest two logs with the word 'deprecated' from 2023-10-31."}
 {"server_path": "Search/LogSearchServer.py", "query": "Could I get the first nine occurrences of 'retrying in' logged on or after 2024-01-17T07:00Z?"}
 {"server_path": "Search/LogSearchServer.py", "query": "List any log entries that contain the emoji '🚀' starting 2023-09-09."}
 {"server_path": "Search/LogSearchServer.py", "query": "I want to see 13 lines referencing 'cache cleared' since 2024-03-03 03:03:03."}
 {"server_path": "Search/LogSearchServer.py", "query": "Show me log lines with 'SSL certificate expired' after 2023-12-01, limiting to 22 results."}
-{"server_path": "Search/LogSearchServer.py", "query": "Fetch logs mentioning 'batch job #42' beginning 2024-02-20T20:20."}
 {"server_path": "Search/LogSearchServer.py", "query": "Provide every occurrence of the string 'AssertionError' since 2024-05-05T05:55Z, but no more than 17 lines."}
 {"server_path": "Search/LogSearchServer.py", "query": "Get ten newest lines that have '[DEBUG] latency:' after 2023-07-01."}
 {"server_path": "Search/LogSearchServer.py", "query": "I'd like up to 6 log messages containing 'orphaned process' on or after 2024-01-01T01:01:01."}
-{"server_path": "Search/LogSearchServer.py", "query": "Please pull all lines with 'password complexity' starting 2022-12-25."}
 {"server_path": "Search/LogSearchServer.py", "query": "Fetch 14 entries that include 'api/v2' since 2023-02-14."}
 {"server_path": "Search/LogSearchServer.py", "query": "Show the first log line after 2024-04-04 which says 'backup completed'."}
 {"server_path": "Search/LogSearchServer.py", "query": "Give me up to 50 logs containing 'feature flag enabled' from 2023-06-06."}
 {"server_path": "Search/LogSearchServer.py", "query": "Retrieve the earliest nine occurrences of 'slow query' since 2024-02-29T00:00Z."}
 {"server_path": "Search/LogSearchServer.py", "query": "List every log with '[ALERT]' from 2024-05-01T12:12, but cap it at 5 rows."}
-{"server_path": "Search/LogSearchServer.py", "query": "Can you get me all instances where the line holds 'rate limit exceeded' after 2023-03-15?"}
 {"server_path": "Search/LogSearchServer.py", "query": "I need three records mentioning 'Unmarshal error' since 2022-11-02T02:00."}
 {"server_path": "Search/LogSearchServer.py", "query": "Grab 16 log lines with 'job aborted' starting 2023-08-01."}
-{"server_path": "Search/LogSearchServer.py", "query": "Show logs that include 'UnknownHostException' for dates later than 2024-01-30T13:30:30Z."}
-{"server_path": "Search/LogSearchServer.py", "query": "Please return any entries containing 'shutdown initiated' since 2023-12-31."}
 {"server_path": "Search/LogSearchServer.py", "query": "Give the top 27 matches with 'upgrade available' beginning 2024-01-04T04:00."}
-{"server_path": "Search/LogSearchServer.py", "query": "Fetch every log line that contains 'checksum mismatch' from 2023-04-01T00:00 onward."}
 {"server_path": "Medical/ImagingStudyServer.py", "query": "Could you schedule an MRI scan of the left knee for patient P-1001?"}
 {"server_path": "Medical/ImagingStudyServer.py", "query": "I need to order a CT of the abdomen for patient X9987 right away."}
 {"server_path": "Medical/ImagingStudyServer.py", "query": "What’s the current progress on imaging study ST-445566?"}
@@ -7291,7 +7175,6 @@
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Add {'item_id': 'B55', 'quantity': 300, 'warehouse': 'east'} to the 'inventory' collection."}
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Return just 1 task from 'tasks' where {'priority': 'urgent'}."}
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Save a weather forecast to 'forecasts': {'city': 'Seattle', 'date': '2024-12-12', 'chance_of_rain': 0.8}."}
-{"server_path": "Database/NoSQLDocumentServer.py", "query": "Get 20 log entries in 'logs' that have {'level': 'error'}."}
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Insert into 'reviews' the document {'restaurant': 'Casa Lola', 'rating': 4, 'comment': 'Great tapas'}."}
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Fetch five documents from 'events' with a filter {'date': {'$gt': '2024-10-01'}}."}
 {"server_path": "Database/NoSQLDocumentServer.py", "query": "Put the coupon {'code': 'SUMMER25', 'discount': 25, 'active': true} into the 'coupons' collection."}
@@ -7925,22 +7808,18 @@
 {"server_path": "Advertising/AdBidServer.py", "query": "Estimate the appropriate bid for “eco lodge vacations” nationwide."}
 {"server_path": "Weather/ForecastServer.py", "query": "What's the hour-by-hour weather outlook for San Francisco for the next 6 hours?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Give me a twelve-hour temperature and condition breakdown for Berlin starting now."}
-{"server_path": "Weather/ForecastServer.py", "query": "Could you show the forecast for Tokyo for the next 24 hours, hour by hour?"}
 {"server_path": "Weather/ForecastServer.py", "query": "I need the five-day highs and lows for Miami, please."}
 {"server_path": "Weather/ForecastServer.py", "query": "What does the seven-day forecast look like for Cape Town, including conditions?"}
 {"server_path": "Weather/ForecastServer.py", "query": "If I'm traveling to Paris, what are the expected temperatures for each of the next 3 days?"}
 {"server_path": "Weather/ForecastServer.py", "query": "List tomorrow’s high and low for Denver."}
 {"server_path": "Weather/ForecastServer.py", "query": "How hot will it get in Phoenix two days from now?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Give me the daily weather summary for London for the next 10 days."}
-{"server_path": "Weather/ForecastServer.py", "query": "Show a detailed hourly forecast for New York City covering the next 18 hours."}
 {"server_path": "Weather/ForecastServer.py", "query": "I’m planning a beach trip: what will the weather be like in Honolulu six hours from now?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Provide the hourly temperature trend in Madrid overnight for the next 8 hours."}
 {"server_path": "Weather/ForecastServer.py", "query": "Could you pull the five-day forecast for Sydney with conditions?"}
 {"server_path": "Weather/ForecastServer.py", "query": "For Los Angeles, what are the highs and lows over the coming weekend (next 2 days)?"}
-{"server_path": "Weather/ForecastServer.py", "query": "Give me a 48-hour forecast for Vancouver broken down by hour."}
 {"server_path": "Weather/ForecastServer.py", "query": "What’s the expected weather every hour today in Rome up to 11 p.m. (about 14 hours ahead)?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Share the daily forecast for Dubai for the next 1 day."}
-{"server_path": "Weather/ForecastServer.py", "query": "I’d like to see the next 72 hours of weather for Seoul, hourly."}
 {"server_path": "Weather/ForecastServer.py", "query": "Can you show how cold it will get in Moscow tonight—say, the next 9 hours?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Generate a three-day forecast for Buenos Aires."}
 {"server_path": "Weather/ForecastServer.py", "query": "What high and low temperatures should I expect in Reykjavik over the next 12 days?"}
@@ -7948,7 +7827,6 @@
 {"server_path": "Weather/ForecastServer.py", "query": "Give me tomorrow’s weather high in Seattle."}
 {"server_path": "Weather/ForecastServer.py", "query": "Could you compare the high temperatures for the next five days between Boston and Philadelphia?"}
 {"server_path": "Weather/ForecastServer.py", "query": "I'm scheduling an outdoor event: what’s the chance of rain in Portland this afternoon (next 4 hours)?"}
-{"server_path": "Weather/ForecastServer.py", "query": "What's the step-by-step hourly forecast for Singapore for the coming 30 hours?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Provide a summary of the next 15 days of weather in Athens."}
 {"server_path": "Weather/ForecastServer.py", "query": "How chilly will it be in Edinburgh at 6 a.m. tomorrow? Show the hourlies up to then (next 10 hours)."}
 {"server_path": "Weather/ForecastServer.py", "query": "Show me the highest temperature expected in Nairobi in the next five days."}
@@ -7957,10 +7835,7 @@
 {"server_path": "Weather/ForecastServer.py", "query": "I need to see the entire week’s weather for Zurich, highs and lows."}
 {"server_path": "Weather/ForecastServer.py", "query": "Present the daily forecast for Mumbai for only the next 4 days."}
 {"server_path": "Weather/ForecastServer.py", "query": "What weather conditions are predicted for Kuala Lumpur nine days from now?"}
-{"server_path": "Weather/ForecastServer.py", "query": "Share Philadelphia’s hourly forecast from now until tomorrow evening (about 20 hours)."}
 {"server_path": "Weather/ForecastServer.py", "query": "Could you list the anticipated conditions for the next six consecutive days in Prague?"}
-{"server_path": "Weather/ForecastServer.py", "query": "I want a 60-hour outlook for Anchorage, hour by hour."}
-{"server_path": "Weather/ForecastServer.py", "query": "How warm will Madrid be at lunchtime two days from now? Show relevant hourly data."}
 {"server_path": "Weather/ForecastServer.py", "query": "Pull the next seven daily highs for Johannesburg, please."}
 {"server_path": "Weather/ForecastServer.py", "query": "Give the low temperatures for each of the next 3 days in Melbourne."}
 {"server_path": "Weather/ForecastServer.py", "query": "Show me Boston’s hour-by-hour temperatures overnight for the next 7 hours."}
@@ -7968,11 +7843,8 @@
 {"server_path": "Weather/ForecastServer.py", "query": "Fetch a nine-day forecast for Havana."}
 {"server_path": "Weather/ForecastServer.py", "query": "What’s the predicted temperature swing in Las Vegas for the next five days?"}
 {"server_path": "Weather/ForecastServer.py", "query": "I’m hiking on Sunday: what are the highs and lows for Asheville that day (5 days ahead)?"}
-{"server_path": "Weather/ForecastServer.py", "query": "Display the 36-hour forecast for Prague with hourly conditions."}
 {"server_path": "Weather/ForecastServer.py", "query": "Provide Perth’s daily weather outlook for the next 2 weeks."}
-{"server_path": "Weather/ForecastServer.py", "query": "How do the next 24 hours of weather in Oslo look, starting now?"}
 {"server_path": "Weather/ForecastServer.py", "query": "Could I get tomorrow’s low temperature in Tallahassee?"}
-{"server_path": "Weather/ForecastServer.py", "query": "Let me see the detailed hourly conditions for Doha across the next 55 hours."}
 {"server_path": "Mapping/TileCoverageServer.py", "query": "Show me the tiles for the bounding region lat -10, lon -10 to lat 10, lon 10 at zoom level 3."}
 {"server_path": "Mapping/TileCoverageServer.py", "query": "I need the full set of XYZ tiles that cover the entire world between -85.0511,-180 and 85.0511,180 when zoomed to 0."}
 {"server_path": "Mapping/TileCoverageServer.py", "query": "Can you list the tiles covering Manhattan, defined by 40.70,-74.02 to 40.88,-73.90, at zoom 14?"}
@@ -8089,7 +7961,6 @@
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Show Zion Williamson’s last 12 games."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "I’d like Ja Morant’s most recent seven-game log."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Give me Klay Thompson’s last three games with his points, rebounds, and assists."}
-{"server_path": "Sports/PlayerStatsServer.py", "query": "Fetch Paul George’s game logs for the previous 20 games."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Can you list Nikola Jokic’s last two games?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Provide an average of Kevin Durant’s points over his most recent eight games."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Does LeBron average more than 25 points in 2023-24? Provide his season summary so I can see."}
@@ -8107,13 +7978,11 @@
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Can you bring up Shai Gilgeous-Alexander’s 2024-25 season summary?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Fetch the full 2022-23 season line for DeMar DeRozan."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "I want Kemba Walker’s 2019-20 per-game numbers."}
-{"server_path": "Sports/PlayerStatsServer.py", "query": "Provide Karl-Anthony Towns’s last 25 games."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "What did Draymond Green average in assists during the 2020-21 season?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Show the last 14 games for Pascal Siakam."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Could you compare CJ McCollum’s points per game in 2021-22 versus 2022-23?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Give me Aaron Gordon’s season stats for 2024-25."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "I need Damian Lillard’s season summary for 2021-22."}
-{"server_path": "Sports/PlayerStatsServer.py", "query": "List the last 18 games for Jamal Murray."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Please pull the season-long numbers for Bradley Beal in 2023-24."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "How many rebounds per game did Julius Randle have in 2022-23?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Show me Deandre Ayton’s last five outings."}
@@ -8121,7 +7990,6 @@
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Can I get Lonzo Ball’s season averages for 2020-21?"}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Provide the most recent two games for Kristaps Porziņģis."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Give Chris Bosh’s season summary for 2013-14."}
-{"server_path": "Sports/PlayerStatsServer.py", "query": "Show me the last 30 games for Russell Westbrook."}
 {"server_path": "Sports/PlayerStatsServer.py", "query": "Compare Stephen Curry’s assists per game in 2023-24 with his average over his last 10 games; pull both sets of data."}
 {"server_path": "Social/SocialGraphServer.py", "query": "Show me the friends of user \"alice123\"."}
 {"server_path": "Social/SocialGraphServer.py", "query": "Could you fetch everyone directly connected to \"bob456\"?"}
@@ -8432,12 +8300,10 @@
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Show me the full sea state report for the Tasman Sea."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Can I get a 6-hour tidal forecast for Dover?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "I'd like the next 24 hours of tide heights for San Francisco Bay."}
-{"server_path": "Weather/MarineWeatherServer.py", "query": "Forecast the tides at Sydney Harbour 48 hours into the future."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "What's the expected tide at hour 0 for Honolulu?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Give me the complete 12-hour tide schedule for New York."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Is the tide rising or falling at Portsmouth over the coming 3 hours?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Provide the tidal heights for Rotterdam for the next 2 hours."}
-{"server_path": "Weather/MarineWeatherServer.py", "query": "Generate a 30-hour tidal forecast for Cape Town."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "How high will the tide be in Miami 10 hours from now?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "I need both the current sea state for Biscay Bay and a 12-hour tidal forecast for Bilbao."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Can you pull the sea temperature for the Sea of Japan and also predict tides at Yokohama for the next 18 hours?"}
@@ -8445,7 +8311,6 @@
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Give me the latest sea state for the English Channel in one sentence."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "For my fishing trip, what's the wave height in the Gulf of Alaska?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Check the sea state around the Norwegian Sea and tell me if waves exceed 3 meters."}
-{"server_path": "Weather/MarineWeatherServer.py", "query": "Provide tide information at Shanghai Port over the next 36 hours."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Please forecast tides for Bergen with the default horizon."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "I want to know the current wave heights in both the Arabian Sea and the Coral Sea."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Report the wind direction for the Sargasso Sea."}
@@ -8464,7 +8329,6 @@
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Produce the sea temperature reading for the Sea of Okhotsk."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Update me on the sea state for the Celtic Sea and compare it to that in the North Sea."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Need a 0-hour tide reading for Halifax—essentially the current tide height."}
-{"server_path": "Weather/MarineWeatherServer.py", "query": "Please give a 60-hour tidal forecast for Singapore."}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "Could you retrieve the current sea state in the Alboran Sea?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "What's the 8-hour tide outlook for Lisbon?"}
 {"server_path": "Weather/MarineWeatherServer.py", "query": "I’m charting a course: get sea state for the Ross Sea and tide forecast for McMurdo over 12 hours."}
@@ -9544,7 +9408,6 @@
 {"server_path": "Social/ContentSchedulerServer.py", "query": "I'd like to queue a post on profile user123 for 2024-08-20T14:00:00Z saying \"Heading to the beach, see you all soon!\"."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Show me the upcoming scheduled posts for profile bigcorp_official, just the next five entries."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule a midnight celebratory message \"Happy New Year everyone!\" on account party_time with a publish time of 2025-01-01T00:00:00Z."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "Could you pull the full list of pending posts for influencer42?"}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Queue the text \"Weekly maintenance happening tonight\" on server_status profile at 2023-10-12T22:15:00-04:00."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "For profile travel_diaries, list only the next two scheduled posts."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule a post on news_daily for 2024-03-15T06:30:00+01:00 with the content \"Breaking: Spring budget released.\""}
@@ -9554,10 +9417,8 @@
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Queue a lunchtime reminder \"Grab our lunchtime deal now!\" for restaurant_bistro at 2024-07-05T11:45:00-05:00."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "I'd like a list of scheduled items for profile pets_of_paradise, limit three."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule the text \"We’ve just hit 10k followers, thank you!\" for profile art_gallery on 2024-09-01T09:00:00+10:00."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "Could you schedule a post for profile tech_updates at 2023-12-01T15:00:00Z saying \"Firmware 2.3 rolls out today\" and then show me all upcoming posts?"}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "List whatever is queued for profile john_doe_test, I only need one entry."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule \"New blog post dropping in an hour\" on profile blog_space for 2024-04-02T13:00:00+02:00."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "I'd like to see up to 25 scheduled posts for profile mega_queue to audit the calendar."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Please queue a post on profile time_zone_test for 2024-06-30T23:59:59+09:00 with the text \"End of month wrap-up\"."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Check if there’s anything scheduled for profile empty_account."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Queue a post on profile music_fanatics at 2023-11-18T17:30:00Z that says \"Live show starts in 30 minutes!\"."}
@@ -9567,7 +9428,6 @@
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule a post for profile health_tips at 2023-10-01T07:00:00-04:00 with content \"Remember to stretch this morning\"."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Can you list the upcoming content on profile morning_news but cap it to four entries?"}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Queue the quote \"Keep pushing forward 💪\" on fitness_journey to go out 2024-05-10T05:45:00+00:00."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "I need to see everything scheduled for profile night_owl; don’t limit the results."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Please schedule \"Podcast episode 50 airs tomorrow!\" for profile pod_channel at 2024-08-03T12:00:00-07:00."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "What posts are in the pipeline for profile code_camp next year? List ten."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Queue an announcement \"Server downtime at 2 AM UTC\" on profile devops_alerts set for 2023-09-20T02:00:00Z."}
@@ -9587,10 +9447,8 @@
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule a closing-bell update \"Markets ended up 1.2% today\" for profile finance_feed to go live 2023-10-05T20:00:00+02:00."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "What are the next three posts in line for profile kids_corner?"}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Please queue \"Flashback Friday: Our first logo\" on profile brand_history at 2025-01-17T09:00:00+00:00."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "Show me the schedule for profile earlybird_offers but limit it to 15 entries."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule \"Happy Solstice!\" on profile astronomy_fun to publish at 2024-06-21T09:14:00+00:00."}
 {"server_path": "Social/ContentSchedulerServer.py", "query": "Do I have anything planned for profile volunteer_team in the next week? List 5 posts."}
-{"server_path": "Social/ContentSchedulerServer.py", "query": "Schedule the text \"Quiet week ahead, stay tuned\" on profile schedule_test for 2024-02-01T00:00:00Z and then fetch the full updated schedule."}
 {"server_path": "Utility_Tools/TextUtilityServer.py", "query": "How many words and characters are there in the sentence 'The quick brown fox jumps over the lazy dog'?"}
 {"server_path": "Utility_Tools/TextUtilityServer.py", "query": "Please convert the title 'Summer Vacation Planning' into snake_case."}
 {"server_path": "Utility_Tools/TextUtilityServer.py", "query": "I'd like both the character count and the word count for the paragraph 'Sunshine warms the soil and helps plants grow.'"}
@@ -9784,7 +9642,6 @@
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Look up coding hackathons in Singapore for the first week of April 2025, default maximum."}
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Tell me about event id “dubai_startup_weekend_901”; I need capacity numbers."}
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Check if there are flea markets in Brussels on 2024-08-18; if yes, display five of them."}
-{"server_path": "Events/EventDiscoveryServer.py", "query": "Find ukulele jams in Honolulu from 2024-09-10 to 2024-09-12, and then fetch metadata for the event titled “Sunset Strums”."}
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Pull esports tournaments in Seoul spanning 2024-11-01 to 2024-11-15, limit 12."}
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Give me salsa workshops in Miami on 2024-06-08, maximum two."}
 {"server_path": "Events/EventDiscoveryServer.py", "query": "Locate any charity galas in Washington, D.C. on 2024-12-31, default result count."}
@@ -9798,14 +9655,12 @@
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Provide a full KPI breakdown for campaign 7DAY_TRIAL_AD."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "I’d like a day-by-day impressions chart for campaign retarget_march over the last week."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Generate the daily impression trend for campaign holiday_push_01 for the past 14 days."}
-{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "What were the impressions each day during the last 30 days for campaign product_demo2024?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Pull the daily stats for campaign loyalty_ad_77 but only for the most recent single day."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Compare the current CTR of campaign alpha_test_V2 with that of beta_test_V2."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "I need to know which campaign has more clicks right now: campaign_x01 or campaign_y02."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "For campaign relaunch_q3, tell me how many conversions have been recorded and how much has been spent so far."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Show conversions and CPC for campaign flash_deal_midnight."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Give me the latest KPI snapshot of campaign \"summer_blowout_999\" including timestamp."}
-{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Can you provide a 60-day impression trend for campaign brand_awareness_global?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "I'd like the average daily impressions over the last 10 days for campaign cross_sell_202."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "What is the highest daily impression count in the past 7 days for campaign fall_sale_promo?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Display the most recent spend in CNY alongside clicks for campaign app_install_wave3."}
@@ -9824,7 +9679,6 @@
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Fetch the snapshot for campaign \"sports_gear_launch\" and tell me the timestamp."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Over the last 5 days, what is the total number of impressions for campaign \"fitness_app_june\"?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Provide the day with the fewest impressions in the past 14 days for campaign \"video_views_push\"."}
-{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Could you get the last 90 days of daily impressions for campaign long_term_branding_01?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Compare spend and impressions between campaign \"trial_region_north\" and \"trial_region_south\" based on current data."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "For campaign \"music_stream_promo\", report CTR%, CPC, and conversions from the latest snapshot."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "I need an impression trend for the last 2 days for campaign \"overnight_flash\"."}
@@ -9834,10 +9688,8 @@
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "What’s the cumulative number of clicks in the past week for campaign \"food_delivery_spring\"?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "For campaign \"student_discount\", find the average CPC using the latest snapshot."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Provide the maximum CTR% observed in the 7-day trend for campaign \"travel_deals_may\"."}
-{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "I'd like both the snapshot KPIs and the past 30-day impression trend for campaign \"luxury_brand_awareness\"."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Which day in the previous month had the peak impressions for campaign \"gaming_event_launch\"?"}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Tell me if campaign \"flash_sale_july\" spent more than 10,000 CNY based on current numbers."}
-{"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Fetch daily impressions for campaign \"subscription_drive\" for exactly 28 days."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Compare clicks per impression (CTR) for \"campaign_101\" and \"campaign_102\" right now."}
 {"server_path": "Advertising/CampaignPerformanceServer.py", "query": "Give me the snapshot for campaign \"charity_fundraiser\" and show only spend and conversions."}
 {"server_path": "Jobs/ApplicationTrackerServer.py", "query": "Submit my resume that reads “Seasoned Java developer with microservices expertise” for job ID J001 as candidate C1001"}
@@ -10354,7 +10206,6 @@
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "How big, in kilobytes, is the symlink /usr/bin/python?"}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "I need the MD5 sum of the Unicode text 'こんにちは'."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Give me the file size of '/home/user/.bashrc'."}
-{"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Calculate the MD5 hash of a string containing 1000 zeros."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Tell me the size of '/dev/null' in KB."}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Could you provide the MD5 hash for '😀👍🏻'?"}
 {"server_path": "Utility_Tools/FileUtilityServer.py", "query": "Find the size of '/var/www/html/index.html'."}
@@ -10418,7 +10269,6 @@
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Give a detailed 2-hour bucket report for \"MarathonExpo\"."}
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Please compile attendee counts every 16 minutes for the event called \"InvestorPitchDay\"."}
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Retrieve the default 15-minute bucket statistics for \"CommunityPicnic\"."}
-{"server_path": "Events/EventAnalyticsServer.py", "query": "I'd like both \"GamerCon\" and \"eSportsFinals\" traffic charts, each using 30-minute buckets, to compare peaks."}
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Can I get a 40-minute bucketed overview for \"SymphonyNight2023\"?"}
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Explain the traffic pattern for \"TechTalkSeries\" broken into 18-minute slices."}
 {"server_path": "Events/EventAnalyticsServer.py", "query": "Make a quick traffic estimation for event \"PopUpMarket\" without changing any options."}
@@ -11508,27 +11358,21 @@
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add an environmental sensor called AirQuality-X100 for the sustainability team, then give me the latest 3 devices."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you append a VR headset, model Oculus Quest 2, to the inventory on behalf of the training group?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "List only one device entry; I’m just testing pagination."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "I want a snapshot of the top 30 devices—can you fetch that?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a barcode scanner, model Zebra DS2208, for warehouse B."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Please register a security camera, model Arlo Ultra, under Facilities Security."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Enlist a server blade, model HPE ProLiant BL460c, belonging to Data Center East."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Show me up to 50 devices so I can export the list."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Insert a tablet, model Surface Go 3, owned by Marketing."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a thermostat sensor, model Nest Gen3, to John Stevens."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "List devices, but only return two items."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you add a 4K projector, model Epson EB-L630U, for the events team?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Register an industrial robot arm, model UR10e, assigned to the assembly line."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Please list 40 devices exactly."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "I’d like to see the inventory limited to 25 entries."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Record a gaming laptop, model ROG Zephyrus G15, for the esports club."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a smart lock, model August Wi-Fi, for Building A."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Log a point-of-sale terminal, model Square Register, under Retail Ops."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Can you show me the first 7 devices currently stored?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a cloud gateway device, model Azure IoT Edge, owner: Cloud Infrastructure team."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "List every device you can give me in one go—use the maximum limit of 100."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Introduce a portable scanner, model Fujitsu ScanSnap iX1600, for Finance."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Register an e-bike charging station, model ChargePoint Express 250, for the mobility pilot."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Give me the default device list after that’s done."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a microscope camera, model Dino-Lite AM4515, for Biology Lab 3."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "List 1 device from the inventory to test connectivity."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Please create an inventory record for a phone, model iPhone 15 Pro, assigned to CEO Office."}
@@ -11537,12 +11381,9 @@
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you register a smart fridge, model LG InstaView, under Catering?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add an RFID reader, model Impinj Speedway R420, for Logistics."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "I want to log a digital signage display, model Samsung QM65R, for the lobby."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Fetch up to 60 devices; I'm preparing a compliance report."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a conference room speakerphone, model Poly Trio C60, owner: Audio-Visual team."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "Give me whatever the tool returns by default when listing devices."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Insert a humidity sensor, model DHT22, for Greenhouse 2."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Add a dashcam, model Garmin Dash Cam 67W, under Fleet Management."}
-{"server_path": "Devices/DeviceInventoryServer.py", "query": "List 18 devices from the inventory."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Register a facial recognition terminal, model Hikvision DS-K1T341AM, for Main Entrance."}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Could you add a point-to-point antenna, model Ubiquiti PowerBeam AC, for Remote Site A?"}
 {"server_path": "Devices/DeviceInventoryServer.py", "query": "Show me no more than 4 devices; I'm on mobile data."}

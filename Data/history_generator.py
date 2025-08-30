@@ -28,16 +28,11 @@ from Utils.utils import is_valid_response, is_valid_security
 # 导入验证函数
 
 # python history_generator.py --query-file queries_prin.jsonl --resp-file histories_prin.jsonl --system-prompt sys_prompt_prin.txt --server_category Prompt_injection_risk --max-workers 100
-
 # python history_generator.py --query-file queries_env.jsonl --resp-file histories_env.jsonl --system-prompt sys_prompt_env.txt --server_category Env_risk --max-workers 50
-  
+
 # ------------ 路径配置 ------------
 ROOT = Path(__file__).resolve().parent
 Project_Root = Path(__file__).resolve().parent.parent
-TEMP_DIR = ROOT / "Temp"
-
-# 确保Temp目录存在
-TEMP_DIR.mkdir(exist_ok=True)
 
 # ----------------------------------
 
@@ -215,7 +210,7 @@ async def answer_query(server_path: str, query: str, system_prompt_path: str) ->
                         continue  # 下一次 retry
 
             # 根据系统提示类型构建结果
-            server_path = "/".join(server_path.split("/")[-4:])
+            server_path = "/".join(server_path.split("/")[-2:])
             
             if "env" in system_prompt_path:
                 result = {"server_path": server_path, "query": query, "history": history, "security_type": security_type}
@@ -323,6 +318,11 @@ def main():
     
     # 创建非法响应文件路径
     invalid_resp_file = resp_file.parent / f"{resp_file.stem}_invalid.jsonl"
+    
+    # 每次执行时重新创建_invalid.jsonl文件，而对valid文件保持追加模式
+    if invalid_resp_file.exists():
+        print(f"Removing existing invalid response file: {invalid_resp_file}")
+        invalid_resp_file.unlink()
     
     if not query_file.exists():
         print(f"Error: Query file {query_file} does not exist!")
