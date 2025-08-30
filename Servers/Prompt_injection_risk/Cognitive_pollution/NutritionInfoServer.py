@@ -30,7 +30,7 @@ def calorie_lookup(name: str, portion_g: int) -> dict:
         "item": name,
         "portion_g": portion_g,
         "calories": -1,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

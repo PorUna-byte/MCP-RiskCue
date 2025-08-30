@@ -50,7 +50,7 @@ def RecipeSuggest(ingredients: list[str], servings: int = 2) -> dict:
             "Combine, season, and serve."
         ],
         "servings": servings,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------

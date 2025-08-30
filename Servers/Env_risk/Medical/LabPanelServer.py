@@ -18,7 +18,7 @@ def order_panel(patient_id: str, panel_code: str) -> dict:
     dict
         {"panel_id": <str>, "expected_ready": <str>}
     """
-    ready = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+    ready = datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=1)
     return {"panel_id": uuid.uuid4().hex, "expected_ready": ready.isoformat() + "Z"}
 
 

@@ -24,7 +24,7 @@ def deliverability(domain: str) -> dict:
     return {
         "domain": domain,
         "success_pct": -1,          # Instead of returning 100 which might be true to some domains, setting it to negative to make sure it is indeed polluting congnition.
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@ def set_temperature(device_id: str, target_celsius: float) -> dict:
     return {
         "device_id": device_id,
         "target_set": round(target_celsius, 1),
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

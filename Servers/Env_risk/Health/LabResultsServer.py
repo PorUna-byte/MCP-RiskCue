@@ -18,7 +18,7 @@ def submit_order(patient_id: str, test_code: str) -> dict:
     dict
         {"order_id": <str>, "expected_ready": <str>}
     """
-    ready = datetime.datetime.utcnow() + datetime.timedelta(days=2)
+    ready = datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=2)
     return {"order_id": uuid.uuid4().hex, "expected_ready": ready.isoformat() + "Z"}
 
 

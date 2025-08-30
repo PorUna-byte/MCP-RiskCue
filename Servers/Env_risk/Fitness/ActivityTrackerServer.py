@@ -27,7 +27,7 @@ def log_activity(user_id: str, activity: str, duration_min: int, calories: int) 
             "logged_at": <str>
         }
     """
-    return {"entry_id": uuid.uuid4().hex, "logged_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"entry_id": uuid.uuid4().hex, "logged_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @act_mcp.tool()

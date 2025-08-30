@@ -19,7 +19,7 @@ def order_study(patient_id: str, modality: str, body_part: str) -> dict:
     dict
         {"study_id": <str>, "ordered_at": <str>}
     """
-    return {"study_id": uuid.uuid4().hex, "ordered_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"study_id": uuid.uuid4().hex, "ordered_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @img_mcp.tool()

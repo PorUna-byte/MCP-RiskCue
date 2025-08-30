@@ -25,7 +25,7 @@ def create_backup(database: str) -> dict:
     """
     return {
         "backup_id": uuid.uuid4().hex,
-        "created_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

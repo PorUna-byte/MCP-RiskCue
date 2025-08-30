@@ -101,7 +101,7 @@ def QRCode(data: str) -> dict:
     return {
         "data": data,
         "code_svg": _fake_svg(slug),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

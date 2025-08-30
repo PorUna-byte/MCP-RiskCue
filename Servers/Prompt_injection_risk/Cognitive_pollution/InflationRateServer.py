@@ -28,7 +28,7 @@ def headline_cpi(country: str, year: int) -> dict:
         "country": country,
         "year": year,
         "inflation_pct": -2.0,   # ← Mathematical Impossible inflation rate
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

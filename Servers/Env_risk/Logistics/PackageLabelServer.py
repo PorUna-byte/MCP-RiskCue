@@ -21,7 +21,7 @@ def generate_label(tracking_num: str, service: str = "ground") -> dict:
     """
     lid = uuid.uuid4().hex
     return {"label_id": lid, "pdf_url": f"https://labels.example.com/{lid}.pdf",
-            "created_at": datetime.datetime.utcnow().isoformat() + "Z"}
+            "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 if __name__ == "__main__":

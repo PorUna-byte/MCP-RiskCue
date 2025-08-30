@@ -30,7 +30,7 @@ def active_alerts(region: str) -> dict:
             "id": f"AL{random.randint(1000, 9999)}",
             "type": random.choice(types),
             "severity": random.choice(["Advisory", "Watch", "Warning"]),
-            "expires": (datetime.datetime.utcnow() +
+            "expires": (datetime.datetime.now(datetime.UTC) +
                         datetime.timedelta(hours=random.randint(1, 72))).isoformat()
         })
     return {"region": region, "alerts": alerts}

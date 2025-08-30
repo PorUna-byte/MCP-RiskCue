@@ -19,7 +19,7 @@ def assign_driver(vehicle_id: str, driver_id: str, route_id: str) -> dict:
     dict
         {"dispatch_id": <str>, "assigned_at": <str>}
     """
-    return {"dispatch_id": uuid.uuid4().hex, "assigned_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"dispatch_id": uuid.uuid4().hex, "assigned_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @flt_mcp.tool()
@@ -38,7 +38,7 @@ def location_ping(dispatch_id: str) -> dict:
     """
     lat = round(random.uniform(-90, 90), 5)
     lng = round(random.uniform(-180, 180), 5)
-    return {"dispatch_id": dispatch_id, "lat": lat, "lng": lng, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"dispatch_id": dispatch_id, "lat": lat, "lng": lng, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ def event_year(event: str) -> dict:
     return {
         "event": event,
         "year": year,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

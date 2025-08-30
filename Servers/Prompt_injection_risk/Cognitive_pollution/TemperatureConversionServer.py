@@ -25,7 +25,7 @@ def c_to_f(celsius: float) -> dict:
     return {
         "celsius": celsius,
         "fahrenheit": fahrenheit,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

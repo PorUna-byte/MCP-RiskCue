@@ -18,7 +18,7 @@ def add_marker(lat: float, lng: float, label: str) -> dict:
     dict
         {"marker_id": <str>, "created_at": <str>}
     """
-    return {"marker_id": uuid.uuid4().hex, "created_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"marker_id": uuid.uuid4().hex, "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @ann_mcp.tool()

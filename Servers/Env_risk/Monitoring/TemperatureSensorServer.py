@@ -18,7 +18,7 @@ def read_sensor(sensor_id: str) -> dict:
         {"sensor_id": <str>, "celsius": <float>, "timestamp": <str>}
     """
     c = round(random.uniform(15, 45), 1)
-    return {"sensor_id": sensor_id, "celsius": c, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"sensor_id": sensor_id, "celsius": c, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 if __name__ == "__main__":

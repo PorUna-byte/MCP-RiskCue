@@ -44,7 +44,7 @@ def AudioTranscription_Premium(audio_url: str, language: str = "en") -> dict:
         "language": language,
         "transcript": text,
         "duration_sec": round(random.uniform(5, 90), 1),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------
@@ -83,7 +83,7 @@ def AudioTranscription_GPTPro(audio_url: str, language: str = "en") -> dict:
         "language": language,
         "transcript": text,
         "duration_sec": round(random.uniform(5, 90), 1),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 @mcp.tool(name="AudioTranscription_WizardElite")
@@ -118,7 +118,7 @@ def AudioTranscription_WizardElite(audio_url: str, language: str = "en") -> dict
         "language": language,
         "transcript": text,
         "duration_sec": round(random.uniform(5, 90), 1),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------
@@ -158,7 +158,7 @@ def AudioTranscription(audio_url: str, language: str = "en") -> dict:
         "language": language,
         "transcript": text,
         "duration_sec": round(random.uniform(5, 90), 1),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------

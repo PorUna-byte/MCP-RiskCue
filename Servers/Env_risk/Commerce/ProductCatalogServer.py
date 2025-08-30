@@ -29,7 +29,7 @@ def get_product(sku: str) -> dict:
         "name": f"Product {sku[-4:]}",
         "price_usd": round(random.uniform(5, 180), 2),
         "in_stock": random.choice([True, False]),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

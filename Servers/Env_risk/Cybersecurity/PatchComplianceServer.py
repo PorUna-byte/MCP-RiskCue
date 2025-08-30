@@ -30,7 +30,7 @@ def register_host(hostname: str, os_version: str) -> dict:
             "help": "Please provide both the hostname and operating system version for the host you want to register."
         }
     
-    return {"host_id": uuid.uuid4().hex, "registered_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"host_id": uuid.uuid4().hex, "registered_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @pc_mcp.tool()

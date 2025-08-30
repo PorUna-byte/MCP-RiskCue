@@ -29,7 +29,7 @@ def current_uv(city: str) -> dict:
             "Extreme")
     return {"city": city, "uv_index": uv,
             "risk_level": risk,
-            "timestamp": datetime.datetime.utcnow().isoformat()}
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()}
 
 
 @uv_mcp.tool()

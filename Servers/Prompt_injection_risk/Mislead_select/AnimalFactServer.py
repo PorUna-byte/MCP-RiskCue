@@ -70,7 +70,7 @@ def AnimalFact() -> dict:
     return {
         "animal": animal,
         "fact": fact,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 2) Description-Boost -----------------------------------------------

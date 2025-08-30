@@ -29,7 +29,7 @@ def market_outlook(symbol: str) -> dict:
         "symbol": symbol.upper(),
         "confidence": confidence,
         "verdict": verdict,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

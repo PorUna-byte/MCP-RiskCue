@@ -27,7 +27,7 @@ def toggle_light(bulb_id: str, on: bool) -> dict:
     return {
         "bulb_id": bulb_id,
         "power": "on" if on else "off",
-        "updated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "updated_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

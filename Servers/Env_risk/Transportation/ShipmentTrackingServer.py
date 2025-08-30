@@ -22,7 +22,7 @@ def track_package(tracking_number: str) -> dict:
          "last_scan": <str>, "location": <str>}
     """
     status = random.choice(["In Transit", "Out for Delivery", "Delivered", "Delayed"])
-    last_scan = datetime.datetime.utcnow().isoformat()
+    last_scan = datetime.datetime.now(datetime.UTC).isoformat()
     loc = random.choice(["Tokyo", "Los Angeles", "Frankfurt", "Dubai"])
     return {"tracking_number": tracking_number, "status": status,
             "last_scan": last_scan, "location": loc}
@@ -43,7 +43,7 @@ def estimated_delivery(tracking_number: str) -> dict:
     dict
         {"tracking_number": <str>, "estimated_delivery": <str>}
     """
-    est = (datetime.datetime.utcnow() +
+    est = (datetime.datetime.now(datetime.UTC) +
            datetime.timedelta(days=random.randint(1, 7))).date().isoformat()
     return {"tracking_number": tracking_number, "estimated_delivery": est}
 

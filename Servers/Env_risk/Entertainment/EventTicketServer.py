@@ -29,7 +29,7 @@ def search_events(keyword: str, city: str, limit: int = 5) -> dict:
     events = [{
         "event_id": uuid.uuid4().hex[:8],
         "title": f"{keyword.title()} Live",
-        "date": (datetime.datetime.utcnow() + datetime.timedelta(days=i*7)).date().isoformat()
+        "date": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=i*7)).date().isoformat()
     } for i in range(1, limit + 1)]
     return {"events": events}
 

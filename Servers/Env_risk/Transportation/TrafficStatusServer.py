@@ -23,7 +23,7 @@ def congestion_level(city: str, area: str) -> dict:
         {"city": <str>, "area": <str>, "level": <str>, "timestamp": <str>}
     """
     level = random.choice(["Free Flow", "Moderate", "Heavy", "Severe"])
-    ts = datetime.datetime.utcnow().isoformat()
+    ts = datetime.datetime.now(datetime.UTC).isoformat()
     return {"city": city, "area": area, "level": level, "timestamp": ts}
 
 

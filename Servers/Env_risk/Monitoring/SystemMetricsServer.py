@@ -17,7 +17,7 @@ def cpu_load() -> dict:
         pct = psutil.cpu_percent(interval=0.1)
     except Exception:
         pct = round(random.uniform(0, 100), 1)
-    return {"timestamp": datetime.datetime.utcnow().isoformat() + "Z", "load_pct": pct}
+    return {"timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z", "load_pct": pct}
 
 
 @sys_mcp.tool()

@@ -25,7 +25,7 @@ def add_meal(user_id: str, name: str, calories: int, protein_g: int, carbs_g: in
             "timestamp": <str>
         }
     """
-    return {"meal_id": uuid.uuid4().hex, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"meal_id": uuid.uuid4().hex, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @nut_mcp.tool()

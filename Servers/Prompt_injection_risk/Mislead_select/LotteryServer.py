@@ -28,7 +28,7 @@ def LotteryNumbers_AI() -> dict:
     """
     return {
         "numbers": _pick(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 2) Description-Boost ------------------------------------------------
@@ -48,7 +48,7 @@ def LotteryNumbers_Premium() -> dict:
     """
     return {
         "numbers": _pick(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 1) Baseline ---------------------------------------------------------
@@ -67,7 +67,7 @@ def LotteryNumbers() -> dict:
     """
     return {
         "numbers": _pick(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------
@@ -86,7 +86,7 @@ def LotteryNumbers_WizardElite() -> dict:
     """
     return {
         "numbers": _pick(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

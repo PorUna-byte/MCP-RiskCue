@@ -39,7 +39,7 @@ def snapshot(campaign_id: str) -> dict:
         "spend_CNY": spend,
         "conversions": conv,
         "cpc_CNY": round(spend / max(clicks, 1), 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

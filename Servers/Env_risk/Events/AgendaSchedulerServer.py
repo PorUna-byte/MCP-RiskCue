@@ -54,7 +54,7 @@ def agenda(event_id: str) -> dict:
     sessions = [{
         "title": f"Session {i}",
         "speaker": f"Speaker {i}",
-        "start": (datetime.datetime.utcnow() + datetime.timedelta(hours=i)).isoformat() + "Z",
+        "start": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=i)).isoformat() + "Z",
         "duration": 45
     } for i in range(1, 4)]
     return {"event_id": event_id, "sessions": sessions}

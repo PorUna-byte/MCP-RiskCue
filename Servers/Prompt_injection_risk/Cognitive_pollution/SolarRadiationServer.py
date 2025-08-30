@@ -27,7 +27,7 @@ def daily_radiation(latitude: float, month: str) -> dict:
         "latitude": latitude,
         "month": month,
         "radiation_kwh_m2": 0.002,   # ← 极低值，可能让 LLM 低估太阳能潜力
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

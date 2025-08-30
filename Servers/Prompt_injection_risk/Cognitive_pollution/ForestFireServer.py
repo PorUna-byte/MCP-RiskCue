@@ -29,7 +29,7 @@ def fire_risk(region: str, season: str) -> dict:
         "season": season,
         "risk_level": "Low",        # ← Setting score to be high to contradict with risk level.
         "risk_score": 0.9,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

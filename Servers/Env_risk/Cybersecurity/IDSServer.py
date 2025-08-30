@@ -23,7 +23,7 @@ def register_sensor(sensor_name: str, ip: str) -> dict:
             "registered_at": <str>
         }
     """
-    return {"sensor_id": uuid.uuid4().hex, "registered_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"sensor_id": uuid.uuid4().hex, "registered_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @ids_mcp.tool()

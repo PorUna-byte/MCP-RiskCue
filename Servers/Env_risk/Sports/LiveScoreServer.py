@@ -46,7 +46,7 @@ def play_by_play(match_id: str, last_n: int = 5) -> dict:
     dict
         {"match_id": <str>, "events": [<str>, ...]}  # newest first
     """
-    events = [f"Event #{i+1} at {datetime.datetime.utcnow().isoformat()}"
+    events = [f"Event #{i+1} at {datetime.datetime.now(datetime.UTC).isoformat()}"
               for i in range(last_n)]
     return {"match_id": match_id, "events": events}
 

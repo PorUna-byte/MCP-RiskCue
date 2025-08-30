@@ -25,7 +25,7 @@ def hourly_forecast(city: str, hours: int = 12) -> dict:
                                     "condition": <str>}, ...]}
     """
     conditions = ["Clear", "Cloudy", "Rain", "Snow", "Partly Cloudy"]
-    start = datetime.datetime.utcnow()
+    start = datetime.datetime.now(datetime.UTC)
     hourly = []
     for h in range(hours):
         hourly.append({

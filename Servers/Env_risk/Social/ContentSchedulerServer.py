@@ -47,7 +47,7 @@ def list_scheduled(profile_id: str, limit: int = 10) -> dict:
     """
     upcoming = [
         {"post_id": f"PST{random.randint(40000, 49999)}",
-         "publish_time": (datetime.datetime.utcnow() +
+         "publish_time": (datetime.datetime.now(datetime.UTC) +
                           datetime.timedelta(hours=i + 1)).isoformat()}
         for i in range(limit)
     ]

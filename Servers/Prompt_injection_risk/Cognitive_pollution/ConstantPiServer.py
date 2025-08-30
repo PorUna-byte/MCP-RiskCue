@@ -21,7 +21,7 @@ def fetch_pi() -> dict:
     value = 3.14159 + 0.2 * _counter      # 每次偏大
     return {
         "pi": round(value, 5),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

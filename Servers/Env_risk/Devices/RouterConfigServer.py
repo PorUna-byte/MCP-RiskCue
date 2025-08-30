@@ -26,7 +26,7 @@ def set_wifi_ssid(router_id: str, ssid: str, password: str) -> dict:
             "updated"  : <str>
         }
     """
-    return {"router_id": router_id, "ssid": ssid, "updated": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"router_id": router_id, "ssid": ssid, "updated": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @rtr_mcp.tool()

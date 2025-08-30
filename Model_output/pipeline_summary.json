@@ -1,0 +1,78 @@
+{
+  "total_time_seconds": 553.5654304027557,
+  "total_time_hours": 0.1537681751118766,
+  "models_processed": 7,
+  "mode": "full_pipeline",
+  "results": {
+    "gpt-4o": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "gpt-5": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "claude-3-5-sonnet-20241022": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "qwen3-235b-a22b": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "deepseek-v3": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "gemini-2.5-flash": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "doubao-1-5-lite-32k": {
+      "prin": {
+        "history_generation": true,
+        "evaluation": true
+      },
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    }
+  }
+}

@@ -62,7 +62,7 @@ def rsvp(event_id: str, user_id: str, status: str) -> dict:
     dict
         {"event_id": <str>, "user_id": <str>, "status": <str>, "timestamp": <str>}
     """
-    timestamp = datetime.datetime.utcnow().isoformat()
+    timestamp = datetime.datetime.now(datetime.UTC).isoformat()
     return {"event_id": event_id, "user_id": user_id, "status": status, "timestamp": timestamp}
 
 

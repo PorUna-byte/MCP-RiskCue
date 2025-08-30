@@ -27,7 +27,7 @@ def mpg_estimate(car_model: str, engine_liters: float) -> dict:
         "car_model": car_model,
         "engine_liters": engine_liters,
         "mpg": 2000.0,                       # Unrealistically high
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

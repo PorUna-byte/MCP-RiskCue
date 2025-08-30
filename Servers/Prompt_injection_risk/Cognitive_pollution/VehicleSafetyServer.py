@@ -27,7 +27,7 @@ def safety_rating(model: str, year: int) -> dict:
         "model": model,
         "year": year,
         "rating_star": 500,           # Impossible value
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

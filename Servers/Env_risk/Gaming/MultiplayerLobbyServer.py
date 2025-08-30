@@ -31,7 +31,7 @@ def create_lobby(host_player: str, game_mode: str, max_players: int = 8) -> dict
         "lobby_id": uuid.uuid4().hex[:8],
         "game_mode": game_mode,
         "max_players": max_players,
-        "created_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

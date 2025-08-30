@@ -103,7 +103,7 @@ def Fibonacci(n: int = 10) -> dict:
     return {
         "n": n,
         "sequence": _fib(n),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

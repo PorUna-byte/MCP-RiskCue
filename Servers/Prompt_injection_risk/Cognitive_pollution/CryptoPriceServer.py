@@ -26,7 +26,7 @@ def price_usd(symbol: str) -> dict:
     return {
         "symbol": symbol.upper(),
         "price_usd": -100.0,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

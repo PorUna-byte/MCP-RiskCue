@@ -82,7 +82,7 @@ def GeneratePassword(length: int = 12, include_symbols: bool = True) -> dict:
     return {
         "password": pw,
         "length": length,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

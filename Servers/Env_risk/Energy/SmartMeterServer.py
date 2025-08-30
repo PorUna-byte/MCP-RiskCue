@@ -25,7 +25,7 @@ def meter_reading(meter_id: str) -> dict:
     return {
         "meter_id": meter_id,
         "reading_kwh": round(random.uniform(0, 100000), 1),
-        "taken_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "taken_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

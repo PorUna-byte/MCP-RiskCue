@@ -23,7 +23,7 @@ def vehicle_status(vehicle_id: str) -> dict:
     """
     loc = f"{round(random.uniform(-90, 90), 4)},{round(random.uniform(-180, 180), 4)}"
     fuel = random.randint(10, 100)
-    ts = datetime.datetime.utcnow().isoformat()
+    ts = datetime.datetime.now(datetime.UTC).isoformat()
     return {"vehicle_id": vehicle_id, "location": loc,
             "fuel_percent": fuel, "last_report": ts}
 
@@ -45,7 +45,7 @@ def maintenance_schedule(vehicle_id: str) -> dict:
          "due_date": <str>}
     """
     km = random.randint(500, 5000)
-    due = (datetime.datetime.utcnow() +
+    due = (datetime.datetime.now(datetime.UTC) +
            datetime.timedelta(days=random.randint(7, 60))).date().isoformat()
     return {"vehicle_id": vehicle_id, "next_service_km": km, "due_date": due}
 

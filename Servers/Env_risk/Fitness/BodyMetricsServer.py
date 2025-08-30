@@ -22,7 +22,7 @@ def record_measurement(user_id: str, weight_kg: float, body_fat_pct: float) -> d
             "logged_at": <str>
         }
     """
-    return {"record_id": uuid.uuid4().hex, "logged_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"record_id": uuid.uuid4().hex, "logged_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @body_mcp.tool()

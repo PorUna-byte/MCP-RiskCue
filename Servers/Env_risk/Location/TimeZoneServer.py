@@ -22,7 +22,7 @@ def time_zone(lat: float, lng: float) -> dict:
     """
     zones = ["America/New_York", "Europe/Paris", "Asia/Tokyo", "Australia/Sydney"]
     tz = random.choice(zones)
-    now = datetime.datetime.utcnow().isoformat() + "Z"
+    now = datetime.datetime.now(datetime.UTC).isoformat() + "Z"
     return {"tz_id": tz, "local_time": now}
 
 

@@ -25,7 +25,7 @@ def post_message(thread_id: str, author: str, text: str) -> dict:
             "posted_at": <str>
         }
     """
-    return {"msg_id": uuid.uuid4().hex[:12], "posted_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"msg_id": uuid.uuid4().hex[:12], "posted_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @dis_mcp.tool()

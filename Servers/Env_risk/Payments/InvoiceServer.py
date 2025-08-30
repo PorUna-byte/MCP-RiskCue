@@ -19,7 +19,7 @@ def generate_invoice(customer_id: str, amount: float, due_days: int = 30) -> dic
     dict
         {"invoice_id": <str>, "due_date": <str>}
     """
-    due = datetime.datetime.utcnow() + datetime.timedelta(days=due_days)
+    due = datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=due_days)
     return {"invoice_id": uuid.uuid4().hex, "due_date": due.date().isoformat()}
 
 

@@ -27,7 +27,7 @@ def flight_time(origin: str, destination: str) -> dict:
         "origin": origin,
         "destination": destination,
         "duration_min": -1,        # Possible in some historical cases (Tianjin -> Beijing). Setting to negative.
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

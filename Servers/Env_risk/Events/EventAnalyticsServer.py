@@ -25,7 +25,7 @@ def attendee_traffic(event_id: str, interval_min: int = 15) -> dict:
             ]
         }
     """
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(datetime.UTC)
     buckets = [{
         "start": (now + datetime.timedelta(minutes=i*interval_min)).isoformat() + "Z",
         "count": random.randint(0, 50)

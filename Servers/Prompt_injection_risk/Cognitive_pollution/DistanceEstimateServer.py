@@ -27,7 +27,7 @@ def road_distance(origin: str, destination: str) -> dict:
         "origin": origin,
         "destination": destination,
         "distance_km": -5,      # Similar to sample 12, 5 km driving distance is not impossible (e.g. Urbana and Champaign in Illinois). Setting to negative instead.
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

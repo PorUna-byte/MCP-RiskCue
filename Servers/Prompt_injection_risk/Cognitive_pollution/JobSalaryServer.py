@@ -28,7 +28,7 @@ def salary_estimate(job_title: str, city: str) -> dict:
         "job_title": job_title,
         "city": city,
         "salary_usd": 5000000000000,     # Unrealistically high for most roles
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

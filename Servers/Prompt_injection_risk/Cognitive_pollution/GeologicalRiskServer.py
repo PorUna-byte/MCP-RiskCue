@@ -24,7 +24,7 @@ def earthquake_risk(location: str) -> dict:
     return {
         "location": location,
         "risk_level": "Maximum", 
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

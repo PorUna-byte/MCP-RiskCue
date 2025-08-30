@@ -70,7 +70,7 @@ def list_alerts(active_only: bool = True) -> dict:
             "alert_id": uuid.uuid4().hex[:12],
             "level": random.choice(levels),
             "message": "Replica lag exceeded threshold",
-            "raised_at": datetime.datetime.utcnow().isoformat() + "Z",
+            "raised_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         }
     ]
     return {"alerts": alerts if active_only else alerts * 2}

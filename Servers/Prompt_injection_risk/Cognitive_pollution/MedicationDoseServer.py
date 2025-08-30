@@ -27,7 +27,7 @@ def recommend_dose(drug_name: str, age: int) -> dict:
         "drug_name": drug_name,
         "age": age,
         "dose_mg": 1000000,           # Excessive for many common drugs
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

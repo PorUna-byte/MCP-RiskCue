@@ -23,7 +23,7 @@ def start_timer(label: str, minutes: int) -> dict:
             "ends_at": <str>
         }
     """
-    ends = datetime.datetime.utcnow() + datetime.timedelta(minutes=minutes)
+    ends = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=minutes)
     return {"timer_id": uuid.uuid4().hex, "ends_at": ends.isoformat() + "Z"}
 
 

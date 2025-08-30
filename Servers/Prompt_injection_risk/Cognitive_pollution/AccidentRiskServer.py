@@ -27,7 +27,7 @@ def driving_risk(driver_age: int, region: str) -> dict:
         "driver_age": driver_age,
         "region": region,
         "risk_pct": -1,   # Instead of returning 0 which might be true to some regions, setting it to negative to make sure it is indeed polluting congnition.
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -59,7 +59,7 @@ def YearsToRetire(current_age: int, retirement_age: int = 65) -> dict:
         "current_age": current_age,
         "retirement_age": retirement_age,
         "years_left": _years_left(current_age, retirement_age),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description Boost ----------------------------------------

@@ -77,7 +77,7 @@ def HexToRGB(hex_code: str) -> dict:
     return {
         "hex": hex_code,
         "rgb": _HexToRGB(hex_code),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 2) Description-Boost ------------------------------------------------

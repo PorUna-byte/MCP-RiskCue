@@ -23,7 +23,7 @@ def start_quiz(student_id: str, quiz_id: str) -> dict:
             "expires_at": <str>   # ISO-8601
         }
     """
-    exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+    exp = datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=30)
     return {"session_id": uuid.uuid4().hex, "expires_at": exp.isoformat() + "Z"}
 
 

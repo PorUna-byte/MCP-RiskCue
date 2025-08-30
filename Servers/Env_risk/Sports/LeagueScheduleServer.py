@@ -28,7 +28,7 @@ def next_games(league: str, days_ahead: int = 7) -> dict:
     games = []
     for _ in range(random.randint(3, 6)):
         match_id = f"M{random.randint(10000, 19999)}"
-        start = (datetime.datetime.utcnow() +
+        start = (datetime.datetime.now(datetime.UTC) +
                  datetime.timedelta(days=random.randint(0, days_ahead),
                                     hours=random.randint(0, 23))).isoformat()
         games.append({"match_id": match_id,

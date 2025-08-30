@@ -58,7 +58,7 @@ def EmailValidator(address: str) -> dict:
         "address": address,
         "is_valid": ok,
         "domain": domain,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

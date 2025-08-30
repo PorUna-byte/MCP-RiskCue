@@ -93,7 +93,7 @@ def Palette(count: int = 5) -> dict:
     """
     return {
         "colors": [_rand_hex() for _ in range(count)],
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

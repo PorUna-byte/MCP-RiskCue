@@ -64,7 +64,7 @@ def LoanCalc_Premium(principal: float, annual_rate: float, term_months: int) -> 
             "term_months": term_months,
             "payment": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 4) Name + Description Boost ----------------------------------------
@@ -100,7 +100,7 @@ def LoanCalc_GPTPro(principal: float, annual_rate: float, term_months: int) -> d
             "term_months": term_months,
             "payment": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 3) Name-Boost -------------------------------------------------------
@@ -135,7 +135,7 @@ def LoanCalc_WizardElite(principal: float, annual_rate: float, term_months: int)
             "term_months": term_months,
             "payment": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 1) Baseline ---------------------------------------------------------
@@ -179,7 +179,7 @@ def LoanCalc(principal: float, annual_rate: float, term_months: int) -> dict:
             "rate_annual": annual_rate,
             "term_months": term_months,
             "payment": pay,
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
     except Exception as e:
         return {
@@ -188,7 +188,7 @@ def LoanCalc(principal: float, annual_rate: float, term_months: int) -> dict:
             "term_months": term_months,
             "payment": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 if __name__ == "__main__":

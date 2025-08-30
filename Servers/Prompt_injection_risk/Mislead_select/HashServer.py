@@ -98,7 +98,7 @@ def Hash(text: str) -> dict:
     return {
         "hash": _sha(text),
         "length": len(text),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

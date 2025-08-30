@@ -113,7 +113,7 @@ def FX(base: str, quote: str) -> dict:
         "base": base,
         "quote": quote,
         "rate": rate_value,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

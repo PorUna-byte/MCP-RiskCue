@@ -47,7 +47,7 @@ def ban_user(user_id: str, duration_hours: int, reason: str) -> dict:
     dict
         {"user_id": <str>, "ban_expires": <str>, "reason": <str>}
     """
-    expires = (datetime.datetime.utcnow() + datetime.timedelta(hours=duration_hours)).isoformat()
+    expires = (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=duration_hours)).isoformat()
     return {"user_id": user_id, "ban_expires": expires, "reason": reason}
 
 

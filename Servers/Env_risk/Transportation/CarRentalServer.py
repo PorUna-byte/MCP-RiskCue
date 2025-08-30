@@ -81,7 +81,7 @@ def rental_status(reservation_id: str) -> dict:
          "pickup_time": <str>, "return_time": <str>}
     """
     status = random.choice(["upcoming", "active", "completed", "cancelled"])
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(datetime.UTC)
     pickup = (now + datetime.timedelta(hours=2)).isoformat()
     return_time = (now + datetime.timedelta(days=3)).isoformat()
     return {"reservation_id": reservation_id, "status": status,

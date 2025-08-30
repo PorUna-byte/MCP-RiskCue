@@ -29,7 +29,7 @@ def headcount_summary(department: str) -> dict:
         "department": department,
         "current_headcount": total,
         "open_positions": open_roles,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

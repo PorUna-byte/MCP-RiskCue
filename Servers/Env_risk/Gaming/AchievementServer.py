@@ -25,7 +25,7 @@ def unlock(player_id: str, achievement_code: str) -> dict:
     return {
         "player_id": player_id,
         "achievement": achievement_code,
-        "unlocked_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "unlocked_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

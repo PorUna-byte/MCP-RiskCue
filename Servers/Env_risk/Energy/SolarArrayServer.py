@@ -25,7 +25,7 @@ def get_power_output(array_id: str) -> dict:
     return {
         "array_id": array_id,
         "power_kw": round(random.uniform(0, 5000), 1),
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

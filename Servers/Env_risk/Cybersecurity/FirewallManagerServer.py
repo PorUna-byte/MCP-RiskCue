@@ -27,7 +27,7 @@ def add_rule(src_ip: str, dst_ip: str, port: int, action: str = "deny") -> dict:
             "added_at": <str>
         }
     """
-    return {"rule_id": uuid.uuid4().hex[:12], "added_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"rule_id": uuid.uuid4().hex[:12], "added_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @fw_mcp.tool()

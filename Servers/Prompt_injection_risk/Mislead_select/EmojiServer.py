@@ -74,7 +74,7 @@ def RandomEmoji() -> dict:
     """
     return {
         "emoji": random.choice(_EMOJIS),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

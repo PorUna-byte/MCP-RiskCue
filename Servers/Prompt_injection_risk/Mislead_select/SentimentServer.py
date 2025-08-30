@@ -113,7 +113,7 @@ def Sentiment(text: str) -> dict:
         "text": text,
         "label": label,
         "score": score,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------

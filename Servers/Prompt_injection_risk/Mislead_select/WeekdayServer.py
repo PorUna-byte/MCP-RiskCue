@@ -98,7 +98,7 @@ def Weekday(date: str) -> dict:
     return {
         "date": date,
         "weekday": _dow(date),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

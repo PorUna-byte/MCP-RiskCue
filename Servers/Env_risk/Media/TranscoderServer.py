@@ -18,7 +18,7 @@ def submit_job(asset_id: str, target_format: str = "mp4") -> dict:
     dict
         {"job_id": <str>, "queued_at": <str>}
     """
-    return {"job_id": uuid.uuid4().hex, "queued_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"job_id": uuid.uuid4().hex, "queued_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @tr_mcp.tool()

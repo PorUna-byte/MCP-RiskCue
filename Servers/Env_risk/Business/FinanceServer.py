@@ -39,7 +39,7 @@ def quarterly_report(company: str, year: int, quarter: int) -> dict:
         "revenue_kUSD": revenue,
         "cost_kUSD": cost,
         "profit_kUSD": revenue - cost,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

@@ -83,7 +83,7 @@ def reservation_status(reservation_id: str) -> dict:
     """
     status = random.choice(["confirmed", "checked_in",
                             "cancelled", "completed"])
-    last_update = datetime.datetime.utcnow().isoformat()
+    last_update = datetime.datetime.now(datetime.UTC).isoformat()
     return {"reservation_id": reservation_id,
             "status": status, "last_update": last_update}
 

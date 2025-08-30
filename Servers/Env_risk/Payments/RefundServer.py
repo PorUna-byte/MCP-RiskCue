@@ -19,7 +19,7 @@ def request_refund(payment_id: str, amount: float, reason: str) -> dict:
     dict
         {"refund_id": <str>, "submitted": <str>}
     """
-    return {"refund_id": uuid.uuid4().hex, "submitted": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"refund_id": uuid.uuid4().hex, "submitted": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @ref_mcp.tool()

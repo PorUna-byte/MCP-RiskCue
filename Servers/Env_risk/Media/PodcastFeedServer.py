@@ -18,7 +18,7 @@ def create_feed(title: str, host: str) -> dict:
     dict
         {"feed_id": <str>, "created": <str>}
     """
-    return {"feed_id": uuid.uuid4().hex, "created": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"feed_id": uuid.uuid4().hex, "created": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @pod_mcp.tool()

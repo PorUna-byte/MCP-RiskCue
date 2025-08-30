@@ -80,7 +80,7 @@ def SummarizeText(text: str, max_sentences: int = 3) -> dict:
     return {
         "summary": summary,
         "sentences": min(max_sentences, len(sentences)),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description Boost ----------------------------------------

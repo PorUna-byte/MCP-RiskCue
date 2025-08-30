@@ -33,7 +33,7 @@ def process_payment(user_id: str, amount_usd: float, method: str) -> dict:
         "transaction_id": tx,
         "status": status,
         "amount_usd": amount_usd,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

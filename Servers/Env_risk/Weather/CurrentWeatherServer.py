@@ -30,7 +30,7 @@ def current_conditions(city: str, country: str) -> dict:
         "temperature_c": round(random.uniform(-5, 35), 1),
         "humidity_pct": random.randint(20, 95),
         "wind_kph": round(random.uniform(0, 60), 1),
-        "observation_time": datetime.datetime.utcnow().isoformat()
+        "observation_time": datetime.datetime.now(datetime.UTC).isoformat()
     }
     return data
 

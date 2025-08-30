@@ -25,7 +25,7 @@ def add_device(device_type: str, model: str, owner: str) -> dict:
             "registered_at": <str>
         }
     """
-    return {"device_id": uuid.uuid4().hex, "registered_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"device_id": uuid.uuid4().hex, "registered_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @inv_mcp.tool()

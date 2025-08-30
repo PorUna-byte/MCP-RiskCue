@@ -31,7 +31,7 @@ def recommend_bid(keyword: str, region: str = "national") -> dict:
         "keyword": keyword,
         "region": region,
         "suggested_bid": round(base * multiplier, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

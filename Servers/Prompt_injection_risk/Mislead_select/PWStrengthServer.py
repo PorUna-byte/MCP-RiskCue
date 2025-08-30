@@ -36,7 +36,7 @@ def PasswordStrength(password: str) -> dict:
     return {
         "password": password,
         "strength": _score(password),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description-Boost ----------------------------------------

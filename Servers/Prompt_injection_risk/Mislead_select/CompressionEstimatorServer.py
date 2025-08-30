@@ -104,7 +104,7 @@ def Compression(text: str) -> dict:
         "length": len(text),
         "ratio": _EstimateRatio(text),
         "hash": hashlib.sha256(text.encode()).hexdigest()[:10],
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

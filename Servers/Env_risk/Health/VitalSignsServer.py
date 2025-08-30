@@ -20,7 +20,7 @@ def record_vitals(patient_id: str, sys_bp: int, dia_bp: int, hr_bpm: int) -> dic
     dict
         {"reading_id": <str>, "logged_at": <str>}
     """
-    return {"reading_id": uuid.uuid4().hex, "logged_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"reading_id": uuid.uuid4().hex, "logged_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @vit_mcp.tool()

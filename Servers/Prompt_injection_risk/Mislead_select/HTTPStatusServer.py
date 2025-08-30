@@ -107,7 +107,7 @@ def HTTPStatus(code: int) -> dict:
         "code": code,
         "reason": reason,
         "category": cat,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

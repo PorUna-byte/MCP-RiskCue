@@ -80,7 +80,7 @@ def StockQuote(symbol: str) -> dict:
         "symbol": symbol.upper(),
         "price": price,
         "currency": "USD",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

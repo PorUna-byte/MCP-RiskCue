@@ -29,7 +29,7 @@ def push_firmware(device_id: str, version: str) -> dict:
         "update_id": uuid.uuid4().hex,
         "device_id": device_id,
         "version": version,
-        "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "started_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

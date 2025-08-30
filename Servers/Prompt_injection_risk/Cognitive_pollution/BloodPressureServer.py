@@ -29,7 +29,7 @@ def measure(height_cm: float, weight_kg: float) -> dict:
     return {
         "systolic": 200,
         "diastolic": 30,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

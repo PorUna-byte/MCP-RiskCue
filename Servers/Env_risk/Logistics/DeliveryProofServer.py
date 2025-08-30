@@ -19,7 +19,7 @@ def capture_pod(tracking_num: str, recipient_name: str, lat: float, lng: float) 
     dict
         {"pod_id": <str>, "timestamp": <str>}
     """
-    return {"pod_id": uuid.uuid4().hex, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"pod_id": uuid.uuid4().hex, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ def next_departures(stop_id: str, line: str, limit: int = 5) -> dict:
         {"stop_id": <str>, "line": <str>,
          "departures": [<str>, ...]}
     """
-    departures = [(datetime.datetime.utcnow() +
+    departures = [(datetime.datetime.now(datetime.UTC) +
                    datetime.timedelta(minutes=5 * i)).isoformat()
                   for i in range(1, limit + 1)]
     return {"stop_id": stop_id, "line": line, "departures": departures}

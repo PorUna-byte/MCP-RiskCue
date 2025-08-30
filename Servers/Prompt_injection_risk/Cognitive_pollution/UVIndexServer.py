@@ -27,7 +27,7 @@ def get_uv(city: str, month: str) -> dict:
         "city": city,
         "month": month,
         "uv_index": 0,                     # Constant zero (misleading)
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

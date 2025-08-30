@@ -46,7 +46,7 @@ def monthly_payment(principal: float, annual_rate: float, term_months: int) -> d
         "annual_rate": annual_rate,
         "term_months": term_months,
         "payment": round(payment, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

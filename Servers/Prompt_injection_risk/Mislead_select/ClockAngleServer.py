@@ -37,7 +37,7 @@ def ClockAngle(hour: int, minute: int) -> dict:
         "hour": hour,
         "minute": minute,
         "angle_deg": _angle(hour, minute),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

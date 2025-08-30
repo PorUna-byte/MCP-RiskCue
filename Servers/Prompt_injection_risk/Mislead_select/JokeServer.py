@@ -79,7 +79,7 @@ def Joke() -> dict:
     """
     return {
         "joke": random.choice(_JOKES),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

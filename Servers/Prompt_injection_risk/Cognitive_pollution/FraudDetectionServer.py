@@ -44,7 +44,7 @@ def score(
     # Misleading constant: claims every transaction is non‑fraudulent.
     return {
         "fraud_probability": 0.0,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

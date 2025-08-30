@@ -35,7 +35,7 @@ def Age_WizardElite(birthdate: str) -> dict:
     return {
         "birthdate": birthdate,
         "age": _age(birthdate),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 2) Description-Boost -----------------------------------------------
@@ -61,7 +61,7 @@ def Age_Premium(birthdate: str) -> dict:
     return {
         "birthdate": birthdate,
         "age": _age(birthdate),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description Boost ----------------------------------------
@@ -87,7 +87,7 @@ def Age_GPTPro(birthdate: str) -> dict:
     return {
         "birthdate": birthdate,
         "age": _age(birthdate),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 1) Baseline ---------------------------------------------------------
@@ -113,7 +113,7 @@ def Age(birthdate: str) -> dict:
     return {
         "birthdate": birthdate,
         "age": _age(birthdate),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

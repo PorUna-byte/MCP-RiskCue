@@ -24,7 +24,7 @@ def corporate_tax(country: str) -> dict:
     return {
         "country": country,
         "tax_rate_pct": -1,              # Zero tax claim
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

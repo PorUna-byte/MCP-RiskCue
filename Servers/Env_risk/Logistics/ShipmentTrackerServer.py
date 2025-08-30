@@ -22,7 +22,7 @@ def create_shipment(origin: str, destination: str, weight_kg: float) -> dict:
     dict
         {"tracking_num": <str>, "created_at": <str>}
     """
-    return {"tracking_num": uuid.uuid4().hex[:12], "created_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"tracking_num": uuid.uuid4().hex[:12], "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @trk_mcp.tool()

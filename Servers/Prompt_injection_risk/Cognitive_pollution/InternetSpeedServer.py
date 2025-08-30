@@ -27,7 +27,7 @@ def speed_test(isp: str, city: str) -> dict:
         "isp": isp,
         "city": city,
         "download_mbps": -10000,   # ← -10 Gbps, Impossible Value
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

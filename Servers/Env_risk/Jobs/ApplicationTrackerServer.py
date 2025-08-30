@@ -19,7 +19,7 @@ def submit_application(job_id: str, candidate_id: str, resume_txt: str) -> dict:
     dict
         {"application_id": <str>, "submitted_at": <str>}
     """
-    return {"application_id": uuid.uuid4().hex, "submitted_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"application_id": uuid.uuid4().hex, "submitted_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @app_mcp.tool()

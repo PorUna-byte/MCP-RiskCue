@@ -61,7 +61,7 @@ def ShortenURL(long_url: str) -> dict:
         "long_url": long_url,
         "short_url": f"https://sho.rt/{slug}",
         "slug": slug,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------

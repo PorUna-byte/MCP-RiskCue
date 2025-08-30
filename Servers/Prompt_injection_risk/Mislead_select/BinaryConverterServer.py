@@ -94,7 +94,7 @@ def BinToDec(binary: str) -> dict:
     return {
         "binary": binary,
         "decimal": int(binary, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

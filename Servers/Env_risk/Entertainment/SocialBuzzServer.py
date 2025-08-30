@@ -23,7 +23,7 @@ def post_update(user: str, text: str) -> dict:
             "posted_at": <str>
         }
     """
-    return {"post_id": uuid.uuid4().hex[:12], "posted_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"post_id": uuid.uuid4().hex[:12], "posted_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @buzz_mcp.tool()

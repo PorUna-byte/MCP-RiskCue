@@ -26,7 +26,7 @@ def set_key(key: str, value: str, ttl_seconds: int = 300) -> dict:
             "expires_at":  <str>,
         }
     """
-    exp = datetime.datetime.utcnow() + datetime.timedelta(seconds=ttl_seconds)
+    exp = datetime.datetime.now(datetime.UTC) + datetime.timedelta(seconds=ttl_seconds)
     return {"stored": True, "expires_at": exp.isoformat() + "Z"}
 
 

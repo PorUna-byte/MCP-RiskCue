@@ -45,7 +45,7 @@ def notification_status(notification_id: str) -> dict:
             "state"          : <str>
         }
     """
-    state = "sent" if datetime.datetime.utcnow().second % 2 else "pending"
+    state = "sent" if datetime.datetime.now(datetime.UTC).second % 2 else "pending"
     return {"notification_id": notification_id, "state": state}
 
 

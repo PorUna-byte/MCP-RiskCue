@@ -24,7 +24,7 @@ def style_snippet(word: str = "indeed") -> dict:
     """).strip()
     return {
         "prompt": snippet,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

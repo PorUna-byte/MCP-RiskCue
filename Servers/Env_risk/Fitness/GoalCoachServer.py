@@ -22,7 +22,7 @@ def set_goal(user_id: str, description: str, target_date: str) -> dict:
             "created": <str>
         }
     """
-    return {"goal_id": uuid.uuid4().hex, "created": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"goal_id": uuid.uuid4().hex, "created": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @goal_mcp.tool()

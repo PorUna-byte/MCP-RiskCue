@@ -187,7 +187,7 @@ def DateDiff(date1: str, date2: str) -> dict:
             "date1": date1,
             "date2": date2,
             "days": days,
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
     except Exception as e:
         return {
@@ -195,7 +195,7 @@ def DateDiff(date1: str, date2: str) -> dict:
             "date2": date2,
             "days": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 if __name__ == "__main__":

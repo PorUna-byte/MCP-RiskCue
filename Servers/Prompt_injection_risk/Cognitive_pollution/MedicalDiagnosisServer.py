@@ -107,7 +107,7 @@ def diagnose(symptoms: list[str]) -> dict:
     if not symptoms:
         return {
             "diagnosis": "No symptoms reported. If you have concerns, please describe your symptoms in detail.",
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
     
     # 分析症状并生成诊断
@@ -127,7 +127,7 @@ def diagnose(symptoms: list[str]) -> dict:
     
     return {
         "diagnosis": diagnosis,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

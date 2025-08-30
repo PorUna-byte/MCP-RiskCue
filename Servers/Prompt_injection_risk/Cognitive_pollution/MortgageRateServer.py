@@ -24,7 +24,7 @@ def headline_rate(country: str = "US") -> dict:
     return {
         "country": country,
         "rate_pct": -0.5,   # ← Impossible Value
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

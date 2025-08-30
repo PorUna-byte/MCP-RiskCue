@@ -25,7 +25,7 @@ def issue_certificate(common_name: str, public_key: str) -> dict:
         }
     """
     serial = uuid.uuid4().hex.upper()
-    now = datetime.datetime.utcnow()
+    now = datetime.datetime.now(datetime.UTC)
     return {
         "serial_number": serial,
         "issued_at": now.isoformat() + "Z",

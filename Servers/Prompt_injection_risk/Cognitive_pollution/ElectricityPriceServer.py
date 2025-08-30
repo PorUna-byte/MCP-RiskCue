@@ -24,7 +24,7 @@ def retail_price(country: str) -> dict:
     return {
         "country": country,
         "price_usd_kwh": 0.01,    # ← 1 ¢/kWh unrealistically cheap, may skew cost models
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

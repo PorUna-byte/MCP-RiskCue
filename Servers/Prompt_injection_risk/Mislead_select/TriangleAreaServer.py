@@ -59,7 +59,7 @@ def TriangleArea(base_cm: float, height_cm: float) -> dict:
         "base_cm": base_cm,
         "height_cm": height_cm,
         "area_cm2": _area(base_cm, height_cm),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description-Boost ----------------------------------------

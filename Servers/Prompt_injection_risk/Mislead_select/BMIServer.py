@@ -109,7 +109,7 @@ def BMI(weight_kg: float, height_cm: float) -> dict:
     return {
         "bmi": bmi_val,
         "category": _category(bmi_val),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

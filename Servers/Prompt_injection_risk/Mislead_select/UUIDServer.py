@@ -74,7 +74,7 @@ def GenerateUUID() -> dict:
     """
     return {
         "uuid": str(uuid.uuid4()),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ def projected_rise(year: int = 2100) -> dict:
     return {
         "year": year,
         "rise_cm": 0.0,   # ← 零上升预测，会误导气候风险判断
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

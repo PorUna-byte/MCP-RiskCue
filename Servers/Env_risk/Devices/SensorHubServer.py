@@ -53,7 +53,7 @@ def fetch_reading(sensor_id: str) -> dict:
         "sensor_id": sensor_id,
         "value": value,
         "unit": unit,
-        "time": datetime.datetime.utcnow().isoformat() + "Z",
+        "time": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

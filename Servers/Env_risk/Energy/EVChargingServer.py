@@ -23,7 +23,7 @@ def start_session(station_id: str, vehicle_vin: str) -> dict:
             "started_at": <str>
         }
     """
-    return {"session_id": uuid.uuid4().hex, "started_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"session_id": uuid.uuid4().hex, "started_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @ev_mcp.tool()

@@ -19,7 +19,7 @@ def create_profile(name: str, dob: str, sex: str) -> dict:
     dict
         {"patient_id": <str>, "created_at": <str>}
     """
-    return {"patient_id": uuid.uuid4().hex, "created_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"patient_id": uuid.uuid4().hex, "created_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @rec_mcp.tool()

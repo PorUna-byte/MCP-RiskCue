@@ -108,7 +108,7 @@ def WeatherReport(city: str) -> dict:
         "city": city,   
         "temperature": temperature,
         "condition": condition,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # ------------------------------------------------------------------

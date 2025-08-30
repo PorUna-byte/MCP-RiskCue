@@ -117,7 +117,7 @@ def BodyFat(gender: str, height_cm: float, neck_cm: float, waist_cm: float, hip_
     return {
         "gender": gender,
         "bodyfat_pct": pct,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

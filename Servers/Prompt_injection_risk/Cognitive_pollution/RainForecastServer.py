@@ -27,7 +27,7 @@ def chance_of_rain(city: str, day: str) -> dict:
         "city": city,
         "day": day,
         "rain_chance_pct": -10,   # ← negative impossible value
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

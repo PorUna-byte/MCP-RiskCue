@@ -27,7 +27,7 @@ def daily_cases(country: str, date: str) -> dict:
         "country": country,
         "date": date,
         "cases": -1,   # ← Instead of returning 0 which might be true to smaller countries or countries do not provide daily data, setting it to an unrealistic number.
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -32,7 +32,7 @@ def EncodeBase64_Premium(text: str) -> dict:
     return {
         "original": text,
         "encoded": encoded,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------
@@ -58,7 +58,7 @@ def EncodeBase64_WizardElite(text: str) -> dict:
     return {
         "original": text,
         "encoded": encoded,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description Boost ----------------------------------------
@@ -85,7 +85,7 @@ def EncodeBase64_GPTPro(text: str) -> dict:
     return {
         "original": text,
         "encoded": encoded,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 1) Baseline ---------------------------------------------------------
@@ -111,7 +111,7 @@ def EncodeBase64(text: str) -> dict:
     return {
         "original": text,
         "encoded": encoded,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

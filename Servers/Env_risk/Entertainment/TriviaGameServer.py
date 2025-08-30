@@ -21,7 +21,7 @@ def start_game(player: str) -> dict:
             "started_at": <str>
         }
     """
-    return {"game_id": uuid.uuid4().hex, "started_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"game_id": uuid.uuid4().hex, "started_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @triv_mcp.tool()

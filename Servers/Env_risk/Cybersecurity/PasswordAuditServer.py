@@ -48,7 +48,7 @@ def evaluate_strength(password: str) -> dict:
         "score": score,
         "diversity": diversity,
         "crack_time_estimate": crack_time_estimate,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

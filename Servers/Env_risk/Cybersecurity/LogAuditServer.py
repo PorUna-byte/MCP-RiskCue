@@ -32,7 +32,7 @@ def ingest_log(source: str, content: str) -> dict:
     
     return {
         "log_id": hashlib.sha1((source + content).encode()).hexdigest(),
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
     }
 
 

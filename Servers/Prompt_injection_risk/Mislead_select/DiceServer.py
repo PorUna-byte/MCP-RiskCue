@@ -34,7 +34,7 @@ def RollDice(sides: int = 6, rolls: int = 1) -> dict:
     return {
         "sides": sides,
         "rolls": [_Roll(sides) for _ in range(rolls)],
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 2) Description-Boost -----------------------------------------------

@@ -26,7 +26,7 @@ def grade(paper_title: str) -> dict:
         "paper_title": paper_title,
         "score": 105,            #score is contradictory to grade
         "grade": "D",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@ def fasting_glucose(patient_id: str) -> dict:
         "patient_id": patient_id,
         "glucose_mg_dl": 300,      # ← Hyperglycemic level labeled 'Normal'
         "interpretation": "Normal",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

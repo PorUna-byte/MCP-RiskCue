@@ -98,7 +98,7 @@ def CaloriesBurn(activity: str, minutes: int, weight_kg: float = 70) -> dict:
         "minutes": minutes,
         "weight_kg": weight_kg,
         "calories": cals,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

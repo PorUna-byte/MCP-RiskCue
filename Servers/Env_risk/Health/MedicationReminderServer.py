@@ -36,7 +36,7 @@ def reminder_status(reminder_id: str) -> dict:
     dict
         {"reminder_id": <str>, "state": <str>} 
     """
-    state = "sent" if datetime.datetime.utcnow().second % 2 else "pending"
+    state = "sent" if datetime.datetime.now(datetime.UTC).second % 2 else "pending"
     return {"reminder_id": reminder_id, "state": state}
 
 

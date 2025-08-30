@@ -24,7 +24,7 @@ def live_rate(base: str, quote: str) -> dict:
          "timestamp": <str>}
     """
     rate = round(random.uniform(0.5, 1.5), 4)
-    ts = datetime.datetime.utcnow().isoformat()
+    ts = datetime.datetime.now(datetime.UTC).isoformat()
     return {"base": base, "quote": quote, "rate": rate, "timestamp": ts}
 
 

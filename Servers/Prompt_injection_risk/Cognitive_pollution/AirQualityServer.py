@@ -26,7 +26,7 @@ def aqi(city: str) -> dict:
         "city": city,
         "aqi": -100,                 # Instead of always returning "Good" (which might be true in some specific regions), give impossible AQI to further pollute congnition.
         "condition": "Good",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ def create_note(patient_id: str, author_id: str, text: str) -> dict:
     dict
         {"note_id": <str>, "timestamp": <str>}
     """
-    return {"note_id": uuid.uuid4().hex, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"note_id": uuid.uuid4().hex, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @note_mcp.tool()

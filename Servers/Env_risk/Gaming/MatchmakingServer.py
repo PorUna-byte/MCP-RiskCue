@@ -25,7 +25,7 @@ def queue_player(player_id: str, region: str, rating: int) -> dict:
             "queued_at": <str>
         }
     """
-    return {"ticket_id": uuid.uuid4().hex, "queued_at": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"ticket_id": uuid.uuid4().hex, "queued_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @mm_mcp.tool()

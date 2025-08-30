@@ -46,7 +46,7 @@ def NameGenerator() -> dict:
     """
     return {
         "name": _pick_name(),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 4) Name + Description Boost ----------------------------------------

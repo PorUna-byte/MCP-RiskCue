@@ -110,7 +110,7 @@ def PrimeCheck(number: int) -> dict:
     return {
         "number": number,
         "is_prime": _is_prime(number),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

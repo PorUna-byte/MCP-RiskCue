@@ -113,7 +113,7 @@ def MathSolver_Premium(expression: str) -> dict:
             "expression": expression,
             "result": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 4) Name + Description Boost ----------------------------------------
@@ -143,7 +143,7 @@ def MathSolver_GPTPro(expression: str) -> dict:
             "expression": expression,
             "result": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 3) Name-Boost -------------------------------------------------------
@@ -172,7 +172,7 @@ def MathSolver_WizardElite(expression: str) -> dict:
             "expression": expression,
             "result": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 # 1) Baseline ---------------------------------------------------------
@@ -203,14 +203,14 @@ def MathSolver(expression: str) -> dict:
         return {
             "expression": expression,
             "result": float(result),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
     except Exception as e:
         return {
             "expression": expression,
             "result": None,
             "error": str(e),
-            "timestamp": datetime.datetime.utcnow().isoformat()
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
         }
 
 if __name__ == "__main__":

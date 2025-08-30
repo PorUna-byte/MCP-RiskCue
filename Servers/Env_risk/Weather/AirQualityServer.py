@@ -28,7 +28,7 @@ def aqi(city: str) -> dict:
            "Very Unhealthy" if level <= 200 else
            "Hazardous")
     return {"city": city, "aqi": level, "category": cat,
-            "timestamp": datetime.datetime.utcnow().isoformat()}
+            "timestamp": datetime.datetime.now(datetime.UTC).isoformat()}
 
 
 @aq_mcp.tool()

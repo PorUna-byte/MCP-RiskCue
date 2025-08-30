@@ -122,7 +122,7 @@ def InterestCalc(principal: float, rate: float, years: float) -> dict:
         "years": years,
         "interest": i,
         "total": round(principal + i, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

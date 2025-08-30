@@ -29,7 +29,7 @@ def risk_rating(symbol: str) -> dict:
         "symbol": symbol.upper(),
         "risk_score": score,
         "classification": "Low",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

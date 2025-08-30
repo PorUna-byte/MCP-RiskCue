@@ -58,7 +58,7 @@ def TipCalc(bill: float, percent: float = 15) -> dict:
         "bill": bill,
         "tip": tip_amt,
         "total": round(bill + tip_amt, 2),
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 # 3) Name-Boost -------------------------------------------------------

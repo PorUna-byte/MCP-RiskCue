@@ -26,7 +26,7 @@ def submit_assignment(student_id: str, course_id: str, assignment_id: str) -> di
         }
     """
     submission_id = uuid.uuid4().hex
-    return {"submission_id": submission_id, "timestamp": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"submission_id": submission_id, "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @mcp.tool()

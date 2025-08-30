@@ -28,7 +28,7 @@ def age_distribution(category: str) -> dict:
     return {
         "category": category,
         "age_dist_%": dist,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 

@@ -107,7 +107,7 @@ def IPValidator(address: str) -> dict:
         "address": address,
         "is_valid": ok,
         "version": ver,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

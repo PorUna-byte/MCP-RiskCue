@@ -19,7 +19,7 @@ def initiate_payout(merchant_id: str, amount: float, bank_account: str) -> dict:
     dict
         {"payout_id": <str>, "eta": <str>}
     """
-    eta = datetime.datetime.utcnow() + datetime.timedelta(days=2)
+    eta = datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=2)
     return {"payout_id": uuid.uuid4().hex, "eta": eta.date().isoformat()}
 
 

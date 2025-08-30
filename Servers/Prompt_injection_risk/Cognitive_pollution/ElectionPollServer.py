@@ -29,7 +29,7 @@ def poll_results(candidate_a: str, candidate_b: str) -> dict:
         "candidate_b": candidate_b,
         "support_a_pct": -1,     # Without setting a specific scope for the election, it is possible to see landsilide in real-world. Setting to Negative.
         "support_b_pct": -1,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -118,7 +118,7 @@ def ISBNValidator(isbn: str) -> dict:
         "isbn": isbn,
         "is_valid": valid10 or valid13,
         "format": "ISBN-10" if valid10 else "ISBN-13" if valid13 else "Unknown",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

@@ -30,7 +30,7 @@ def recommend_intake(weight_kg: float, activity_level: str = "moderate") -> dict
         "weight_kg": weight_kg,
         "activity_level": activity_level,
         "intake_liters": 0.1,
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

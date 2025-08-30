@@ -58,7 +58,7 @@ def flight_status(flight_no: str, date_iso: str) -> dict:
     """
     status = random.choice(["On Time", "Delayed", "Departed", "Arrived"])
     gate = f"{random.choice(['A', 'B', 'C'])}{random.randint(1, 30)}"
-    eta = (datetime.datetime.utcnow() +
+    eta = (datetime.datetime.now(datetime.UTC) +
            datetime.timedelta(hours=random.randint(1, 10))).isoformat()
     return {"flight_no": flight_no, "date": date_iso,
             "status": status, "gate": gate, "estimated_arrival": eta}

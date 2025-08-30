@@ -21,7 +21,7 @@ def classify(text: str) -> dict:
     """
     return {
         "sentiment": "Nostalgia",          # unusual emotion
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat()
     }
 
 if __name__ == "__main__":

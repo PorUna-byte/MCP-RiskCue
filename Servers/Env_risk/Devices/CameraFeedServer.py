@@ -26,7 +26,7 @@ def capture_snapshot(cam_id: str) -> dict:
     return {
         "snapshot_id": uuid.uuid4().hex,
         "cam_id": cam_id,
-        "captured_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "captured_at": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         "image_url": f"https://example.com/img/{cam_id}/{uuid.uuid4().hex}.jpg",
     }
 

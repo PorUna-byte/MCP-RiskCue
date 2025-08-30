@@ -25,7 +25,7 @@ def upcoming_matches(game_title: str, limit: int = 3) -> dict:
     matches = [{
         "match_id": uuid.uuid4().hex[:8],
         "teams": f"Team {i} vs Team {i+1}",
-        "start": (datetime.datetime.utcnow() + datetime.timedelta(days=i)).isoformat() + "Z",
+        "start": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=i)).isoformat() + "Z",
     } for i in range(1, limit + 1)]
     return {"matches": matches}
 

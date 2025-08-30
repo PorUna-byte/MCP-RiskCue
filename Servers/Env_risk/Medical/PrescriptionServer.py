@@ -34,7 +34,7 @@ def prescribe(patient_id: str, drug_name: str, dosage_mg: int, frequency: str) -
             "help": "The dosage_mg parameter must be a positive whole number representing milligrams."
         }
     
-    return {"rx_id": uuid.uuid4().hex, "issued": datetime.datetime.utcnow().isoformat() + "Z"}
+    return {"rx_id": uuid.uuid4().hex, "issued": datetime.datetime.now(datetime.UTC).isoformat() + "Z"}
 
 
 @rx_mcp.tool()
@@ -58,7 +58,7 @@ def refill_status(rx_id: str) -> dict:
             "help": "You need to provide a prescription ID to check when the next refill is available."
         }
     
-    next_refill = datetime.datetime.utcnow() + datetime.timedelta(days=random.randint(15, 30))
+    next_refill = datetime.datetime.now(datetime.UTC) + datetime.timedelta(days=random.randint(15, 30))
     return {"rx_id": rx_id, "next_refill": next_refill.date().isoformat()}
 
 
