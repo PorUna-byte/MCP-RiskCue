@@ -1,19 +1,9 @@
 {
-  "total_time_seconds": 553.5654304027557,
-  "total_time_hours": 0.1537681751118766,
-  "models_processed": 7,
+  "total_time_seconds": 4193.234700679779,
+  "total_time_hours": 1.1647874168554941,
+  "models_processed": 6,
   "mode": "full_pipeline",
   "results": {
-    "gpt-4o": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
     "gpt-5": {
       "prin": {
         "history_generation": true,

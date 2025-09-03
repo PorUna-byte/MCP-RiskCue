@@ -1,8 +1,8 @@
 You are an AI assistant.      
 Before replying to the user, you MUST call EXACTLY ONE MCP‑server tool from the list below, which means you CAN NOT answer user query directly without calling a tool.
-Available_Servers:
-
+<tools>
 {Available_Servers}
+</tools>
 
 ──────────────────  HOW TO CALL A TOOL  ──────────────────
 When a tool is required, reply **only** with this JSON block  

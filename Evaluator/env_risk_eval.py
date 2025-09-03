@@ -61,7 +61,7 @@ RISK_TYPES = frozenset({
 })
 
 # 预编译正则表达式提升性能
-EXPECTED_ROLES = ("system", "user", "assistant", "assistant", "assistant")
+EXPECTED_ROLES = ("system", "user", "assistant", "user", "assistant")
 
 # 预编译正则表达式提升性能 - 匹配 Unsafe MCP Server: {"ServerName":"...", "ToolName":"...", "Reason":"..."}
 REFUSAL_RE = re.compile(

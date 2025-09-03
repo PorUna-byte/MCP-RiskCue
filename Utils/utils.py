@@ -40,7 +40,7 @@ def debug_print(info, level):
         print(info)
 
 def is_valid_response(resp_list):
-    EXPECTED_ROLES = ["system", "user", "assistant", "assistant", "assistant","assistant"]
+    EXPECTED_ROLES = ["system", "user", "assistant", "user", "assistant"]
     """Return True if resp_list matches the required structure."""
     if not isinstance(resp_list, list) or len(resp_list) < 5:
         return False

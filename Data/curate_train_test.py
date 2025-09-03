@@ -52,7 +52,7 @@ LLM = OpenAI(api_key=os.getenv("API_KEY"), base_url=os.getenv("BASE_URL"))
 
 
 # --------- helper ----------------------------------------------------
-EXPECTED_ROLES = ["system", "user", "assistant", "assistant", "assistant"]
+EXPECTED_ROLES = ["system", "user", "assistant", "user", "assistant"]
 def is_valid_data(resp_list, sec_list):
     """Return True if resp_list matches the required structure."""
     if not isinstance(resp_list, list) or len(resp_list) < 5:
@@ -180,7 +180,7 @@ def process_env_data(raw_data, test_ratio=0.1):
     split_idx = int(len(out_samples) * (1-test_ratio))
     
     train_data = out_samples[:split_idx]
-    test_data = [{"server_path": item["server_path"], "query": item["query"]} for item in out_samples[split_idx:]]
+    test_data = out_samples[split_idx:]
     
     return train_data, test_data, skipped, Invalid_data
 

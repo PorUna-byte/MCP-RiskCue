@@ -19,7 +19,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # 模型列表
 MODELS = [
-    "gpt-4o",
+    # "Qwen2.5-7B-Instruct",
+    # "gpt-4o",
     "gpt-5",
     "claude-3-5-sonnet-20241022", 
     "qwen3-235b-a22b",
@@ -28,6 +29,27 @@ MODELS = [
     "doubao-1-5-lite-32k"
 ]
 
+LOCAL = [
+    # "True",
+    # "False",
+    "False",
+    "False",
+    "False",
+    "False",
+    "False",
+    "False"
+]
+
+LOCAL_MODEL_PATH = [
+    # "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
+    # "None",
+    "None",
+    "None",
+    "None",
+    "None",
+    "None",
+    "None"
+]
 # 数据文件路径
 DATA_FILES = {
     "prin": PROJECT_ROOT / "Data" / "prin_data.jsonl",
@@ -83,7 +105,7 @@ def load_dotenv_safe():
         print(f"⚠ Warning: Could not load .env file: {e}")
 
 def update_env_model(model: str):
-    """更新.env文件中的模型名称"""
+    """更新.env文件中的模型相关配置"""
     env_file = PROJECT_ROOT / ".env"
     if not env_file.exists():
         print(f"❌ .env file not found at {env_file}")
@@ -93,15 +115,57 @@ def update_env_model(model: str):
         with open(env_file, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         
-        updated = False
-        for i, line in enumerate(lines):
-            if line.strip().startswith('MODEL'):
-                lines[i] = f'MODEL = "{model}"\n'
-                updated = True
+        # 找到模型在MODELS列表中的索引
+        model_index = None
+        for i, m in enumerate(MODELS):
+            if m == model:
+                model_index = i
                 break
         
-        if not updated:
-            lines.append(f'MODEL = "{model}"\n')
+        if model_index is None:
+            print(f"❌ Model {model} not found in MODELS list")
+            return False
+        
+        # 获取对应的LOCAL和LOCAL_MODEL_PATH值
+        local_value = LOCAL[model_index]
+        local_model_path_value = LOCAL_MODEL_PATH[model_index]
+        
+        # 需要更新的环境变量
+        env_updates = {
+            'MODEL': f'"{model}"',
+            'LOCAL': f'"{local_value}"',
+            'LOCAL_MODEL_PATH': f'"{local_model_path_value}"' if local_model_path_value != "None" else '""'
+        }
+        
+        # 重写整个文件，避免重复行
+        new_lines = []
+        updated_vars = set()
+        
+        # 处理现有行
+        for line in lines:
+            line_stripped = line.strip()
+            line_updated = False
+            
+            # 检查是否是我们要更新的环境变量
+            for var_name, var_value in env_updates.items():
+                if (line_stripped.startswith(var_name + ' =') or 
+                    line_stripped.startswith(var_name + '=')):
+                    if var_name not in updated_vars:
+                        new_lines.append(f'{var_name} = {var_value}\n')
+                        updated_vars.add(var_name)
+                        line_updated = True
+                    break
+            
+            # 如果不是我们要更新的环境变量，保留原行
+            if not line_updated:
+                new_lines.append(line)
+        
+        # 添加未找到的环境变量
+        for var_name, var_value in env_updates.items():
+            if var_name not in updated_vars:
+                new_lines.append(f'{var_name} = {var_value}\n')
+        
+        lines = new_lines
         
         with open(env_file, 'w', encoding='utf-8') as f:
             f.writelines(lines)
@@ -110,7 +174,10 @@ def update_env_model(model: str):
         # 重新加载环境变量
         load_dotenv(override=True)
         
-        print(f"✓ Updated .env with MODEL = {model}")
+        print(f"✓ Updated .env with:")
+        print(f"   MODEL = {model}")
+        print(f"   LOCAL = {local_value}")
+        print(f"   LOCAL_MODEL_PATH = {local_model_path_value}")
         return True
         
     except Exception as e:

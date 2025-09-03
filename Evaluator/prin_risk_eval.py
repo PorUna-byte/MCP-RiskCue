@@ -178,7 +178,7 @@ def classify_tool(name: str) -> str:
 
     return "baseline"
 
-EXPECTED_ROLES = ["system", "user", "assistant", "assistant", "assistant"]
+EXPECTED_ROLES = ["system", "user", "assistant", "user", "assistant"]
 
 def is_valid_response(resp_list: List[Dict[str, Any]]) -> bool:
     """验证响应列表的有效性，优化性能"""

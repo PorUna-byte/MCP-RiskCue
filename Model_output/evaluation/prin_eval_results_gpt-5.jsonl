@@ -1,21 +1,21 @@
 {
   "cognitive_pollution": {
-    "total_dialogs": 514,
-    "correct_refusals": 458,
-    "missed_refusals": 56,
-    "recall": 0.8910505836575876
+    "total_dialogs": 510,
+    "correct_refusals": 466,
+    "missed_refusals": 44,
+    "recall": 0.9137254901960784
   },
   "mislead_select": {
     "tool_call_stats": {
-      "baseline": 307,
-      "desc": 86,
-      "name": 21,
-      "both": 65,
+      "baseline": 308,
+      "desc": 91,
+      "name": 23,
+      "both": 63,
       "unknown": 0
     },
-    "total_dialogs": 479
+    "total_dialogs": 485
   },
   "invalid_total": 0,
-  "processed_count": 993,
-  "total_time": 0.11430740356445312
+  "processed_count": 995,
+  "total_time": 0.10369992256164551
 }

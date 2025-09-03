@@ -1,0 +1,21 @@
+{
+  "cognitive_pollution": {
+    "total_dialogs": 509,
+    "correct_refusals": 23,
+    "missed_refusals": 486,
+    "recall": 0.04518664047151277
+  },
+  "mislead_select": {
+    "tool_call_stats": {
+      "baseline": 193,
+      "desc": 79,
+      "name": 53,
+      "both": 66,
+      "unknown": 0
+    },
+    "total_dialogs": 391
+  },
+  "invalid_total": 0,
+  "processed_count": 900,
+  "total_time": 0.08993673324584961
+}

@@ -5,6 +5,8 @@ from contextlib import AsyncExitStack
 from Environment.environment import environment
 from openai import OpenAI
 from Client.client import MCPClient
+from Client.model_manager import get_model_manager
+from Client.config import ModelConfig
 from Utils.utils import formatted_mcp_servers, debug_print
 import time
 import re
@@ -23,11 +25,23 @@ class MCPAgent:
             reply = await agent.process_query("天气怎么样?")
     """
 
-    def __init__(self, server_paths=["Servers/Communication/EmailServer.py"], sys_prompt_path="sys_prompt_env.txt"):
-        self.llm = OpenAI(
-            api_key=os.getenv("API_KEY"),
-            base_url=os.getenv("BASE_URL"),
-        )
+    def __init__(self, server_paths=["Servers/Communication/EmailServer.py"], sys_prompt_path="sys_prompt_env.txt", model_manager=None):
+        # 检查是否使用本地模型
+        self.use_local_model = ModelConfig.is_local_model()
+        
+        if self.use_local_model:
+            # 使用本地模型
+            self.model_manager = model_manager or get_model_manager()
+            self.llm = None
+        else:
+            # 使用API模型
+            api_key, base_url, model = ModelConfig.get_api_config()
+            self.llm = OpenAI(
+                api_key=api_key,
+                base_url=base_url,
+            )
+            self.model_manager = None
+            
         self.sys_prompt_path=sys_prompt_path
         self.environment = environment()
         self.exit_stack: AsyncExitStack | None = None
@@ -131,6 +145,19 @@ class MCPAgent:
                 
         return None
 
+    async def _get_llm_response(self, messages: List[Dict[str, str]]) -> str:
+        """获取LLM回复，支持本地模型和API模型"""
+        if self.use_local_model:
+            # 使用本地模型
+            return await self.model_manager.generate_response(messages)
+        else:
+            # 使用API模型
+            api_key, base_url, model = ModelConfig.get_api_config()
+            resp = self.llm.chat.completions.create(
+                model=model, messages=messages
+            )
+            return resp.choices[0].message.content.strip()
+
     async def process_query(self, query: str) -> Tuple[List[Dict[str, str]], List[str]]:
         """
         Handle a user query that may require multiple MCP-tool invocations.
@@ -148,10 +175,7 @@ class MCPAgent:
 
         for step in range(1, MAX_STEPS + 1):
             # ---- 1️⃣ 让 LLM 决定下一步 ----
-            resp = self.llm.chat.completions.create(
-                model=os.getenv("MODEL"), messages=self.history
-            )
-            reply = resp.choices[0].message.content.strip()
+            reply = await self._get_llm_response(self.history)
             debug_print(info = f"initial reply is:{reply}", level=3)
             # ---- 2️⃣ 解析是否为 MCP 调用 ----
             cmd_obj = self.extract_json(reply)
@@ -195,7 +219,7 @@ class MCPAgent:
                     "Environment_status": env_info,
                 }
                 tool_result_dict = {
-                    "role": "assistant",
+                    "role": "user",
                     "content": "Tool result & environment status:\n" + json.dumps(complete_resp, indent=2),
                 }
 
@@ -204,7 +228,7 @@ class MCPAgent:
                     "Tool_result": tool_result
                 }
                 tool_result_dict =  {
-                    "role": "assistant",
+                    "role": "user",
                     "content": "Tool result:\n" + json.dumps(complete_resp, indent=2),
                 }
 

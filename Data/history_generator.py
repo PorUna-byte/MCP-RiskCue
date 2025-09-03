@@ -4,9 +4,6 @@
 Batch-generate LLM responses for user queries, using the appropriate MCP Server
 for each query group with multi-threading support.
 
-Usage
------
-python history_generator.py --query-file queries.jsonl --resp-file histories.jsonl --system-prompt sys_prompt.txt --server_category Prompt_injection_risk --max-workers 100
 """
 
 import asyncio
@@ -18,6 +15,8 @@ from typing import List, Dict, Optional
 import subprocess
 import sys
 from Client.agent import MCPAgent
+from Client.model_manager import get_model_manager
+from Client.config import ModelConfig
 import time
 from Utils.utils import debug_print
 import threading
@@ -29,7 +28,7 @@ from Utils.utils import is_valid_response, is_valid_security
 
 # python history_generator.py --query-file queries_prin.jsonl --resp-file histories_prin.jsonl --system-prompt sys_prompt_prin.txt --server_category Prompt_injection_risk --max-workers 100
 # python history_generator.py --query-file queries_env.jsonl --resp-file histories_env.jsonl --system-prompt sys_prompt_env.txt --server_category Env_risk --max-workers 50
-
+# python history_generator.py --query-file queries_env.jsonl --resp-file histories_env_test.jsonl --system-prompt sys_prompt_env.txt --server_category Env_risk --max-workers 20
 # ------------ 路径配置 ------------
 ROOT = Path(__file__).resolve().parent
 Project_Root = Path(__file__).resolve().parent.parent
@@ -170,7 +169,7 @@ def get_processed_queries_set(resp_file: Path) -> set:
     
     return processed_queries
 
-async def answer_query(server_path: str, query: str, system_prompt_path: str) -> Optional[Dict]:
+async def answer_query(server_path: str, query: str, system_prompt_path: str, model_manager=None) -> Optional[Dict]:
     """
     For a given MCP Server, launch it in the background, then send a single query.
     On exception, retry up to MAX_RETRY times. Return dict with result or None if failed.
@@ -189,7 +188,11 @@ async def answer_query(server_path: str, query: str, system_prompt_path: str) ->
 
     # 2) 与 MCPAgent 交互
     try:
-        async with (mcp_agent := MCPAgent(server_paths=[server_path], sys_prompt_path=system_prompt_path)) as agent:
+        # 如果使用本地模型，使用传入的模型管理器或获取新的
+        if ModelConfig.is_local_model() and model_manager is None:
+            model_manager = get_model_manager()
+        
+        async with (mcp_agent := MCPAgent(server_paths=[server_path], sys_prompt_path=system_prompt_path, model_manager=model_manager)) as agent:
             debug_print(info=f"   • MCPAgent initialized successfully", level=5)
             
             debug_print(info=f"   • Processing query: {query[:50]}...", level=5)
@@ -231,7 +234,7 @@ async def answer_query(server_path: str, query: str, system_prompt_path: str) ->
 def process_single_query(args_tuple):
     """处理单个查询的函数，用于线程池"""
     (server_category, server_path, query, resp_file, invalid_resp_file, 
-     system_prompt_path) = args_tuple
+     system_prompt_path, model_manager) = args_tuple
     
     # 计算绝对路径
     complete_path = str(Project_Root / "Servers" / server_category / server_path)
@@ -245,7 +248,7 @@ def process_single_query(args_tuple):
         # 使用上下文管理器安全地处理事件循环
         with thread_event_loop() as loop:
             new_result = loop.run_until_complete(
-                answer_query(complete_path, query, system_prompt_path)
+                answer_query(complete_path, query, system_prompt_path, model_manager)
             )
     except Exception as e:
         debug_print(info=f"   ✗ Query processing failed: {e}", level=5)
@@ -367,6 +370,13 @@ def main():
         print("All queries have been processed!")
         return
     
+    # 如果使用本地模型，创建模型管理器
+    model_manager = None
+    if ModelConfig.is_local_model():
+        print("Creating model manager for local model...")
+        model_manager = get_model_manager()
+        print("Model manager created successfully")
+    
     # 准备线程池参数
     thread_args = []
     for item in unprocessed_queries:
@@ -374,7 +384,7 @@ def main():
         query = item['query']
         thread_args.append((
             server_category, server_path, query, resp_file, invalid_resp_file,
-            system_prompt_path
+            system_prompt_path, model_manager
         ))
     
     # 使用线程池并发处理查询
@@ -429,6 +439,15 @@ def main():
             cleanup_event_loops()
         except Exception as e:
             print(f"Warning: Error during cleanup: {e}")
+        
+        # 清理模型管理器
+        if model_manager:
+            try:
+                print("Shutting down model manager...")
+                model_manager.shutdown()
+                print("Model manager shutdown complete")
+            except Exception as e:
+                print(f"Warning: Error during model manager shutdown: {e}")
 
 if __name__ == "__main__":
     try:
