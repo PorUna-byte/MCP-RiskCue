@@ -1,0 +1,10 @@
+{
+  "prin": {
+    "history_generation": true,
+    "evaluation": true
+  },
+  "env": {
+    "history_generation": true,
+    "evaluation": true
+  }
+}

@@ -7,17 +7,35 @@ import queue
 import time
 import json
 from Client.config import ModelConfig
+from EasyAlign.utils.utils import selective_decode
+
+# 设置环境变量以避免 FX 符号追踪问题
+os.environ["TORCH_COMPILE_DEBUG"] = "0"
+os.environ["TORCH_LOGS"] = "-dynamo"
+os.environ["TORCH_DISABLE_CUDNN_SDPA"] = "1"  # 禁用 CUDNN SDPA
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"  # 限制内存分配
+os.environ["TORCH_DYNAMO_DISABLE"] = "1"  # 完全禁用 dynamo
+os.environ["TORCH_COMPILE_DISABLE"] = "1"  # 禁用 torch.compile
+os.environ["TRANSFORMERS_VERBOSITY"] = "error"  # 减少 transformers 日志
 
 class ModelManager:
     """
     模型管理器，负责管理本地模型的加载、负载均衡和推理
     """
     
-    def __init__(self, model_path: str = None, num_gpus: int = None):
+    def __init__(self, num_gpus: int = None):
         # 验证配置
         ModelConfig.validate_config()
         
-        self.model_path = model_path or ModelConfig.get_model_path()
+        self.model_path = ModelConfig.get_model_path()
+        self.tokenizer_path = ModelConfig.get_tokenizer_path()
+        self.system_prefix = ModelConfig.get_system_prefix()
+        self.system_suffix = ModelConfig.get_system_suffix()
+        self.human_prefix = ModelConfig.get_human_prefix()
+        self.human_suffix = ModelConfig.get_human_suffix()
+        self.assistant_prefix = ModelConfig.get_assistant_prefix()
+        self.assistant_suffix = ModelConfig.get_assistant_suffix()
+        
         # 如果没有指定GPU数量，使用torch获取
         if num_gpus is None:
             try:
@@ -41,6 +59,13 @@ class ModelManager:
         """在多个GPU上加载模型副本"""
         print(f"Loading {self.num_gpus} model copies on {self.num_gpus} GPUs...")
         
+        # 在模型加载前禁用所有可能的优化
+        import torch._dynamo as dynamo
+        dynamo.config.disable = True
+        
+        # 禁用 torch.compile
+        torch._dynamo.config.disable = True
+        
         for gpu_id in range(self.num_gpus):
             print(f"Loading model on GPU {gpu_id}...")
             
@@ -48,7 +73,7 @@ class ModelManager:
             device = f"cuda:{gpu_id}"
             
             # 加载tokenizer
-            tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
+            tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_path, trust_remote_code=True)
             if tokenizer.pad_token is None:
                 tokenizer.pad_token = tokenizer.eos_token
             
@@ -57,7 +82,11 @@ class ModelManager:
                 self.model_path,
                 torch_dtype=torch.float16,
                 device_map=device,
-                trust_remote_code=True
+                trust_remote_code=True,
+                attn_implementation="eager",  # 避免 FX 符号追踪问题
+                low_cpu_mem_usage=True,  # 减少内存使用
+                use_cache=True,  # 启用缓存
+                _fast_init=False,  # 禁用快速初始化
             )
             
             self.models.append(model)
@@ -134,8 +163,7 @@ class ModelManager:
                 )
             
             # 解码回复
-            response = tokenizer.decode(outputs[0][inputs['input_ids'].shape[1]:], skip_special_tokens=True)
-            
+            response = selective_decode(tokenizer, outputs[0][inputs['input_ids'].shape[1]:])            
             return response.strip()
     
     def get_least_loaded_gpu(self) -> int:
@@ -193,24 +221,24 @@ class ModelManager:
             content = message["content"]
             
             if role == "system":
-                formatted_parts.append(f"<|im_start|>system\n{content}<|im_end|>")
+                formatted_parts.append(f"{self.system_prefix}{content}{self.system_suffix}")
             
             elif role == "user":
                 # 检查是否是工具响应（包含"Tool result"）
                 if "Tool result" in content:
-                    formatted_parts.append(f"<|im_start|>user\n<tool_response>\n{content}\n</tool_response><|im_end|>")
+                    formatted_parts.append(f"{self.human_prefix}<tool_response>\n{content}\n</tool_response>{self.human_suffix}")
                 else:
-                    formatted_parts.append(f"<|im_start|>user\n{content}<|im_end|>")
+                    formatted_parts.append(f"{self.human_prefix}{content}{self.human_suffix}")
             
             elif role == "assistant":
                 # 检查是否是工具调用（包含"MCP tool-call message"）
                 if "MCP tool-call message" in content:
-                    formatted_parts.append(f"<|im_start|>assistant\n<tool_call>\n{content}\n</tool_call><|im_end|>")
+                    formatted_parts.append(f"{self.assistant_prefix}<tool_call>\n{content}\n</tool_call>{self.assistant_suffix}")
                 else:
-                    formatted_parts.append(f"<|im_start|>assistant\n{content}<|im_end|>")
+                    formatted_parts.append(f"{self.assistant_prefix}{content}{self.assistant_suffix}")
         
         # 添加生成提示
-        formatted_parts.append("<|im_start|>assistant\n")
+        formatted_parts.append(f"{self.assistant_prefix}")
         
         return "\n".join(formatted_parts)
 

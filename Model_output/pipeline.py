@@ -14,42 +14,91 @@ from typing import List, Dict, Optional
 import argparse
 from dotenv import load_dotenv
 
+# 设置环境变量以避免 FX 符号追踪问题
+os.environ["TORCH_COMPILE_DEBUG"] = "0"
+os.environ["TORCH_LOGS"] = "-dynamo"
+os.environ["TORCH_DYNAMO_DISABLE"] = "1"  # 完全禁用 dynamo
+os.environ["TORCH_COMPILE_DISABLE"] = "1"  # 禁用 torch.compile
+os.environ["TRANSFORMERS_VERBOSITY"] = "error"  # 减少 transformers 日志
+
 # 项目根目录
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
-# 模型列表
-MODELS = [
-    # "Qwen2.5-7B-Instruct",
-    # "gpt-4o",
-    "gpt-5",
-    "claude-3-5-sonnet-20241022", 
-    "qwen3-235b-a22b",
-    "deepseek-v3",
-    "gemini-2.5-flash",
-    "doubao-1-5-lite-32k"
+MODEL_INFO = {
+    # 在线模型
+    "gpt-4o": {
+        "local": False,
+    },
+    "gpt-5": {
+        "local": False,
+    },
+    "claude-3-5-sonnet-20241022": {
+        "local": False,
+    },
+    "qwen3-235b-a22b": {
+        "local": False,
+    },
+    "deepseek-v3": {
+        "local": False,
+    },
+    "gemini-2.5-flash": {
+        "local": False,
+    },
+    "doubao-1-5-lite-32k": {
+        "local": False,
+    },
+    
+    # 本地模型
+    "Qwen2.5-7B-Instruct": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
+        "system_prefix": "<|im_start|>system\n",
+        "system_suffix": "<|im_end|>",
+        "human_prefix": "<|im_start|>user\n",
+        "human_suffix": "<|im_end|>",
+        "assistant_prefix": "<|im_start|>assistant\n",
+        "assistant_suffix": "<|im_end|>",
+    },
+    "Qwen2.5-7B-Instruct_SFT": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_qwen2-5-7b-instruct_MCPenv/latest_hf",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
+        "system_prefix": "<|im_start|>system\n",
+        "system_suffix": "<|im_end|>",
+        "human_prefix": "<|im_start|>user\n",
+        "human_suffix": "<|im_end|>",
+        "assistant_prefix": "<|im_start|>assistant\n",
+        "assistant_suffix": "<|im_end|>",
+    },
+    "Qwen2.5-7B_SFT": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_qwen2-5-7b_MCPenv/latest_hf",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B",
+        "system_prefix": "<|im_start|>system\n",
+        "system_suffix": "<|im_end|>",
+        "human_prefix": "<|im_start|>user\n",
+        "human_suffix": "<|im_end|>",
+        "assistant_prefix": "<|im_start|>assistant\n",
+        "assistant_suffix": "<|im_end|>",
+    },
+    "Gemma-2-2B_SFT": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_gemma2-2b_MCPenv/latest_hf",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Gemma-2-2B",
+        "system_prefix": "<start_of_turn>system\n",
+        "system_suffix": "<end_of_turn>",
+        "human_prefix": "<start_of_turn>user\n",
+        "human_suffix": "<end_of_turn>",
+        "assistant_prefix": "<start_of_turn>assistant\n",
+        "assistant_suffix": "<end_of_turn>",
+    },
+}
+# 默认要处理的模型列表（可以从MODEL_INFO中选择）
+DEFAULT_MODELS = [
+"Gemma-2-2B_SFT"
 ]
 
-LOCAL = [
-    # "True",
-    # "False",
-    "False",
-    "False",
-    "False",
-    "False",
-    "False",
-    "False"
-]
-
-LOCAL_MODEL_PATH = [
-    # "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
-    # "None",
-    "None",
-    "None",
-    "None",
-    "None",
-    "None",
-    "None"
-]
 # 数据文件路径
 DATA_FILES = {
     "prin": PROJECT_ROOT / "Data" / "prin_data.jsonl",
@@ -104,6 +153,18 @@ def load_dotenv_safe():
     except Exception as e:
         print(f"⚠ Warning: Could not load .env file: {e}")
 
+def get_available_models():
+    """获取所有可用的模型列表"""
+    return list(MODEL_INFO.keys())
+
+def get_local_models():
+    """获取所有本地模型列表"""
+    return [model for model, info in MODEL_INFO.items() if info["local"]]
+
+def get_online_models():
+    """获取所有在线模型列表"""
+    return [model for model, info in MODEL_INFO.items() if not info["local"]]
+
 def update_env_model(model: str):
     """更新.env文件中的模型相关配置"""
     env_file = PROJECT_ROOT / ".env"
@@ -115,26 +176,36 @@ def update_env_model(model: str):
         with open(env_file, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         
-        # 找到模型在MODELS列表中的索引
-        model_index = None
-        for i, m in enumerate(MODELS):
-            if m == model:
-                model_index = i
-                break
-        
-        if model_index is None:
-            print(f"❌ Model {model} not found in MODELS list")
+        # 从MODEL_INFO中获取模型信息
+        if model not in MODEL_INFO:
+            print(f"❌ Model {model} not found in MODEL_INFO")
             return False
         
-        # 获取对应的LOCAL和LOCAL_MODEL_PATH值
-        local_value = LOCAL[model_index]
-        local_model_path_value = LOCAL_MODEL_PATH[model_index]
+        model_info = MODEL_INFO[model]
+        local_value = str(model_info["local"])
+        local_model_path_value = model_info.get("model_path", None)
+        local_tokenizer_path_value = model_info.get("tokenizer_path", None)
+        
+        # 获取对话格式字段，如果不存在则使用默认值
+        system_prefix = model_info.get("system_prefix", "<|im_start|>system\n")
+        system_suffix = model_info.get("system_suffix", "<|im_end|>")
+        human_prefix = model_info.get("human_prefix", "<|im_start|>user\n")
+        human_suffix = model_info.get("human_suffix", "<|im_end|>")
+        assistant_prefix = model_info.get("assistant_prefix", "<|im_start|>assistant\n")
+        assistant_suffix = model_info.get("assistant_suffix", "<|im_end|>")
         
         # 需要更新的环境变量
         env_updates = {
             'MODEL': f'"{model}"',
             'LOCAL': f'"{local_value}"',
-            'LOCAL_MODEL_PATH': f'"{local_model_path_value}"' if local_model_path_value != "None" else '""'
+            'LOCAL_MODEL_PATH': f'"{local_model_path_value}"' if local_model_path_value else '""',
+            'LOCAL_TOKENIZER_PATH': f'"{local_tokenizer_path_value}"' if local_tokenizer_path_value else '""',
+            'SYSTEM_PREFIX': f'"{system_prefix}"',
+            'SYSTEM_SUFFIX': f'"{system_suffix}"',
+            'HUMAN_PREFIX': f'"{human_prefix}"',
+            'HUMAN_SUFFIX': f'"{human_suffix}"',
+            'ASSISTANT_PREFIX': f'"{assistant_prefix}"',
+            'ASSISTANT_SUFFIX': f'"{assistant_suffix}"'
         }
         
         # 重写整个文件，避免重复行
@@ -177,7 +248,14 @@ def update_env_model(model: str):
         print(f"✓ Updated .env with:")
         print(f"   MODEL = {model}")
         print(f"   LOCAL = {local_value}")
-        print(f"   LOCAL_MODEL_PATH = {local_model_path_value}")
+        print(f"   LOCAL_MODEL_PATH = {local_model_path_value or 'None'}")
+        print(f"   LOCAL_TOKENIZER_PATH = {local_tokenizer_path_value or 'None'}")
+        print(f"   SYSTEM_PREFIX = {system_prefix}")
+        print(f"   SYSTEM_SUFFIX = {system_suffix}")
+        print(f"   HUMAN_PREFIX = {human_prefix}")
+        print(f"   HUMAN_SUFFIX = {human_suffix}")
+        print(f"   ASSISTANT_PREFIX = {assistant_prefix}")
+        print(f"   ASSISTANT_SUFFIX = {assistant_suffix}")
         return True
         
     except Exception as e:
@@ -495,8 +573,24 @@ def main():
                        help='Only run history generation, skip evaluation')
     parser.add_argument('--evaluation-only', action='store_true',
                        help='Only run evaluation, skip history generation')
+    parser.add_argument('--list-models', action='store_true',
+                       help='List all available models and exit')
     
     args = parser.parse_args()
+    
+    # 如果用户请求列出模型，显示并退出
+    if args.list_models:
+        print("Available models:")
+        print("\nOnline models:")
+        for model in get_online_models():
+            print(f"  - {model}")
+        print("\nLocal models:")
+        for model in get_local_models():
+            model_info = MODEL_INFO[model]
+            print(f"  - {model}")
+            print(f"    Model path: {model_info.get('model_path', 'None')}")
+            print(f"    Tokenizer path: {model_info.get('tokenizer_path', 'None')}")
+        sys.exit(0)
     
     # 检查参数冲突
     if args.history_gen_only and args.evaluation_only:
@@ -520,7 +614,15 @@ def main():
     
     load_dotenv_safe()
     
-    models_to_process = args.models if args.models else MODELS
+    models_to_process = args.models if args.models else DEFAULT_MODELS
+    
+    # 验证所有模型都在MODEL_INFO中存在
+    invalid_models = [model for model in models_to_process if model not in MODEL_INFO]
+    if invalid_models:
+        print(f"❌ Error: The following models are not found in MODEL_INFO: {invalid_models}")
+        print(f"Available models: {list(MODEL_INFO.keys())}")
+        sys.exit(1)
+    
     print(f"Models to process: {models_to_process}")
     
     OUTPUT_DIR.mkdir(exist_ok=True)

@@ -20,6 +20,40 @@ class ModelConfig:
         """获取GPU数量"""
         return torch.cuda.device_count() if torch.cuda.is_available() else 1
  
+    @staticmethod
+    def get_tokenizer_path() -> str:
+        """获取本地tokenizer路径"""
+        return os.getenv("LOCAL_TOKENIZER_PATH")
+    
+    @staticmethod
+    def get_system_prefix() -> str:
+        """获取系统前缀"""
+        return os.getenv("SYSTEM_PREFIX")
+    
+    @staticmethod
+    def get_system_suffix() -> str:
+        """获取系统后缀"""
+        return os.getenv("SYSTEM_SUFFIX")
+    
+    @staticmethod
+    def get_human_prefix() -> str:
+        """获取用户前缀"""
+        return os.getenv("HUMAN_PREFIX")
+    
+    @staticmethod
+    def get_human_suffix() -> str:
+        """获取用户后缀"""
+        return os.getenv("HUMAN_SUFFIX")
+    
+    @staticmethod
+    def get_assistant_prefix() -> str:
+        """获取助手前缀"""
+        return os.getenv("ASSISTANT_PREFIX")
+    
+    @staticmethod
+    def get_assistant_suffix() -> str:
+        """获取助手后缀"""
+        return os.getenv("ASSISTANT_SUFFIX")
     
     @staticmethod
     def get_api_config() -> tuple[Optional[str], Optional[str], Optional[str]]:

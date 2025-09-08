@@ -1,60 +1,10 @@
 {
-  "total_time_seconds": 4193.234700679779,
-  "total_time_hours": 1.1647874168554941,
-  "models_processed": 6,
+  "total_time_seconds": 4856.975701332092,
+  "total_time_hours": 1.3491599170366924,
+  "models_processed": 1,
   "mode": "full_pipeline",
   "results": {
-    "gpt-5": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
-    "claude-3-5-sonnet-20241022": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
-    "qwen3-235b-a22b": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
-    "deepseek-v3": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
-    "gemini-2.5-flash": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
-      "env": {
-        "history_generation": true,
-        "evaluation": true
-      }
-    },
-    "doubao-1-5-lite-32k": {
+    "Gemma-2-2B_SFT": {
       "prin": {
         "history_generation": true,
         "evaluation": true
