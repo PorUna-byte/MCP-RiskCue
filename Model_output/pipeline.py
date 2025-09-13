@@ -93,15 +93,27 @@ MODEL_INFO = {
         "assistant_prefix": "<start_of_turn>assistant\n",
         "assistant_suffix": "<end_of_turn>",
     },
+    "Gemma-2-2B_DPO": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/dpo_gemma2-2b_MCPenv/latest_hf",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Gemma-2-2B",
+        "system_prefix": "<start_of_turn>system\n",
+        "system_suffix": "<end_of_turn>",
+        "human_prefix": "<start_of_turn>user\n",
+        "human_suffix": "<end_of_turn>",
+        "assistant_prefix": "<start_of_turn>assistant\n",
+        "assistant_suffix": "<end_of_turn>",
+    },
 }
 # 默认要处理的模型列表（可以从MODEL_INFO中选择）
 DEFAULT_MODELS = [
-"Gemma-2-2B_SFT"
+"Gemma-2-2B_SFT",
+# "Gemma-2-2B_DPO"
 ]
 
 # 数据文件路径
 DATA_FILES = {
-    "prin": PROJECT_ROOT / "Data" / "prin_data.jsonl",
+    "prin": PROJECT_ROOT / "Data" / "prin_data_test.jsonl",
     "env": PROJECT_ROOT / "Data" / "env_data_test.jsonl"
 }
 
@@ -497,30 +509,30 @@ def process_model(model: str, max_workers: int = 10, debug: bool = False, progre
     
     results = {}
     
-    # 处理PRIN数据
-    print(f"\n📊 Processing PRIN data...")
-    if evaluation_only:
-        # 只做evaluation，跳过history generation
-        prin_success = None
-        prin_eval_success = run_evaluation("prin")
-        results["prin"] = {
-            "history_generation": None,
-            "evaluation": prin_eval_success
-        }
-    else:
-        # 做history generation
-        prin_success = run_history_generation("prin", max_workers, debug)
-        if prin_success and not history_gen_only:
-            prin_eval_success = run_evaluation("prin")
-            results["prin"] = {
-                "history_generation": prin_success,
-                "evaluation": prin_eval_success
-            }
-        else:
-            results["prin"] = {
-                "history_generation": prin_success,
-                "evaluation": None if history_gen_only else False
-            }
+    # # 处理PRIN数据
+    # print(f"\n📊 Processing PRIN data...")
+    # if evaluation_only:
+    #     # 只做evaluation，跳过history generation
+    #     prin_success = None
+    #     prin_eval_success = run_evaluation("prin")
+    #     results["prin"] = {
+    #         "history_generation": None,
+    #         "evaluation": prin_eval_success
+    #     }
+    # else:
+    #     # 做history generation
+    #     prin_success = run_history_generation("prin", max_workers, debug)
+    #     if prin_success and not history_gen_only:
+    #         prin_eval_success = run_evaluation("prin")
+    #         results["prin"] = {
+    #             "history_generation": prin_success,
+    #             "evaluation": prin_eval_success
+    #         }
+    #     else:
+    #         results["prin"] = {
+    #             "history_generation": prin_success,
+    #             "evaluation": None if history_gen_only else False
+    #         }
     
     # 处理ENV数据
     print(f"\n📊 Processing ENV data...")
@@ -546,15 +558,6 @@ def process_model(model: str, max_workers: int = 10, debug: bool = False, progre
                 "history_generation": env_success,
                 "evaluation": None if history_gen_only else False
             }
-    
-    # 保存结果
-    result_file = OUTPUT_DIR / f"results_{model}.json"
-    try:
-        with open(result_file, 'w', encoding='utf-8') as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
-        print(f"✓ Results saved to: {result_file}")
-    except Exception as e:
-        print(f"⚠ Warning: Could not save results: {e}")
     
     return results
 

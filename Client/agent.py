@@ -108,41 +108,27 @@ class MCPAgent:
         Best-effort to parse *one* JSON object from an LLM reply.
 
         • Handles ```json ... ``` fenced blocks
+        • Handles <tool_call> tags with MCP tool-call message
         • Ignores extra prose before / after
         • Returns the parsed Python dict, or None on failure
         """
         if not text or not isinstance(text, str):
             return None
-            
-        # 1) strip code fences like ```json\n{ ... }\n```
-        if text.lstrip().startswith("```"):
-            # remove leading ```lang and trailing ```
-            text = re.sub(r'^```[\w]*\s*', '', text.lstrip(), flags=re.I)
-            text = re.sub(r'```$', '', text.rstrip()).strip()
-
-        # 2) direct attempt
-        try:
-            result = json.loads(text)
-            # 确保返回的是字典类型
-            if isinstance(result, dict):
-                return result
-            # 如果是列表，取第一个元素（如果存在且是字典）
-            elif isinstance(result, list) and result and isinstance(result[0], dict):
-                return result[0]
-            return None
-        except json.JSONDecodeError:
-            pass
-
-        # 3) regex: grab the first {...} block (只查找对象，不查找数组)
-        match = re.search(r"(\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\})", text, re.S)
-        if match:
+        
+        # 1) Direct match for "MCP tool-call message:" followed by JSON
+        mcp_match = re.search(r'MCP tool-call message:\s*(\{.*\})', text, re.DOTALL)
+        if mcp_match:
             try:
-                result = json.loads(match.group(1))
+                json_str = mcp_match.group(1).strip()
+                # Clean up trailing commas before parsing
+                json_str = re.sub(r',\s*}', '}', json_str)
+                json_str = re.sub(r',\s*]', ']', json_str)
+                result = json.loads(json_str)
                 if isinstance(result, dict):
                     return result
             except json.JSONDecodeError:
                 pass
-                
+                 
         return None
 
     async def _get_llm_response(self, messages: List[Dict[str, str]]) -> str:

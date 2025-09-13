@@ -12,7 +12,7 @@ from Utils.utils import is_valid_response, is_valid_security
 import os
 
 # python curate_train_test.py histories_env.jsonl env_data.jsonl --type env --test_ratio 0.1
-# python curate_train_test.py histories_prin.jsonl prin_data.jsonl --type prin --test_ratio 0.2
+# python curate_train_test.py histories_prin.jsonl prin_data.jsonl --type prin --test_ratio 0.1
 
 # ------------------- 配置路径 --------------------
 RAND_SEED   = 42
@@ -225,37 +225,36 @@ def process_prin_data(raw_data, test_ratio=0.1):
         server_path = item["server_path"]
         history = item['history']
         
-        # 检查是否为Cognitive_pollution类型
-        if server_path.startswith("Cognitive_pollution/"):
-            # 对于Cognitive_pollution，要求final_msg是拒绝回答
-            try:
-                final_msg = history[-1].get("content", "")
-                if not is_refusal(final_msg):
-                    Invalid_data += 1
-                    continue
-            except (IndexError, KeyError):
-                Invalid_data += 1
-                continue
+        # # 检查是否为Cognitive_pollution类型
+        # if server_path.startswith("Cognitive_pollution/"):
+        #     # 对于Cognitive_pollution，要求final_msg是拒绝回答
+        #     try:
+        #         final_msg = history[-1].get("content", "")
+        #         if not is_refusal(final_msg):
+        #             Invalid_data += 1
+        #             continue
+        #     except (IndexError, KeyError):
+        #         Invalid_data += 1
+        #         continue
         
-        # 检查是否为Mislead_select类型
-        elif server_path.startswith("Mislead_select/"):
-            # 对于Mislead_select，要求其category为baseline
-            try:
-                tool_call_msg = history[2].get("content", "")
-                tool_name = extract_tool_name(tool_call_msg)
-                category = classify_tool(tool_name)
-                if category != "baseline":
-                    Invalid_data += 1
-                    continue
-            except (IndexError, KeyError):
-                Invalid_data += 1
-                continue
+        # # 检查是否为Mislead_select类型
+        # elif server_path.startswith("Mislead_select/"):
+        #     # 对于Mislead_select，要求其category为baseline
+        #     try:
+        #         tool_call_msg = history[2].get("content", "")
+        #         tool_name = extract_tool_name(tool_call_msg)
+        #         category = classify_tool(tool_name)
+        #         if category != "baseline":
+        #             Invalid_data += 1
+        #             continue
+        #     except (IndexError, KeyError):
+        #         Invalid_data += 1
+        #         continue
         
         # 如果通过了所有检查，添加到输出样本
         out_samples.append({
             "server_path": "/".join(server_path.split("/")[-2:]), 
             "query": item["query"],
-            "history": item["history"]
         })
     
     # 随机选择 test_ratio作为测试集
@@ -312,8 +311,9 @@ def main():
         train_data, test_data, invalid_data = process_prin_data(raw_data, args.test_ratio)
         
         # 写入测试集
-        write_jsonl(test_data, output_file)
-        print(f"✅ Wrote {len(test_data)} test samples → {output_file}")
+        test_file = output_file.parent / f"{output_file.stem}_test.jsonl"
+        write_jsonl(test_data, test_file)
+        print(f"✅ Wrote {len(test_data)} test samples → {test_file}")
         
         # 可选：也写入训练集（虽然prin类型主要用于测试）
         train_file = output_file.parent / f"{output_file.stem}_train.jsonl"
