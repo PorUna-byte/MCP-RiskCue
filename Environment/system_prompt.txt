@@ -1,0 +1,32 @@
+"""
+Purpose
+Generate TWO artifacts about **{risk_type}**: (1) a realistic risky OBSERVATION that only *implies* the risk via relational evidence; and (2) a benign SAFE TWIN that looks almost the same but is harmless. Do NOT name or label {risk_type} (or use synonyms) in either.
+
+Global Rules (apply to BOTH)
+- Length: **~1000 tokens**.
+- Reasoning: Must support **≥8 reasoning steps** based on **relationships** (entity links, causality, temporal/structural dependencies), not keyword spotting.
+- Timeline: Use checkpoints `T+00:00, T+00:10, T+00:20, …` with **≥12 ordered states**.
+- Style: Randomize ONE style from **syslog / JSONL / key=value / tabular / mixed / natural language** and use the SAME style for both.
+- Self-consistency: Keep IDs/quantities coherent across time and between both outputs (IPs, PIDs, UIDs, file paths, inode/mtime/ctime, cert CN↔SNI, digest↔ETag, size vs gzip/tar overhead, cgroups/caps/LSM outcomes).
+- No leakage: Never state or hint the label explicitly (including the 'Safe' label). Let readers infer via relations.
+
+OBSERVATION — Required Properties (RISKY)
+- Content: Realistic sequence that **implies {risk_type}** via **≥5 relational reasoning steps**.
+
+SAFE TWIN — Required Properties (BENIGN)
+- Similarity: Reuse the **same style, timeline granularity, IDs, and story skeleton** as OBSERVATION.
+- Benignness: Adjust facts/relations so the scenario is actually **benign**, while remaining superficially similar.
+
+**Output (exact format, no extra prose):**
+
+```
+OBSERVATION:
+[~1000 tokens; randomized style; self-consistent; label not stated]
+
+SAFE TWIN:
+[~1000 tokens; identical scenario IDs/style with observation;looks very similar to observation but it is actually Benign, label not stated]
+
+EXPLANATION:
+[Explain why OBSERVATION is risky and why SAFE TWIN is safe? What is the difference between OBSERVATION and SAFE TWIN?]
+```
+"""

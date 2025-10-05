@@ -7,8 +7,36 @@ import queue
 import time
 import json
 from Client.config import ModelConfig
-from EasyAlign.utils.utils import selective_decode
 
+def selective_decode(tokenizer, ids,
+                     keep_special_tokens=["<|im_start|>", "<|im_end|>", "<|start_header_id|>", "<|end_header_id|>", "<|eot_id|>", "<start_of_turn>", "<end_of_turn>","<|begin_of_text|>"]):
+    # 想保留的特殊标记 -> id 集合
+    keep_ids = {tokenizer.convert_tokens_to_ids(t) for t in keep_special_tokens}
+
+    bos_id = tokenizer.bos_token_id
+    eos_id = tokenizer.eos_token_id
+    all_special_ids = set(tokenizer.all_special_ids)
+
+    filtered = []
+    for i in ids:
+        # 对于BOS，只有在保留名单中才保留
+        if bos_id is not None and i == bos_id and i not in keep_ids:
+            continue
+        # 对于EOS，只有在保留名单中才保留
+        if eos_id is not None and i == eos_id and i not in keep_ids:
+            continue
+        # 若是其他特殊标记，则只有在"保留名单"里才保留
+        if i in all_special_ids and i not in keep_ids:
+            continue
+        filtered.append(i)
+
+    
+    # 不再跳过特殊符号；也不要清理空格
+    return tokenizer.decode(
+        filtered,
+        skip_special_tokens=False,
+        clean_up_tokenization_spaces=False
+    )
 # 设置环境变量以避免 FX 符号追踪问题
 os.environ["TORCH_COMPILE_DEBUG"] = "0"
 os.environ["TORCH_LOGS"] = "-dynamo"
@@ -29,12 +57,6 @@ class ModelManager:
         
         self.model_path = ModelConfig.get_model_path()
         self.tokenizer_path = ModelConfig.get_tokenizer_path()
-        self.system_prefix = ModelConfig.get_system_prefix()
-        self.system_suffix = ModelConfig.get_system_suffix()
-        self.human_prefix = ModelConfig.get_human_prefix()
-        self.human_suffix = ModelConfig.get_human_suffix()
-        self.assistant_prefix = ModelConfig.get_assistant_prefix()
-        self.assistant_suffix = ModelConfig.get_assistant_suffix()
         
         # 如果没有指定GPU数量，使用torch获取
         if num_gpus is None:
@@ -140,8 +162,12 @@ class ModelManager:
             model = self.models[gpu_id]
             tokenizer = self.tokenizers[gpu_id]
             
-            # 使用自定义聊天模板格式化输入
-            formatted_input = self._format_messages(messages)
+            # 使用tokenizer的apply_chat_template格式化输入
+            formatted_input = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True
+            )
             
             # Tokenize
             inputs = tokenizer(
@@ -149,14 +175,13 @@ class ModelManager:
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
-                max_length=4096
             ).to(model.device)
             
             # 生成回复
             with torch.no_grad():
                 outputs = model.generate(
                     **inputs,
-                    max_new_tokens=1024,
+                    max_new_tokens=4096,
                     temperature=0.7,
                     do_sample=True,
                     pad_token_id=tokenizer.eos_token_id
@@ -212,36 +237,6 @@ class ModelManager:
         
         print("Model manager shutdown complete")
     
-    def _format_messages(self, messages: List[Dict[str, str]]) -> str:
-        """自定义消息格式化方法"""
-        formatted_parts = []
-        
-        for i, message in enumerate(messages):
-            role = message["role"]
-            content = message["content"]
-            
-            if role == "system":
-                formatted_parts.append(f"{self.system_prefix}{content}{self.system_suffix}")
-            
-            elif role == "user":
-                # 检查是否是工具响应（包含"Tool result"）
-                if "Tool result" in content:
-                    formatted_parts.append(f"{self.human_prefix}<tool_response>\n{content}\n</tool_response>{self.human_suffix}")
-                else:
-                    formatted_parts.append(f"{self.human_prefix}{content}{self.human_suffix}")
-            
-            elif role == "assistant":
-                # 检查是否是工具调用（包含"MCP tool-call message"）
-                if "MCP tool-call message" in content:
-                    formatted_parts.append(f"{self.assistant_prefix}<tool_call>\n{content}\n</tool_call>{self.assistant_suffix}")
-                else:
-                    formatted_parts.append(f"{self.assistant_prefix}{content}{self.assistant_suffix}")
-        
-        # 添加生成提示
-        formatted_parts.append(f"{self.assistant_prefix}")
-        
-        return "\n".join(formatted_parts)
-
 # 全局模型管理器实例
 _model_manager: Optional[ModelManager] = None
 

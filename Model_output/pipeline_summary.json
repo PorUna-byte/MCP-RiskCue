@@ -1,16 +1,18 @@
 {
-  "total_time_seconds": 5333.105790615082,
-  "total_time_hours": 1.481418275170856,
-  "models_processed": 1,
-  "mode": "full_pipeline",
+  "total_time_seconds": 14.443124294281006,
+  "total_time_hours": 0.004011978970633613,
+  "models_processed": 2,
+  "mode": "evaluation_only",
   "results": {
-    "Gemma-2-2B_SFT": {
-      "prin": {
-        "history_generation": true,
-        "evaluation": true
-      },
+    "sft_Qwen3-4B-Instruct": {
       "env": {
-        "history_generation": true,
+        "history_generation": null,
+        "evaluation": true
+      }
+    },
+    "grpo_Qwen3-4B-Instruct": {
+      "env": {
+        "history_generation": null,
         "evaluation": true
       }
     }

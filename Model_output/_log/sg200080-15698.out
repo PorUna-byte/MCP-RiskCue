@@ -1,0 +1,41 @@
+SLURM_JOB_ID=15698
+HOSTNAME=lrc-alpha-sg-gpu12
+Sun Oct  5 01:37:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.148.08             Driver Version: 570.148.08     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:21:00.0 Off |                    0 |
+| N/A   29C    P0             76W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H200                    On  |   00000000:35:00.0 Off |                    0 |
+| N/A   30C    P0             77W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H200                    On  |   00000000:4A:00.0 Off |                    0 |
+| N/A   33C    P0             77W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H200                    On  |   00000000:5E:00.0 Off |                    0 |
+| N/A   34C    P0             78W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+🚀 Starting automated model evaluation pipeline...
+🔄 Mode: Full Pipeline (History Generation + Evaluation)
+Project root: /mnt/data-alpha-sg-01/team-agent/home/s00513066/safeMCP/MCP-Guard
+Output directory: /mnt/data-alpha-sg-01/team-agent/home/s00513066/safeMCP/MCP-Guard/Model_output
+✓ .env file loaded successfully
+❌ Error: The following models are not found in MODEL_INFO: ['sft_Qwen3-4B-Instruct', 'grpo_Qwen3-4B-Instruct']
+Available models: ['claude-3-7-sonnet-20250219', 'doubao-1-5-pro-32k-250115', 'gemini-2.5-pro', 'glm-4.5v', 'grok-4', 'gpt-4o', 'gpt-5-2025-08-07', 'deepseek-r1', 'kimi-k2-0711-preview', 'o3-2025-04-16', 'Qwen3-4B-Instruct', 'SFT_Qwen3-4B-Instruct', 'GRPO_Qwen3-4B-Instruct', 'Llama3.1-8B-Instruct', 'SFT_Llama3.1-8B-Instruct', 'GRPO_Llama3.1-8B-Instruct', 'DeepSeek-R1-0528-Qwen3-8B', 'sft_DeepSeek-R1-0528-Qwen3-8B', 'grpo_DeepSeek-R1-0528-Qwen3-8B', 'Qwen3-4B-Thinking-2507', 'sft_Qwen3-4B-Thinking-2507', 'grpo_Qwen3-4B-Thinking-2507', 'Qwen3Guard-Gen-4B', 'sft_Qwen3Guard-Gen-4B', 'grpo_Qwen3Guard-Gen-4B', 'Llama-Guard-3-8B', 'sft_Llama-Guard-3-8B', 'grpo_Llama-Guard-3-8B']

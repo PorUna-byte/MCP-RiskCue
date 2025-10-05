@@ -1,0 +1,67 @@
+{
+  "overall": {
+    "TP": 190,
+    "FP": 70,
+    "FN": 68,
+    "TN": 140
+  },
+  "per_type": {
+    "Delayed or Timed Trigger Attacks": {
+      "TP": 13,
+      "FP": 0,
+      "FN": 14,
+      "TN": 0
+    },
+    "Privilege Escalation": {
+      "TP": 26,
+      "FP": 0,
+      "FN": 2,
+      "TN": 0
+    },
+    "Malicious Code Execution": {
+      "TP": 18,
+      "FP": 0,
+      "FN": 13,
+      "TN": 0
+    },
+    "Covert Channel Attack": {
+      "TP": 18,
+      "FP": 0,
+      "FN": 21,
+      "TN": 0
+    },
+    "Log Explosion Attacks": {
+      "TP": 23,
+      "FP": 0,
+      "FN": 3,
+      "TN": 0
+    },
+    "Denial-of-Service": {
+      "TP": 19,
+      "FP": 0,
+      "FN": 5,
+      "TN": 0
+    },
+    "Persistence via Backdoor Implantation": {
+      "TP": 18,
+      "FP": 0,
+      "FN": 9,
+      "TN": 0
+    },
+    "Sensitive Data Exfiltration": {
+      "TP": 11,
+      "FP": 0,
+      "FN": 15,
+      "TN": 0
+    },
+    "Cache or Local State Pollution": {
+      "TP": 19,
+      "FP": 0,
+      "FN": 10,
+      "TN": 0
+    }
+  },
+  "invalid_data_count": 0,
+  "processed_count": 467,
+  "total_time": 0.07808113098144531
+}

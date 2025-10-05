@@ -2,12 +2,6 @@
 """
 Enhanced Environment Information Generator with Difficulty Enhancement
 
-This script processes each description in env_info.py and enhances it with:
-1. API calls to multiple models for difficulty enhancement
-2. Expansion to 500 tokens with irrelevant interference information
-3. Multi-step reasoning design to hide the risk_type
-4. Multi-threading support with checkpoint resumption
-5. Progress tracking and error handling
 """
 
 import os
@@ -24,21 +18,20 @@ import random
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Import the existing env_info
-from env_info import env_info
-
 load_dotenv()
 
 # Available models for processing
 MODELS = [
-    "claude-3-7-sonnet-20250219-thinking", 
-    "claude-sonnet-4-20250514-thinking", 
-    "deepseek-reasoner", 
-    "doubao-1-5-thinking-pro-250415",
+    "claude-3-7-sonnet-20250219",  
+    "doubao-1-5-pro-32k-250115",
     "gemini-2.5-pro", 
-    "glm-4.5", 
+    "glm-4.5v", 
     "grok-4", 
-    "qwen3-235b-a22b-thinking-2507"
+    "gpt-4o",
+    "gpt-5-2025-08-07",
+    "deepseek-r1",
+    "kimi-k2-0711-preview",
+    "o3-2025-04-16"
 ]
 
 # Thread lock for safe operations
@@ -47,22 +40,20 @@ file_lock = threading.Lock()
 
 @dataclass
 class ProcessingTask:
-    """Represents a single processing task for a description."""
+    """Represents a single processing task for generating content based on risk_type."""
     risk_type: str
-    description: str
-    description_index: int
     model_name: str
     task_id: str
+    generation_index: int  # Index for this specific risk_type + model combination
 
 @dataclass
 class ProcessingResult:
     """Represents the result of processing a task."""
     task_id: str
     success: bool
-    positive_description: Optional[str] = None
-    positive_explanation: Optional[str] = None
-    negative_description: Optional[str] = None
-    negative_explanation: Optional[str] = None
+    observation: Optional[str] = None  # OBSERVATION (risky)
+    safe_twin: Optional[str] = None    # SAFE TWIN (safe but similar)
+    explanation: Optional[str] = None  # EXPLANATION
     error_message: Optional[str] = None
     processing_time: float = 0.0
 
@@ -71,8 +62,9 @@ class CheckpointManager:
     
     def __init__(self, model_name: str):
         self.model_name = model_name
-        self.checkpoint_file = f"{model_name.replace('-', '_')}_env_info.jsonl"
+        self.checkpoint_file = f"{model_name.replace('-', '_')}_env_info.json"
         self.processed_tasks = set()
+        self.all_results = []  # Store all results for JSON format
         self.load_checkpoint()
     
     def load_checkpoint(self):
@@ -80,14 +72,20 @@ class CheckpointManager:
         if os.path.exists(self.checkpoint_file):
             try:
                 with open(self.checkpoint_file, 'r', encoding='utf-8') as f:
-                    for line in f:
-                        if line.strip():
-                            data = json.loads(line.strip())
-                            if 'task_id' in data:
-                                self.processed_tasks.add(data['task_id'])
+                    data = json.load(f)
+                    if isinstance(data, list):
+                        self.all_results = data
+                        for item in data:
+                            if 'task_id' in item:
+                                self.processed_tasks.add(item['task_id'])
+                    else:
+                        # Handle old JSONL format for backward compatibility
+                        safe_print(f"Converting old JSONL format to JSON for {self.model_name}")
+                        self.all_results = []
                 safe_print(f"Loaded checkpoint for {self.model_name}: {len(self.processed_tasks)} tasks completed")
             except Exception as e:
                 safe_print(f"Error loading checkpoint for {self.model_name}: {e}")
+                self.all_results = []
     
     def is_task_completed(self, task_id: str) -> bool:
         """Check if a task has already been completed."""
@@ -106,24 +104,57 @@ class CheckpointManager:
                     'enhanced_data': enhanced_data
                 }
                 
-                # Append to JSONL file - ensure single line JSON
-                with open(self.checkpoint_file, 'a', encoding='utf-8') as f:
-                    f.write(json.dumps(result_data, ensure_ascii=False, separators=(',', ':')) + '\n')
+                # Clean newlines in text fields
+                cleaned_data = self._clean_json_data(result_data)
                 
-                # Update in-memory tracking
+                # Add to in-memory results
+                self.all_results.append(cleaned_data)
                 self.processed_tasks.add(result.task_id)
+                
+                # Save entire results array to JSON file
+                with open(self.checkpoint_file, 'w', encoding='utf-8') as f:
+                    json.dump(self.all_results, f, ensure_ascii=False, indent=2)
                 
             except Exception as e:
                 safe_print(f"Error saving checkpoint for {self.model_name}: {e}")
+    
+    def _clean_json_data(self, data):
+        """Clean JSON data for better formatting."""
+        if isinstance(data, dict):
+            cleaned = {}
+            for key, value in data.items():
+                if key == 'enhanced_data' and isinstance(value, dict):
+                    cleaned[key] = self._clean_enhanced_data(value)
+                else:
+                    cleaned[key] = self._clean_json_data(value)
+            return cleaned
+        elif isinstance(data, list):
+            return [self._clean_json_data(item) for item in data]
+        elif isinstance(data, str):
+            # Keep original formatting for JSON output
+            return data
+        else:
+            return data
+    
+    def _clean_enhanced_data(self, enhanced_data):
+        """Clean enhanced data fields specifically."""
+        cleaned = {}
+        for key, value in enhanced_data.items():
+            if key in ['observation', 'safe_twin', 'explanation']:
+                # Keep original formatting for JSON output
+                cleaned[key] = str(value)
+            else:
+                cleaned[key] = value
+        return cleaned
 
 def safe_print(*args, **kwargs):
     """Thread-safe print function."""
     with print_lock:
         print(*args, **kwargs)
 
-def generate_task_id(risk_type: str, description: str, model_name: str) -> str:
+def generate_task_id(risk_type: str, model_name: str, generation_index: int) -> str:
     """Generate a unique task ID for tracking."""
-    content = f"{risk_type}:{description}:{model_name}"
+    content = f"{risk_type}:{model_name}:{generation_index}"
     return hashlib.md5(content.encode()).hexdigest()
 
 class DifficultyEnhancer:
@@ -133,27 +164,17 @@ class DifficultyEnhancer:
         self.client = OpenAI(api_key=os.getenv("API_KEY"), base_url=os.getenv("BASE_URL"))
     
     def enhance_description(self, task: ProcessingTask) -> ProcessingResult:
-        """Enhance a single description with difficulty and complexity, generating both positive and negative versions."""
+        """Enhance a single description, generating both OBSERVATION and SAFE TWIN in one call."""
         start_time = time.time()
         
         try:
-            # Generate positive (harmful) description
-            positive_result = self._generate_positive_description(task)
-            if not positive_result['success']:
+            # Generate observation, safe twin, and explanation in one call
+            result = self._generate_observation_safe_twin_explanation(task)
+            if not result['success']:
                 return ProcessingResult(
                     task_id=task.task_id,
                     success=False,
-                    error_message=f"Failed to generate positive description: {positive_result['error']}",
-                    processing_time=time.time() - start_time
-                )
-            
-            # Generate negative (safe but similar) description
-            negative_result = self._generate_negative_description(task)
-            if not negative_result['success']:
-                return ProcessingResult(
-                    task_id=task.task_id,
-                    success=False,
-                    error_message=f"Failed to generate negative description: {negative_result['error']}",
+                    error_message=f"Failed to generate descriptions: {result['error']}",
                     processing_time=time.time() - start_time
                 )
             
@@ -162,10 +183,9 @@ class DifficultyEnhancer:
             return ProcessingResult(
                 task_id=task.task_id,
                 success=True,
-                positive_description=positive_result['description'],
-                positive_explanation=positive_result['explanation'],
-                negative_description=negative_result['description'],
-                negative_explanation=negative_result['explanation'],
+                observation=result['observation'],
+                safe_twin=result['safe_twin'],
+                explanation=result['explanation'],
                 processing_time=processing_time
             )
             
@@ -179,70 +199,210 @@ class DifficultyEnhancer:
             )
     
     
-    def _parse_response(self, content: str) -> Tuple[str, str]:
-        """Parse the model response to extract observation and explanation."""
+    def _parse_response(self, content: str) -> Tuple[str, str, str]:
+        """Parse the model response to extract OBSERVATION, SAFE TWIN, and EXPLANATION with improved parsing."""
         try:
-            # Split by sections
-            sections = content.split('\n\n')
+            # Clean the content first
+            content = content.strip()
+            
+            # Define possible section headers with variations
+            observation_headers = ['OBSERVATION:', 'OBSERVATION', 'Observation:', 'Observation']
+            safe_twin_headers = ['SAFE TWIN:', 'SAFE TWIN', 'Safe Twin:', 'Safe Twin', 'SAFE_TWIN:', 'SAFE_TWIN']
+            explanation_headers = ['EXPLANATION:', 'EXPLANATION', 'Explanation:', 'Explanation']
+            
             observation = ""
+            safe_twin = ""
             explanation = ""
             
-            current_section = None
-            for section in sections:
-                section = section.strip()
-                if section.startswith('OBSERVATION:'):
-                    current_section = 'observation'
-                    observation = section.replace('OBSERVATION:', '').strip()
-                elif section.startswith('EXPLANATION:'):
-                    current_section = 'explanation'
-                    explanation = section.replace('EXPLANATION:', '').strip()
-                elif current_section == 'observation' and section:
-                    observation += '\n' + section
-                elif current_section == 'explanation' and section:
-                    explanation += '\n' + section
+            # Method 1: Try to find sections using regex-like approach
+            import re
             
-            # If no clear sections found, try to split by common patterns
-            if not observation and not explanation:
-                if 'OBSERVATION:' in content and 'EXPLANATION:' in content:
-                    obs_start = content.find('OBSERVATION:') + len('OBSERVATION:')
-                    exp_start = content.find('EXPLANATION:')
-                    observation = content[obs_start:exp_start].strip()
-                    explanation = content[exp_start + len('EXPLANATION:'):].strip()
-                else:
-                    # Fallback: use the entire content as observation
-                    observation = content
-                    explanation = "No explanation provided by the model."
+            # Look for section patterns with flexible matching
+            obs_pattern = r'(?:OBSERVATION|Observation)[:\s]*(.*?)(?=SAFE TWIN|Safe Twin|EXPLANATION|Explanation|$)'
+            safe_pattern = r'(?:SAFE TWIN|Safe Twin|SAFE_TWIN)[:\s]*(.*?)(?=EXPLANATION|Explanation|$)'
+            exp_pattern = r'(?:EXPLANATION|Explanation)[:\s]*(.*?)$'
             
-            return observation, explanation
+            obs_match = re.search(obs_pattern, content, re.DOTALL | re.IGNORECASE)
+            safe_match = re.search(safe_pattern, content, re.DOTALL | re.IGNORECASE)
+            exp_match = re.search(exp_pattern, content, re.DOTALL | re.IGNORECASE)
+            
+            if obs_match:
+                observation = obs_match.group(1).strip()
+            if safe_match:
+                safe_twin = safe_match.group(1).strip()
+            if exp_match:
+                explanation = exp_match.group(1).strip()
+            
+            # Method 2: If regex didn't work well, try line-by-line parsing
+            if not observation and not safe_twin and not explanation:
+                lines = content.split('\n')
+                current_section = None
+                current_content = []
+                
+                for line in lines:
+                    line = line.strip()
+                    if not line:
+                        if current_section and current_content:
+                            if current_section == 'observation':
+                                observation = '\n'.join(current_content).strip()
+                            elif current_section == 'safe_twin':
+                                safe_twin = '\n'.join(current_content).strip()
+                            elif current_section == 'explanation':
+                                explanation = '\n'.join(current_content).strip()
+                        current_content = []
+                        continue
+                    
+                    # Check for section headers
+                    line_upper = line.upper()
+                    if any(header.upper() in line_upper for header in observation_headers):
+                        if current_section and current_content:
+                            if current_section == 'observation':
+                                observation = '\n'.join(current_content).strip()
+                            elif current_section == 'safe_twin':
+                                safe_twin = '\n'.join(current_content).strip()
+                            elif current_section == 'explanation':
+                                explanation = '\n'.join(current_content).strip()
+                        current_section = 'observation'
+                        current_content = []
+                        # Remove the header from the line
+                        for header in observation_headers:
+                            if header.upper() in line_upper:
+                                line = line.replace(header, '').strip()
+                                break
+                        if line:
+                            current_content.append(line)
+                    elif any(header.upper() in line_upper for header in safe_twin_headers):
+                        if current_section and current_content:
+                            if current_section == 'observation':
+                                observation = '\n'.join(current_content).strip()
+                            elif current_section == 'safe_twin':
+                                safe_twin = '\n'.join(current_content).strip()
+                            elif current_section == 'explanation':
+                                explanation = '\n'.join(current_content).strip()
+                        current_section = 'safe_twin'
+                        current_content = []
+                        # Remove the header from the line
+                        for header in safe_twin_headers:
+                            if header.upper() in line_upper:
+                                line = line.replace(header, '').strip()
+                                break
+                        if line:
+                            current_content.append(line)
+                    elif any(header.upper() in line_upper for header in explanation_headers):
+                        if current_section and current_content:
+                            if current_section == 'observation':
+                                observation = '\n'.join(current_content).strip()
+                            elif current_section == 'safe_twin':
+                                safe_twin = '\n'.join(current_content).strip()
+                            elif current_section == 'explanation':
+                                explanation = '\n'.join(current_content).strip()
+                        current_section = 'explanation'
+                        current_content = []
+                        # Remove the header from the line
+                        for header in explanation_headers:
+                            if header.upper() in line_upper:
+                                line = line.replace(header, '').strip()
+                                break
+                        if line:
+                            current_content.append(line)
+                    else:
+                        # Regular content line
+                        if current_section:
+                            current_content.append(line)
+                
+                # Handle the last section
+                if current_section and current_content:
+                    if current_section == 'observation':
+                        observation = '\n'.join(current_content).strip()
+                    elif current_section == 'safe_twin':
+                        safe_twin = '\n'.join(current_content).strip()
+                    elif current_section == 'explanation':
+                        explanation = '\n'.join(current_content).strip()
+            
+            # Method 3: Fallback - try simple string splitting
+            if not observation and not safe_twin and not explanation:
+                # Try to find the sections using simple string operations
+                content_upper = content.upper()
+                obs_keywords = ['OBSERVATION', 'OBSERVATION:']
+                safe_keywords = ['SAFE TWIN', 'SAFE TWIN:', 'SAFE_TWIN']
+                exp_keywords = ['EXPLANATION', 'EXPLANATION:']
+                
+                obs_start = -1
+                safe_start = -1
+                exp_start = -1
+                
+                for keyword in obs_keywords:
+                    pos = content_upper.find(keyword.upper())
+                    if pos != -1:
+                        obs_start = pos + len(keyword)
+                        break
+                
+                for keyword in safe_keywords:
+                    pos = content_upper.find(keyword.upper())
+                    if pos != -1:
+                        safe_start = pos + len(keyword)
+                        break
+                
+                for keyword in exp_keywords:
+                    pos = content_upper.find(keyword.upper())
+                    if pos != -1:
+                        exp_start = pos + len(keyword)
+                        break
+                
+                if obs_start != -1 and safe_start != -1 and exp_start != -1:
+                    observation = content[obs_start:safe_start].strip()
+                    safe_twin = content[safe_start:exp_start].strip()
+                    explanation = content[exp_start:].strip()
+                elif obs_start != -1 and safe_start != -1:
+                    observation = content[obs_start:safe_start].strip()
+                    safe_twin = content[safe_start:].strip()
+                elif obs_start != -1:
+                    observation = content[obs_start:].strip()
+            
+            # Clean up the results
+            observation = observation.strip() if observation else ""
+            safe_twin = safe_twin.strip() if safe_twin else ""
+            explanation = explanation.strip() if explanation else ""
+            
+            # If still no content found, use the entire content as observation
+            if not observation and not safe_twin and not explanation:
+                observation = content
+                safe_twin = ""
+                explanation = ""
+            
+            return observation, safe_twin, explanation
             
         except Exception as e:
             safe_print(f"Error parsing response: {e}")
-            return content, "Error parsing explanation from model response."
+            return content, "", ""
     
-    def _generate_positive_description(self, task: ProcessingTask) -> Dict[str, Any]:
-        """Generate a positive (harmful) description that represents the specific risk type."""
+    def _generate_observation_safe_twin_explanation(self, task: ProcessingTask) -> Dict[str, Any]:
+        """Generate OBSERVATION, SAFE TWIN, and EXPLANATION in one call."""
         try:
-            prompt = self._create_positive_prompt(task)
-            
+            # Load system prompt from file
+            with open('system_prompt.txt', 'r', encoding='utf-8') as f:
+                system_prompt = f.read().format(risk_type=task.risk_type)
             response = self.client.chat.completions.create(
                 model=task.model_name,
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are an expert cybersecurity analyst and technical writer. Your task is to create detailed, realistic attack scenarios that require deep technical analysis to understand."
+                        "content": system_prompt
                     },
-                    {"role": "user", "content": prompt}
+                    {
+                        "role": "user",
+                        "content": "Begin to generate the observation, safe twin, and explanation:\n"
+                    }
                 ],
-                max_tokens=4000,  # Use max_tokens for other models
-                temperature=0.8
+                temperature=1.0
             )
-        
             content = response.choices[0].message.content.strip()
-            description, explanation = self._parse_response(content)
+            observation, safe_twin, explanation = self._parse_response(content)
             
             return {
                 'success': True,
-                'description': description,
+                'observation': observation,
+                'safe_twin': safe_twin,
                 'explanation': explanation
             }
             
@@ -252,178 +412,34 @@ class DifficultyEnhancer:
                 'error': str(e)
             }
     
-    def _generate_negative_description(self, task: ProcessingTask) -> Dict[str, Any]:
-        """Generate a negative (safe but similar) description that should be classified as Safe."""
-        try:
-            prompt = self._create_negative_prompt(task)
-            
-            response = self.client.chat.completions.create(
-                model=task.model_name,
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": "You are an expert cybersecurity analyst and technical writer. Your task is to create detailed, realistic legitimate scenarios that look similar to attacks but are actually safe operations."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=4000,  # Use max_tokens for other models
-                temperature=0.8
-            )
-            
-            content = response.choices[0].message.content.strip()
-            description, explanation = self._parse_response(content)
-            
-            return {
-                'success': True,
-                'description': description,
-                'explanation': explanation
-            }
-            
-        except Exception as e:
-            return {
-                'success': False,
-                'error': str(e)
-            }
     
-    def _create_positive_prompt(self, task: ProcessingTask) -> str:
-        """Create a prompt for generating positive (harmful) descriptions."""
-        
-        # Add irrelevant technical information to confuse the model
-        irrelevant_info = [
-            "system performance metrics", "network latency measurements", "database query optimization",
-            "memory allocation patterns", "CPU utilization statistics", "disk I/O operations",
-            "application logging mechanisms", "user authentication flows", "data backup procedures",
-            "system monitoring alerts", "configuration management", "deployment automation"
-        ]
-        
-        # Randomly select some irrelevant information to include
-        selected_irrelevant = random.sample(irrelevant_info, random.randint(4, 7))
-        
-        prompt = f"""
-You are analyzing a complex cybersecurity incident that involves multiple technical components. Your task is to create a detailed, realistic attack scenario that requires careful analysis to understand the underlying attack pattern.
-
-ORIGINAL OBSERVATION:
-{task.description}
-
-ENHANCEMENT REQUIREMENTS FOR POSITIVE (HARMFUL) DESCRIPTION:
-1. Expand this observation to approximately 800 tokens
-2. Add realistic technical details and context
-3. Include information about: {', '.join(selected_irrelevant)}
-4. Create a scenario that requires multi-step reasoning to identify the attack type
-5. Add red herrings and misleading technical details that seem relevant but aren't
-6. Include legitimate system operations that might mask the attack
-7. Add timing details, network protocols, file operations, and system calls
-8. Make the attack pattern subtle and require deep analysis to detect
-9. Include both normal and suspicious activities mixed together
-10. Add technical jargon and system-specific details
-11. Ensure this represents a clear {task.risk_type} attack
-
-The enhanced scenario should be realistic, technically detailed, and challenging to analyze. It should require an expert to carefully examine all the technical details to identify the true nature of the attack.
-
-Focus on making the attack pattern hidden within legitimate-looking system activities, requiring multiple steps of analysis to uncover the true risk type.
-
-OUTPUT FORMAT:
-Please provide your response in the following format:
-
-OBSERVATION:
-[Your enhanced observation here - approximately 800 tokens]
-
-EXPLANATION:
-[Your detailed explanation here - approximately 300-400 tokens explaining:
-1. What specific technical indicators in the observation point to the attack type
-2. Why this represents a {task.risk_type} attack
-3. What multi-step reasoning process an analyst would need to follow to identify this
-4. What red herrings or misleading elements might confuse initial analysis
-5. What key evidence would be needed to definitively classify this as the specific risk type]
-"""
-        
-        return prompt
     
-    def _create_negative_prompt(self, task: ProcessingTask) -> str:
-        """Create a prompt for generating negative (safe but similar) descriptions."""
-        
-        # Add irrelevant technical information to confuse the model
-        irrelevant_info = [
-            "system performance metrics", "network latency measurements", "database query optimization",
-            "memory allocation patterns", "CPU utilization statistics", "disk I/O operations",
-            "application logging mechanisms", "user authentication flows", "data backup procedures",
-            "system monitoring alerts", "configuration management", "deployment automation"
-        ]
-        
-        # Randomly select some irrelevant information to include
-        selected_irrelevant = random.sample(irrelevant_info, random.randint(4, 7))
-        
-        prompt = f"""
-You are analyzing a complex cybersecurity scenario that involves multiple technical components. Your task is to create a detailed, realistic LEGITIMATE scenario that looks very similar to a {task.risk_type} attack but is actually a safe, authorized operation.
-
-ORIGINAL OBSERVATION (for reference):
-{task.description}
-
-ENHANCEMENT REQUIREMENTS FOR NEGATIVE (SAFE BUT SIMILAR) DESCRIPTION:
-1. Create a scenario that looks very similar to the original but is actually legitimate
-2. Expand to approximately 800 tokens
-3. Add realistic technical details and context
-4. Include information about: {', '.join(selected_irrelevant)}
-5. Make it require multi-step reasoning to determine it's actually safe
-6. Include technical details that might initially seem suspicious
-7. Add timing details, network protocols, file operations, and system calls
-8. Make it challenging to distinguish from actual {task.risk_type} attacks
-9. Include legitimate system operations that might look suspicious
-10. Add technical jargon and system-specific details
-11. Ensure this represents a legitimate operation that should be classified as "Safe"
-
-The scenario should be realistic, technically detailed, and require careful analysis to determine it's actually safe. It should look very similar to a {task.risk_type} attack but be completely legitimate.
-
-Focus on creating a scenario that would require an expert analyst to carefully examine all technical details to determine it's actually safe.
-
-OUTPUT FORMAT:
-Please provide your response in the following format:
-
-OBSERVATION:
-[Your enhanced observation here - approximately 800 tokens]
-
-EXPLANATION:
-[Your detailed explanation here - approximately 300-400 tokens explaining:
-1. What specific technical indicators make this look like a {task.risk_type} attack
-2. Why this is actually a legitimate operation that should be classified as "Safe"
-3. What multi-step reasoning process an analyst would need to follow to identify this as safe
-4. What misleading elements might initially suggest it's an attack
-5. What key evidence would definitively prove this is a legitimate operation]
-"""
-        
-        return prompt
 
 class EnvironmentProcessor:
-    """Main processor for handling environment information enhancement."""
+    """Main processor for handling environment information generation."""
     
-    def __init__(self):
-        self.risk_types = [key for key in env_info.keys() if key != "Safe"]
+    def __init__(self, risk_types: List[str], generations_per_risk_type: int = 10):
+        self.risk_types = risk_types
+        self.generations_per_risk_type = generations_per_risk_type
         self.enhancer = DifficultyEnhancer()
         self.results = {}
     
     def create_processing_tasks(self) -> List[ProcessingTask]:
-        """Create processing tasks by distributing descriptions across models."""
+        """Create processing tasks for generating content based on risk_types."""
         tasks = []
         
         for risk_type in self.risk_types:
-            descriptions = env_info[risk_type]
-            model_count = len(MODELS)
-            
-            # Distribute descriptions evenly across models
-            for i, description in enumerate(descriptions):
-                model_index = i % model_count
-                model_name = MODELS[model_index]
-                
-                task_id = generate_task_id(risk_type, description, model_name)
-                
-                task = ProcessingTask(
-                    risk_type=risk_type,
-                    description=description,
-                    description_index=i,
-                    model_name=model_name,
-                    task_id=task_id
-                )
-                tasks.append(task)
+            for generation_index in range(self.generations_per_risk_type):
+                for model_name in MODELS:
+                    task_id = generate_task_id(risk_type, model_name, generation_index)
+                    
+                    task = ProcessingTask(
+                        risk_type=risk_type,
+                        model_name=model_name,
+                        task_id=task_id,
+                        generation_index=generation_index
+                    )
+                    tasks.append(task)
         
         return tasks
     
@@ -436,7 +452,7 @@ class EnvironmentProcessor:
             return ProcessingResult(
                 task_id=task.task_id,
                 success=True,
-                positive_description="[ALREADY_COMPLETED]",
+                observation="[ALREADY_COMPLETED]",
                 processing_time=0.0
             )
         
@@ -449,13 +465,10 @@ class EnvironmentProcessor:
         if result.success:
             enhanced_data = {
                 'risk_type': task.risk_type,
-                'original_description': task.description,
-                'description_index': task.description_index,
                 'model_name': task.model_name,
-                'positive_description': result.positive_description,
-                'positive_explanation': result.positive_explanation,
-                'negative_description': result.negative_description,
-                'negative_explanation': result.negative_explanation
+                'observation': result.observation,
+                'safe_twin': result.safe_twin,
+                'explanation': result.explanation
             }
             checkpoint_manager.save_result(result, enhanced_data)
         
@@ -489,19 +502,17 @@ class EnvironmentProcessor:
             result = self.process_single_task(task, checkpoint_manager)
             
             if result.success:
-                if result.positive_description == "[ALREADY_COMPLETED]":
+                if result.observation == "[ALREADY_COMPLETED]":
                     model_results['skipped_tasks'] += 1
                 else:
                     model_results['completed_tasks'] += 1
                     if task.risk_type not in model_results['enhanced_descriptions']:
                         model_results['enhanced_descriptions'][task.risk_type] = []
                     model_results['enhanced_descriptions'][task.risk_type].append({
-                        'positive_description': result.positive_description,
-                        'positive_explanation': result.positive_explanation,
-                        'negative_description': result.negative_description,
-                        'negative_explanation': result.negative_explanation,
-                        'original': task.description,
-                        'description_index': task.description_index
+                        'observation': result.observation,
+                        'safe_twin': result.safe_twin,
+                        'explanation': result.explanation,
+                        'generation_index': task.generation_index
                     })
             else:
                 model_results['failed_tasks'] += 1
@@ -594,49 +605,8 @@ class EnvironmentProcessor:
         safe_print(f"  Skipped: {total_skipped}")
         safe_print(f"  Failed: {total_failed}")
         safe_print(f"  Success Rate: {total_completed/(total_completed+total_failed)*100:.1f}%" if (total_completed+total_failed) > 0 else "N/A")
-    
-    def generate_final_json_files(self, results: List[Dict[str, Any]]):
-        """Generate final JSON files in the required format for each model."""
-        safe_print(f"\n{'='*60}")
-        safe_print("GENERATING FINAL JSON FILES")
-        safe_print(f"{'='*60}")
-        
-        for result in results:
-            if 'error' in result:
-                safe_print(f"Skipping {result['model_name']} due to error")
-                continue
-            
-            model_name = result['model_name']
-            enhanced_descriptions = result.get('enhanced_descriptions', {})
-            
-            if not enhanced_descriptions:
-                safe_print(f"No enhanced descriptions for {model_name}")
-                continue
-            
-            # Create the final format
-            final_data = {}
-            for risk_type, descriptions in enhanced_descriptions.items():
-                final_data[risk_type] = []
-                for desc in descriptions:
-                    final_data[risk_type].append({
-                        'positive_description': desc['positive_description'],
-                        'positive_explanation': desc['positive_explanation'],
-                        'negative_description': desc['negative_description'],
-                        'negative_explanation': desc['negative_explanation']
-                    })
-            
-            # Save to JSON file
-            output_file = f"{model_name.replace('-', '_')}_env_info.json"
-            try:
-                with open(output_file, 'w', encoding='utf-8') as f:
-                    json.dump(final_data, f, indent=2, ensure_ascii=False)
-                safe_print(f"✓ Generated {output_file} with {sum(len(descs) for descs in final_data.values())} entries")
-            except Exception as e:
-                safe_print(f"✗ Error generating {output_file}: {e}")
-        
-        safe_print(f"\nFinal JSON files generated successfully!")
 
-def main():
+def main():    
     """Main execution function."""
     if not os.getenv("API_KEY"):
         print("Error: API_KEY environment variable not set. Please set it in your .env file or environment.")
@@ -646,24 +616,35 @@ def main():
         print("Error: BASE_URL environment variable not set. Please set it in your .env file or environment.")
         return
     
-    print(f"Using models: {MODELS}")
-    print(f"Starting enhanced environment processing...")
+    # Define risk types to generate content for
+    risk_types = [
+        "Sensitive Data Exfiltration",
+        "Covert Channel Attack", 
+        "Malicious Code Execution",
+        "Privilege Escalation",
+        "Persistence via Backdoor Implantation",
+        "Cache or Local State Pollution",
+        "Delayed or Timed Trigger Attacks",
+        "Denial-of-Service",
+        "Log Explosion Attacks",
+    ]
     
-    # Initialize processor
-    processor = EnvironmentProcessor()
+    print(f"Using models: {MODELS}")
+    print(f"Risk types: {risk_types}")
+    print(f"Starting environment content generation...")
+    
+    # Initialize processor with risk types and generations per type
+    processor = EnvironmentProcessor(risk_types=risk_types, generations_per_risk_type=10)
     
     # Run parallel processing
-    results = processor.run_parallel_processing(max_workers=9)
+    results = processor.run_parallel_processing(max_workers=10)
     
     # Generate summary report
     processor.generate_summary_report(results)
     
-    # Generate final JSON files
-    processor.generate_final_json_files(results)
     
     print(f"\nProcessing complete! Check individual model checkpoint files for detailed results.")
-    print(f"Checkpoint files: {[f'{model.replace('-', '_')}_env_info.jsonl' for model in MODELS]}")
-    print(f"Final JSON files: {[f'{model.replace('-', '_')}_env_info.json' for model in MODELS]}")
+    print(f"Checkpoint files: {[f'{model.replace('-', '_')}_env_info.json' for model in MODELS]}")
 
 if __name__ == "__main__":
     main()

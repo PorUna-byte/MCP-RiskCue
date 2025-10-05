@@ -8,10 +8,52 @@ import json
 import sys
 import os
 from pathlib import Path
-from Environment.env_info import env_info
 # 添加 Utils 路径
 sys.path.append('Utils')
 from Utils.utils import is_valid_security
+
+def load_env_info():
+    """加载环境信息，合并训练集和测试集数据"""
+    try:
+        # 获取当前脚本所在目录
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # 构建 Environment 目录的路径
+        env_dir = os.path.join(os.path.dirname(script_dir), 'Environment')
+        
+        # 加载训练集和测试集数据
+        train_file = os.path.join(env_dir, 'env_info_train.json')
+        test_file = os.path.join(env_dir, 'env_info_test.json')
+        
+        env_info = {}
+        
+        # 加载训练集数据
+        if os.path.exists(train_file):
+            with open(train_file, 'r', encoding='utf-8') as f:
+                train_data = json.load(f)
+                print(f"  加载训练集数据: {train_file}")
+                for category, observations in train_data.items():
+                    if category not in env_info:
+                        env_info[category] = []
+                    env_info[category].extend(observations)
+        else:
+            print(f"  警告：训练集文件不存在: {train_file}")
+        
+        # 加载测试集数据
+        if os.path.exists(test_file):
+            with open(test_file, 'r', encoding='utf-8') as f:
+                test_data = json.load(f)
+                print(f"  加载测试集数据: {test_file}")
+                for category, observations in test_data.items():
+                    if category not in env_info:
+                        env_info[category] = []
+                    env_info[category].extend(observations)
+        else:
+            print(f"  警告：测试集文件不存在: {test_file}")
+        
+        return env_info
+    except Exception as e:
+        print(f"错误：无法加载环境信息: {e}")
+        return None
 
 # 风险类型列表
 RISK_TYPES = [
@@ -82,7 +124,7 @@ def parse_tool_result(content):
     except:
         return None
 
-def check_security_type_environment_match(history, security_type):
+def check_security_type_environment_match(history, security_type, env_info):
     """
     检查 security_type 和 role 为 user 的 turn 的 Environment_status 是否匹配
     """
@@ -100,8 +142,9 @@ def check_security_type_environment_match(history, security_type):
             tool_result = parse_tool_result(content)
             if tool_result:
                 env_status = tool_result.get('Environment_status', '')
-                if env_status not in env_info[security_type[i-1]]:
-                    return False, f"User turn {i+1} 的 Environment_status 与 security_type[{i-1}] 不匹配"
+                if i-1 < len(security_type) and security_type[i-1] in env_info:
+                    if env_status not in env_info[security_type[i-1]]:
+                        return False, f"User turn {i+1} 的 Environment_status 与 security_type[{i-1}] 不匹配"
     
     return True, "所有 user turns 的 Environment_status 与 security_type 匹配"
 
@@ -163,7 +206,7 @@ def check_chosen_rejected(sample, security_type):
     
     return errors
 
-def check_single_sample(sample, sample_idx):
+def check_single_sample(sample, sample_idx, env_info):
     """
     检查单个样本的合法性
     """
@@ -205,7 +248,7 @@ def check_single_sample(sample, sample_idx):
         errors.append(f"history 长度不匹配: 期望 {expected_history_len}, 实际 {actual_history_len}")
     
     # 7. 检查 security_type 和 Environment_status 的匹配
-    match_result, match_message = check_security_type_environment_match(history, security_type)
+    match_result, match_message = check_security_type_environment_match(history, security_type, env_info)
     if not match_result:
         errors.append(match_message)
     
@@ -341,7 +384,7 @@ def check_observation_overlap(train_observations, test_observations):
     
     return total_overlaps
 
-def check_file(file_path):
+def check_file(file_path, env_info):
     """
     检查单个文件
     """
@@ -362,7 +405,7 @@ def check_file(file_path):
                         sample = json.loads(line)
                         total_samples += 1
                         
-                        errors = check_single_sample(sample, total_samples)
+                        errors = check_single_sample(sample, total_samples, env_info)
                         if errors:
                             print(f"❌ 样本 {total_samples} (行 {line_num}) 有错误:")
                             for error in errors:
@@ -388,6 +431,13 @@ def main():
     print("=" * 60)
     print("数据合法性检查工具")
     print("=" * 60)
+    
+    # 加载环境信息
+    print("加载环境信息...")
+    env_info = load_env_info()
+    if env_info is None:
+        print("错误：无法加载环境信息，退出")
+        return False
     
     # 检查的文件列表
     files_to_check = [
@@ -426,7 +476,7 @@ def main():
         print_statistics(file_path, risk_counts, risk_observations)
         
         # 检查文件
-        if not check_file(file_path):
+        if not check_file(file_path, env_info):
             all_passed = False
         print(f"{'='*40}")
     

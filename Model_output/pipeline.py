@@ -22,93 +22,168 @@ os.environ["TORCH_COMPILE_DISABLE"] = "1"  # 禁用 torch.compile
 os.environ["TRANSFORMERS_VERBOSITY"] = "error"  # 减少 transformers 日志
 
 # 项目根目录
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent   
 
 MODEL_INFO = {
-    # 在线模型
+    #API models
+    "claude-3-7-sonnet-20250219": {
+        "local": False,
+    },
+    "doubao-1-5-pro-32k-250115": {
+        "local": False,
+    },
+    "gemini-2.5-pro": {
+        "local": False,
+    },
+    "glm-4.5v": {
+        "local": False,
+    },
+    "grok-4": {
+        "local": False,
+    },
     "gpt-4o": {
         "local": False,
     },
-    "gpt-5": {
+    "gpt-5-2025-08-07": {
         "local": False,
     },
-    "claude-3-5-sonnet-20241022": {
+    "deepseek-r1": {
         "local": False,
     },
-    "qwen3-235b-a22b": {
+    "kimi-k2-0711-preview": {
         "local": False,
     },
-    "deepseek-v3": {
+    "o3-2025-04-16": {
         "local": False,
     },
-    "gemini-2.5-flash": {
-        "local": False,
+    # 本地模型
+    "Qwen3-4B-Instruct": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Instruct-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Instruct-2507",
     },
-    "doubao-1-5-lite-32k": {
-        "local": False,
+    "sft_Qwen3-4B-Instruct": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_Qwen3-4B-Instruct-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Instruct-2507",
+    },
+    "grpo_Qwen3-4B-Instruct": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_Qwen3-4B-Instruct-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Instruct-2507",
     },
     
-    # 本地模型
-    "Qwen2.5-7B-Instruct": {
+    "Llama3.1-8B-Instruct": {
         "local": True,
-        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
-        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
-        "system_prefix": "<|im_start|>system\n",
-        "system_suffix": "<|im_end|>",
-        "human_prefix": "<|im_start|>user\n",
-        "human_suffix": "<|im_end|>",
-        "assistant_prefix": "<|im_start|>assistant\n",
-        "assistant_suffix": "<|im_end|>",
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
     },
-    "Qwen2.5-7B-Instruct_SFT": {
+    "sft_Llama3.1-8B-Instruct": {
         "local": True,
-        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_qwen2-5-7b-instruct_MCPenv/latest_hf",
-        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B-Instruct",
-        "system_prefix": "<|im_start|>system\n",
-        "system_suffix": "<|im_end|>",
-        "human_prefix": "<|im_start|>user\n",
-        "human_suffix": "<|im_end|>",
-        "assistant_prefix": "<|im_start|>assistant\n",
-        "assistant_suffix": "<|im_end|>",
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_Llama-3.1-8B-Instruct",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
     },
-    "Qwen2.5-7B_SFT": {
+    "grpo_Llama3.1-8B-Instruct": {
         "local": True,
-        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_qwen2-5-7b_MCPenv/latest_hf",
-        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen2.5-7B",
-        "system_prefix": "<|im_start|>system\n",
-        "system_suffix": "<|im_end|>",
-        "human_prefix": "<|im_start|>user\n",
-        "human_suffix": "<|im_end|>",
-        "assistant_prefix": "<|im_start|>assistant\n",
-        "assistant_suffix": "<|im_end|>",
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_Llama-3.1-8B-Instruct",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
+    },  
+    
+    "DeepSeek-R1-0528-Qwen3-8B": {
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/DeepSeek-R1-0528-Qwen3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/DeepSeek-R1-0528-Qwen3-8B",
     },
-    "Gemma-2-2B_SFT": {
+    "sft_DeepSeek-R1-0528-Qwen3-8B": {
         "local": True,
-        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_gemma2-2b_MCPenv/latest_hf",
-        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Gemma-2-2B",
-        "system_prefix": "<start_of_turn>system\n",
-        "system_suffix": "<end_of_turn>",
-        "human_prefix": "<start_of_turn>user\n",
-        "human_suffix": "<end_of_turn>",
-        "assistant_prefix": "<start_of_turn>assistant\n",
-        "assistant_suffix": "<end_of_turn>",
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_DeepSeek-R1-0528-Qwen3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/DeepSeek-R1-0528-Qwen3-8B",
     },
-    "Gemma-2-2B_DPO": {
+    "grpo_DeepSeek-R1-0528-Qwen3-8B": {
         "local": True,
-        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/dpo_gemma2-2b_MCPenv/latest_hf",
-        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Gemma-2-2B",
-        "system_prefix": "<start_of_turn>system\n",
-        "system_suffix": "<end_of_turn>",
-        "human_prefix": "<start_of_turn>user\n",
-        "human_suffix": "<end_of_turn>",
-        "assistant_prefix": "<start_of_turn>assistant\n",
-        "assistant_suffix": "<end_of_turn>",
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_DeepSeek-R1-0528-Qwen3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/DeepSeek-R1-0528-Qwen3-8B",
+    },
+    "Qwen3-4B-Thinking-2507":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Thinking-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Thinking-2507",
+    },
+    "sft_Qwen3-4B-Thinking-2507":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_Qwen3-4B-Thinking-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Thinking-2507",
+    },
+    "grpo_Qwen3-4B-Thinking-2507":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_Qwen3-4B-Thinking-2507",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B-Thinking-2507",
+    },
+    
+    "Qwen3Guard-Gen-4B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3Guard-Gen-4B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B",
+    },
+    "sft_Qwen3Guard-Gen-4B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_Qwen3Guard-Gen-4B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B",
+    },
+    "grpo_Qwen3Guard-Gen-4B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_Qwen3Guard-Gen-4B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Qwen3-4B",
+    },
+    "Llama-Guard-3-8B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-Guard-3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
+    },
+    "sft_Llama-Guard-3-8B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/sft_Llama-Guard-3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
+    },
+    "grpo_Llama-Guard-3-8B":{
+        "local": True,
+        "model_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/grpo_Llama-Guard-3-8B",
+        "tokenizer_path": "/mnt/data-alpha-sg-02/team-agent/s00513066/checkpoints_mcp/Llama-3.1-8B-Instruct",
     },
 }
 # 默认要处理的模型列表（可以从MODEL_INFO中选择）
 DEFAULT_MODELS = [
-"Gemma-2-2B_SFT",
-# "Gemma-2-2B_DPO"
+    # "claude-3-7-sonnet-20250219",  
+    # "doubao-1-5-pro-32k-250115",
+    # "gemini-2.5-pro", 
+    # "glm-4.5v", 
+    # "grok-4", 
+    # "gpt-4o",
+    # "gpt-5-2025-08-07",
+    # "deepseek-r1",
+    # "kimi-k2-0711-preview",
+    # "o3-2025-04-16",
+    
+#  "Qwen3-4B-Instruct",
+ "sft_Qwen3-4B-Instruct",
+ "grpo_Qwen3-4B-Instruct",
+#  "Llama3.1-8B-Instruct",
+#  "sft_Llama3.1-8B-Instruct",
+#  "grpo_Llama3.1-8B-Instruct",
+ 
+#  "DeepSeek-R1-0528-Qwen3-8B",
+#  "sft_DeepSeek-R1-0528-Qwen3-8B",
+#  "grpo_DeepSeek-R1-0528-Qwen3-8B",
+#  "Qwen3-4B-Thinking-2507",
+#  "sft_Qwen3-4B-Thinking-2507",
+#  "grpo_Qwen3-4B-Thinking-2507",
+ 
+#  "Qwen3Guard-Gen-4B",
+#  "sft_Qwen3Guard-Gen-4B",
+#  "grpo_Qwen3Guard-Gen-4B",
+#  "Llama-Guard-3-8B",
+#  "sft_Llama-Guard-3-8B",
+#  "grpo_Llama-Guard-3-8B",
 ]
 
 # 数据文件路径
@@ -125,8 +200,8 @@ SYSTEM_PROMPTS = {
 
 # 输出目录结构
 OUTPUT_DIR = Path(__file__).resolve().parent
-HISTORY_DIR = OUTPUT_DIR / "history"
-EVALUATION_DIR = OUTPUT_DIR / "evaluation"
+HISTORY_DIR = OUTPUT_DIR / "history" / "local"
+EVALUATION_DIR = OUTPUT_DIR / "evaluation" / "local"
 
 # 创建必要的目录
 HISTORY_DIR.mkdir(exist_ok=True)
@@ -198,13 +273,6 @@ def update_env_model(model: str):
         local_model_path_value = model_info.get("model_path", None)
         local_tokenizer_path_value = model_info.get("tokenizer_path", None)
         
-        # 获取对话格式字段，如果不存在则使用默认值
-        system_prefix = model_info.get("system_prefix", "<|im_start|>system\n")
-        system_suffix = model_info.get("system_suffix", "<|im_end|>")
-        human_prefix = model_info.get("human_prefix", "<|im_start|>user\n")
-        human_suffix = model_info.get("human_suffix", "<|im_end|>")
-        assistant_prefix = model_info.get("assistant_prefix", "<|im_start|>assistant\n")
-        assistant_suffix = model_info.get("assistant_suffix", "<|im_end|>")
         
         # 需要更新的环境变量
         env_updates = {
@@ -212,12 +280,6 @@ def update_env_model(model: str):
             'LOCAL': f'"{local_value}"',
             'LOCAL_MODEL_PATH': f'"{local_model_path_value}"' if local_model_path_value else '""',
             'LOCAL_TOKENIZER_PATH': f'"{local_tokenizer_path_value}"' if local_tokenizer_path_value else '""',
-            'SYSTEM_PREFIX': f'"{system_prefix}"',
-            'SYSTEM_SUFFIX': f'"{system_suffix}"',
-            'HUMAN_PREFIX': f'"{human_prefix}"',
-            'HUMAN_SUFFIX': f'"{human_suffix}"',
-            'ASSISTANT_PREFIX': f'"{assistant_prefix}"',
-            'ASSISTANT_SUFFIX': f'"{assistant_suffix}"'
         }
         
         # 重写整个文件，避免重复行
@@ -262,12 +324,6 @@ def update_env_model(model: str):
         print(f"   LOCAL = {local_value}")
         print(f"   LOCAL_MODEL_PATH = {local_model_path_value or 'None'}")
         print(f"   LOCAL_TOKENIZER_PATH = {local_tokenizer_path_value or 'None'}")
-        print(f"   SYSTEM_PREFIX = {system_prefix}")
-        print(f"   SYSTEM_SUFFIX = {system_suffix}")
-        print(f"   HUMAN_PREFIX = {human_prefix}")
-        print(f"   HUMAN_SUFFIX = {human_suffix}")
-        print(f"   ASSISTANT_PREFIX = {assistant_prefix}")
-        print(f"   ASSISTANT_SUFFIX = {assistant_suffix}")
         return True
         
     except Exception as e:

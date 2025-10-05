@@ -22,7 +22,36 @@ class ModelEvaluator:
         self.evaluation_dir = evaluation_dir
         self.env_results = {}
         self.prin_results = {}
+        self.model_groups = {}  # Store grouped models
         
+    def parse_model_name(self, model_name: str) -> Tuple[str, str]:
+        """Parse model name to extract base model and training type."""
+        # Expected formats: base_model, sft_model, grpo_model
+        if model_name.startswith('sft_'):
+            return model_name[4:], 'sft'
+        elif model_name.startswith('grpo_'):
+            return model_name[5:], 'grpo'
+        else:
+            return model_name, 'base'
+    
+    def group_models(self):
+        """Group models by base model name."""
+        self.model_groups = {}
+        
+        # Group env results
+        for model_name in self.env_results.keys():
+            base_name, train_type = self.parse_model_name(model_name)
+            if base_name not in self.model_groups:
+                self.model_groups[base_name] = {'base': None, 'sft': None, 'grpo': None}
+            self.model_groups[base_name][train_type] = model_name
+        
+        # Group prin results
+        for model_name in self.prin_results.keys():
+            base_name, train_type = self.parse_model_name(model_name)
+            if base_name not in self.model_groups:
+                self.model_groups[base_name] = {'base': None, 'sft': None, 'grpo': None}
+            self.model_groups[base_name][train_type] = model_name
+
     def load_results(self):
         """Load all evaluation results from the directory."""
         # Load env evaluation results
@@ -38,6 +67,9 @@ class ModelEvaluator:
             model_name = os.path.basename(file_path).replace("prin_eval_results_", "").replace(".jsonl", "")
             with open(file_path, 'r') as f:
                 self.prin_results[model_name] = json.load(f)
+        
+        # Group models after loading
+        self.group_models()
     
     def calculate_metrics(self, tp: int, fp: int, fn: int, tn: int) -> Dict[str, float]:
         """Calculate accuracy, precision, recall from confusion matrix values."""
@@ -120,34 +152,30 @@ class ModelEvaluator:
         return pd.DataFrame(results)
     
     def create_overall_performance_plot(self, df: pd.DataFrame):
-        """Create bar plot for overall performance metrics."""
-        fig, axes = plt.subplots(2, 2, figsize=(15, 12))
+        """Create bar plot for overall performance metrics with grouped models."""
+        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
         fig.suptitle('Overall Performance Metrics by Model', fontsize=16, fontweight='bold')
         
+        # Define colors for different training types
+        colors = {'base': '#1f77b4', 'sft': '#ff7f0e', 'grpo': '#2ca02c'}
+        
+        # Prepare data for grouped plotting
+        grouped_data = self.prepare_grouped_data(df)
+        
         # Accuracy
-        axes[0, 0].bar(df['Model'], df['Accuracy'], color='skyblue', alpha=0.7)
-        axes[0, 0].set_title('Accuracy', fontweight='bold')
-        axes[0, 0].set_ylabel('Accuracy')
-        axes[0, 0].tick_params(axis='x', rotation=45)
+        self.plot_grouped_bars(axes[0, 0], grouped_data, 'Accuracy', colors, 'Accuracy')
         axes[0, 0].set_ylim(0, 1)
         
         # Precision
-        axes[0, 1].bar(df['Model'], df['Precision'], color='lightgreen', alpha=0.7)
-        axes[0, 1].set_title('Precision', fontweight='bold')
-        axes[0, 1].set_ylabel('Precision')
-        axes[0, 1].tick_params(axis='x', rotation=45)
+        self.plot_grouped_bars(axes[0, 1], grouped_data, 'Precision', colors, 'Precision')
         axes[0, 1].set_ylim(0, 1)
         
         # Recall
-        axes[1, 0].bar(df['Model'], df['Recall'], color='lightcoral', alpha=0.7)
-        axes[1, 0].set_title('Recall', fontweight='bold')
-        axes[1, 0].set_ylabel('Recall')
-        axes[1, 0].tick_params(axis='x', rotation=45)
+        self.plot_grouped_bars(axes[1, 0], grouped_data, 'Recall', colors, 'Recall')
         axes[1, 0].set_ylim(0, 1)
         
-        # Confusion Matrix Heatmap
-        confusion_data = df[['TP', 'FP', 'FN', 'TN']].T
-        confusion_data.columns = df['Model']  # Set model names as column names
+        # Confusion Matrix Heatmap - reorganize columns by groups
+        confusion_data = self.prepare_grouped_confusion_matrix(df)
         sns.heatmap(confusion_data, annot=True, fmt='d', cmap='Blues', ax=axes[1, 1])
         axes[1, 1].set_title('Confusion Matrix Values', fontweight='bold')
         axes[1, 1].set_xlabel('Models')
@@ -157,25 +185,125 @@ class ModelEvaluator:
                    dpi=300, bbox_inches='tight')
         plt.show()
     
+    def prepare_grouped_data(self, df: pd.DataFrame):
+        """Prepare data for grouped plotting."""
+        grouped_data = {}
+        
+        for _, row in df.iterrows():
+            base_name, train_type = self.parse_model_name(row['Model'])
+            if base_name not in grouped_data:
+                grouped_data[base_name] = {'base': None, 'sft': None, 'grpo': None}
+            grouped_data[base_name][train_type] = row
+        
+        return grouped_data
+    
+    def prepare_grouped_confusion_matrix(self, df: pd.DataFrame):
+        """Prepare confusion matrix data with grouped columns."""
+        grouped_data = self.prepare_grouped_data(df)
+        
+        # Create new DataFrame with reordered columns
+        new_columns = []
+        new_data = {'TP': [], 'FP': [], 'FN': [], 'TN': []}
+        
+        for base_name in sorted(grouped_data.keys()):
+            group = grouped_data[base_name]
+            for train_type in ['base', 'sft', 'grpo']:
+                if group[train_type] is not None:
+                    model_name = group[train_type]['Model']
+                    new_columns.append(f"{base_name}\n({train_type})")
+                    new_data['TP'].append(group[train_type]['TP'])
+                    new_data['FP'].append(group[train_type]['FP'])
+                    new_data['FN'].append(group[train_type]['FN'])
+                    new_data['TN'].append(group[train_type]['TN'])
+        
+        confusion_df = pd.DataFrame(new_data, index=new_columns).T
+        return confusion_df
+    
+    def plot_grouped_bars(self, ax, grouped_data, metric, colors, title):
+        """Plot grouped bars for a specific metric."""
+        x_pos = 0
+        x_labels = []
+        x_positions = []
+        
+        for base_name in sorted(grouped_data.keys()):
+            group = grouped_data[base_name]
+            group_x_positions = []
+            
+            for train_type in ['base', 'sft', 'grpo']:
+                if group[train_type] is not None:
+                    value = group[train_type][metric]
+                    ax.bar(x_pos, value, color=colors[train_type], alpha=0.7, 
+                          width=0.8, label=f'{train_type.upper()}' if x_pos == 0 else "")
+                    group_x_positions.append(x_pos)
+                    x_pos += 1
+            
+            # Add group label at the center of the group
+            if group_x_positions:
+                center_pos = (min(group_x_positions) + max(group_x_positions)) / 2
+                x_labels.append(base_name)
+                x_positions.append(center_pos)
+                x_pos += 0.5  # Add space between groups
+        
+        # Set x-axis labels
+        ax.set_xticks(x_positions)
+        ax.set_xticklabels(x_labels, rotation=45, ha='right')
+        ax.set_title(title, fontweight='bold')
+        ax.set_ylabel(title)
+        
+        # Add legend only for the first subplot
+        if 'Accuracy' in title:
+            ax.legend(loc='upper right')
+    
     def create_cognitive_pollution_plot(self, df: pd.DataFrame):
-        """Create plot for cognitive pollution metrics."""
-        fig, ax = plt.subplots(1, 1, figsize=(12, 6))
+        """Create plot for cognitive pollution metrics with grouped models."""
+        fig, ax = plt.subplots(1, 1, figsize=(14, 6))
         fig.suptitle('Cognitive Pollution Analysis', fontsize=16, fontweight='bold')
         
-        # Correct vs Missed Refusals
-        x = np.arange(len(df))
-        width = 0.35
+        # Define colors for different training types
+        colors = {'base': '#1f77b4', 'sft': '#ff7f0e', 'grpo': '#2ca02c'}
         
-        ax.bar(x - width/2, df['correct_refusals'], width, label='Correct Refusals', 
-               color='lightgreen', alpha=0.7)
-        ax.bar(x + width/2, df['missed_refusals'], width, label='Missed Refusals', 
-               color='lightcoral', alpha=0.7)
+        # Prepare grouped data
+        grouped_data = self.prepare_grouped_data(df)
+        
+        # Plot grouped bars for correct and missed refusals
+        x_pos = 0
+        x_labels = []
+        x_positions = []
+        
+        for base_name in sorted(grouped_data.keys()):
+            group = grouped_data[base_name]
+            group_x_positions = []
+            
+            for train_type in ['base', 'sft', 'grpo']:
+                if group[train_type] is not None:
+                    correct_refusals = group[train_type]['correct_refusals']
+                    missed_refusals = group[train_type]['missed_refusals']
+                    
+                    # Plot correct refusals
+                    ax.bar(x_pos - 0.2, correct_refusals, width=0.35, 
+                          color=colors[train_type], alpha=0.7, 
+                          label=f'Correct ({train_type.upper()})' if x_pos == 0 else "")
+                    # Plot missed refusals
+                    ax.bar(x_pos + 0.2, missed_refusals, width=0.35, 
+                          color=colors[train_type], alpha=0.5,
+                          label=f'Missed ({train_type.upper()})' if x_pos == 0 else "")
+                    
+                    group_x_positions.append(x_pos)
+                    x_pos += 1
+            
+            # Add group label at the center of the group
+            if group_x_positions:
+                center_pos = (min(group_x_positions) + max(group_x_positions)) / 2
+                x_labels.append(base_name)
+                x_positions.append(center_pos)
+                x_pos += 0.5  # Add space between groups
+        
         ax.set_xlabel('Models')
         ax.set_ylabel('Count')
         ax.set_title('Correct vs Missed Refusals')
-        ax.set_xticks(x)
-        ax.set_xticklabels(df['Model'], rotation=45)
-        ax.legend()
+        ax.set_xticks(x_positions)
+        ax.set_xticklabels(x_labels, rotation=45, ha='right')
+        ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         
         plt.tight_layout()
         plt.savefig(os.path.join(self.evaluation_dir, 'cognitive_pollution.png'), 
@@ -183,24 +311,57 @@ class ModelEvaluator:
         plt.show()
     
     def create_mislead_select_plot(self, df: pd.DataFrame):
-        """Create plot for mislead select metrics."""
-        fig, ax = plt.subplots(figsize=(12, 8))
+        """Create plot for mislead select metrics with grouped models."""
+        fig, ax = plt.subplots(figsize=(16, 8))
+        
+        # Define colors for different training types
+        train_colors = {'base': '#1f77b4', 'sft': '#ff7f0e', 'grpo': '#2ca02c'}
         
         # Stacked bar chart for tool call stats
         categories = ['baseline', 'desc', 'name', 'both', 'unknown']
-        colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightgray']
+        category_colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightgray']
         
-        bottom = np.zeros(len(df))
-        for i, category in enumerate(categories):
-            ax.bar(df['Model'], df[category], bottom=bottom, label=category, 
-                  color=colors[i], alpha=0.7)
-            bottom += df[category]
+        # Prepare grouped data
+        grouped_data = self.prepare_grouped_data(df)
+        
+        # Plot grouped stacked bars
+        x_pos = 0
+        x_labels = []
+        x_positions = []
+        
+        for base_name in sorted(grouped_data.keys()):
+            group = grouped_data[base_name]
+            group_x_positions = []
+            
+            for train_type in ['base', 'sft', 'grpo']:
+                if group[train_type] is not None:
+                    bottom = 0
+                    for i, category in enumerate(categories):
+                        value = group[train_type][category]
+                        # Use training type color with category-specific alpha
+                        alpha_values = [0.9, 0.7, 0.5, 0.3, 0.1]
+                        color = train_colors[train_type]
+                        ax.bar(x_pos, value, bottom=bottom, width=0.8,
+                              color=color, alpha=alpha_values[i],
+                              label=f'{category} ({train_type.upper()})' if x_pos == 0 and i == 0 else "")
+                        bottom += value
+                    
+                    group_x_positions.append(x_pos)
+                    x_pos += 1
+            
+            # Add group label at the center of the group
+            if group_x_positions:
+                center_pos = (min(group_x_positions) + max(group_x_positions)) / 2
+                x_labels.append(base_name)
+                x_positions.append(center_pos)
+                x_pos += 0.5  # Add space between groups
         
         ax.set_xlabel('Models')
         ax.set_ylabel('Count')
         ax.set_title('Tool Call Statistics (Mislead Select)', fontweight='bold')
-        ax.tick_params(axis='x', rotation=45)
-        ax.legend()
+        ax.set_xticks(x_positions)
+        ax.set_xticklabels(x_labels, rotation=45, ha='right')
+        ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         
         plt.tight_layout()
         plt.savefig(os.path.join(self.evaluation_dir, 'mislead_select.png'), 
@@ -208,11 +369,38 @@ class ModelEvaluator:
         plt.show()
     
     def create_per_type_plot(self, df: pd.DataFrame):
-        """Create heatmap for per-type performance."""
-        # Pivot the data for heatmap
-        pivot_df = df.pivot(index='Risk_Type', columns='Model', values='TP')
+        """Create heatmap for per-type performance with grouped models."""
+        # Prepare grouped data for heatmap
+        grouped_data = {}
         
-        plt.figure(figsize=(12, 8))
+        for _, row in df.iterrows():
+            base_name, train_type = self.parse_model_name(row['Model'])
+            if base_name not in grouped_data:
+                grouped_data[base_name] = {'base': {}, 'sft': {}, 'grpo': {}}
+            grouped_data[base_name][train_type][row['Risk_Type']] = row['TP']
+        
+        # Create new DataFrame with reordered columns
+        new_columns = []
+        new_data = {}
+        
+        # Get all risk types
+        risk_types = sorted(df['Risk_Type'].unique())
+        
+        for base_name in sorted(grouped_data.keys()):
+            group = grouped_data[base_name]
+            for train_type in ['base', 'sft', 'grpo']:
+                if group[train_type]:  # If this training type exists
+                    col_name = f"{base_name}\n({train_type})"
+                    new_columns.append(col_name)
+                    for risk_type in risk_types:
+                        if risk_type not in new_data:
+                            new_data[risk_type] = []
+                        new_data[risk_type].append(group[train_type].get(risk_type, 0))
+        
+        # Create the pivot DataFrame
+        pivot_df = pd.DataFrame(new_data, index=new_columns).T
+        
+        plt.figure(figsize=(16, 8))
         sns.heatmap(pivot_df, annot=True, fmt='d', cmap='YlOrRd', 
                    cbar_kws={'label': 'True Positives'})
         plt.title('Per-Type Performance (True Positives)', fontsize=16, fontweight='bold')
@@ -283,16 +471,41 @@ class ModelEvaluator:
         print("ANALYSIS COMPLETE")
         print("=" * 80)
 
-def main():
-    """Main function to run the analysis."""
-    # Get the directory where this script is located
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+def analyze_directory(evaluation_dir: str, dir_name: str):
+    """Analyze a specific evaluation directory."""
+    print(f"\n{'='*80}")
+    print(f"ANALYZING {dir_name.upper()} DIRECTORY")
+    print(f"{'='*80}")
     
-    # Initialize evaluator
-    evaluator = ModelEvaluator(script_dir)
+    # Initialize evaluator for this directory
+    evaluator = ModelEvaluator(evaluation_dir)
     
     # Generate comprehensive report
     evaluator.generate_report()
+
+def main():
+    """Main function to run the analysis for both local and remote directories."""
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Define the directories to analyze
+    local_dir = os.path.join(script_dir, "local")
+    remote_dir = os.path.join(script_dir, "remote")
+    
+    # Check if directories exist
+    if not os.path.exists(local_dir):
+        print(f"Warning: Local directory {local_dir} does not exist")
+    else:
+        analyze_directory(local_dir, "local")
+    
+    if not os.path.exists(remote_dir):
+        print(f"Warning: Remote directory {remote_dir} does not exist")
+    else:
+        analyze_directory(remote_dir, "remote")
+    
+    print(f"\n{'='*80}")
+    print("ALL ANALYSES COMPLETE")
+    print(f"{'='*80}")
 
 if __name__ == "__main__":
     main()

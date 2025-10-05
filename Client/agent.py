@@ -103,32 +103,70 @@ class MCPAgent:
                     f"Retrying in {backoff:.1f}s …", level=4)
                 time.sleep(backoff)
 
-    def extract_json(self, text: str) -> dict | None:
+    def extract_toll_call_json(self, text: str) -> dict | None:
         """
         Best-effort to parse *one* JSON object from an LLM reply.
 
         • Handles ```json ... ``` fenced blocks
         • Handles <tool_call> tags with MCP tool-call message
         • Ignores extra prose before / after
+        • If server field is "ServerName", continues matching until finding valuable answer
         • Returns the parsed Python dict, or None on failure
         """
         if not text or not isinstance(text, str):
             return None
         
-        # 1) Direct match for "MCP tool-call message:" followed by JSON
-        mcp_match = re.search(r'MCP tool-call message:\s*(\{.*\})', text, re.DOTALL)
-        if mcp_match:
+        # 忽略大小写和空格，支持各种格式变化，包括嵌套字典
+        dict_pattern = r'\{\s*["\']?server["\']?\s*:\s*["\']?([^"\',}]+)["\']?\s*,\s*["\']?tool["\']?\s*:\s*["\']?([^"\',}]+)["\']?\s*,\s*["\']?tool_params["\']?\s*:\s*(\{.*?\})\s*\}'
+        
+        # 使用findall找到所有匹配的JSON对象
+        all_matches = re.findall(dict_pattern, text, re.IGNORECASE | re.DOTALL)
+        
+        for match in all_matches:
             try:
-                json_str = mcp_match.group(1).strip()
-                # Clean up trailing commas before parsing
-                json_str = re.sub(r',\s*}', '}', json_str)
-                json_str = re.sub(r',\s*]', ']', json_str)
-                result = json.loads(json_str)
-                if isinstance(result, dict):
-                    return result
-            except json.JSONDecodeError:
-                pass
-                 
+                server = match[0].strip().strip('"\'')
+                tool = match[1].strip().strip('"\'')
+                tool_params_str = match[2].strip()
+                
+                # 如果server字段是"ServerName"，说明这是思考片段，继续匹配下一个
+                if server.lower() == "servername":
+                    continue
+                
+                # 尝试解析tool_params，支持嵌套字典
+                tool_params = {}
+                try:
+                    tool_params = json.loads(tool_params_str)
+                except json.JSONDecodeError:
+                    # 如果JSON解析失败，尝试手动解析
+                    # 首先尝试匹配简单的键值对（字符串值）
+                    simple_params = {}
+                    simple_pattern = r'["\']?([^"\',\s]+)["\']?\s*:\s*["\']?([^"\',}]+)["\']?'
+                    simple_matches = re.findall(simple_pattern, tool_params_str)
+                    for k, v in simple_matches:
+                        simple_params[k.strip().strip('"\'')] = v.strip().strip('"\'')
+                    
+                    # 然后尝试匹配嵌套字典
+                    nested_pattern = r'["\']?([^"\',\s]+)["\']?\s*:\s*(\{[^}]*\})'
+                    nested_matches = re.findall(nested_pattern, tool_params_str)
+                    for k, v in nested_matches:
+                        try:
+                            nested_dict = json.loads(v)
+                            simple_params[k.strip().strip('"\'')] = nested_dict
+                        except json.JSONDecodeError:
+                            # 如果嵌套字典解析失败，作为字符串处理
+                            simple_params[k.strip().strip('"\'')] = v.strip()
+                    
+                    tool_params = simple_params
+                
+                result = {
+                    "server": server,
+                    "tool": tool,
+                    "tool_params": tool_params
+                }
+                return result
+            except Exception:
+                continue
+                    
         return None
 
     async def _get_llm_response(self, messages: List[Dict[str, str]]) -> str:
@@ -164,7 +202,7 @@ class MCPAgent:
             reply = await self._get_llm_response(self.history)
             debug_print(info = f"initial reply is:{reply}", level=3)
             # ---- 2️⃣ 解析是否为 MCP 调用 ----
-            cmd_obj = self.extract_json(reply)
+            cmd_obj = self.extract_toll_call_json(reply)
             debug_print(info = f"cmd_obj is:{cmd_obj}", level=3)
             if cmd_obj is None:
                 # 解析失败 → 把 reply 视为最终答复
@@ -226,7 +264,7 @@ class MCPAgent:
                 [
                     {
                         "role": "assistant",
-                        "content": "MCP tool-call message:\n" + json.dumps(cmd_obj, indent=2),
+                        "content": reply,
                     },
                     tool_result_dict
                 ]
