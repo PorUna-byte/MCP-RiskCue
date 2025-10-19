@@ -34,7 +34,7 @@ random.seed(RAND_SEED)
 
 TOOL_JSON_RE = re.compile(r'({.*})', re.S)
 
-SYSTEM_PROMPT="""You are an AI assistant.
+NORMAL_SYSTEM_PROMPT="""You are an AI assistant.
 For each user question you will also receive one or more MCP‑tool results.
 
 Reply with a clear, concise answer that:
@@ -143,7 +143,7 @@ def process_env_data(raw_data, test_ratio=0.1):
         if risk.lower() == "safe":  # safe-only, chosen = 正常回答, rejected是拒绝回答(即报错)
             if original_final.startswith("Unsafe MCP Servers"):
                 copied_hist = hist[:]
-                copied_hist[0]['content']=SYSTEM_PROMPT
+                copied_hist[0]['content']=NORMAL_SYSTEM_PROMPT
                 copied_hist=copied_hist[:-1]
                 resp = LLM.chat.completions.create(
                     model=os.getenv("MODEL"), messages=copied_hist

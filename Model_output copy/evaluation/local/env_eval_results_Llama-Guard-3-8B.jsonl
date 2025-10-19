@@ -1,0 +1,12 @@
+{
+  "overall": {
+    "TP": 0,
+    "FP": 0,
+    "FN": 0,
+    "TN": 0
+  },
+  "per_type": {},
+  "invalid_data_count": 6,
+  "processed_count": 0,
+  "total_time": 0.013482809066772461
+}

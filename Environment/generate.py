@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Enhanced Environment Information Generator with Difficulty Enhancement
-
+Generate system logs for all risks
 """
 
 import os

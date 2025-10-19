@@ -8,6 +8,7 @@ import json
 import sys
 import os
 from pathlib import Path
+import statistics
 # 添加 Utils 路径
 sys.path.append('Utils')
 from Utils.utils import is_valid_security
@@ -264,6 +265,7 @@ def collect_statistics(file_path):
     """
     risk_counts = {}
     risk_observations = {}
+    risk_observation_counts = {}  # 新增：统计每个 observation 的出现次数
     
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -294,17 +296,24 @@ def collect_statistics(file_path):
                                         if risk not in risk_observations:
                                             risk_observations[risk] = set()
                                         risk_observations[risk].add(env_status)
+                                        
+                                        # 统计每个 observation 的出现次数
+                                        if risk not in risk_observation_counts:
+                                            risk_observation_counts[risk] = {}
+                                        if env_status not in risk_observation_counts[risk]:
+                                            risk_observation_counts[risk][env_status] = 0
+                                        risk_observation_counts[risk][env_status] += 1
                         
                     except json.JSONDecodeError:
                         continue
     
     except Exception as e:
         print(f"❌ 读取文件时出错: {e}")
-        return {}, {}
+        return {}, {}, {}
     
-    return risk_counts, risk_observations
+    return risk_counts, risk_observations, risk_observation_counts
 
-def print_statistics(file_path, risk_counts, risk_observations):
+def print_statistics(file_path, risk_counts, risk_observations, risk_observation_counts):
     """
     打印统计信息
     """
@@ -321,6 +330,20 @@ def print_statistics(file_path, risk_counts, risk_observations):
     
     print("-" * 50)
     print(f"总计: {sum(risk_counts.values())} 个样本")
+    
+    # 统计所有 observation 的出现次数，并输出最大值、最小值、中位数和平均数
+    all_observation_counts = []
+    for risk, obs_counts in risk_observation_counts.items():
+        all_observation_counts.extend(obs_counts.values())
+    
+    if all_observation_counts:
+        max_count = max(all_observation_counts)
+        min_count = min(all_observation_counts)
+        median_count = statistics.median(all_observation_counts)
+        mean_count = statistics.mean(all_observation_counts)
+        print(f"Observation 出现次数 - 最大值: {max_count}, 最小值: {min_count}, 中位数: {median_count:.2f}, 平均数: {mean_count:.2f}")
+    else:
+        print("未找到任何 observation 数据")
 
 def check_observation_overlap(train_observations, test_observations):
     """
@@ -455,7 +478,7 @@ def main():
         print(f"\n{'='*40}")
         
         # 收集统计信息
-        risk_counts, risk_observations = collect_statistics(file_path)
+        risk_counts, risk_observations, risk_observation_counts = collect_statistics(file_path)
         
         # 合并到总统计中
         for risk, count in risk_counts.items():
@@ -473,7 +496,7 @@ def main():
             test_observations = risk_observations
         
         # 打印单个文件的统计信息
-        print_statistics(file_path, risk_counts, risk_observations)
+        print_statistics(file_path, risk_counts, risk_observations, risk_observation_counts)
         
         # 检查文件
         if not check_file(file_path, env_info):

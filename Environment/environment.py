@@ -3,16 +3,21 @@ import os
 import random
 
 class environment:
-    def __init__(self):
+    def __init__(self, split="test"):
         """
-        初始化环境类，从env_info_train.json和env_info_test.json合并数据构建所有描述和对应的风险类型
-        确保每条描述被选中的概率相同
+        初始化环境类，根据split参数加载对应的环境信息文件
+        
+        Args:
+            split (str): 指定加载哪个数据集，可选 "train" 或 "test"
+                        - "train": 只加载 env_info_train.json
+                        - "test": 只加载 env_info_test.json
         """
+        self.split = split
         self.all_descriptions = []
         self.risk_types = []
         
-        # 加载并合并训练集和测试集数据
-        env_info = self._load_merged_env_info()
+        # 根据split参数加载对应的环境信息
+        env_info = self._load_env_info()
         
         # 遍历env_info，收集所有描述和对应的风险类型
         for risk_type, descriptions in env_info.items():
@@ -21,54 +26,43 @@ class environment:
                 self.risk_types.append(risk_type)
         
         self.total_count = len(self.all_descriptions)
-        print(f"Total descriptions loaded: {self.total_count}")
+        print(f"Total descriptions loaded from {split} set: {self.total_count}")
     
-    def _load_merged_env_info(self):
+    def _load_env_info(self):
         """
-        从env_info_train.json和env_info_test.json合并数据
+        根据split参数加载对应的环境信息文件
         
         Returns:
-            dict: 合并后的环境信息
+            dict: 环境信息
         """
         try:
             # 获取当前脚本所在目录
             script_dir = os.path.dirname(os.path.abspath(__file__))
             
-            # 加载训练集数据
-            train_file = os.path.join(script_dir, 'env_info_train.json')
-            test_file = os.path.join(script_dir, 'env_info_test.json')
-            
-            merged_env_info = {}
-            
-            # 加载训练集数据
-            if os.path.exists(train_file):
-                with open(train_file, 'r', encoding='utf-8') as f:
-                    train_data = json.load(f)
-                    print(f"  加载训练集数据: {train_file}")
-                    for category, observations in train_data.items():
-                        if category not in merged_env_info:
-                            merged_env_info[category] = []
-                        merged_env_info[category].extend(observations)
+            # 根据split参数选择要加载的文件
+            if self.split == "test":
+                file_path = os.path.join(script_dir, 'env_info_test.json')
+                file_name = "测试集"
+            elif self.split == "train":
+                file_path = os.path.join(script_dir, 'env_info_train.json')
+                file_name = "训练集"
             else:
-                print(f"  警告：训练集文件不存在: {train_file}")
+                raise ValueError(f"Invalid split parameter: {self.split}. Must be 'train' or 'test'.")
             
-            # 加载测试集数据
-            if os.path.exists(test_file):
-                with open(test_file, 'r', encoding='utf-8') as f:
-                    test_data = json.load(f)
-                    print(f"  加载测试集数据: {test_file}")
-                    for category, observations in test_data.items():
-                        if category not in merged_env_info:
-                            merged_env_info[category] = []
-                        merged_env_info[category].extend(observations)
+            # 加载数据
+            if os.path.exists(file_path):
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    env_data = json.load(f)
+                    print(f"  加载{file_name}数据: {file_path}")
+                    
+                    # 打印统计信息
+                    for category, observations in env_data.items():
+                        print(f"  {category}: {len(observations)} 个观察结果")
+                    
+                    return env_data
             else:
-                print(f"  警告：测试集文件不存在: {test_file}")
-            
-            # 打印统计信息
-            for category, observations in merged_env_info.items():
-                print(f"  {category}: {len(observations)} 个观察结果")
-            
-            return merged_env_info
+                print(f"  错误：{file_name}文件不存在: {file_path}")
+                return {}
             
         except Exception as e:
             print(f"错误：无法加载环境信息: {e}")
@@ -93,12 +87,27 @@ class environment:
         
     
 if __name__=='__main__':
-    env = environment()
+    # 测试训练集
+    print("=== Testing Train Set ===")
+    env_train = environment(split="train")
     
     # 测试随机选择功能
-    print("\nTesting random selection:")
-    for i in range(5):
-        description, risk_type = env.generate_info()
+    print("\nTesting random selection from train set:")
+    for i in range(3):
+        description, risk_type = env_train.generate_info()
+        print(f"Test {i+1}:")
+        print(f"  Risk Type: {risk_type}")
+        print(f"  Description (first 100 chars): {description[:100]}...")
+        print()
+    
+    # 测试测试集
+    print("\n=== Testing Test Set ===")
+    env_test = environment(split="test")
+    
+    # 测试随机选择功能
+    print("\nTesting random selection from test set:")
+    for i in range(3):
+        description, risk_type = env_test.generate_info()
         print(f"Test {i+1}:")
         print(f"  Risk Type: {risk_type}")
         print(f"  Description (first 100 chars): {description[:100]}...")

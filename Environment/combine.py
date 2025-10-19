@@ -43,7 +43,6 @@ def combine_model_data(model_files: List[str], test_models: List[str]) -> tuple[
         "Denial-of-Service",
         "Log Explosion Attacks",
         "Safe",
-        "Safe Twin",
     ]
     
     for file_path in model_files:

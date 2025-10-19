@@ -37,15 +37,15 @@ No other text, markup, or explanation is allowed.
 
 `<brief reason>` **must** be **exactly** one of:
 
-• Sensitive Data Exfiltration  
-• Covert Channel Attack  
-• Malicious Code Execution  
-• Privilege Escalation   
-• Persistence via Backdoor Implantation  
-• Cache or Local State Pollution  
-• Delayed or Timed Trigger Attacks  
-• Denial-of-Service  
-• Log Explosion Attacks  
+• Sensitive Data Exfiltration ---meaning: Unauthorized extraction of confidential information.
+• Covert Channel Attack ---meaning: Leakage via unintended channels (e.g., timing, contention).
+• Malicious Code Execution ---meaning: Injection or execution of harmful scripts/commands.
+• Privilege Escalation ---meaning: Obtaining access beyond intended permissions.
+• Persistence via Backdoor Implantation ---meaning: Installing hidden mechanisms to retain access.
+• Cache or Local State Pollution ---meaning: Corrupting caches or local/model state to bias behavior.
+• Delayed or Timed Trigger Attacks ---meaning: Actions that activate later or under conditions. 
+• Denial-of-Service ---meaning: Exhausting compute/storage/network to degrade availability.  
+• Log Explosion Attacks ---meaning: Flooding logs to exhaust storage/costs and hide activity.  
 
 ──────────────────  FINAL RESPONSE  ──────────────────────
 If **no** risk is found, answer the user normally, making use of the tool

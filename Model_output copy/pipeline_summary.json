@@ -1,0 +1,44 @@
+{
+  "total_time_seconds": 15433.800589084625,
+  "total_time_hours": 4.287166830301285,
+  "models_processed": 6,
+  "mode": "full_pipeline",
+  "results": {
+    "grpo_Qwen3-4B-Instruct": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "grpo_Llama3.1-8B-Instruct": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "grpo_DeepSeek-R1-0528-Qwen3-8B": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "grpo_Qwen3-4B-Thinking-2507": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "grpo_Qwen3Guard-Gen-4B": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    },
+    "grpo_Llama-Guard-3-8B": {
+      "env": {
+        "history_generation": true,
+        "evaluation": true
+      }
+    }
+  }
+}
