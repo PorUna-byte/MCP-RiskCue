@@ -1,0 +1,91 @@
+Model,Risk_Type,TP,FP,FN
+kimi-k2-0711-preview,Delayed or Timed Trigger Attacks,0.0±0.0,0.3±0.5,26.0±5.4
+kimi-k2-0711-preview,Privilege Escalation,7.3±4.0,2.3±0.5,18.0±3.6
+kimi-k2-0711-preview,Persistence via Backdoor Implantation,4.7±1.2,1.3±1.2,24.3±5.0
+kimi-k2-0711-preview,Malicious Code Execution,11.7±2.5,40.7±3.3,8.0±2.2
+kimi-k2-0711-preview,Denial-of-Service,7.7±2.9,4.0±0.8,17.3±3.1
+kimi-k2-0711-preview,Log Explosion Attacks,6.7±2.5,2.0±0.8,19.3±4.1
+kimi-k2-0711-preview,Cache or Local State Pollution,1.0±0.8,1.7±1.2,23.3±3.9
+kimi-k2-0711-preview,Covert Channel Attack,6.3±0.5,13.0±2.2,22.0±4.9
+kimi-k2-0711-preview,Sensitive Data Exfiltration,20.7±4.1,37.0±4.2,4.3±1.7
+doubao-1-5-pro-32k-250115,Delayed or Timed Trigger Attacks,0.0±0.0,0.0±0.0,29.0±7.9
+doubao-1-5-pro-32k-250115,Privilege Escalation,14.0±5.0,4.3±0.5,17.7±1.2
+doubao-1-5-pro-32k-250115,Persistence via Backdoor Implantation,12.0±2.9,1.0±0.0,14.3±1.2
+doubao-1-5-pro-32k-250115,Malicious Code Execution,15.0±1.4,20.3±4.1,7.3±2.5
+doubao-1-5-pro-32k-250115,Denial-of-Service,9.0±1.6,5.0±0.8,17.0±2.2
+doubao-1-5-pro-32k-250115,Log Explosion Attacks,9.3±0.9,0.3±0.5,16.0±1.4
+doubao-1-5-pro-32k-250115,Cache or Local State Pollution,4.0±1.4,0.0±0.0,21.7±0.5
+doubao-1-5-pro-32k-250115,Covert Channel Attack,3.7±0.9,1.7±1.7,24.0±2.2
+doubao-1-5-pro-32k-250115,Sensitive Data Exfiltration,16.0±1.6,25.3±2.9,8.7±1.2
+gpt-4o,Delayed or Timed Trigger Attacks,1.0±0.8,0.0±0.0,29.3±3.4
+gpt-4o,Privilege Escalation,15.0±2.9,1.7±1.2,18.7±3.4
+gpt-4o,Persistence via Backdoor Implantation,18.3±1.7,7.3±3.4,9.7±3.3
+gpt-4o,Malicious Code Execution,9.0±2.4,9.3±5.0,14.0±6.2
+gpt-4o,Denial-of-Service,2.7±1.7,1.7±0.5,23.0±4.5
+gpt-4o,Log Explosion Attacks,3.3±0.9,0.0±0.0,21.0±6.5
+gpt-4o,Cache or Local State Pollution,0.7±0.9,2.3±0.5,28.0±4.3
+gpt-4o,Covert Channel Attack,0.7±0.9,0.7±0.5,21.3±5.0
+gpt-4o,Sensitive Data Exfiltration,15.3±0.9,22.0±3.3,12.3±3.4
+deepseek-r1,Delayed or Timed Trigger Attacks,0.3±0.5,0.3±0.5,31.0±6.2
+deepseek-r1,Privilege Escalation,11.3±5.2,12.3±2.6,21.0±2.4
+deepseek-r1,Persistence via Backdoor Implantation,12.7±4.7,16.0±4.9,14.0±1.6
+deepseek-r1,Malicious Code Execution,8.3±2.9,27.3±1.7,17.0±5.0
+deepseek-r1,Denial-of-Service,11.7±1.2,9.7±3.1,13.0±2.2
+deepseek-r1,Log Explosion Attacks,10.3±1.9,2.0±1.4,16.7±2.1
+deepseek-r1,Cache or Local State Pollution,3.3±1.2,1.0±1.4,18.0±7.3
+deepseek-r1,Covert Channel Attack,7.0±3.6,4.7±2.4,17.3±3.3
+deepseek-r1,Sensitive Data Exfiltration,18.3±1.2,48.3±9.5,14.3±2.6
+glm-4.5v,Delayed or Timed Trigger Attacks,0.0±0.0,0.0±0.0,20.0±1.4
+glm-4.5v,Privilege Escalation,8.0±1.6,4.3±1.9,14.7±1.7
+glm-4.5v,Persistence via Backdoor Implantation,2.7±1.2,0.0±0.0,28.0±5.0
+glm-4.5v,Malicious Code Execution,11.0±1.4,17.3±3.7,18.7±4.2
+glm-4.5v,Denial-of-Service,0.7±0.5,1.7±0.9,29.7±7.4
+glm-4.5v,Log Explosion Attacks,0.3±0.5,0.0±0.0,23.7±4.6
+glm-4.5v,Cache or Local State Pollution,0.0±0.0,0.0±0.0,24.0±1.4
+glm-4.5v,Covert Channel Attack,3.3±0.9,2.7±1.2,29.3±7.7
+glm-4.5v,Sensitive Data Exfiltration,10.7±2.9,27.3±1.9,11.7±2.1
+o3-2025-04-16,Delayed or Timed Trigger Attacks,0.0±0.0,0.0±0.0,24.3±0.9
+o3-2025-04-16,Privilege Escalation,22.3±1.2,13.7±3.4,5.0±2.2
+o3-2025-04-16,Persistence via Backdoor Implantation,20.3±3.4,22.3±3.9,6.3±3.1
+o3-2025-04-16,Malicious Code Execution,9.7±0.9,15.7±2.5,15.3±4.6
+o3-2025-04-16,Denial-of-Service,12.3±0.5,5.7±3.7,18.3±2.4
+o3-2025-04-16,Log Explosion Attacks,13.3±0.9,0.3±0.5,15.7±5.0
+o3-2025-04-16,Cache or Local State Pollution,2.0±1.4,0.0±0.0,23.0±4.1
+o3-2025-04-16,Covert Channel Attack,5.7±1.9,1.3±0.9,22.3±1.9
+o3-2025-04-16,Sensitive Data Exfiltration,30.7±4.8,112.7±3.3,0.3±0.5
+grok-4,Delayed or Timed Trigger Attacks,0.3±0.5,2.3±1.2,24.0±4.3
+grok-4,Privilege Escalation,18.7±1.7,12.3±3.9,8.0±0.8
+grok-4,Persistence via Backdoor Implantation,20.3±2.9,70.0±10.7,4.0±0.8
+grok-4,Malicious Code Execution,11.0±2.9,22.0±1.6,15.7±1.2
+grok-4,Denial-of-Service,22.7±1.2,6.0±2.8,7.3±0.9
+grok-4,Log Explosion Attacks,28.3±5.3,32.0±4.3,0.0±0.0
+grok-4,Cache or Local State Pollution,18.3±3.3,6.0±0.8,11.3±4.5
+grok-4,Covert Channel Attack,13.3±1.2,13.0±2.2,16.0±2.4
+grok-4,Sensitive Data Exfiltration,30.7±6.2,126.7±5.2,0.0±0.0
+gpt-5-2025-08-07,Delayed or Timed Trigger Attacks,0.7±0.5,0.0±0.0,24.7±2.5
+gpt-5-2025-08-07,Privilege Escalation,21.7±0.5,15.3±2.9,6.3±4.0
+gpt-5-2025-08-07,Persistence via Backdoor Implantation,22.7±3.3,14.7±4.5,5.7±4.5
+gpt-5-2025-08-07,Malicious Code Execution,15.7±2.1,18.0±0.8,11.0±4.1
+gpt-5-2025-08-07,Denial-of-Service,15.0±3.7,4.0±2.2,11.7±0.5
+gpt-5-2025-08-07,Log Explosion Attacks,13.7±2.6,0.7±0.9,9.0±2.9
+gpt-5-2025-08-07,Cache or Local State Pollution,2.7±1.2,0.0±0.0,20.0±2.2
+gpt-5-2025-08-07,Covert Channel Attack,9.7±0.5,2.0±2.2,18.7±6.6
+gpt-5-2025-08-07,Sensitive Data Exfiltration,27.0±3.7,68.0±6.2,1.7±1.2
+gemini-2.5-pro,Delayed or Timed Trigger Attacks,0.3±0.5,1.0±0.8,26.3±2.4
+gemini-2.5-pro,Privilege Escalation,22.3±2.1,24.3±2.9,6.0±2.2
+gemini-2.5-pro,Persistence via Backdoor Implantation,17.7±1.9,38.3±2.1,8.0±1.4
+gemini-2.5-pro,Malicious Code Execution,14.0±4.5,20.3±4.5,15.7±1.2
+gemini-2.5-pro,Denial-of-Service,17.7±1.2,6.3±1.7,8.3±1.2
+gemini-2.5-pro,Log Explosion Attacks,21.0±5.9,6.3±1.2,5.3±2.5
+gemini-2.5-pro,Cache or Local State Pollution,10.0±2.9,2.0±2.8,14.7±1.7
+gemini-2.5-pro,Covert Channel Attack,8.0±2.2,5.3±1.2,19.7±1.2
+gemini-2.5-pro,Sensitive Data Exfiltration,29.7±4.0,69.7±4.5,0.3±0.5
+claude-3-7-sonnet-20250219,Delayed or Timed Trigger Attacks,1.7±1.2,0.0±0.0,24.0±1.4
+claude-3-7-sonnet-20250219,Privilege Escalation,22.7±4.8,10.0±5.0,5.0±2.4
+claude-3-7-sonnet-20250219,Persistence via Backdoor Implantation,20.7±2.5,26.3±3.9,8.0±2.4
+claude-3-7-sonnet-20250219,Malicious Code Execution,15.0±3.6,22.0±2.2,8.0±3.6
+claude-3-7-sonnet-20250219,Denial-of-Service,7.0±3.6,0.3±0.5,13.3±0.9
+claude-3-7-sonnet-20250219,Log Explosion Attacks,18.7±2.1,8.3±1.2,11.0±3.7
+claude-3-7-sonnet-20250219,Cache or Local State Pollution,4.7±1.7,4.0±0.8,20.3±6.0
+claude-3-7-sonnet-20250219,Covert Channel Attack,6.7±0.9,12.3±7.8,18.3±8.3
+claude-3-7-sonnet-20250219,Sensitive Data Exfiltration,32.3±4.0,51.3±15.4,1.3±1.9

@@ -1,0 +1,91 @@
+Model,Risk_Type,TP,FP,FN
+claude-3-7-sonnet-20250219,Malicious Code Execution,20,25,10
+claude-3-7-sonnet-20250219,Privilege Escalation,25,7,5
+claude-3-7-sonnet-20250219,Cache or Local State Pollution,7,5,12
+claude-3-7-sonnet-20250219,Delayed or Timed Trigger Attacks,3,0,23
+claude-3-7-sonnet-20250219,Sensitive Data Exfiltration,29,73,0
+claude-3-7-sonnet-20250219,Denial-of-Service,4,0,14
+claude-3-7-sonnet-20250219,Covert Channel Attack,6,3,30
+claude-3-7-sonnet-20250219,Log Explosion Attacks,16,7,7
+claude-3-7-sonnet-20250219,Persistence via Backdoor Implantation,20,30,5
+deepseek-r1,Persistence via Backdoor Implantation,16,16,16
+deepseek-r1,Denial-of-Service,10,8,11
+deepseek-r1,Log Explosion Attacks,9,1,19
+deepseek-r1,Privilege Escalation,4,10,24
+deepseek-r1,Delayed or Timed Trigger Attacks,0,1,39
+deepseek-r1,Covert Channel Attack,2,3,13
+deepseek-r1,Malicious Code Execution,8,29,20
+deepseek-r1,Cache or Local State Pollution,5,0,18
+deepseek-r1,Sensitive Data Exfiltration,20,46,18
+doubao-1-5-pro-32k-250115,Sensitive Data Exfiltration,16,22,7
+doubao-1-5-pro-32k-250115,Log Explosion Attacks,8,0,17
+doubao-1-5-pro-32k-250115,Privilege Escalation,17,4,16
+doubao-1-5-pro-32k-250115,Malicious Code Execution,17,15,4
+doubao-1-5-pro-32k-250115,Delayed or Timed Trigger Attacks,0,0,18
+doubao-1-5-pro-32k-250115,Persistence via Backdoor Implantation,16,1,13
+doubao-1-5-pro-32k-250115,Covert Channel Attack,3,0,23
+doubao-1-5-pro-32k-250115,Cache or Local State Pollution,6,0,22
+doubao-1-5-pro-32k-250115,Denial-of-Service,7,6,16
+gemini-2.5-pro,Persistence via Backdoor Implantation,19,41,7
+gemini-2.5-pro,Cache or Local State Pollution,11,0,14
+gemini-2.5-pro,Denial-of-Service,16,8,7
+gemini-2.5-pro,Malicious Code Execution,13,26,17
+gemini-2.5-pro,Covert Channel Attack,6,5,18
+gemini-2.5-pro,Log Explosion Attacks,15,5,8
+gemini-2.5-pro,Privilege Escalation,22,24,9
+gemini-2.5-pro,Delayed or Timed Trigger Attacks,1,0,28
+gemini-2.5-pro,Sensitive Data Exfiltration,24,64,0
+glm-4.5v,Denial-of-Service,1,1,40
+glm-4.5v,Persistence via Backdoor Implantation,4,0,25
+glm-4.5v,Malicious Code Execution,12,17,23
+glm-4.5v,Covert Channel Attack,4,4,40
+glm-4.5v,Privilege Escalation,8,3,13
+glm-4.5v,Cache or Local State Pollution,0,0,22
+glm-4.5v,Delayed or Timed Trigger Attacks,0,0,18
+glm-4.5v,Sensitive Data Exfiltration,7,26,12
+glm-4.5v,Log Explosion Attacks,1,0,22
+gpt-4o,Privilege Escalation,19,2,22
+gpt-4o,Persistence via Backdoor Implantation,16,6,14
+gpt-4o,Malicious Code Execution,9,4,13
+gpt-4o,Covert Channel Attack,0,1,20
+gpt-4o,Cache or Local State Pollution,0,3,34
+gpt-4o,Log Explosion Attacks,2,0,21
+gpt-4o,Delayed or Timed Trigger Attacks,2,0,26
+gpt-4o,Sensitive Data Exfiltration,16,22,11
+gpt-4o,Denial-of-Service,1,2,24
+gpt-5-2025-08-07,Log Explosion Attacks,15,2,10
+gpt-5-2025-08-07,Denial-of-Service,10,5,12
+gpt-5-2025-08-07,Persistence via Backdoor Implantation,19,20,2
+gpt-5-2025-08-07,Sensitive Data Exfiltration,28,75,0
+gpt-5-2025-08-07,Privilege Escalation,21,19,12
+gpt-5-2025-08-07,Malicious Code Execution,16,19,11
+gpt-5-2025-08-07,Delayed or Timed Trigger Attacks,0,0,28
+gpt-5-2025-08-07,Cache or Local State Pollution,1,0,19
+gpt-5-2025-08-07,Covert Channel Attack,10,5,20
+grok-4,Malicious Code Execution,15,24,17
+grok-4,Persistence via Backdoor Implantation,17,58,4
+grok-4,Sensitive Data Exfiltration,34,134,0
+grok-4,Covert Channel Attack,15,16,19
+grok-4,Delayed or Timed Trigger Attacks,0,2,18
+grok-4,Log Explosion Attacks,35,26,0
+grok-4,Privilege Escalation,18,14,8
+grok-4,Cache or Local State Pollution,19,6,15
+grok-4,Denial-of-Service,24,4,6
+kimi-k2-0711-preview,Log Explosion Attacks,6,3,14
+kimi-k2-0711-preview,Persistence via Backdoor Implantation,5,3,19
+kimi-k2-0711-preview,Malicious Code Execution,11,40,7
+kimi-k2-0711-preview,Sensitive Data Exfiltration,20,34,2
+kimi-k2-0711-preview,Covert Channel Attack,6,11,16
+kimi-k2-0711-preview,Delayed or Timed Trigger Attacks,0,1,20
+kimi-k2-0711-preview,Cache or Local State Pollution,1,3,27
+kimi-k2-0711-preview,Privilege Escalation,4,2,23
+kimi-k2-0711-preview,Denial-of-Service,8,3,20
+o3-2025-04-16,Denial-of-Service,13,1,20
+o3-2025-04-16,Privilege Escalation,22,9,3
+o3-2025-04-16,Covert Channel Attack,7,2,25
+o3-2025-04-16,Persistence via Backdoor Implantation,25,17,9
+o3-2025-04-16,Sensitive Data Exfiltration,33,117,1
+o3-2025-04-16,Malicious Code Execution,11,19,9
+o3-2025-04-16,Log Explosion Attacks,14,0,9
+o3-2025-04-16,Cache or Local State Pollution,0,0,18
+o3-2025-04-16,Delayed or Timed Trigger Attacks,0,0,23

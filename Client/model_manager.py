@@ -37,14 +37,6 @@ def selective_decode(tokenizer, ids,
         skip_special_tokens=False,
         clean_up_tokenization_spaces=False
     )
-# 设置环境变量以避免 FX 符号追踪问题
-os.environ["TORCH_COMPILE_DEBUG"] = "0"
-os.environ["TORCH_LOGS"] = "-dynamo"
-os.environ["TORCH_DISABLE_CUDNN_SDPA"] = "1"  # 禁用 CUDNN SDPA
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"  # 限制内存分配
-os.environ["TORCH_DYNAMO_DISABLE"] = "1"  # 完全禁用 dynamo
-os.environ["TORCH_COMPILE_DISABLE"] = "1"  # 禁用 torch.compile
-os.environ["TRANSFORMERS_VERBOSITY"] = "error"  # 减少 transformers 日志
 
 class ModelManager:
     """

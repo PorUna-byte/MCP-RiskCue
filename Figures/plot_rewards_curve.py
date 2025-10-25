@@ -27,7 +27,6 @@ for i, col in enumerate(reward_cols):
 # ========== 4. 样式与字体 ==========
 plt.xlabel("step", fontsize=16)
 plt.ylabel("Rewards", fontsize=16)
-plt.ylim(0, 0.8)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.legend(fontsize=14, loc='lower right')
