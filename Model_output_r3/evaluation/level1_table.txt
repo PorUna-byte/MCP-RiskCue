@@ -1,0 +1,79 @@
+\begin{table}
+\caption{Performance of local and remote models on Level-1 risk detection.}
+\label{tab:level1}
+  \centering
+  \small
+  \begin{tabular}{
+    l l
+    S[table-format=3] % Valid
+    S[table-format=3] % TP
+    S[table-format=3] % FP
+    S[table-format=3] % FN
+    S[table-format=3] % TN
+    S[table-format=1.2] % Acc
+    S[table-format=1.2] % Prec
+    S[table-format=1.2] % Rec
+  }
+    \toprule
+    \multicolumn{1}{c}{Models} & \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{Valid} &
+    \multicolumn{1}{c}{TP~($\uparrow$)} &
+    \multicolumn{1}{c}{FP~($\downarrow$)} &
+    \multicolumn{1}{c}{FN~($\downarrow$)} &
+    \multicolumn{1}{c}{TN~($\uparrow$)} &
+    \multicolumn{1}{c}{Acc.~($\uparrow$)} &
+    \multicolumn{1}{c}{Prec.~($\uparrow$)} &
+    \multicolumn{1}{c}{Rec.~($\uparrow$)} \\
+    \midrule
+
+    % ===== Local =====
+    % ===== Qwen3-4B-Instruct =====
+    \multirow{3}{*}{Qwen3\textendash 4B\textendash Instruct}
+      & vanilla & 466 & 33  & 1   & 213   & 219  & 0.54 & 0.97 & 0.13 \\
+      & sft  & 470 & 200 & 129 & 66   & 75  & \textbf{0.59} & 0.61 & 0.75 \\
+      & grpo  & 469 & 231 & 190 & 4   & 44  & \textbf{0.59} & 0.55 & 0.98 \\
+    \midrule
+
+    % ===== Llama3.1-8B-Instruct =====
+    \multirow{3}{*}{Llama3.1\textendash 8B\textendash Instruct}
+      & vanilla & 468 & 58  & 17   & 209   & 184  & 0.52 & 0.77 & 0.22 \\
+      & sft  & 471 & 171 & 44 & 77   & 179  & 0.74 & 0.80 & 0.69 \\
+      & grpo  & 471 & 228 & 28 & 35   & 180  & \textbf{0.87} & 0.89 & 0.87 \\
+    \midrule
+
+    % ===== DeepSeek-R1-0528-Qwen3-8B =====
+    \multirow{3}{*}{DeepSeek\textendash R1\textendash 0528\textendash Qwen3\textendash 8B}
+      & vanilla & 466 & 89  & 23   & 168   & 186  & 0.59 & 0.79 & 0.35 \\
+      & sft  & 471 & 194 & 156 & 50   & 71  & 0.56 & 0.55 & 0.80 \\
+      & grpo  & 471 & 200 & 77 & 58   & 136  & \textbf{0.71} & 0.72 & 0.78 \\
+    \midrule
+
+    % ===== Qwen3Guard-Gen-4B =====
+    \multirow{3}{*}{Qwen3Guard\textendash Gen\textendash 4B}
+      & vanilla & 467 & 5  & 0   & 230   & 232  & 0.51 & 1.00 & 0.02 \\
+      & sft  & 471 & 165 & 112 & 89   & 105  & 0.57 & 0.60 & 0.65 \\
+      & grpo  & 471 & 237 & 164 & 13   & 57  & \textbf{0.62} & 0.59 & 0.95 \\
+    \midrule
+
+    % ===== Llama-Guard-3-8B =====
+    \multirow{2}{*}{Llama\textendash Guard\textendash 3\textendash 8B}
+      & sft & 471 & 187  & 59   & 100   & 125  & 0.66 & 0.76 & 0.65 \\
+      & grpo  & 470 & 159 & 44 & 100   & 167  & \textbf{0.69} & 0.78 & 0.61 \\
+    \midrule
+
+    % ===== Remote (API) =====
+
+    doubao\textendash 1\textendash 5\textendash pro\textendash 32k\textendash 250115 & --- & 470 & 129  & 5  & 128  & 208  & 0.72 & 0.96 & 0.50 \\
+    claude\textendash 3\textendash 7\textendash sonnet\textendash 20250219 & --- & 471 & 175  & 74  & 75  & 147  & 0.68 & 0.70 & 0.70 \\
+    gemini\textendash 2.5\textendash pro & --- & 471 & 213  & 114  & 44  & 100  & 0.66 & 0.65 & 0.83 \\
+    grok\textendash 4 & --- & 471 & 243  & 210  & 0  & 18  & 0.55 & 0.54 & 1.00 \\
+    gpt\textendash 4o & --- & 466 & 107  & 10  & 147  & 202  & 0.66 & 0.91 & 0.42 \\
+    gpt\textendash 5\textendash 2025\textendash 08\textendash 07 & --- & 468 & 186  & 50  & 67  & 165  & \textbf{0.75} & 0.79 & 0.74 \\
+    deepseek\textendash r1 & --- & 471 & 144  & 74  & 99  & 154  & 0.63 & 0.66 & 0.59 \\
+    kimi\textendash k2\textendash 0711\textendash preview & --- & 470 & 123  & 38  & 112  & 197  & 0.68 & 0.76 & 0.52 \\
+    o3\textendash 2025\textendash 04\textendash 16 & --- & 468 & 209  & 91  & 51  & 117  & 0.70 & 0.70 & 0.80 \\
+    glm\textendash 4.5v & --- & 467 & 84  & 6  & 143  & 234  & 0.68 & 0.93 & 0.37 \\
+    \bottomrule
+  \end{tabular}
+
+\end{table}

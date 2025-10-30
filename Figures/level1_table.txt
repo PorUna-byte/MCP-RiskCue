@@ -1,0 +1,77 @@
+\begin{table}
+\caption{Performance of local and remote models on Level-1 risk detection (mean ± std).}
+\label{tab:level1}
+  \centering
+  \small
+  \begin{tabular}{
+    l l
+    S[table-format=3] % TP
+    S[table-format=3] % FP
+    S[table-format=3] % FN
+    S[table-format=3] % TN
+    S[table-format=1.2] % Acc
+    S[table-format=1.2] % Prec
+    S[table-format=1.2] % Rec
+  }
+    \toprule
+    \multicolumn{1}{c}{Models} & \multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{TP~($\uparrow$)} &
+    \multicolumn{1}{c}{FP~($\downarrow$)} &
+    \multicolumn{1}{c}{FN~($\downarrow$)} &
+    \multicolumn{1}{c}{TN~($\uparrow$)} &
+    \multicolumn{1}{c}{Acc.~($\uparrow$)} &
+    \multicolumn{1}{c}{Prec.~($\uparrow$)} &
+    \multicolumn{1}{c}{Rec.~($\uparrow$)} \\
+    \midrule
+
+    % ===== Local =====
+    % ===== Qwen3-4B-Instruct =====
+    \multirow{3}{*}{Qwen3\textendash 4B\textendash Instruct}
+      & vanilla & \num{33 \pm 4}  & \num{1 \pm 0}   & \num{223 \pm 8}   & \num{210 \pm 7}  & \num{0.52 \pm 0.02} & \num{0.98 \pm 0.01} & \num{0.13 \pm 0.02} \\
+      & sft  & \num{216 \pm 17} & \num{181 \pm 38} & \num{33 \pm 24}   & \num{41 \pm 24}  & \num{0.55 \pm 0.04} & \num{0.55 \pm 0.05} & \num{0.87 \pm 0.09} \\
+      & grpo  & \num{235 \pm 7} & \num{157 \pm 27} & \num{8 \pm 3}   & \num{69 \pm 25}  & \textbf{\num{0.65 \pm 0.05}} & \num{0.60 \pm 0.04} & \num{0.96 \pm 0.01} \\
+    \midrule
+
+    % ===== Llama3.1-8B-Instruct =====
+    \multirow{3}{*}{Llama3.1\textendash 8B\textendash Instruct}
+      & vanilla & \num{51 \pm 7}  & \num{22 \pm 4}   & \num{218 \pm 9}   & \num{177 \pm 5}  & \num{0.49 \pm 0.02} & \num{0.70 \pm 0.05} & \num{0.19 \pm 0.03} \\
+      & sft  & \num{203 \pm 22} & \num{137 \pm 66} & \num{48 \pm 21}   & \num{83 \pm 68}  & \num{0.61 \pm 0.09} & \num{0.63 \pm 0.12} & \num{0.81 \pm 0.08} \\
+      & grpo  & \num{202 \pm 20} & \num{31 \pm 25} & \num{49 \pm 23}   & \num{188 \pm 13}  & \textbf{\num{0.83 \pm 0.03}} & \num{0.88 \pm 0.09} & \num{0.81 \pm 0.08} \\
+    \midrule
+
+    % ===== DeepSeek-R1-0528-Qwen3-8B =====
+    \multirow{3}{*}{DeepSeek\textendash R1\textendash 0528\textendash Qwen3\textendash 8B}
+      & vanilla & \num{87 \pm 2}  & \num{23 \pm 1}   & \num{168 \pm 3}   & \num{189 \pm 3}  & \num{0.59 \pm 0.00} & \num{0.79 \pm 0.01} & \num{0.34 \pm 0.01} \\
+      & sft  & \num{180 \pm 29} & \num{144 \pm 25} & \num{58 \pm 22}   & \num{89 \pm 31}  & \num{0.57 \pm 0.01} & \num{0.55 \pm 0.00} & \num{0.75 \pm 0.10} \\
+      & grpo  & \num{184 \pm 27} & \num{102 \pm 24} & \num{62 \pm 23}   & \num{123 \pm 20}  & \textbf{\num{0.65 \pm 0.04}} & \num{0.65 \pm 0.05} & \num{0.75 \pm 0.10} \\
+    \midrule
+
+    % ===== Qwen3Guard-Gen-4B =====
+    \multirow{3}{*}{Qwen3Guard\textendash Gen\textendash 4B}
+      & vanilla & \num{5 \pm 3}  & \num{0 \pm 0}   & \num{235 \pm 7}   & \num{227 \pm 4}  & \num{0.50 \pm 0.01} & \num{1.00 \pm 0.00} & \num{0.02 \pm 0.01} \\
+      & sft  & \num{200 \pm 25} & \num{146 \pm 27} & \num{47 \pm 30}   & \num{78 \pm 23}  & \num{0.59 \pm 0.02} & \num{0.58 \pm 0.02} & \num{0.81 \pm 0.11} \\
+      & grpo  & \num{212 \pm 24} & \num{102 \pm 45} & \num{31 \pm 16}   & \num{126 \pm 51}  & \textbf{\num{0.72 \pm 0.07}} & \num{0.69 \pm 0.07} & \num{0.87 \pm 0.07} \\
+    \midrule
+
+    % ===== Llama-Guard-3-8B =====
+    \multirow{2}{*}{Llama\textendash Guard\textendash 3\textendash 8B}
+      & sft & \num{205 \pm 21}  & \num{134 \pm 55}   & \num{54 \pm 34}   & \num{77 \pm 40}  & \num{0.60 \pm 0.04} & \num{0.62 \pm 0.10} & \num{0.80 \pm 0.11} \\
+      & grpo  & \num{166 \pm 18} & \num{45 \pm 19} & \num{100 \pm 9}   & \num{160 \pm 46}  & \textbf{\num{0.69 \pm 0.06}} & \num{0.79 \pm 0.06} & \num{0.62 \pm 0.01} \\
+    \midrule
+
+    % ===== Remote (API) =====
+
+    claude\textendash 3\textendash 7\textendash sonnet\textendash 20250219 & --- & \num{180 \pm 4}  & \num{84 \pm 8}  & \num{76 \pm 11}  & \num{131 \pm 12}  & \num{0.66 \pm 0.02} & \num{0.68 \pm 0.02} & \num{0.70 \pm 0.04} \\
+    deepseek\textendash r1 & --- & \num{141 \pm 12}  & \num{64 \pm 8}  & \num{112 \pm 18}  & \num{154 \pm 7}  & \num{0.63 \pm 0.04} & \num{0.69 \pm 0.04} & \num{0.56 \pm 0.06} \\
+    doubao\textendash 1\textendash 5\textendash pro\textendash 32k\textendash 250115 & --- & \num{137 \pm 8}  & \num{4 \pm 1}  & \num{119 \pm 10}  & \num{210 \pm 13}  & \textbf{\num{0.74 \pm 0.02}} & \num{0.97 \pm 0.01} & \num{0.53 \pm 0.02} \\
+    gemini\textendash 2.5\textendash pro & --- & \num{214 \pm 7}  & \num{100 \pm 10}  & \num{39 \pm 4}  & \num{117 \pm 13}  & \num{0.70 \pm 0.03} & \num{0.68 \pm 0.02} & \num{0.85 \pm 0.02} \\
+    glm\textendash 4.5v & --- & \num{85 \pm 1}  & \num{5 \pm 1}  & \num{152 \pm 11}  & \num{225 \pm 9}  & \num{0.66 \pm 0.02} & \num{0.94 \pm 0.01} & \num{0.36 \pm 0.02} \\
+    gpt\textendash 4o & --- & \num{100 \pm 7}  & \num{11 \pm 2}  & \num{161 \pm 11}  & \num{193 \pm 7}  & \num{0.63 \pm 0.03} & \num{0.90 \pm 0.02} & \num{0.38 \pm 0.03} \\
+    gpt\textendash 5\textendash 2025\textendash 08\textendash 07 & --- & \num{192 \pm 7}  & \num{59 \pm 12}  & \num{68 \pm 2}  & \num{149 \pm 13}  & \num{0.73 \pm 0.03} & \num{0.77 \pm 0.04} & \num{0.74 \pm 0.01} \\
+    grok\textendash 4 & --- & \num{250 \pm 9}  & \num{204 \pm 5}  & \num{0 \pm 0}  & \num{17 \pm 6}  & \num{0.56 \pm 0.01} & \num{0.55 \pm 0.01} & \num{1.00 \pm 0.00} \\
+    kimi\textendash k2\textendash 0711\textendash preview & --- & \num{133 \pm 14}  & \num{35 \pm 4}  & \num{103 \pm 9}  & \num{199 \pm 15}  & \num{0.71 \pm 0.02} & \num{0.79 \pm 0.04} & \num{0.56 \pm 0.03} \\
+    o3\textendash 2025\textendash 04\textendash 16 & --- & \num{197 \pm 9}  & \num{91 \pm 4}  & \num{56 \pm 4}  & \num{124 \pm 8}  & \num{0.69 \pm 0.01} & \num{0.68 \pm 0.01} & \num{0.78 \pm 0.02} \\
+    \bottomrule
+  \end{tabular}
+
+\end{table}

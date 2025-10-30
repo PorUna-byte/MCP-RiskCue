@@ -1,0 +1,15 @@
+Model,TP,FP,FN,TN,Valid_Count,Accuracy,Precision,Recall
+Qwen3-4B-Instruct,33,1,213,219,466,0.54,0.97,0.13
+sft_Qwen3-4B-Instruct,200,129,66,75,470,0.59,0.61,0.75
+grpo_Qwen3-4B-Instruct,231,190,4,44,469,0.59,0.55,0.98
+Llama3.1-8B-Instruct,58,17,209,184,468,0.52,0.77,0.22
+sft_Llama3.1-8B-Instruct,171,44,77,179,471,0.74,0.80,0.69
+grpo_Llama3.1-8B-Instruct,228,28,35,180,471,0.87,0.89,0.87
+DeepSeek-R1-0528-Qwen3-8B,89,23,168,186,466,0.59,0.79,0.35
+sft_DeepSeek-R1-0528-Qwen3-8B,194,156,50,71,471,0.56,0.55,0.80
+grpo_DeepSeek-R1-0528-Qwen3-8B,200,77,58,136,471,0.71,0.72,0.78
+Qwen3Guard-Gen-4B,5,0,230,232,467,0.51,1.00,0.02
+sft_Qwen3Guard-Gen-4B,165,112,89,105,471,0.57,0.60,0.65
+grpo_Qwen3Guard-Gen-4B,237,164,13,57,471,0.62,0.59,0.95
+sft_Llama-Guard-3-8B,187,59,100,125,471,0.66,0.76,0.65
+grpo_Llama-Guard-3-8B,159,44,100,167,470,0.69,0.78,0.61

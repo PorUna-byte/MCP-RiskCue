@@ -1,0 +1,127 @@
+Model,Risk_Type,TP,FP,FN
+DeepSeek-R1-0528-Qwen3-8B,Sensitive Data Exfiltration,7,21,18
+DeepSeek-R1-0528-Qwen3-8B,Denial-of-Service,6,7,20
+DeepSeek-R1-0528-Qwen3-8B,Privilege Escalation,4,12,25
+DeepSeek-R1-0528-Qwen3-8B,Cache or Local State Pollution,1,4,16
+DeepSeek-R1-0528-Qwen3-8B,Persistence via Backdoor Implantation,6,2,23
+DeepSeek-R1-0528-Qwen3-8B,Log Explosion Attacks,6,2,32
+DeepSeek-R1-0528-Qwen3-8B,Covert Channel Attack,4,11,23
+DeepSeek-R1-0528-Qwen3-8B,Malicious Code Execution,3,12,21
+DeepSeek-R1-0528-Qwen3-8B,Delayed or Timed Trigger Attacks,0,0,26
+Llama3.1-8B-Instruct,Log Explosion Attacks,0,2,18
+Llama3.1-8B-Instruct,Malicious Code Execution,2,3,23
+Llama3.1-8B-Instruct,Delayed or Timed Trigger Attacks,0,0,26
+Llama3.1-8B-Instruct,Privilege Escalation,6,14,26
+Llama3.1-8B-Instruct,Sensitive Data Exfiltration,6,20,31
+Llama3.1-8B-Instruct,Covert Channel Attack,2,11,22
+Llama3.1-8B-Instruct,Persistence via Backdoor Implantation,1,4,27
+Llama3.1-8B-Instruct,Cache or Local State Pollution,2,0,20
+Llama3.1-8B-Instruct,Denial-of-Service,4,3,19
+Qwen3-4B-Instruct,Denial-of-Service,2,1,16
+Qwen3-4B-Instruct,Covert Channel Attack,4,15,32
+Qwen3-4B-Instruct,Persistence via Backdoor Implantation,0,0,17
+Qwen3-4B-Instruct,Malicious Code Execution,0,2,21
+Qwen3-4B-Instruct,Cache or Local State Pollution,0,0,23
+Qwen3-4B-Instruct,Delayed or Timed Trigger Attacks,0,0,30
+Qwen3-4B-Instruct,Privilege Escalation,5,0,29
+Qwen3-4B-Instruct,Log Explosion Attacks,2,0,21
+Qwen3-4B-Instruct,Sensitive Data Exfiltration,4,4,25
+Qwen3Guard-Gen-4B,Denial-of-Service,0,0,19
+Qwen3Guard-Gen-4B,Covert Channel Attack,0,0,21
+Qwen3Guard-Gen-4B,Delayed or Timed Trigger Attacks,0,0,19
+Qwen3Guard-Gen-4B,Privilege Escalation,0,0,23
+Qwen3Guard-Gen-4B,Cache or Local State Pollution,0,0,36
+Qwen3Guard-Gen-4B,Persistence via Backdoor Implantation,0,0,23
+Qwen3Guard-Gen-4B,Malicious Code Execution,0,1,17
+Qwen3Guard-Gen-4B,Log Explosion Attacks,0,0,23
+Qwen3Guard-Gen-4B,Sensitive Data Exfiltration,1,0,16
+grpo_DeepSeek-R1-0528-Qwen3-8B,Cache or Local State Pollution,16,20,8
+grpo_DeepSeek-R1-0528-Qwen3-8B,Malicious Code Execution,14,10,4
+grpo_DeepSeek-R1-0528-Qwen3-8B,Denial-of-Service,21,7,7
+grpo_DeepSeek-R1-0528-Qwen3-8B,Sensitive Data Exfiltration,15,24,6
+grpo_DeepSeek-R1-0528-Qwen3-8B,Privilege Escalation,33,8,5
+grpo_DeepSeek-R1-0528-Qwen3-8B,Covert Channel Attack,15,25,15
+grpo_DeepSeek-R1-0528-Qwen3-8B,Persistence via Backdoor Implantation,18,13,10
+grpo_DeepSeek-R1-0528-Qwen3-8B,Log Explosion Attacks,23,13,9
+grpo_DeepSeek-R1-0528-Qwen3-8B,Delayed or Timed Trigger Attacks,17,48,6
+grpo_Llama-Guard-3-8B,Cache or Local State Pollution,19,1,18
+grpo_Llama-Guard-3-8B,Denial-of-Service,17,1,8
+grpo_Llama-Guard-3-8B,Persistence via Backdoor Implantation,6,1,20
+grpo_Llama-Guard-3-8B,Delayed or Timed Trigger Attacks,17,3,14
+grpo_Llama-Guard-3-8B,Malicious Code Execution,16,7,6
+grpo_Llama-Guard-3-8B,Covert Channel Attack,19,6,10
+grpo_Llama-Guard-3-8B,Log Explosion Attacks,16,0,9
+grpo_Llama-Guard-3-8B,Privilege Escalation,8,0,11
+grpo_Llama-Guard-3-8B,Sensitive Data Exfiltration,19,14,3
+grpo_Llama3.1-8B-Instruct,Persistence via Backdoor Implantation,12,1,13
+grpo_Llama3.1-8B-Instruct,Sensitive Data Exfiltration,14,1,15
+grpo_Llama3.1-8B-Instruct,Cache or Local State Pollution,21,1,10
+grpo_Llama3.1-8B-Instruct,Privilege Escalation,15,6,8
+grpo_Llama3.1-8B-Instruct,Denial-of-Service,26,0,10
+grpo_Llama3.1-8B-Instruct,Delayed or Timed Trigger Attacks,19,7,10
+grpo_Llama3.1-8B-Instruct,Log Explosion Attacks,24,1,9
+grpo_Llama3.1-8B-Instruct,Malicious Code Execution,17,4,5
+grpo_Llama3.1-8B-Instruct,Covert Channel Attack,9,3,24
+grpo_Qwen3-4B-Instruct,Sensitive Data Exfiltration,21,14,2
+grpo_Qwen3-4B-Instruct,Denial-of-Service,19,3,6
+grpo_Qwen3-4B-Instruct,Persistence via Backdoor Implantation,14,26,2
+grpo_Qwen3-4B-Instruct,Malicious Code Execution,19,17,10
+grpo_Qwen3-4B-Instruct,Cache or Local State Pollution,14,10,3
+grpo_Qwen3-4B-Instruct,Privilege Escalation,32,15,3
+grpo_Qwen3-4B-Instruct,Delayed or Timed Trigger Attacks,20,34,9
+grpo_Qwen3-4B-Instruct,Covert Channel Attack,29,18,3
+grpo_Qwen3-4B-Instruct,Log Explosion Attacks,33,16,2
+grpo_Qwen3Guard-Gen-4B,Denial-of-Service,27,7,3
+grpo_Qwen3Guard-Gen-4B,Persistence via Backdoor Implantation,22,12,6
+grpo_Qwen3Guard-Gen-4B,Sensitive Data Exfiltration,20,11,14
+grpo_Qwen3Guard-Gen-4B,Privilege Escalation,23,12,2
+grpo_Qwen3Guard-Gen-4B,Cache or Local State Pollution,12,3,10
+grpo_Qwen3Guard-Gen-4B,Malicious Code Execution,9,11,6
+grpo_Qwen3Guard-Gen-4B,Covert Channel Attack,13,23,11
+grpo_Qwen3Guard-Gen-4B,Log Explosion Attacks,16,3,10
+grpo_Qwen3Guard-Gen-4B,Delayed or Timed Trigger Attacks,4,11,20
+sft_DeepSeek-R1-0528-Qwen3-8B,Log Explosion Attacks,15,27,9
+sft_DeepSeek-R1-0528-Qwen3-8B,Privilege Escalation,21,11,8
+sft_DeepSeek-R1-0528-Qwen3-8B,Persistence via Backdoor Implantation,9,8,18
+sft_DeepSeek-R1-0528-Qwen3-8B,Covert Channel Attack,19,15,21
+sft_DeepSeek-R1-0528-Qwen3-8B,Delayed or Timed Trigger Attacks,18,75,8
+sft_DeepSeek-R1-0528-Qwen3-8B,Malicious Code Execution,12,26,5
+sft_DeepSeek-R1-0528-Qwen3-8B,Sensitive Data Exfiltration,20,5,6
+sft_DeepSeek-R1-0528-Qwen3-8B,Cache or Local State Pollution,23,44,10
+sft_DeepSeek-R1-0528-Qwen3-8B,Denial-of-Service,12,12,5
+sft_Llama-Guard-3-8B,Persistence via Backdoor Implantation,1,6,34
+sft_Llama-Guard-3-8B,Privilege Escalation,21,11,11
+sft_Llama-Guard-3-8B,Sensitive Data Exfiltration,19,17,12
+sft_Llama-Guard-3-8B,Covert Channel Attack,12,30,23
+sft_Llama-Guard-3-8B,Delayed or Timed Trigger Attacks,21,59,15
+sft_Llama-Guard-3-8B,Denial-of-Service,20,11,4
+sft_Llama-Guard-3-8B,Malicious Code Execution,11,76,4
+sft_Llama-Guard-3-8B,Cache or Local State Pollution,18,45,0
+sft_Llama-Guard-3-8B,Log Explosion Attacks,21,24,0
+sft_Llama3.1-8B-Instruct,Delayed or Timed Trigger Attacks,25,72,4
+sft_Llama3.1-8B-Instruct,Cache or Local State Pollution,18,40,3
+sft_Llama3.1-8B-Instruct,Sensitive Data Exfiltration,12,9,13
+sft_Llama3.1-8B-Instruct,Privilege Escalation,23,13,4
+sft_Llama3.1-8B-Instruct,Denial-of-Service,16,12,11
+sft_Llama3.1-8B-Instruct,Covert Channel Attack,23,55,4
+sft_Llama3.1-8B-Instruct,Log Explosion Attacks,17,15,5
+sft_Llama3.1-8B-Instruct,Persistence via Backdoor Implantation,22,12,11
+sft_Llama3.1-8B-Instruct,Malicious Code Execution,11,2,16
+sft_Qwen3-4B-Instruct,Covert Channel Attack,22,26,9
+sft_Qwen3-4B-Instruct,Denial-of-Service,26,17,5
+sft_Qwen3-4B-Instruct,Delayed or Timed Trigger Attacks,23,39,10
+sft_Qwen3-4B-Instruct,Persistence via Backdoor Implantation,17,18,9
+sft_Qwen3-4B-Instruct,Log Explosion Attacks,29,31,1
+sft_Qwen3-4B-Instruct,Malicious Code Execution,13,20,9
+sft_Qwen3-4B-Instruct,Sensitive Data Exfiltration,24,23,3
+sft_Qwen3-4B-Instruct,Cache or Local State Pollution,21,32,1
+sft_Qwen3-4B-Instruct,Privilege Escalation,25,26,1
+sft_Qwen3Guard-Gen-4B,Sensitive Data Exfiltration,25,58,4
+sft_Qwen3Guard-Gen-4B,Persistence via Backdoor Implantation,12,7,13
+sft_Qwen3Guard-Gen-4B,Malicious Code Execution,18,17,8
+sft_Qwen3Guard-Gen-4B,Privilege Escalation,29,17,2
+sft_Qwen3Guard-Gen-4B,Log Explosion Attacks,25,18,4
+sft_Qwen3Guard-Gen-4B,Cache or Local State Pollution,16,49,3
+sft_Qwen3Guard-Gen-4B,Denial-of-Service,23,9,6
+sft_Qwen3Guard-Gen-4B,Covert Channel Attack,9,17,17
+sft_Qwen3Guard-Gen-4B,Delayed or Timed Trigger Attacks,8,45,16
