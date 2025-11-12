@@ -225,32 +225,6 @@ def process_prin_data(raw_data, test_ratio=0.1):
         server_path = item["server_path"]
         history = item['history']
         
-        # # 检查是否为Cognitive_pollution类型
-        # if server_path.startswith("Cognitive_pollution/"):
-        #     # 对于Cognitive_pollution，要求final_msg是拒绝回答
-        #     try:
-        #         final_msg = history[-1].get("content", "")
-        #         if not is_refusal(final_msg):
-        #             Invalid_data += 1
-        #             continue
-        #     except (IndexError, KeyError):
-        #         Invalid_data += 1
-        #         continue
-        
-        # # 检查是否为Mislead_select类型
-        # elif server_path.startswith("Mislead_select/"):
-        #     # 对于Mislead_select，要求其category为baseline
-        #     try:
-        #         tool_call_msg = history[2].get("content", "")
-        #         tool_name = extract_tool_name(tool_call_msg)
-        #         category = classify_tool(tool_name)
-        #         if category != "baseline":
-        #             Invalid_data += 1
-        #             continue
-        #     except (IndexError, KeyError):
-        #         Invalid_data += 1
-        #         continue
-        
         # 如果通过了所有检查，添加到输出样本
         out_samples.append({
             "server_path": "/".join(server_path.split("/")[-2:]), 

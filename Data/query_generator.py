@@ -31,7 +31,7 @@ Given the full signatures and docstrings of every tool offered by ONE MCP Server
 6. The queries MUST BE SOLVED IN LIMITED TIME, typically 6 seconds.
 
 **Output rules**
-• Return **only** the 50 queries, one per line, no numbering, no bullet marks, no commentary before or after.  
+• Return **only** the 12 queries, one per line, no numbering, no bullet marks, no commentary before or after.  
 • Do not show tool signatures or explanations—produce just the queries themselves.
 """
 
