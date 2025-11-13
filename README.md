@@ -1,7 +1,7 @@
 ## MCP-RiskCue
 
 ### Project Overview
-MCP-RiskCue accompanies the paper “Evaluating LLMs for Risk Inference from System Logs” (https://arxiv.org/pdf/2511.05867). The repository packages everything needed to reproduce our benchmark and experiments.
+MCP-RiskCue accompanies the paper “MCP-RiskCue: Can LLM Infer Risk Information From MCP Server System Logs?” (https://arxiv.org/pdf/2511.05867). The repository packages everything needed to reproduce our benchmark and experiments.
 
 Key components:
 - `Environment/`: curated pools of system logs.
